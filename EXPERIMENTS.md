@@ -1,5 +1,47 @@
 # Nhật Ký Thí Nghiệm — AllnAction RoboTaxi (YOLO26n-seg, 11 Lớp)
 
+## Kết quả kiểm chứng tối 27/11/2026
+
+**Giữ checkpoint lần 3.** Điểm dưới đây dùng ONNX và evaluator nhúng của BTC trên cùng 140 ảnh. Đơn vị là điểm trên thang 100. Tất cả ảnh và GT validation đã đối chiếu bằng SHA-256. Pilot E1 thay 36 đường biên ở 32 ảnh train, gồm 35 instance gốc và một bản tăng cường có nhãn trùng khớp. Giữ nguyên số instance, tên lớp, ảnh, split, pretrained weights và toàn bộ tham số huấn luyện. 35 ca được chọn sau khi Codex kiểm tra cặp overlay trước/sau, chưa qua duyệt chéo của thành viên.
+
+| Chỉ số | Lần 3 | Pilot E1 |
+|---|---:|---:|
+| Mask mAP@[.50:.95], 140 ảnh | 21,35 | 20,79 |
+| AP50 | 36,82 | 36,08 |
+| AP75 | 21,29 | 20,53 |
+| Mask mAP, 60 ảnh nhóm | 23,45 | 21,41 |
+| Mask mAP, 80 ảnh Drive | 18,25 | 18,51 |
+| Mask mAP, riêng 15 ảnh Việt Nam | 18,85 | 16,41 |
+
+Chênh lệch toàn tập là −0,56 điểm. Khoảng bootstrap ghép cặp theo cảnh và điều kiện, 300 lần lấy mẫu lại, là [−1,80; +0,70]. Một seed và 15 ảnh Việt Nam chỉ đủ làm căn cứ giữ mốc cũ. Thiếu GT lớp 3 khiến cả hai điểm trung bình local chỉ bao phủ 10 lớp. Điểm public 45,70 trên giao diện và mAP chi tiết 10,81 chưa truy được về checksum của một bài nộp.
+
+| Lớp | Instance train / val | AP lần 3 | AP E1 |
+|---|---:|---:|---:|
+| Car | 2696 / 623 | 39,43 | 38,37 |
+| Bus | 252 / 35 | 32,19 | 36,23 |
+| Truck | 350 / 83 | 21,82 | 19,55 |
+| Other vehicle | 0 / 0 | thiếu GT | thiếu GT |
+| Motorcycle | 152 / 54 | 6,28 | 6,22 |
+| Motorcyclist | 170 / 70 | 33,14 | 27,74 |
+| Bicycle | 142 / 45 | 4,75 | 4,26 |
+| Cyclist | 99 / 33 | 15,01 | 13,77 |
+| Pedestrian | 2286 / 432 | 24,31 | 24,37 |
+| Sign | 741 / 218 | 22,29 | 22,99 |
+| Traffic light | 890 / 228 | 14,28 | 14,40 |
+
+**Tái lập E1.** Commit huấn luyện `7ac0061`. Seed 26, YOLO26n-seg 640, batch 8, 20 epoch, AdamW lr0 0,002, cosine, mask ratio 2, Copy-Paste 0,35, close mosaic 15. L4 mất 461 giây cho fit và native validation, PyTorch ghi đỉnh cấp phát 4.949 MiB và giữ chỗ 10.124 MiB. ZIP có một tệp model.onnx, 9.665.818 byte, opset 17. ONNX checker và đối chiếu hai tensor đầu ra với PyTorch trên ba ảnh đã qua. Hàm diện tích mới khớp chính xác với evaluator cho 9.599 mask, gồm 969 mask train và 233 mask val dưới 64 px².
+
+Tại thư mục VM `~/baseline-cvat300`, với các script trong checkout và pretrained weights đã ghi hash, dùng thư mục đầu ra mới cho mỗi lần chạy.
+
+```bash
+.venv/bin/python e1_geometry/run_notebook_pilot.py --dataset e1_geometry/pilot.zip --run e1_geometry/replay20 --revision 7ac00613a4bae7ec4e83e2d785f580d0fb9e6429
+.venv/bin/python e1_geometry/compare_pilot.py --baseline team_round3/train20 --pilot e1_geometry/replay20 --notebook train_and_export.ipynb --manifest audit_phase12/validation-manifest.json --out e1_geometry/replay-comparison.json
+```
+
+**Vòng tiếp theo.** E2a bổ sung các ảnh lớp 3 đã được duyệt toàn khung vào bộ lần 3. E2b thử riêng biển báo Việt Nam. Cần một tập đo lớp 3 độc lập đã khóa và chấm lại E0 trên đó. Sau đó mới thử ca hai bánh, sampling, Copy-Paste, mask ratio và optimizer trong các run riêng. Cấu hình full training đề xuất sau khi có pilot đạt là tối đa 100 epoch, patience 25, batch 8, seed 26, còn lại theo ablation thắng. Cấu hình đang chờ trưởng nhóm duyệt.
+
+[Báo cáo notebook](experiments/e1/run_report.json) · [So sánh chính thức và kiểm tra ONNX](experiments/e1/comparison.json) · [Tài nguyên và checksum](experiments/e1/resources.json) · [Danh sách sửa từng mask](experiments/e1/edits.json)
+
 > **Quy tắc:** Mỗi lần chạy xong `train_and_export.ipynb`, cập nhật 1 dòng vào bảng dưới đây và đẩy lên GitHub. File nặng (`best.pt`, `submission.zip`) lưu theo thư mục version trên Google Drive (`DRIVE_OUTPUT_DIR`).
 
 ---

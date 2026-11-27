@@ -1,0 +1,10 @@
+{
+  "revision": "7ac00613a4bae7ec4e83e2d785f580d0fb9e6429",
+  "dataset_sha256": "d53ff10a72c873c0b0c6b0e72e30bc06b7da1896d6d5af86043bf513cd0d7554",
+  "initial_weights_sha256": "361fbfabab285c3237700b6bb91d7ecfa602cd945fffda8dbe1242829b71e73f",
+  "notebook_sha256": "83e498336ed0a6081753ae49dc1dc2b93ca4066e28515a3204c799a9904876fd",
+  "gpu": "NVIDIA L4",
+  "fit_and_native_val_seconds": 460.7776962650023,
+  "peak_allocated_mib": 4948.623046875,
+  "peak_reserved_mib": 10124.0
+}

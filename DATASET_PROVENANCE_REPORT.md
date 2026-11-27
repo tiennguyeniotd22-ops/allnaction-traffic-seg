@@ -4,7 +4,20 @@
 
 ---
 
-## 1. Bảng Tổng Hợp Các Nguồn Dữ Liệu Đã Dùng
+## Snapshot thực tế của lần 3 và pilot E1
+
+| Nguồn | Train / val | Nguồn nhãn và giấy phép |
+|---|---:|---|
+| BDD100K | 180 / 45 | Ba nhóm ngày, đêm và mưa, mỗi nhóm 60 / 15. Box nguồn làm prompt SAM, sau đó nhóm sửa trong CVAT. Dữ liệu theo điều khoản Berkeley cho giáo dục, nghiên cứu, phi lợi nhuận. [Điều khoản](https://github.com/bdd100k/bdd100k/blob/master/doc/source/license.rst) |
+| Vietnam Traffic Sign Detection v5 | 60 / 15 | Box biển báo và prompt detector cho các lớp khác, SAM tạo mask nháp, nhóm sửa trong CVAT. Bản xuất ghi Public Domain. [Trang phiên bản](https://universe.roboflow.com/vietnam-traffic-sign-detection/vietnam-traffic-sign-detection-2i2j8/dataset/5) |
+| COCO val2017 | 320 / 80 | Ánh xạ car, bus, truck, bicycle, motorcycle, person, stop sign, traffic light. Người lái được ghép với xe theo quy tắc của bộ dựng. Annotation CC BY 4.0, ảnh giữ giấy phép Flickr riêng. [Điều khoản COCO](https://cocodataset.org/#termsofuse) |
+| Ảnh tăng cường từ train COCO | 80 / 0 | 37 ảnh đêm và 43 ảnh mưa tổng hợp, giữ giấy phép ảnh cha. |
+
+Tổng 640 / 140. SHA-256 bộ ZIP lần 3 bắt đầu `91268bb2`. E1 dùng cùng ảnh, điều chỉnh hình học theo annotation COCO, ZIP bắt đầu `d53ff10a`. Danh sách changed rows và checksum file cũ/mới nằm trong [sổ sửa E1](experiments/e1/edits.json).
+
+**Nguồn đang chờ QC.** Poribohon-BD do Shaira Tabassum, Md. Sabbir Ullah, Nakib Hossain Al-nur và Swakkhar Shatabda công bố theo CC BY 4.0. Lấy 58 ảnh từ bản mẫu của tác giả, sàng lọc theo tên lớp, kích thước và dHash. Dùng 129 box CNG và 45 box rickshaw làm prompt SAM ViT-H cho lớp 3. Bảo toàn 174 mask PNG, 150 polygon đạt IoU với SAM ít nhất 0,93. Nhóm cần xem lại 24 mask khó chuyển thành polygon và duyệt đủ 11 lớp từng ảnh. Số ảnh nguồn này đã dùng trong E1 bằng 0. Manifest của gói lưu SHA gốc, SHA ảnh resize, đường dẫn XML, box, kích thước và tác giả. [Dataset và giấy phép](https://data.mendeley.com/datasets/pwyyg8zmk5/1) · [Bản mẫu tại commit nguồn](https://github.com/shairatabassum/BangladeshiVehiclesDataset/tree/d185287ebff01849089d560be0cc9f75305f89ee)
+
+## Kế hoạch nguồn của các phiên bản cũ
 
 | STT | Tên Bộ Dữ Liệu | Đường Dẫn (URL) | Giấy Phép (License) | Số Ảnh Đã Dùng (Train / Val) | Ghi Chú Xử Lý |
 | :-: | :--- | :--- | :--- | :---: | :--- |

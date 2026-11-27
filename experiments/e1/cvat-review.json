@@ -1,0 +1,12 @@
+{
+  "task": "QC_E2_OtherVehicle_PoribohonBD",
+  "task_id": 13,
+  "images": 58,
+  "polygons": 150,
+  "job_ids": [
+    13
+  ],
+  "assigned_to": "anhtien",
+  "full_frame_review": "pending",
+  "source_boxes": 174
+}

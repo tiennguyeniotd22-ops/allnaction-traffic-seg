@@ -1,13 +1,13 @@
 """
-AllnAction RoboTaxi Hackathon — Starter Dataset Builder (COCO Traffic Subset -> 11 Classes YOLO-Seg)
-1. Downloads COCO 2017 annotations (no login required).
-2. Filters rich traffic scenes (cars, motorcycles, bicycles, buses, trucks, signs, lights).
-3. Maps COCO categories by name to the official 11 competition classes (0..10).
-4. Auto-merges (person + motorcycle -> Motorcyclist) and (person + bicycle -> Cyclist).
-5. Downloads filtered images concurrently, validates, and zips dataset_traffic_11.zip for Colab.
+AllnAction RoboTaxi Hackathon — v2 Dataset Builder (COCO Traffic Subset -> 11 Classes YOLO-Seg)
+v2 fixes:
+- Eliminates self-intersecting polygons via rasterize-and-contour repair.
+- Computes min_area_640 using aspect-preserving letterbox scale (640 / max(w, h)) matching notebook Step 2.
+- Tightens rider-overlap rule to stop mislabeling Motorcycle (4) as Motorcyclist (5).
+- Increases default subset to 1000 rich traffic images.
 
 Usage:
-    python scripts/prepare_coco_traffic.py --out dataset_traffic_11 --max-images 400 --zip
+    python scripts/prepare_coco_traffic.py --out dataset_traffic_v2 --max-images 1000 --zip
 """
 
 import argparse
@@ -48,7 +48,6 @@ COCO_NAME_TO_COMP = {
     "traffic light": 10,
 }
 
-# Priority classes to ensure balanced traffic scenes
 PRIORITY_NAMES = {"motorcycle", "bicycle", "bus", "truck", "traffic light", "stop sign"}
 ANNOTATIONS_URL = "http://images.cocodataset.org/annotations/annotations_trainval2017.zip"
 
@@ -71,25 +70,31 @@ def download_annotations(cache_dir: Path) -> Path:
     return json_path
 
 
-def simplify_polygon(poly_norm: np.ndarray, epsilon_ratio: float = 0.002) -> np.ndarray:
-    """Simplify normalized polygon while keeping >= 3 points."""
+def repair_and_simplify_polygon(poly_norm: np.ndarray, grid: int = 640) -> np.ndarray:
+    """Guarantee a simple, non-self-intersecting polygon via rasterize + outer contour."""
     if len(poly_norm) < 3:
         return poly_norm
-    pts = (poly_norm * 1000.0).astype(np.float32).reshape(-1, 1, 2)
-    peri = cv2.arcLength(pts, True)
-    approx = cv2.approxPolyDP(pts, epsilon_ratio * peri, True).reshape(-1, 2) / 1000.0
-    if len(approx) >= 3:
-        return np.clip(approx, 0.0, 1.0)
-    return np.clip(poly_norm, 0.0, 1.0)
+    canvas = np.zeros((grid, grid), dtype=np.uint8)
+    pts = np.round(np.clip(poly_norm, 0.0, 1.0) * (grid - 1)).astype(np.int32).reshape(-1, 1, 2)
+    cv2.fillPoly(canvas, [pts], 255)
+    contours, _ = cv2.findContours(canvas, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    if not contours:
+        return np.empty((0, 2), dtype=np.float32)
+    largest = max(contours, key=cv2.contourArea)
+    peri = cv2.arcLength(largest, True)
+    approx = cv2.approxPolyDP(largest, 0.0015 * peri, True).reshape(-1, 2).astype(np.float32) / float(grid - 1)
+    return np.clip(approx, 0.0, 1.0)
 
 
-def polygon_area_at_640(poly_norm: np.ndarray) -> float:
-    """Estimate mask pixel area at 640x640."""
-    return float(cv2.contourArea((poly_norm * 640.0).astype(np.float32)))
+def polygon_area_at_640(poly_norm: np.ndarray, orig_w: int, orig_h: int) -> float:
+    """Estimate mask pixel area after aspect-preserving resize to max_dim=640."""
+    scale = 640.0 / float(max(orig_w, orig_h))
+    pts = np.column_stack([poly_norm[:, 0] * orig_w * scale, poly_norm[:, 1] * orig_h * scale]).astype(np.float32)
+    return float(cv2.contourArea(pts))
 
 
-def box_overlap(box_p: list[float], box_b: list[float]) -> bool:
-    """Check if COCO [x, y, w, h] person box overlaps/rides a 2-wheeler box."""
+def box_overlap_rider(box_p: list[float], box_b: list[float]) -> bool:
+    """Tighter rider check: person must overlap bike AND sit above/on the seat."""
     px1, py1, px2, py2 = box_p[0], box_p[1], box_p[0] + box_p[2], box_p[1] + box_p[3]
     bx1, by1, bx2, by2 = box_b[0], box_b[1], box_b[0] + box_b[2], box_b[1] + box_b[3]
     ix1, iy1 = max(px1, bx1), max(py1, by1)
@@ -97,24 +102,33 @@ def box_overlap(box_p: list[float], box_b: list[float]) -> bool:
     inter = max(0.0, ix2 - ix1) * max(0.0, iy2 - iy1)
     if inter <= 0.0:
         return False
+
     p_area = max(1e-6, box_p[2] * box_p[3])
     b_area = max(1e-6, box_b[2] * box_b[3])
     p_cx = 0.5 * (px1 + px2)
-    return (inter / min(p_area, b_area) >= 0.15) and (bx1 - 0.05 * box_b[2] <= p_cx <= bx2 + 0.05 * box_b[2])
+    p_cy = 0.5 * (py1 + py2)
+    b_cy = 0.5 * (by1 + by2)
+    return (
+        (inter / min(p_area, b_area) >= 0.22)
+        and (bx1 <= p_cx <= bx2)
+        and (p_cy <= b_cy + 0.10 * box_b[3])
+    )
 
 
 def merge_polygons(poly_a: np.ndarray, poly_b: np.ndarray, grid: int = 640) -> np.ndarray:
-    """Merge person + 2-wheeler normalized polygons into one continuous instance mask."""
+    """Merge person + 2-wheeler normalized polygons into one clean outer contour."""
     canvas = np.zeros((grid, grid), dtype=np.uint8)
     for poly in (poly_a, poly_b):
-        pts = np.round(poly * grid).astype(np.int32).reshape(-1, 1, 2)
+        pts = np.round(np.clip(poly, 0.0, 1.0) * (grid - 1)).astype(np.int32).reshape(-1, 1, 2)
         cv2.fillPoly(canvas, [pts], 255)
     canvas = cv2.morphologyEx(canvas, cv2.MORPH_CLOSE, np.ones((5, 5), np.uint8))
     contours, _ = cv2.findContours(canvas, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     if not contours:
         return poly_b
-    largest = max(contours, key=cv2.contourArea).reshape(-1, 2).astype(np.float32) / float(grid)
-    return simplify_polygon(largest)
+    largest = max(contours, key=cv2.contourArea)
+    peri = cv2.arcLength(largest, True)
+    approx = cv2.approxPolyDP(largest, 0.0015 * peri, True).reshape(-1, 2).astype(np.float32) / float(grid - 1)
+    return np.clip(approx, 0.0, 1.0)
 
 
 def coco_seg_to_norm_poly(seg: list, w: int, h: int) -> np.ndarray | None:
@@ -150,7 +164,7 @@ def build_starter_dataset(
     seed: int,
     make_zip: bool,
 ) -> None:
-    """Build starter YOLO-seg dataset from COCO traffic subset."""
+    """Build v2 YOLO-seg dataset from COCO traffic subset."""
     json_path = download_annotations(cache_dir)
     print(f"[2/4] Đang phân tích {json_path.name}...")
     data = json.loads(json_path.read_text(encoding="utf-8"))
@@ -162,13 +176,14 @@ def build_starter_dataset(
         if ann.get("iscrowd", 0) == 0 and cat_id_to_name.get(ann["category_id"]) in COCO_NAME_TO_COMP:
             anns_by_img[ann["image_id"]].append(ann)
 
-    # Score images to prioritize multi-class traffic scenes with rare objects
+    # Prioritize rare traffic classes (motorcycle, bicycle, stop sign, truck)
     scored_imgs = []
     for img_id, anns in anns_by_img.items():
         names = {cat_id_to_name[a["category_id"]] for a in anns}
         if not (names & (PRIORITY_NAMES | {"car"})):
             continue
-        score = len(names & PRIORITY_NAMES) * 10 + min(len(anns), 15)
+        bonus = 15 * ("stop sign" in names) + 12 * ("motorcycle" in names) + 10 * ("bicycle" in names)
+        score = bonus + len(names & PRIORITY_NAMES) * 10 + min(len(anns), 15)
         scored_imgs.append((score, img_id))
 
     scored_imgs.sort(key=lambda x: x[0], reverse=True)
@@ -183,24 +198,19 @@ def build_starter_dataset(
         (out_dir / "images" / split).mkdir(parents=True, exist_ok=True)
         (out_dir / "labels" / split).mkdir(parents=True, exist_ok=True)
 
-    # Download images concurrently
     print(f"[3/4] Đang tải {len(selected_ids)} ảnh giao thông (train={len(selected_ids)-n_val}, val={n_val})...")
-    tasks = {}
     with ThreadPoolExecutor(max_workers=12) as pool:
+        futs = []
         for img_id in selected_ids:
             info = img_id_to_info[img_id]
             split = "val" if img_id in val_ids else "train"
             dest = out_dir / "images" / split / info["file_name"]
-            tasks[pool.submit(download_one, info["coco_url"], dest)] = (img_id, split)
-
-        ok_count = 0
-        for fut in as_completed(tasks):
-            if fut.result():
-                ok_count += 1
+            futs.append(pool.submit(download_one, info["coco_url"], dest))
+        ok_count = sum(1 for fut in as_completed(futs) if fut.result())
     print(f"      Đã tải thành công {ok_count}/{len(selected_ids)} ảnh.")
 
-    # Convert labels & auto-merge riders
     stats = {"train": Counter(), "val": Counter()}
+    dropped_small = 0
     for img_id in selected_ids:
         info = img_id_to_info[img_id]
         split = "val" if img_id in val_ids else "train"
@@ -210,9 +220,7 @@ def build_starter_dataset(
 
         w, h = info["width"], info["height"]
         anns = anns_by_img[img_id]
-        persons = []
-        two_wheelers = []
-        others = []
+        persons, two_wheelers, others = [], [], []
 
         for ann in anns:
             cname = cat_id_to_name[ann["category_id"]]
@@ -231,7 +239,7 @@ def build_starter_dataset(
         for cname, b_box, b_poly in two_wheelers:
             matched = None
             for p_idx, (p_box, p_poly) in enumerate(persons):
-                if p_idx not in used_p and box_overlap(p_box, b_box):
+                if p_idx not in used_p and box_overlap_rider(p_box, b_box):
                     matched = (p_idx, p_poly)
                     break
             if matched is not None:
@@ -250,8 +258,9 @@ def build_starter_dataset(
 
         lines = []
         for cls_id, poly in final_objs:
-            poly = simplify_polygon(poly)
-            if len(poly) < 3 or polygon_area_at_640(poly) < min_area_640:
+            poly = repair_and_simplify_polygon(poly)
+            if len(poly) < 3 or polygon_area_at_640(poly, w, h) < min_area_640:
+                dropped_small += 1
                 continue
             coords = " ".join(f"{x:.6f} {y:.6f}" for x, y in poly)
             lines.append(f"{cls_id} {coords}")
@@ -260,7 +269,6 @@ def build_starter_dataset(
         lbl_path = out_dir / "labels" / split / f"{Path(info['file_name']).stem}.txt"
         lbl_path.write_text("\n".join(lines), encoding="utf-8")
 
-    # Write data.yaml
     yaml_data = {
         "path": ".",
         "train": "images/train",
@@ -271,22 +279,22 @@ def build_starter_dataset(
     with open(out_dir / "data.yaml", "w", encoding="utf-8") as f:
         yaml.safe_dump(yaml_data, f, sort_keys=False, allow_unicode=True)
 
-    print("\n[4/4] === THỐNG KÊ BỘ DATA KHỞI ĐẦU ===")
+    print(f"\n[4/4] === THỐNG KÊ BỘ DATA v2 (đã lọc {dropped_small} mask < {min_area_640}px) ===")
     for split in ("train", "val"):
         print(f"Split [{split.upper()}]: {dict(stats[split])}")
 
     if make_zip:
         zip_out = shutil.make_archive(str(out_dir), "zip", root_dir=out_dir)
-        print(f"\nĐã đóng gói sẵn sàng đưa lên Colab/Drive: {zip_out}")
+        print(f"\nĐã đóng gói: {zip_out}")
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Build Starter Traffic Dataset from COCO")
-    parser.add_argument("--out", type=Path, default=Path("dataset_traffic_11"))
+    parser = argparse.ArgumentParser(description="Build v2 Starter Traffic Dataset from COCO")
+    parser.add_argument("--out", type=Path, default=Path("dataset_traffic_v2"))
     parser.add_argument("--cache", type=Path, default=Path("raw_cache"))
-    parser.add_argument("--max-images", type=int, default=400)
+    parser.add_argument("--max-images", type=int, default=1000)
     parser.add_argument("--val-ratio", type=float, default=0.2)
-    parser.add_argument("--min-area", type=float, default=64.0)
+    parser.add_argument("--min-area", type=float, default=65.0)
     parser.add_argument("--seed", type=int, default=2026)
     parser.add_argument("--zip", action="store_true")
     args = parser.parse_args()

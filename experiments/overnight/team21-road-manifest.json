@@ -1,0 +1,1814 @@
+{
+ "train": 1187,
+ "val": 140,
+ "added_images": 31,
+ "added_by_class": {
+  "2": 2,
+  "1": 9,
+  "6": 6,
+  "7": 2,
+  "5": 6,
+  "0": 4,
+  "3": 1,
+  "8": 4,
+  "4": 15,
+  "9": 8,
+  "10": 2
+ },
+ "dataset_sha256": "155b1d3cc81ea8b87c6123795a02702eb847b3807c85b76d4d21e496225e3252",
+ "base_sha256": "7141c5527ec6bb2a86bb897f336435bcfd2a0be705efb6909e9dd92cfc527010",
+ "holdout_sha256": "9e518defa9f4567814bd7f7d9a472130c3a0c7f05e0f54b6488e5bc6b2d4c0b0",
+ "scene_report_sha256": "8aebaa7de768c7015150aac5039b33a5fdc924fb64f4c4da7e98192f1523b51d",
+ "selection_sha256": "efde980da50f3b1cadd4475ade38d37c3b6799f12c64365bc3c3654283b0af37",
+ "records": [
+  {
+   "key": "cc000000033144",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000033144.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000033144.jpg",
+   "original_url": "http://farm8.staticflickr.com/7073/7173268755_9790cae8a8_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by/2.0/",
+    "id": 4,
+    "name": "Attribution License"
+   },
+   "parent": "coco-extra/images/co757.jpg",
+   "parent_sha256": "75bd9f338d4238932e4d165ee8261896dc6fd0d524858be4002429d824765b0a",
+   "image_sha256": "75bd9f338d4238932e4d165ee8261896dc6fd0d524858be4002429d824765b0a",
+   "label_sha256": "10df34e76acf9937c8975142078d9dbd8ac726ec3b1c76154acd41391601d12b",
+   "size": [
+    640,
+    640
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "396897"
+     ],
+     "source_class": 2,
+     "source_iou": 0.9998,
+     "cls": 2,
+     "pixels": 153136.94
+    }
+   ],
+   "bucket": "truck",
+   "source_label_sha256": "10df34e76acf9937c8975142078d9dbd8ac726ec3b1c76154acd41391601d12b",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 172,
+    "reason": "Box truck or truncated front of a truck, label excludes its shadow."
+   },
+   "stem": "zz_plus_cc000000033144"
+  },
+  {
+   "key": "cc000000046112",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000046112.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000046112.jpg",
+   "original_url": "http://farm5.staticflickr.com/4130/5146528463_950bf78ee4_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by/2.0/",
+    "id": 4,
+    "name": "Attribution License"
+   },
+   "parent": "coco-extra/images/co840.jpg",
+   "parent_sha256": "999ca1ca13a025562b8a1d16569483a0fc03d1e323c8d153d46daed81538c3c1",
+   "image_sha256": "999ca1ca13a025562b8a1d16569483a0fc03d1e323c8d153d46daed81538c3c1",
+   "label_sha256": "eb7c9624855c63a33d2c9df13ffff23e08b6a8405f1d608bf83e310630c4d3e2",
+   "size": [
+    640,
+    427
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "163123"
+     ],
+     "source_class": 1,
+     "source_iou": 0.99967,
+     "cls": 1,
+     "pixels": 70168.49
+    }
+   ],
+   "bucket": "bus",
+   "source_label_sha256": "eb7c9624855c63a33d2c9df13ffff23e08b6a8405f1d608bf83e310630c4d3e2",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 36,
+    "reason": "Parked or isolated buses, with near/far buses and people separately labeled where visible."
+   },
+   "stem": "zz_plus_cc000000046112"
+  },
+  {
+   "key": "cc000000083691",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000083691.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000083691.jpg",
+   "original_url": "http://farm9.staticflickr.com/8388/8638716442_00a9328243_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by/2.0/",
+    "id": 4,
+    "name": "Attribution License"
+   },
+   "parent": "coco-extra/images/co819.jpg",
+   "parent_sha256": "3551e738cc58a0183f25d624a77517ec61947308a2b4a9c814e03bbcb032f6e9",
+   "image_sha256": "3551e738cc58a0183f25d624a77517ec61947308a2b4a9c814e03bbcb032f6e9",
+   "label_sha256": "c23a117747ba187b48f6d3ab115efd69acace998fbec93a312dfd360afd39745",
+   "size": [
+    640,
+    449
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "163478"
+     ],
+     "source_class": 1,
+     "source_iou": 0.99968,
+     "cls": 1,
+     "pixels": 113959.89
+    },
+    {
+     "native_ids": [
+      "166799"
+     ],
+     "source_class": 1,
+     "source_iou": 0.99985,
+     "cls": 1,
+     "pixels": 38772.68
+    }
+   ],
+   "bucket": "bus",
+   "source_label_sha256": "c23a117747ba187b48f6d3ab115efd69acace998fbec93a312dfd360afd39745",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 39,
+    "reason": "Parked or isolated buses, with near/far buses and people separately labeled where visible."
+   },
+   "stem": "zz_plus_cc000000083691"
+  },
+  {
+   "key": "cc000000105192",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000105192.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000105192.jpg",
+   "original_url": "http://farm3.staticflickr.com/2040/1508042080_172d8b0283_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+    "id": 5,
+    "name": "Attribution-ShareAlike License"
+   },
+   "parent": "coco-extra/images/co126.jpg",
+   "parent_sha256": "4950b58e6590a5a9128bdd08b5e3e1839211c43df1a53cc19c27acee7b1b00a5",
+   "image_sha256": "4950b58e6590a5a9128bdd08b5e3e1839211c43df1a53cc19c27acee7b1b00a5",
+   "label_sha256": "976fda1edf2fc7e3e4e390010c47f7f5e135e86cd1fb41dde2db3b4f22a45389",
+   "size": [
+    640,
+    480
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "127161"
+     ],
+     "source_class": 6,
+     "source_iou": 0.99943,
+     "cls": 6,
+     "pixels": 92901.67
+    }
+   ],
+   "bucket": "bicycle-unoccupied",
+   "source_label_sha256": "976fda1edf2fc7e3e4e390010c47f7f5e135e86cd1fb41dde2db3b4f22a45389",
+   "review": {
+    "folder": "team21-parked-candidates",
+    "index": 8,
+    "reason": "Unoccupied bicycle, including close crops of recognizable frame components."
+   },
+   "stem": "zz_plus_cc000000105192"
+  },
+  {
+   "key": "cc000000129100",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000129100.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000129100.jpg",
+   "original_url": "http://farm4.staticflickr.com/3831/9509136741_5bc6fb3b12_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by/2.0/",
+    "id": 4,
+    "name": "Attribution License"
+   },
+   "parent": "coco-extra/images/co808.jpg",
+   "parent_sha256": "89e30089f4cb286b4106e70a91666cf3c1dca322357c953d2b3fb5c3e91b5360",
+   "image_sha256": "89e30089f4cb286b4106e70a91666cf3c1dca322357c953d2b3fb5c3e91b5360",
+   "label_sha256": "5648bc88455b4ce46f5adcff1054b681a5e3c14db7f2409e369472b45cfb5644",
+   "size": [
+    640,
+    480
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "2168577",
+      "188596"
+     ],
+     "source_class": 7,
+     "source_iou": 0.9952,
+     "cls": 7,
+     "pixels": 11222.64
+    },
+    {
+     "native_ids": [
+      "129022",
+      "262781"
+     ],
+     "source_class": 7,
+     "source_iou": 0.99705,
+     "cls": 7,
+     "pixels": 3391.33
+    }
+   ],
+   "bucket": "bicycle-with-people",
+   "source_label_sha256": "5648bc88455b4ce46f5adcff1054b681a5e3c14db7f2409e369472b45cfb5644",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 6,
+    "reason": "Two bicycle riders, including one cut by the left border."
+   },
+   "stem": "zz_plus_cc000000129100"
+  },
+  {
+   "key": "cc000000143908",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000143908.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000143908.jpg",
+   "original_url": "http://farm8.staticflickr.com/7198/6958414501_52c79c27e6_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+    "id": 5,
+    "name": "Attribution-ShareAlike License"
+   },
+   "parent": "coco-extra/images/co858.jpg",
+   "parent_sha256": "6176b902fb2a83f8726ee0cc4f615db0d88f4adfda41b1bdec3d952a0f9d82ed",
+   "image_sha256": "6176b902fb2a83f8726ee0cc4f615db0d88f4adfda41b1bdec3d952a0f9d82ed",
+   "label_sha256": "41bed8c48202217255d2ce3ad7d655599291b1dc420b8872514f60b39c40bd49",
+   "size": [
+    640,
+    480
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "1792118",
+      "183103"
+     ],
+     "source_class": 5,
+     "source_iou": 0.99596,
+     "cls": 5,
+     "pixels": 92841.07
+    }
+   ],
+   "bucket": "motorcycle-with-people",
+   "source_label_sha256": "41bed8c48202217255d2ce3ad7d655599291b1dc420b8872514f60b39c40bd49",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 81,
+    "reason": "Occupied motorcycle and rider form one instance, including motion blur or occlusion."
+   },
+   "stem": "zz_plus_cc000000143908"
+  },
+  {
+   "key": "cc000000146701",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000146701.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000146701.jpg",
+   "original_url": "http://farm5.staticflickr.com/4088/5206981241_546deb294c_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+    "id": 5,
+    "name": "Attribution-ShareAlike License"
+   },
+   "parent": "coco-extra/images/co532.jpg",
+   "parent_sha256": "3e8eaaad6667fe1be0460081ad25c85a8a9086f484e7bde3344346fb14823059",
+   "image_sha256": "3e8eaaad6667fe1be0460081ad25c85a8a9086f484e7bde3344346fb14823059",
+   "label_sha256": "7aa934d75dcfd59865dbdc970b8502d511617343273a89b7d91481ff7edc8d6d",
+   "size": [
+    640,
+    428
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "133644"
+     ],
+     "source_class": 0,
+     "source_iou": 0.99831,
+     "cls": 0,
+     "pixels": 32516.85
+    },
+    {
+     "native_ids": [
+      "151766"
+     ],
+     "source_class": 4,
+     "source_iou": 0.99972,
+     "cls": 3,
+     "pixels": 61755.27
+    }
+   ],
+   "bucket": "motorcycle-unoccupied",
+   "source_label_sha256": "935bd92078d8f9d1b30c9d1db2ade5301b61e5731b3d3ea5d052b298d59e3efb",
+   "review": {
+    "folder": "team21-parked-candidates",
+    "index": 36,
+    "reason": "A three-wheeled roadster has no rider. Other vehicle under the organizer's other road vehicles rule.",
+    "relabel": {
+     "1": 3
+    }
+   },
+   "stem": "zz_plus_cc000000146701"
+  },
+  {
+   "key": "cc000000169656",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000169656.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000169656.jpg",
+   "original_url": "http://farm6.staticflickr.com/5482/9533764468_cec5a01f0b_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by/2.0/",
+    "id": 4,
+    "name": "Attribution License"
+   },
+   "parent": "coco-extra/images/co1043.jpg",
+   "parent_sha256": "7c2547348f1e444351dad8e29754c118545ac021764b8af24ee45a1858c010ac",
+   "image_sha256": "7c2547348f1e444351dad8e29754c118545ac021764b8af24ee45a1858c010ac",
+   "label_sha256": "98357e38d9e0bbbab8e6b52d74124bdcb26c911936270b237fa7c7d79abd6951",
+   "size": [
+    640,
+    427
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "166879"
+     ],
+     "source_class": 1,
+     "source_iou": 0.99986,
+     "cls": 1,
+     "pixels": 14469.45
+    },
+    {
+     "native_ids": [
+      "168025"
+     ],
+     "source_class": 1,
+     "source_iou": 0.99962,
+     "cls": 1,
+     "pixels": 28807.94
+    },
+    {
+     "native_ids": [
+      "168568"
+     ],
+     "source_class": 1,
+     "source_iou": 1.0,
+     "cls": 1,
+     "pixels": 13271.05
+    },
+    {
+     "native_ids": [
+      "185790"
+     ],
+     "source_class": 8,
+     "source_iou": 0.99692,
+     "cls": 8,
+     "pixels": 1619.8
+    },
+    {
+     "native_ids": [
+      "187414"
+     ],
+     "source_class": 8,
+     "source_iou": 0.9935,
+     "cls": 8,
+     "pixels": 1384.36
+    }
+   ],
+   "bucket": "bus",
+   "source_label_sha256": "98357e38d9e0bbbab8e6b52d74124bdcb26c911936270b237fa7c7d79abd6951",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 42,
+    "reason": "Parked or isolated buses, with near/far buses and people separately labeled where visible."
+   },
+   "stem": "zz_plus_cc000000169656"
+  },
+  {
+   "key": "cc000000190141",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000190141.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000190141.jpg",
+   "original_url": "http://farm5.staticflickr.com/4130/4994671477_9e13d1604b_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by/2.0/",
+    "id": 4,
+    "name": "Attribution License"
+   },
+   "parent": "coco-extra/images/co704.jpg",
+   "parent_sha256": "a2b887f549dae339c79254e9b19b99c2bfad5f42af4a80cce027690a5082ebb9",
+   "image_sha256": "a2b887f549dae339c79254e9b19b99c2bfad5f42af4a80cce027690a5082ebb9",
+   "label_sha256": "49200eb954da903f92eb8063114e56d5a88f722b122fe359285444eacc2cd421",
+   "size": [
+    640,
+    423
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "151445",
+      "187564"
+     ],
+     "source_class": 5,
+     "source_iou": 0.99694,
+     "cls": 5,
+     "pixels": 47026.74
+    }
+   ],
+   "bucket": "motorcycle-with-people",
+   "source_label_sha256": "49200eb954da903f92eb8063114e56d5a88f722b122fe359285444eacc2cd421",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 83,
+    "reason": "Occupied motorcycle and rider form one instance, including motion blur or occlusion."
+   },
+   "stem": "zz_plus_cc000000190141"
+  },
+  {
+   "key": "cc000000219655",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000219655.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000219655.jpg",
+   "original_url": "http://farm8.staticflickr.com/7018/6441529047_b46c043d44_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by/2.0/",
+    "id": 4,
+    "name": "Attribution License"
+   },
+   "parent": "coco-extra/images/co750.jpg",
+   "parent_sha256": "6dd6acac25d4d7b66db66e15fe559ec9dc7edc913f01e012c993403c745ebac2",
+   "image_sha256": "6dd6acac25d4d7b66db66e15fe559ec9dc7edc913f01e012c993403c745ebac2",
+   "label_sha256": "45a9ef6956b451f5a6d5a24f52a72a651928f6500f12e8b499c381473f6e6d46",
+   "size": [
+    640,
+    480
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "397183"
+     ],
+     "source_class": 2,
+     "source_iou": 0.99968,
+     "cls": 0,
+     "pixels": 74908.98
+    }
+   ],
+   "bucket": "truck",
+   "source_label_sha256": "440ec50271a287ecf8c10dd59e7cc7ca1b4a5c95151074bca194bcac0291cea5",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 186,
+    "reason": "Pickup body and bed form one Car. Detached bed cap in the yard is not a vehicle.",
+    "relabel": {
+     "0": 0
+    }
+   },
+   "stem": "zz_plus_cc000000219655"
+  },
+  {
+   "key": "cc000000221474",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000221474.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000221474.jpg",
+   "original_url": "http://farm9.staticflickr.com/8093/8459051432_33518d9ed9_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+    "id": 5,
+    "name": "Attribution-ShareAlike License"
+   },
+   "parent": "coco-extra/images/co388.jpg",
+   "parent_sha256": "01c120264b79b7f28ddd775ef52edf62c121f6fcfa52cc83a26ac76f7f1cded7",
+   "image_sha256": "01c120264b79b7f28ddd775ef52edf62c121f6fcfa52cc83a26ac76f7f1cded7",
+   "label_sha256": "a54aa4216663e974463a323556b47b763f4c436624c488446a0f98e7d2318e29",
+   "size": [
+    640,
+    480
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "150890"
+     ],
+     "source_class": 4,
+     "source_iou": 0.99975,
+     "cls": 4,
+     "pixels": 188232.76
+    }
+   ],
+   "bucket": "motorcycle-unoccupied",
+   "source_label_sha256": "a54aa4216663e974463a323556b47b763f4c436624c488446a0f98e7d2318e29",
+   "review": {
+    "folder": "team21-parked-candidates",
+    "index": 38,
+    "reason": "Parked unoccupied motorcycle or recognizable cropped motorcycle. Background objects checked."
+   },
+   "stem": "zz_plus_cc000000221474"
+  },
+  {
+   "key": "cc000000229317",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000229317.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000229317.jpg",
+   "original_url": "http://farm6.staticflickr.com/5529/9033888732_6cc32b5e44_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by/2.0/",
+    "id": 4,
+    "name": "Attribution License"
+   },
+   "parent": "coco-extra/images/co893.jpg",
+   "parent_sha256": "cc70b3f39b426bfcd57c0d8185cb9cf5d3f59b92c1f12110083cef1a9784b86f",
+   "image_sha256": "cc70b3f39b426bfcd57c0d8185cb9cf5d3f59b92c1f12110083cef1a9784b86f",
+   "label_sha256": "5fd78ddb17590aa099d0b06e8aa02c05ba1749a2eae451ca72f6c4112f10367b",
+   "size": [
+    640,
+    360
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "242535"
+     ],
+     "source_class": 0,
+     "source_iou": 0.99061,
+     "cls": 0,
+     "pixels": 209.77
+    },
+    {
+     "native_ids": [
+      "149268",
+      "191296"
+     ],
+     "source_class": 5,
+     "source_iou": 0.99893,
+     "cls": 5,
+     "pixels": 17686.2
+    },
+    {
+     "native_ids": [
+      "153301",
+      "1748124"
+     ],
+     "source_class": 5,
+     "source_iou": 0.98169,
+     "cls": 5,
+     "pixels": 1308.25
+    }
+   ],
+   "bucket": "motorcycle-with-people",
+   "source_label_sha256": "5fd78ddb17590aa099d0b06e8aa02c05ba1749a2eae451ca72f6c4112f10367b",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 87,
+    "reason": "Occupied motorcycle and rider form one instance, including motion blur or occlusion."
+   },
+   "stem": "zz_plus_cc000000229317"
+  },
+  {
+   "key": "cc000000231334",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000231334.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000231334.jpg",
+   "original_url": "http://farm4.staticflickr.com/3142/2647386698_32541c074d_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by/2.0/",
+    "id": 4,
+    "name": "Attribution License"
+   },
+   "parent": "coco-extra/images/co717.jpg",
+   "parent_sha256": "f8d457abad6133d071da8a3764ab7ed2544c9afceb2978f343ceaf95cdf13b51",
+   "image_sha256": "f8d457abad6133d071da8a3764ab7ed2544c9afceb2978f343ceaf95cdf13b51",
+   "label_sha256": "ef6f13eeb261d601807886413c8eac87969342f38f45dcba549559f2588d501c",
+   "size": [
+    500,
+    281
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "343895"
+     ],
+     "source_class": 6,
+     "source_iou": 1.0,
+     "cls": 6,
+     "pixels": 6958.62
+    },
+    {
+     "native_ids": [
+      "441260"
+     ],
+     "source_class": 8,
+     "source_iou": 0.99751,
+     "cls": 8,
+     "pixels": 15719.5
+    }
+   ],
+   "bucket": "bicycle-with-people",
+   "source_label_sha256": "ef6f13eeb261d601807886413c8eac87969342f38f45dcba549559f2588d501c",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 11,
+    "reason": "Visible bicycle and foreground person or occupied motorcycle are separate instances."
+   },
+   "stem": "zz_plus_cc000000231334"
+  },
+  {
+   "key": "cc000000240038",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000240038.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000240038.jpg",
+   "original_url": "http://farm3.staticflickr.com/2064/2196291231_6f735bc06b_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+    "id": 5,
+    "name": "Attribution-ShareAlike License"
+   },
+   "parent": "coco-extra/images/co902.jpg",
+   "parent_sha256": "d21f9655f181c1dc32dbc20ba03f49c5566cfd775a6732166d5c7eb91f076208",
+   "image_sha256": "d21f9655f181c1dc32dbc20ba03f49c5566cfd775a6732166d5c7eb91f076208",
+   "label_sha256": "0452e56c494132695de4f504271f2cf0ef93fd4b9fa2c652075ef5da6254c87b",
+   "size": [
+    640,
+    426
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "271043"
+     ],
+     "source_class": 9,
+     "source_iou": 0.99689,
+     "cls": 9,
+     "pixels": 962.79
+    },
+    {
+     "native_ids": [],
+     "method": "manual visible face",
+     "cls": 9,
+     "pixels": 183.5
+    }
+   ],
+   "bucket": "stop sign",
+   "source_label_sha256": "4eaa5d22b156a88d8126436b566756a6d0fdf615690c9d5d1354777a8db97094",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 116,
+    "reason": "Additional cut-off street sign or one-way plate is visible.",
+    "add": [
+     {
+      "cls": 9,
+      "xy": [
+       [
+        13,
+        195
+       ],
+       [
+        34,
+        194
+       ],
+       [
+        35,
+        202
+       ],
+       [
+        13,
+        204
+       ]
+      ]
+     }
+    ]
+   },
+   "stem": "zz_plus_cc000000240038"
+  },
+  {
+   "key": "cc000000266652",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000266652.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000266652.jpg",
+   "original_url": "http://farm6.staticflickr.com/5308/5690657413_d7fa3fa0cf_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by/2.0/",
+    "id": 4,
+    "name": "Attribution License"
+   },
+   "parent": "coco-extra/images/co171.jpg",
+   "parent_sha256": "460dcbdb09ad210aefdc00a95ab04cfc7822e33325781a0cfb754eb982765aee",
+   "image_sha256": "460dcbdb09ad210aefdc00a95ab04cfc7822e33325781a0cfb754eb982765aee",
+   "label_sha256": "eb69d8905aa59a2fff79b40439dd54342bd17b2b10325fc45c6daaea26296b68",
+   "size": [
+    480,
+    640
+   ],
+   "objects": [
+    {
+     "native_ids": [],
+     "method": "manual visible face",
+     "cls": 9,
+     "pixels": 13706.0
+    },
+    {
+     "native_ids": [],
+     "method": "manual visible face",
+     "cls": 9,
+     "pixels": 3421.5
+    },
+    {
+     "native_ids": [],
+     "method": "manual visible face",
+     "cls": 9,
+     "pixels": 2429.5
+    },
+    {
+     "native_ids": [],
+     "method": "manual visible face",
+     "cls": 9,
+     "pixels": 513.0
+    }
+   ],
+   "bucket": "bicycle-unoccupied",
+   "source_label_sha256": "a598126f5b48452d692eb8506b6d56bfd55d2c55318f7400c0602e22c7265838",
+   "review": {
+    "folder": "team21-parked-candidates",
+    "index": 20,
+    "reason": "Street and bicycle-lane signs. A bicycle icon on a sign is not a Bicycle instance.",
+    "drop": [
+     0
+    ],
+    "add": [
+     {
+      "cls": 9,
+      "xy": [
+       [
+        118,
+        98
+       ],
+       [
+        400,
+        87
+       ],
+       [
+        405,
+        89
+       ],
+       [
+        405,
+        136
+       ],
+       [
+        120,
+        144
+       ],
+       [
+        116,
+        141
+       ]
+      ]
+     },
+     {
+      "cls": 9,
+      "xy": [
+       [
+        177,
+        217
+       ],
+       [
+        244,
+        216
+       ],
+       [
+        248,
+        219
+       ],
+       [
+        246,
+        263
+       ],
+       [
+        174,
+        264
+       ],
+       [
+        174,
+        221
+       ]
+      ]
+     },
+     {
+      "cls": 9,
+      "xy": [
+       [
+        174,
+        265
+       ],
+       [
+        245,
+        264
+       ],
+       [
+        244,
+        298
+       ],
+       [
+        172,
+        299
+       ]
+      ]
+     },
+     {
+      "cls": 9,
+      "xy": [
+       [
+        245,
+        396
+       ],
+       [
+        264,
+        395
+       ],
+       [
+        264,
+        422
+       ],
+       [
+        245,
+        423
+       ]
+      ]
+     }
+    ]
+   },
+   "stem": "zz_plus_cc000000266652"
+  },
+  {
+   "key": "cc000000267136",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000267136.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000267136.jpg",
+   "original_url": "http://farm9.staticflickr.com/8533/8670182627_9d6abe1931_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+    "id": 5,
+    "name": "Attribution-ShareAlike License"
+   },
+   "parent": "coco-extra/images/co806.jpg",
+   "parent_sha256": "bd13463d122d4f8c9921585eed38f3dca9c8e5c10b286ac192206303ee41ce39",
+   "image_sha256": "bd13463d122d4f8c9921585eed38f3dca9c8e5c10b286ac192206303ee41ce39",
+   "label_sha256": "51ae21e7dfa8ea75282c0b43b489714f1ba4e66bfa9eac742fbdb890f9379fe4",
+   "size": [
+    640,
+    480
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "398253"
+     ],
+     "source_class": 2,
+     "source_iou": 0.99991,
+     "cls": 0,
+     "pixels": 46405.96
+    }
+   ],
+   "bucket": "truck",
+   "source_label_sha256": "edd6aaa0d9761caacde9d6414c7b929e03f8edbdd2f170e844f1e6a94ac9a932",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 189,
+    "reason": "Pickup body and bed form one Car. Detached bed cap in the yard is not a vehicle.",
+    "relabel": {
+     "0": 0
+    }
+   },
+   "stem": "zz_plus_cc000000267136"
+  },
+  {
+   "key": "cc000000281887",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000281887.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000281887.jpg",
+   "original_url": "http://farm8.staticflickr.com/7297/8994657369_b57cc5e4db_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by/2.0/",
+    "id": 4,
+    "name": "Attribution License"
+   },
+   "parent": "coco-extra/images/co868.jpg",
+   "parent_sha256": "9b61538ef9433818de525cb351d233943578308c64b264fea810007b496a497d",
+   "image_sha256": "9b61538ef9433818de525cb351d233943578308c64b264fea810007b496a497d",
+   "label_sha256": "bea4082751f89f881a0e97b1ac66f945c6194f4033d495d724b221994e72a677",
+   "size": [
+    640,
+    453
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "365787"
+     ],
+     "source_class": 1,
+     "source_iou": 0.99995,
+     "cls": 1,
+     "pixels": 125608.42
+    }
+   ],
+   "bucket": "bus",
+   "source_label_sha256": "bea4082751f89f881a0e97b1ac66f945c6194f4033d495d724b221994e72a677",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 48,
+    "reason": "Parked or isolated buses, with near/far buses and people separately labeled where visible."
+   },
+   "stem": "zz_plus_cc000000281887"
+  },
+  {
+   "key": "cc000000308911",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000308911.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000308911.jpg",
+   "original_url": "http://farm4.staticflickr.com/3191/2948578261_5c5465cccd_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+    "id": 5,
+    "name": "Attribution-ShareAlike License"
+   },
+   "parent": "coco-extra/images/co180.jpg",
+   "parent_sha256": "1d7f4f7d38f58d1c77e01e00668fc5342da11e15e2f022adf789e837f9f82be9",
+   "image_sha256": "1d7f4f7d38f58d1c77e01e00668fc5342da11e15e2f022adf789e837f9f82be9",
+   "label_sha256": "4664ee1a7d9e2b82352d3a5b93eb6e45558bb06d7b86411ef05feb352ca74045",
+   "size": [
+    640,
+    480
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "128551"
+     ],
+     "source_class": 6,
+     "source_iou": 0.99787,
+     "cls": 6,
+     "pixels": 107572.65
+    }
+   ],
+   "bucket": "bicycle-unoccupied",
+   "source_label_sha256": "4664ee1a7d9e2b82352d3a5b93eb6e45558bb06d7b86411ef05feb352ca74045",
+   "review": {
+    "folder": "team21-parked-candidates",
+    "index": 21,
+    "reason": "Unoccupied bicycle, including close crops of recognizable frame components."
+   },
+   "stem": "zz_plus_cc000000308911"
+  },
+  {
+   "key": "cc000000357758",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000357758.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000357758.jpg",
+   "original_url": "http://farm8.staticflickr.com/7005/6783630125_27ea664ce0_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+    "id": 5,
+    "name": "Attribution-ShareAlike License"
+   },
+   "parent": "coco-extra/images/co948.jpg",
+   "parent_sha256": "0d9b071acb3409b223d867305eb685bdc970a2a5f2fbb8b46cba34b84b4bd464",
+   "image_sha256": "0d9b071acb3409b223d867305eb685bdc970a2a5f2fbb8b46cba34b84b4bd464",
+   "label_sha256": "4ac11f601f9d23c01d98ce3a367d188eff1986596ea43675c2d51e73ec2ac467",
+   "size": [
+    440,
+    640
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "127163"
+     ],
+     "source_class": 6,
+     "source_iou": 0.99995,
+     "cls": 6,
+     "pixels": 21873.13
+    },
+    {
+     "native_ids": [
+      "152182",
+      "190335"
+     ],
+     "source_class": 5,
+     "source_iou": 0.99896,
+     "cls": 5,
+     "pixels": 85832.66
+    }
+   ],
+   "bucket": "bicycle-with-people",
+   "source_label_sha256": "4ac11f601f9d23c01d98ce3a367d188eff1986596ea43675c2d51e73ec2ac467",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 25,
+    "reason": "Visible bicycle and foreground person or occupied motorcycle are separate instances."
+   },
+   "stem": "zz_plus_cc000000357758"
+  },
+  {
+   "key": "cc000000399142",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000399142.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000399142.jpg",
+   "original_url": "http://farm4.staticflickr.com/3731/9613428908_134d26050a_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+    "id": 5,
+    "name": "Attribution-ShareAlike License"
+   },
+   "parent": "coco-extra/images/co244.jpg",
+   "parent_sha256": "3a5fc00c111d452cca8b49635bb2bc8c80923ff52f12db77e351953ad2be7a52",
+   "image_sha256": "3a5fc00c111d452cca8b49635bb2bc8c80923ff52f12db77e351953ad2be7a52",
+   "label_sha256": "60445522375632769107bf78c985f3f2f58dcef935f287c3ce3d84bedac3880b",
+   "size": [
+    640,
+    426
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "151430"
+     ],
+     "source_class": 4,
+     "source_iou": 0.99969,
+     "cls": 4,
+     "pixels": 137294.97
+    }
+   ],
+   "bucket": "motorcycle-unoccupied",
+   "source_label_sha256": "60445522375632769107bf78c985f3f2f58dcef935f287c3ce3d84bedac3880b",
+   "review": {
+    "folder": "team21-parked-candidates",
+    "index": 44,
+    "reason": "Parked unoccupied motorcycle or recognizable cropped motorcycle. Background objects checked."
+   },
+   "stem": "zz_plus_cc000000399142"
+  },
+  {
+   "key": "cc000000399308",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000399308.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000399308.jpg",
+   "original_url": "http://farm9.staticflickr.com/8189/8109468119_706655f5e4_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by/2.0/",
+    "id": 4,
+    "name": "Attribution License"
+   },
+   "parent": "coco-extra/images/co325.jpg",
+   "parent_sha256": "7a518fce9ceb99e12f585b1b4faaa0a7e7eb7c0e3d575ac4489fee55c1a108a2",
+   "image_sha256": "7a518fce9ceb99e12f585b1b4faaa0a7e7eb7c0e3d575ac4489fee55c1a108a2",
+   "label_sha256": "28242f33c17793783cff47455c2a8160592868fe669fa60aec3b514b770fff7c",
+   "size": [
+    428,
+    640
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "148345"
+     ],
+     "source_class": 4,
+     "source_iou": 0.99875,
+     "cls": 4,
+     "pixels": 11215.37
+    }
+   ],
+   "bucket": "motorcycle-unoccupied",
+   "source_label_sha256": "28242f33c17793783cff47455c2a8160592868fe669fa60aec3b514b770fff7c",
+   "review": {
+    "folder": "team21-parked-candidates",
+    "index": 45,
+    "reason": "Parked unoccupied motorcycle or recognizable cropped motorcycle. Background objects checked."
+   },
+   "stem": "zz_plus_cc000000399308"
+  },
+  {
+   "key": "cc000000403432",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000403432.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000403432.jpg",
+   "original_url": "http://farm3.staticflickr.com/2401/3584721798_12abc4d04a_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by/2.0/",
+    "id": 4,
+    "name": "Attribution License"
+   },
+   "parent": "coco-extra/images/co865.jpg",
+   "parent_sha256": "17a7eecc03cf2ba9772a073dc7835bd80bc6e0e4dfe979c5d44c2822c32e538f",
+   "image_sha256": "17a7eecc03cf2ba9772a073dc7835bd80bc6e0e4dfe979c5d44c2822c32e538f",
+   "label_sha256": "02f609a863c2d9d88de50a88792f6f8a41c9f7190e0bf430807f4039d50d3a68",
+   "size": [
+    500,
+    375
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "2047799",
+      "185432"
+     ],
+     "source_class": 5,
+     "source_iou": 1.0,
+     "cls": 5,
+     "pixels": 16615.71
+    }
+   ],
+   "bucket": "motorcycle-with-people",
+   "source_label_sha256": "02f609a863c2d9d88de50a88792f6f8a41c9f7190e0bf430807f4039d50d3a68",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 94,
+    "reason": "Occupied motorcycle and rider form one instance, including motion blur or occlusion."
+   },
+   "stem": "zz_plus_cc000000403432"
+  },
+  {
+   "key": "cc000000419856",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000419856.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000419856.jpg",
+   "original_url": "http://farm3.staticflickr.com/2724/4180618387_45c8b1ca9a_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by/2.0/",
+    "id": 4,
+    "name": "Attribution License"
+   },
+   "parent": "coco-extra/images/co216.jpg",
+   "parent_sha256": "585ca44c8fbdd422339cfdf181f9bfbd1756e758d1127738dd3a70a620dfbc14",
+   "image_sha256": "585ca44c8fbdd422339cfdf181f9bfbd1756e758d1127738dd3a70a620dfbc14",
+   "label_sha256": "7d3233b79e8b11c50f833aed24f42a4b9f09095412e066271d3abb96bb5da7dd",
+   "size": [
+    640,
+    480
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "129049"
+     ],
+     "source_class": 6,
+     "source_iou": 0.99253,
+     "cls": 6,
+     "pixels": 43164.54
+    }
+   ],
+   "bucket": "bicycle-unoccupied",
+   "source_label_sha256": "3519803d56789724abf1a90097837f9ff197195e9ec464185f3cdc4bdcbe68d3",
+   "review": {
+    "folder": "team21-parked-candidates",
+    "index": 28,
+    "reason": "Front basket with fruit and cloth attached to bicycle belongs to the cycle mask.",
+    "union": {
+     "0": [
+      [
+       145,
+       221
+      ],
+      [
+       151,
+       201
+      ],
+      [
+       175,
+       191
+      ],
+      [
+       181,
+       174
+      ],
+      [
+       196,
+       181
+      ],
+      [
+       209,
+       170
+      ],
+      [
+       227,
+       174
+      ],
+      [
+       236,
+       177
+      ],
+      [
+       250,
+       176
+      ],
+      [
+       263,
+       186
+      ],
+      [
+       266,
+       162
+      ],
+      [
+       267,
+       131
+      ],
+      [
+       272,
+       120
+      ],
+      [
+       278,
+       120
+      ],
+      [
+       286,
+       132
+      ],
+      [
+       297,
+       162
+      ],
+      [
+       302,
+       157
+      ],
+      [
+       330,
+       157
+      ],
+      [
+       341,
+       165
+      ],
+      [
+       339,
+       188
+      ],
+      [
+       352,
+       180
+      ],
+      [
+       367,
+       188
+      ],
+      [
+       377,
+       180
+      ],
+      [
+       385,
+       181
+      ],
+      [
+       385,
+       191
+      ],
+      [
+       399,
+       192
+      ],
+      [
+       403,
+       203
+      ],
+      [
+       413,
+       208
+      ],
+      [
+       418,
+       213
+      ],
+      [
+       435,
+       213
+      ],
+      [
+       439,
+       222
+      ],
+      [
+       434,
+       233
+      ],
+      [
+       420,
+       243
+      ],
+      [
+       416,
+       265
+      ],
+      [
+       399,
+       311
+      ],
+      [
+       389,
+       319
+      ],
+      [
+       366,
+       303
+      ],
+      [
+       347,
+       284
+      ],
+      [
+       326,
+       272
+      ],
+      [
+       291,
+       271
+      ],
+      [
+       254,
+       268
+      ],
+      [
+       199,
+       261
+      ],
+      [
+       165,
+       258
+      ],
+      [
+       159,
+       276
+      ],
+      [
+       143,
+       282
+      ]
+     ]
+    }
+   },
+   "stem": "zz_plus_cc000000419856"
+  },
+  {
+   "key": "cc000000439502",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000439502.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000439502.jpg",
+   "original_url": "http://farm9.staticflickr.com/8437/7831240202_d5fa996a1c_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+    "id": 5,
+    "name": "Attribution-ShareAlike License"
+   },
+   "parent": "coco-extra/images/co460.jpg",
+   "parent_sha256": "7ffe472f5f2ba10a1c60f3729f8b7974930f3fa79ef471631d44a76cd058e5f8",
+   "image_sha256": "7ffe472f5f2ba10a1c60f3729f8b7974930f3fa79ef471631d44a76cd058e5f8",
+   "label_sha256": "bb0e37f67373b3fb3337b7308d77c2a73725e6cbe411020e603bb533d645d0ab",
+   "size": [
+    640,
+    427
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "1790379"
+     ],
+     "source_class": 4,
+     "source_iou": 0.99952,
+     "cls": 4,
+     "pixels": 97573.05
+    }
+   ],
+   "bucket": "motorcycle-unoccupied",
+   "source_label_sha256": "bb0e37f67373b3fb3337b7308d77c2a73725e6cbe411020e603bb533d645d0ab",
+   "review": {
+    "folder": "team21-parked-candidates",
+    "index": 49,
+    "reason": "Parked unoccupied motorcycle or recognizable cropped motorcycle. Background objects checked."
+   },
+   "stem": "zz_plus_cc000000439502"
+  },
+  {
+   "key": "cc000000440286",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000440286.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000440286.jpg",
+   "original_url": "http://farm4.staticflickr.com/3067/3097756104_77f4c1b456_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+    "id": 5,
+    "name": "Attribution-ShareAlike License"
+   },
+   "parent": "coco-extra/images/co943.jpg",
+   "parent_sha256": "f100c026eeff9e5922bbc495c47a31267979197b8d038143017c9a8efba5d5e7",
+   "image_sha256": "f100c026eeff9e5922bbc495c47a31267979197b8d038143017c9a8efba5d5e7",
+   "label_sha256": "713797537c358cabb8bf1ca9873a4c451aa765d611b9c57af72bb0d3e3f57944",
+   "size": [
+    640,
+    411
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "1384534"
+     ],
+     "source_class": 10,
+     "source_iou": 1.0,
+     "cls": 10,
+     "pixels": 199.1
+    },
+    {
+     "native_ids": [
+      "1807025"
+     ],
+     "source_class": 10,
+     "source_iou": 1.0,
+     "cls": 10,
+     "pixels": 707.23
+    }
+   ],
+   "bucket": "traffic light",
+   "source_label_sha256": "713797537c358cabb8bf1ca9873a4c451aa765d611b9c57af72bb0d3e3f57944",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 158,
+    "reason": "Two medium traffic-light housings visible through rain. Distant third glow has an indeterminate housing below the threshold."
+   },
+   "stem": "zz_plus_cc000000440286"
+  },
+  {
+   "key": "cc000000479038",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000479038.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000479038.jpg",
+   "original_url": "http://farm5.staticflickr.com/4080/4735719500_cd44b19114_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+    "id": 5,
+    "name": "Attribution-ShareAlike License"
+   },
+   "parent": "coco-extra/images/co791.jpg",
+   "parent_sha256": "fa7e2964a9abd3b6e8e9d9dd041b8f06b1fce60908812c41e7dfa8d1132fac60",
+   "image_sha256": "fa7e2964a9abd3b6e8e9d9dd041b8f06b1fce60908812c41e7dfa8d1132fac60",
+   "label_sha256": "40379501ce197471b2562cae28cfd243381811364fdd13b622267c215b9fc86e",
+   "size": [
+    450,
+    337
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "165564"
+     ],
+     "source_class": 1,
+     "source_iou": 0.99977,
+     "cls": 1,
+     "pixels": 47138.6
+    }
+   ],
+   "bucket": "bus",
+   "source_label_sha256": "40379501ce197471b2562cae28cfd243381811364fdd13b622267c215b9fc86e",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 59,
+    "reason": "Parked or isolated buses, with near/far buses and people separately labeled where visible."
+   },
+   "stem": "zz_plus_cc000000479038"
+  },
+  {
+   "key": "cc000000486595",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000486595.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000486595.jpg",
+   "original_url": "http://farm7.staticflickr.com/6077/6122954227_84ece0e00b_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+    "id": 5,
+    "name": "Attribution-ShareAlike License"
+   },
+   "parent": "coco-extra/images/co009.jpg",
+   "parent_sha256": "aaf543f3ddc6b0aeb1e5752b9252fe6983737ac026aecf37de607b8539d8f694",
+   "image_sha256": "aaf543f3ddc6b0aeb1e5752b9252fe6983737ac026aecf37de607b8539d8f694",
+   "label_sha256": "5abe435d64fd760437cb17a1be7f34e16a29c0fdc5484a5b3dd02d061be59e73",
+   "size": [
+    640,
+    480
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "127063"
+     ],
+     "source_class": 6,
+     "source_iou": 0.98603,
+     "cls": 6,
+     "pixels": 1327.82
+    },
+    {
+     "native_ids": [
+      "1361466"
+     ],
+     "source_class": 4,
+     "source_iou": 0.99745,
+     "cls": 4,
+     "pixels": 13267.18
+    },
+    {
+     "native_ids": [
+      "1790729"
+     ],
+     "source_class": 4,
+     "source_iou": 0.99842,
+     "cls": 4,
+     "pixels": 8010.89
+    },
+    {
+     "native_ids": [
+      "1790936"
+     ],
+     "source_class": 4,
+     "source_iou": 0.99713,
+     "cls": 4,
+     "pixels": 2422.84
+    },
+    {
+     "native_ids": [
+      "1790973"
+     ],
+     "source_class": 4,
+     "source_iou": 0.99868,
+     "cls": 4,
+     "pixels": 5276.84
+    },
+    {
+     "native_ids": [
+      "1791015"
+     ],
+     "source_class": 4,
+     "source_iou": 0.99795,
+     "cls": 4,
+     "pixels": 3888.37
+    },
+    {
+     "native_ids": [
+      "1791493"
+     ],
+     "source_class": 4,
+     "source_iou": 0.99519,
+     "cls": 4,
+     "pixels": 3322.66
+    },
+    {
+     "native_ids": [
+      "1791615"
+     ],
+     "source_class": 4,
+     "source_iou": 0.99251,
+     "cls": 4,
+     "pixels": 3804.54
+    },
+    {
+     "native_ids": [
+      "1792070"
+     ],
+     "source_class": 4,
+     "source_iou": 0.99835,
+     "cls": 4,
+     "pixels": 2408.16
+    },
+    {
+     "native_ids": [
+      "1792522"
+     ],
+     "source_class": 4,
+     "source_iou": 0.99864,
+     "cls": 4,
+     "pixels": 2205.06
+    },
+    {
+     "native_ids": [
+      "1792624"
+     ],
+     "source_class": 4,
+     "source_iou": 0.99568,
+     "cls": 4,
+     "pixels": 1827.27
+    },
+    {
+     "native_ids": [
+      "1792717"
+     ],
+     "source_class": 4,
+     "source_iou": 0.9925,
+     "cls": 4,
+     "pixels": 4674.62
+    }
+   ],
+   "bucket": "bicycle-unoccupied",
+   "source_label_sha256": "0db332b1d7ce2020133f1800c7f98b2268f67bac14edd835cd3c2aab4a4f50d2",
+   "review": {
+    "folder": "team21-parked-candidates",
+    "index": 31,
+    "reason": "Row of parked scooters with a bicycle at the left. Front instances retain boundary pixels.",
+    "front": [
+     11,
+     1,
+     8,
+     2,
+     10,
+     9,
+     7,
+     6,
+     3,
+     5,
+     4,
+     0
+    ]
+   },
+   "stem": "zz_plus_cc000000486595"
+  },
+  {
+   "key": "cc000000489070",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000489070.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000489070.jpg",
+   "original_url": "http://farm5.staticflickr.com/4012/4605637586_7379234810_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by/2.0/",
+    "id": 4,
+    "name": "Attribution License"
+   },
+   "parent": "coco-extra/images/co881.jpg",
+   "parent_sha256": "28caea7c99f79a1ccc283f8ee279c6c38473582dd36939f3b0822b9074a6d455",
+   "image_sha256": "28caea7c99f79a1ccc283f8ee279c6c38473582dd36939f3b0822b9074a6d455",
+   "label_sha256": "35e5e2bb0b367b2f42c77e307e2d34fc3e4e4e7cdefc23bf6c158074716123e4",
+   "size": [
+    640,
+    480
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "269631"
+     ],
+     "source_class": 9,
+     "source_iou": 0.99955,
+     "cls": 9,
+     "pixels": 2240.4
+    }
+   ],
+   "bucket": "stop sign",
+   "source_label_sha256": "35e5e2bb0b367b2f42c77e307e2d34fc3e4e4e7cdefc23bf6c158074716123e4",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 129,
+    "reason": "Stop sign face separated from post. Flag worker is a separate person."
+   },
+   "stem": "zz_plus_cc000000489070"
+  },
+  {
+   "key": "cc000000504850",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000504850.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000504850.jpg",
+   "original_url": "http://farm3.staticflickr.com/2605/4129669476_8d37d55ab7_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by/2.0/",
+    "id": 4,
+    "name": "Attribution License"
+   },
+   "parent": "coco-extra/images/co783.jpg",
+   "parent_sha256": "f1924163d097b631d31751dc88102d92dd09ddb417ec1c2030a55850e15a4762",
+   "image_sha256": "f1924163d097b631d31751dc88102d92dd09ddb417ec1c2030a55850e15a4762",
+   "label_sha256": "ce36bbeaac559e7ab031bb253dd68343843829ebf68be342011efb555a14b407",
+   "size": [
+    640,
+    388
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "269900"
+     ],
+     "source_class": 9,
+     "source_iou": 1.0,
+     "cls": 9,
+     "pixels": 908.46
+    },
+    {
+     "native_ids": [
+      "437501"
+     ],
+     "source_class": 8,
+     "source_iou": 0.99846,
+     "cls": 8,
+     "pixels": 2596.06
+    }
+   ],
+   "bucket": "stop sign",
+   "source_label_sha256": "ce36bbeaac559e7ab031bb253dd68343843829ebf68be342011efb555a14b407",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 131,
+    "reason": "Stop sign face separated from post. Flag worker is a separate person."
+   },
+   "stem": "zz_plus_cc000000504850"
+  },
+  {
+   "key": "cc000000551050",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000551050.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000551050.jpg",
+   "original_url": "http://farm1.staticflickr.com/131/390453583_4d873820b5_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by/2.0/",
+    "id": 4,
+    "name": "Attribution License"
+   },
+   "parent": "coco-extra/images/co890.jpg",
+   "parent_sha256": "eb4739a35a66726e19612773016f91011e0f81fce5455d74f85b7e3640d10339",
+   "image_sha256": "eb4739a35a66726e19612773016f91011e0f81fce5455d74f85b7e3640d10339",
+   "label_sha256": "4f8bd540af78421d85fa6091d5cc55d668af9c41e7cd7b2eb2807274a655b4fc",
+   "size": [
+    640,
+    480
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "396255"
+     ],
+     "source_class": 2,
+     "source_iou": 0.99998,
+     "cls": 2,
+     "pixels": 189116.35
+    }
+   ],
+   "bucket": "truck",
+   "source_label_sha256": "4f8bd540af78421d85fa6091d5cc55d668af9c41e7cd7b2eb2807274a655b4fc",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 203,
+    "reason": "Box truck or truncated front of a truck, label excludes its shadow."
+   },
+   "stem": "zz_plus_cc000000551050"
+  },
+  {
+   "key": "cc000000559040",
+   "source": "COCO train2017",
+   "source_image": "coco5_000000559040.jpg",
+   "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000559040.jpg",
+   "original_url": "http://farm9.staticflickr.com/8515/8402132541_21da48f40e_z.jpg",
+   "license": {
+    "url": "http://creativecommons.org/licenses/by/2.0/",
+    "id": 4,
+    "name": "Attribution License"
+   },
+   "parent": "coco-extra/images/co903.jpg",
+   "parent_sha256": "586218ec4893b4eb56e2a89ca8813ff2bc9705916998e000162c38a2ed4bd9a3",
+   "image_sha256": "586218ec4893b4eb56e2a89ca8813ff2bc9705916998e000162c38a2ed4bd9a3",
+   "label_sha256": "f2aac56c507db5464e960a9822bcd7f9c624fbfbfd0d255b63548bbeac1dcd77",
+   "size": [
+    640,
+    480
+   ],
+   "objects": [
+    {
+     "native_ids": [
+      "165791"
+     ],
+     "source_class": 1,
+     "source_iou": 0.99987,
+     "cls": 1,
+     "pixels": 151086.59
+    }
+   ],
+   "bucket": "bus",
+   "source_label_sha256": "f2aac56c507db5464e960a9822bcd7f9c624fbfbfd0d255b63548bbeac1dcd77",
+   "review": {
+    "folder": "team21-road-candidates",
+    "index": 66,
+    "reason": "Parked or isolated buses, with near/far buses and people separately labeled where visible."
+   },
+   "stem": "zz_plus_cc000000559040"
+  }
+ ]
+}

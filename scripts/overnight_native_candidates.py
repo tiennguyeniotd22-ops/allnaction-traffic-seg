@@ -12,7 +12,7 @@ from overnight_dataset import encode, read, sha
 from overnight_drafts import to_rle
 
 
-def coco(root, per_bucket):
+def coco(root, per_bucket, excluded=(), allowed=()):
     folder = root / "coco-extra"
     with ZipFile(root / "coco-more.zip") as z:
         truth = {r["coco_id"]: r for r in json.loads(z.read("manifest.json"))}
@@ -20,7 +20,8 @@ def coco(root, per_bucket):
     for row in read(folder / "index.json"):
         meta = row["meta"]
         bucket = meta["selection"]
-        if buckets[bucket] >= per_bucket:
+        key = f"cc{meta['coco_id']:012d}"
+        if key in excluded or (allowed and bucket not in allowed) or buckets[bucket] >= per_bucket:
             continue
         anns = {str(r["id"]): r for r in truth[meta["coco_id"]]["objects"]}
         objects = read(folder / "objects" / (row["key"] + ".json"))
@@ -51,7 +52,7 @@ def coco(root, per_bucket):
             body = parent.read_bytes()
             assert sha(body) == meta["sha256"]
             label = ("\n".join(lines) + "\n").encode()
-            item = dict(key=f"cc{meta['coco_id']:012d}", source="COCO train2017", source_image=meta["file"],
+            item = dict(key=key, source="COCO train2017", source_image=meta["file"],
                         url=meta["url"], original_url=meta["flickr_source"], license=meta["license"],
                         parent=parent.relative_to(root).as_posix(), parent_sha256=meta["sha256"],
                         image_sha256=sha(body), label_sha256=sha(label), size=[w, h], objects=rows, bucket=bucket)
@@ -85,6 +86,8 @@ def main():
     p.add_argument("root", type=Path)
     p.add_argument("out", type=Path)
     p.add_argument("--coco-per-bucket", type=int, default=0)
+    p.add_argument("--exclude-reviewed", type=Path, help="Earlier candidate manifest to exclude by image ID")
+    p.add_argument("--coco-bucket", action="append", default=[], help="Include this selection bucket")
     p.add_argument("--kitti", type=Path)
     p.add_argument("--muses", action="store_true")
     p.add_argument("--muses-index", type=Path)
@@ -96,7 +99,8 @@ def main():
     a = p.parse_args()
     sources = []
     if a.coco_per_bucket:
-        sources.append(coco(a.root, a.coco_per_bucket))
+        excluded = {row["key"] for row in read(a.exclude_reviewed)} if a.exclude_reviewed else set()
+        sources.append(coco(a.root, a.coco_per_bucket, excluded, set(a.coco_bucket)))
     if a.kitti:
         sources.append(native(a.root, "kitti", {f"kt{n:06d}" for n in read(a.kitti)["keep"]}))
     if a.muses:

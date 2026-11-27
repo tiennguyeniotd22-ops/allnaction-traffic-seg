@@ -63,6 +63,12 @@ def main():
             assert source.count(marker) == 1
             ns["retain_snapshot"] = retain_snapshot
             source = source.replace(marker, 'model.add_callback("on_model_save", retain_snapshot)\n' + marker)
+        if i == 15 and args.experiment == "head-transfer":
+            from team21_head_transfer import TrafficTransferTrainer
+            marker = "model.train(**TRAIN_ARGS)"
+            assert source.count(marker) == 1
+            ns["TrafficTransferTrainer"] = TrafficTransferTrainer
+            source = source.replace(marker, "model.train(trainer=TrafficTransferTrainer, **TRAIN_ARGS)")
         exec(compile(source, f"notebook-cell-{i}", "exec"), ns)
 
     for i in (1, 2, 3, 4, 5, 7):

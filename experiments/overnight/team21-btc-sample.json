@@ -1,0 +1,563 @@
+{
+ "dataset_sha256": "33362fd1aee1760da38f0f67e41a97c61dcc6aed6c10561bfbf9ef058755c2ef",
+ "seed": 21,
+ "groups": {
+  "two_wheels": 20,
+  "heavy_vehicle": 10,
+  "sign_or_light": 10,
+  "random": 10
+ },
+ "population": 1076,
+ "records": [
+  {
+   "index": 0,
+   "group": "two_wheels",
+   "image": "images/train/zz_drive_000000069213.jpg",
+   "size": [
+    640,
+    427
+   ],
+   "image_sha256": "c219b7e4409b0dcaab0ec1932372f7f91bfc72abb999a3ed92405c1089eb0b0f",
+   "label_sha256": "65b70923b969df5240a8ce16d55760a95de7656971b7f26c477c9f0d21275e38"
+  },
+  {
+   "index": 1,
+   "group": "two_wheels",
+   "image": "images/train/zz_drive_000000549390.jpg",
+   "size": [
+    640,
+    427
+   ],
+   "image_sha256": "58869aab26773098433074432a7f042d395d33d1c0f8c293df3168b7e8ec2bc8",
+   "label_sha256": "33108fabce667a56458f368d18ec760068a82e7147087bf8812365a318988ac7"
+  },
+  {
+   "index": 2,
+   "group": "two_wheels",
+   "image": "images/train/zz_drive_000000162858.jpg",
+   "size": [
+    428,
+    640
+   ],
+   "image_sha256": "3850ddaa772d9b9532537097527759d3ce05c0583f05e5b77561f654f8631193",
+   "label_sha256": "2611dbf4d393395fbd7564aae52a0547ef5299c5cdd7534c43dcaff51532c573"
+  },
+  {
+   "index": 3,
+   "group": "two_wheels",
+   "image": "images/train/zz_drive_000000081394.jpg",
+   "size": [
+    640,
+    480
+   ],
+   "image_sha256": "0ece3434b584ed5deb58f902633b449bd79bf464ce5fd9859d74dbe908e78325",
+   "label_sha256": "713412a339cbeee820607a38959e5af74f1fa3d4f902989089ccdd3bc0484c0f"
+  },
+  {
+   "index": 4,
+   "group": "two_wheels",
+   "image": "images/train/zz_drive_000000165681.jpg",
+   "size": [
+    640,
+    444
+   ],
+   "image_sha256": "7b23b958379742bd1fb13ade9a86b3e134a0493edf45039d3786e126b20cc9b2",
+   "label_sha256": "cfad7680fcaad18f6c84465b1ca5974995ed0597bdad721ce193b711d01bd5e1"
+  },
+  {
+   "index": 5,
+   "group": "two_wheels",
+   "image": "images/train/zz_drive_000000142585.jpg",
+   "size": [
+    375,
+    500
+   ],
+   "image_sha256": "41277a4ea32031b3486e839d18ca61506931002fca4ff9214686c63e9c6bb983",
+   "label_sha256": "7b8734e5daec1c9679750468556eac309252e80839406dd0ba90e54b4b548fba"
+  },
+  {
+   "index": 6,
+   "group": "two_wheels",
+   "image": "images/train/zz_drive_000000492077.jpg",
+   "size": [
+    640,
+    480
+   ],
+   "image_sha256": "16c697f38aa036da979494b579d337c41fc7a4529802372f7e7c535478b6103d",
+   "label_sha256": "60c6b14371b0a7819007b1bc78d7ebc47053ff7ac433aec3c798c1cf47888ede"
+  },
+  {
+   "index": 7,
+   "group": "two_wheels",
+   "image": "images/train/zz_drive_000000491213.jpg",
+   "size": [
+    640,
+    480
+   ],
+   "image_sha256": "b9f186905d79293541967dae1b13c0b45f01a7eec0904226cfde2fa358689548",
+   "label_sha256": "4846e2c3af9d933f1c30f1ec4f9f97e1c67cd1d1f0b1f13e44a0af231c89703e"
+  },
+  {
+   "index": 8,
+   "group": "two_wheels",
+   "image": "images/train/zz_drive_000000019109.jpg",
+   "size": [
+    640,
+    428
+   ],
+   "image_sha256": "5469f123ab838c9fdcc567c13148399dcb4cfa4eeee80e6e56a13627808a6d54",
+   "label_sha256": "27b3a5e6e01017d1fa765ffb770923e4f12b324bf64a4a0c46313d3b0dd8a861"
+  },
+  {
+   "index": 9,
+   "group": "two_wheels",
+   "image": "images/train/zz_drive_000000336232.jpg",
+   "size": [
+    640,
+    427
+   ],
+   "image_sha256": "ab820101e6af084358a91039da3afeda9743bb157fb5d2f1b1606194847f8666",
+   "label_sha256": "ba1874fd517b78fdcc92dcf0fad07b458b4256fc9fe7fa2fd52784e26e670e72"
+  },
+  {
+   "index": 10,
+   "group": "two_wheels",
+   "image": "images/train/zz_drive_000000224724.jpg",
+   "size": [
+    480,
+    640
+   ],
+   "image_sha256": "78effdbaecaa4db9353c72b69b27969ef20359cf144ad47b244ffd0ab3265bf0",
+   "label_sha256": "a99ee4348f8dcc490e245bb208cad49cfd3668331389985d0466c01268b6e117"
+  },
+  {
+   "index": 11,
+   "group": "two_wheels",
+   "image": "images/train/vn_sign_6ceff7e8a9e382e04c.jpg",
+   "size": [
+    640,
+    640
+   ],
+   "image_sha256": "6ceff7e8a9e382e04c3d0a899d3f52a3acad27bccbbbe5e1e2bf74e61cc25c51",
+   "label_sha256": "ec3335ba2e9ce1fa73c0e7a4576094e776bb7293f2580ead6f98eb774bbebf71"
+  },
+  {
+   "index": 12,
+   "group": "two_wheels",
+   "image": "images/train/vn_sign_213b9d69a63cd0662f.jpg",
+   "size": [
+    640,
+    640
+   ],
+   "image_sha256": "213b9d69a63cd0662fb31f1559886bb87712859aec17fe9b0830341688a6e8db",
+   "label_sha256": "64dc48884139f85e04e3d4c9b866b0fcf5fd890d8e6eda0e2dec7b1b09a7180a"
+  },
+  {
+   "index": 13,
+   "group": "two_wheels",
+   "image": "images/train/vn_sign_1342e02f12ca0302df.jpg",
+   "size": [
+    640,
+    640
+   ],
+   "image_sha256": "1342e02f12ca0302df356c3722155ac83948f819532fd3ad48b48e5b46253c71",
+   "label_sha256": "3abcb13b15fbd9f520c7b3625126941f7a8782cb17b9deafa662f34b826dec3f"
+  },
+  {
+   "index": 14,
+   "group": "two_wheels",
+   "image": "images/train/vn_sign_853c9d5d6eb3f069a1.jpg",
+   "size": [
+    640,
+    640
+   ],
+   "image_sha256": "853c9d5d6eb3f069a11043a8d67449dbd20d5033825b9e960078ec6db6ee12e5",
+   "label_sha256": "003d05f9931dd47c5d0a1b4369a600042aec8c3c020bcc09f38498b1b45e9130"
+  },
+  {
+   "index": 15,
+   "group": "two_wheels",
+   "image": "images/train/vn_sign_efa406e7b4e190fdbf.jpg",
+   "size": [
+    640,
+    640
+   ],
+   "image_sha256": "efa406e7b4e190fdbfc2a063fe265cdf36b2b9d94913add1f9dcd99dcd48ee42",
+   "label_sha256": "79ab10f6b12526cf1e33d5af714480377afcaf889ffb8f79ce0585384700827d"
+  },
+  {
+   "index": 16,
+   "group": "two_wheels",
+   "image": "images/train/vn_sign_d2e42c2b76c292f86f.jpg",
+   "size": [
+    640,
+    640
+   ],
+   "image_sha256": "d2e42c2b76c292f86f3ea229d74f88b616b8dd5f6a5c82878f8174b40672bccf",
+   "label_sha256": "1dd780ae1fb4909247726492a74f30555eb5f403ab64e6502c459b120bbce105"
+  },
+  {
+   "index": 17,
+   "group": "two_wheels",
+   "image": "images/train/zz_plus_cc000000259316.jpg",
+   "size": [
+    640,
+    368
+   ],
+   "image_sha256": "b0985d91eae7d2e33b52cd2de35489c335613815c90c6efce2fb256414b34b9b",
+   "label_sha256": "7b48def77026f9d7f9c491f46490cbe7effd8666adcffca85812e4360b188e07"
+  },
+  {
+   "index": 18,
+   "group": "two_wheels",
+   "image": "images/train/zz_plus_cc000000531256.jpg",
+   "size": [
+    640,
+    427
+   ],
+   "image_sha256": "769c15ab4b9451d13fc5a88ade2da35419a1ecf8118704f870b32001872c6e82",
+   "label_sha256": "0d33b95c3c6934da768b169ef440da1c09fab4e7792d3b56234725ceccf7320e"
+  },
+  {
+   "index": 19,
+   "group": "two_wheels",
+   "image": "images/train/zz_plus_cc000000234819.jpg",
+   "size": [
+    640,
+    480
+   ],
+   "image_sha256": "2761e818cf369ef3e09da4c3ce711db956a4fb5a509165531a1203e1ceec659c",
+   "label_sha256": "2d50caf449dd0e59f3e3cd56e1cc084486e519faa591a8e390d38d322520b720"
+  },
+  {
+   "index": 20,
+   "group": "heavy_vehicle",
+   "image": "images/train/bdd_night_000052.jpg",
+   "size": [
+    1280,
+    720
+   ],
+   "image_sha256": "7611c435ff5d2df5075d92f32d977ad7f5b5dde6ecb3261c7763002d999bc44c",
+   "label_sha256": "495d3d0cd23902949a57853b13932e241210ad8c728f362f513d394717189d9d"
+  },
+  {
+   "index": 21,
+   "group": "heavy_vehicle",
+   "image": "images/train/bdd_rainy_001024.jpg",
+   "size": [
+    1280,
+    720
+   ],
+   "image_sha256": "1e6f3fb8dad72c7aaa60de29e9bb1c206ec9726daef79b45fa8accf61a9b35d9",
+   "label_sha256": "52aebee7ecf5ba9381b3005632ea759c2ff2ac3ffbc9cfe1f8f76e4e9fd74227"
+  },
+  {
+   "index": 22,
+   "group": "heavy_vehicle",
+   "image": "images/train/bdd_daytime_000171.jpg",
+   "size": [
+    1280,
+    720
+   ],
+   "image_sha256": "ef5f5890cedeb1932e4c3996c7911b899d9808d3984f52db4413a746e7d47ca2",
+   "label_sha256": "fe871e9b06d2fcc4463ecb6f81ace5c0fd583981c42dc22d3ac3020c12449edb"
+  },
+  {
+   "index": 23,
+   "group": "heavy_vehicle",
+   "image": "images/train/bdd_daytime_000169.jpg",
+   "size": [
+    1280,
+    720
+   ],
+   "image_sha256": "bd9b98bab671058cf08730fea3b65bcb015f0f1b11223256916081469ccd840d",
+   "label_sha256": "419e3ec119a67ef816ec00d9fd003c54c26b08998299dad6ab86dfbdb494cf98"
+  },
+  {
+   "index": 24,
+   "group": "heavy_vehicle",
+   "image": "images/train/zz_drive_000000323571.jpg",
+   "size": [
+    478,
+    640
+   ],
+   "image_sha256": "68c5546797645a48dbaa2e80d7bbf08cead6ca1e0a5536e721d185ae76a05bd1",
+   "label_sha256": "53ba24f8939199fcb3715658570a89b342e4ef4091f2c7c03b8649fc9ee4b8d0"
+  },
+  {
+   "index": 25,
+   "group": "heavy_vehicle",
+   "image": "images/train/zz_drive_000000460147.jpg",
+   "size": [
+    640,
+    424
+   ],
+   "image_sha256": "b041d8c01473b72e2ea2f909174a4d2e5cdefae9a3d5abd06a9db91755392ad3",
+   "label_sha256": "4f7f084eb495772fdbfcc6a55b41179770fb020f678104eb43f52303657c8d2a"
+  },
+  {
+   "index": 26,
+   "group": "heavy_vehicle",
+   "image": "images/train/zz_drive_000000007386.jpg",
+   "size": [
+    600,
+    400
+   ],
+   "image_sha256": "1bb19f0a2a950a944d178c921fddaddda6f133df6367e9f75ffcaafe2cd43f83",
+   "label_sha256": "720525051e79758de69449b6ef54a515f5896f5b83a634c6141713b19ab69911"
+  },
+  {
+   "index": 27,
+   "group": "heavy_vehicle",
+   "image": "images/train/zz_drive_000000350003.jpg",
+   "size": [
+    640,
+    480
+   ],
+   "image_sha256": "4278c4c673a2e75b1f63780d026b3c05dd9955eeae50cd017a8e1844b736ce58",
+   "label_sha256": "d7f3bd415757d5bbfbcc3344a7064afa50aff9e6713f003a4877312271e8fe2d"
+  },
+  {
+   "index": 28,
+   "group": "heavy_vehicle",
+   "image": "images/train/zz_drive_000000290179.jpg",
+   "size": [
+    640,
+    426
+   ],
+   "image_sha256": "a4b06865086212f1fdb068bf5a9d190b4581c7ab8f84458c4a9413f7fb4e4f8c",
+   "label_sha256": "9a7269018ac1490f8f1942901ca1e64d60b3807fdd0aa7919498e63e259d536f"
+  },
+  {
+   "index": 29,
+   "group": "heavy_vehicle",
+   "image": "images/train/vn_sign_d7fb50872302692a36.jpg",
+   "size": [
+    640,
+    640
+   ],
+   "image_sha256": "d7fb50872302692a36a790abfd27275bdb7a0f89a375aa7a32e4f06a911ae7da",
+   "label_sha256": "071c6e143f430fd039772a2f15b78a557d875e529948b3cea97d8e0fb1ec225b"
+  },
+  {
+   "index": 30,
+   "group": "sign_or_light",
+   "image": "images/train/bdd_rainy_000569.jpg",
+   "size": [
+    1280,
+    720
+   ],
+   "image_sha256": "cff9bca83f78355072e031d73f0a31717a9311de188b3397ca2ae251792d8188",
+   "label_sha256": "ba814dfc1e2d8dfd4797602e680fd0e7d470820febd2496338ebf8606455e0c6"
+  },
+  {
+   "index": 31,
+   "group": "sign_or_light",
+   "image": "images/train/bdd_rainy_000105.jpg",
+   "size": [
+    1280,
+    720
+   ],
+   "image_sha256": "65a8d87edec75e30679cb348e8cb0c7528e69f5895b07c70b1d1c2d6d94b0ab9",
+   "label_sha256": "494f2eae21c8d2b37cf3e85d6e333f52f73978bc6a51a4e284a58d32eb7db927"
+  },
+  {
+   "index": 32,
+   "group": "sign_or_light",
+   "image": "images/train/bdd_night_000043.jpg",
+   "size": [
+    1280,
+    720
+   ],
+   "image_sha256": "157c95789d9a8b93ea02bce21f1e6c560e3bcbe032a293156932e6c119d1156f",
+   "label_sha256": "d8912b8c560497a2adc7ba073d2685a80a42a94bf865b15020a91710221b30fe"
+  },
+  {
+   "index": 33,
+   "group": "sign_or_light",
+   "image": "images/train/vn_sign_4aeb630625f3d63f6e.jpg",
+   "size": [
+    640,
+    640
+   ],
+   "image_sha256": "4aeb630625f3d63f6e05bfff1f60927a610e8e3b9518c22e24e5ba31b65981d1",
+   "label_sha256": "6c8d13d13cf2571aa32c876f349e0b24712da388a48babd8b122f0b5d546cfc3"
+  },
+  {
+   "index": 34,
+   "group": "sign_or_light",
+   "image": "images/train/vn_sign_b4c4403b92819182bb.jpg",
+   "size": [
+    640,
+    640
+   ],
+   "image_sha256": "b4c4403b92819182bbef6ec655652251c154666a5a4f8af057511019f96e0ec9",
+   "label_sha256": "ff9dbb3e961fb06f879710f6675dc79da7d49b391e1e43e21f4658f6420490ce"
+  },
+  {
+   "index": 35,
+   "group": "sign_or_light",
+   "image": "images/train/vn_sign_c4908790977f6304f6.jpg",
+   "size": [
+    640,
+    640
+   ],
+   "image_sha256": "c4908790977f6304f6f9b8395aea6a9a43034b73b7c6f486d4d793f3666e0d0b",
+   "label_sha256": "f0fda9f2c205b30e89406bcc9b71be41c471b0fa3946b8a94567981d568f0de8"
+  },
+  {
+   "index": 36,
+   "group": "sign_or_light",
+   "image": "images/train/vn_sign_f4f75b35069d81c97f.jpg",
+   "size": [
+    640,
+    640
+   ],
+   "image_sha256": "f4f75b35069d81c97f61b75be94b46b5c6746342935780262b9ce652706926f8",
+   "label_sha256": "9dd8e6501fe46f516b46a2648237c6a249419dc6b274345b589f5e0692085100"
+  },
+  {
+   "index": 37,
+   "group": "sign_or_light",
+   "image": "images/train/zz_drive_000000021839.jpg",
+   "size": [
+    480,
+    640
+   ],
+   "image_sha256": "a943ad725c69a532f7a37b6a95e20fc5d7f070f1c5637c44107fbf031a9fe265",
+   "label_sha256": "90329547af84bc1abd4b13a46a701428b71741b52cc21f8107032f99f7f36c32"
+  },
+  {
+   "index": 38,
+   "group": "sign_or_light",
+   "image": "images/train/zz_drive_000000555050.jpg",
+   "size": [
+    500,
+    322
+   ],
+   "image_sha256": "ed39786969f33646d5cafcca041df8c684dbdc17359fc7244a833d8738baa8f8",
+   "label_sha256": "16806a8b900a22d1da0f52851f5dc6a5b3aff39cd70284706e5a4b57e10b89b2"
+  },
+  {
+   "index": 39,
+   "group": "sign_or_light",
+   "image": "images/train/zz_drive_000000082846.jpg",
+   "size": [
+    640,
+    454
+   ],
+   "image_sha256": "2466395940f413b9b526ad6874a9db7a11722ac83a8ca9cf811878ff4f5efac5",
+   "label_sha256": "7e31ee18a57f6a3389760397fdffa344333028815c566e7f408cf7dae9697f13"
+  },
+  {
+   "index": 40,
+   "group": "random",
+   "image": "images/train/zz_plus_kt000183.jpg",
+   "size": [
+    1241,
+    376
+   ],
+   "image_sha256": "c453ca03149e662f3d000c95510a87edd45f5d376ef515467e8675f2aca8e54f",
+   "label_sha256": "9070fe035b85ee89904bfea97788b1b6d08f843e13b02bb12cd616708806c2b4"
+  },
+  {
+   "index": 41,
+   "group": "random",
+   "image": "images/train/zz_drive_000000166391.jpg",
+   "size": [
+    640,
+    427
+   ],
+   "image_sha256": "4ee9bb8a8ac31522bd24dc3068760d4cf7a9255257ba38572ba5b4c750360c35",
+   "label_sha256": "3df8e5d0ef408005672c61ca985765f5b752c6b228f86674ec0548fac114ec89"
+  },
+  {
+   "index": 42,
+   "group": "random",
+   "image": "images/train/zz_drive_000000153011.jpg",
+   "size": [
+    640,
+    480
+   ],
+   "image_sha256": "e051d5c7180bec8cb38caae0cbeca57f4d09879d097065c581bb9f9c0d474a09",
+   "label_sha256": "8e5fbebe395195e3334942e7f239128f548fcda9003fbdca3483e16b7d6ae500"
+  },
+  {
+   "index": 43,
+   "group": "random",
+   "image": "images/train/zz_new_bd050.jpg",
+   "size": [
+    884,
+    666
+   ],
+   "image_sha256": "3e8bee5ad5738d1aae67ee378a5436d5be3bbca649e7635ec50192a87ffef5da",
+   "label_sha256": "6548ba1663f9aa78bb139cfcb220afbc92471007fde0e275925716846006606e"
+  },
+  {
+   "index": 44,
+   "group": "random",
+   "image": "images/train/zz_new_co363.jpg",
+   "size": [
+    640,
+    411
+   ],
+   "image_sha256": "7335dd34e93434c0d1c10dddf11f05abc8debe7b8247cab79e837d7732e9c468",
+   "label_sha256": "17336303666ab71607e9e0ccf3356fc6bbae20a93d2e96af203f2a0b0f2b0af6"
+  },
+  {
+   "index": 45,
+   "group": "random",
+   "image": "images/train/zz_drive_000000362682.jpg",
+   "size": [
+    640,
+    427
+   ],
+   "image_sha256": "840ceaeff4c9d12ebbf3820ef38426091e6a28782ec6cceea9f265cf8cfb2651",
+   "label_sha256": "cf71a54599bfcbc16bf8ee83964af7bbbb057fb013c00da1a13ec7e5e358e32f"
+  },
+  {
+   "index": 46,
+   "group": "random",
+   "image": "images/train/zz_plus_cc000000425158.jpg",
+   "size": [
+    480,
+    640
+   ],
+   "image_sha256": "ee9f344438cd3dec803c3f0c0fe5b082b3e7dd8786c1e2f505a48158fa000813",
+   "label_sha256": "77f9e8ad62fa4dd7acd9213b80f4fd45762d67fb55cc722141b336aaa11387e9"
+  },
+  {
+   "index": 47,
+   "group": "random",
+   "image": "images/train/zz_plus_c021p5.jpg",
+   "size": [
+    474,
+    388
+   ],
+   "image_sha256": "5ffe1c8f5a72d09f2501d4126c3e0fa44589685a05a8dd39a2f45c8267c74cea",
+   "label_sha256": "844a7cce853d2af5ac4edd8a8630ce1a8f9e1ef158a4003ac3959b27f6592186"
+  },
+  {
+   "index": 48,
+   "group": "random",
+   "image": "images/train/zz_plus_cc000000116607.jpg",
+   "size": [
+    640,
+    427
+   ],
+   "image_sha256": "92daa7cb254bab655486da5c2f4640b522212f0926899fbad3477f9d85291379",
+   "label_sha256": "271a61a68fa67b955ea01753fdd1da38e82a943d94a33e15dedb2104d0e3521b"
+  },
+  {
+   "index": 49,
+   "group": "random",
+   "image": "images/train/bdd_rainy_000556.jpg",
+   "size": [
+    1280,
+    720
+   ],
+   "image_sha256": "c1e80d7472c2a52560c036d747dca232e8b864081638be8ab6e6f1605d754cef",
+   "label_sha256": "da77933d230ba94d64c5c12e59472fff810ba20c97373270eef19af9393e00c7"
+  }
+ ]
+}

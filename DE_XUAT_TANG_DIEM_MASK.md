@@ -1,6 +1,6 @@
 # Đề xuất tăng điểm mask · Đội 21
 
-**Chờ trưởng nhóm duyệt** trước khi sửa bộ train, nhập thêm ảnh hoặc khởi chạy một fit mới. Lượt `team21-full` đã khởi chạy trước đề xuất này. Các số dưới đây thuộc pilot `team21-qc20`. [Guideline BTC](labeling_guideline.md) · [Quy trình QC của đội](HUONG_DAN_QC.md)
+Trưởng nhóm đã duyệt A và C, sau đó cho phép bổ sung dữ liệu theo B. A đã rà 50 cảnh. B đã chọn 31 cảnh COCO và đối chiếu với tập train, val, holdout và tập chẩn đoán. Bảng dưới ghi kết quả mốc `team21-qc20`. [Guideline BTC](labeling_guideline.md) · [Quy trình QC của đội](HUONG_DAN_QC.md) · [Nhật ký thí nghiệm](EXPERIMENTS.md)
 
 ## Mốc so sánh
 
@@ -23,7 +23,7 @@ Các quan sát xác định nhóm ảnh nên kiểm. Muốn kết luận lỗi n
 | **B · Bổ sung cảnh còn thiếu** | Sau A, nếu số cảnh đa dạng vẫn ít, chọn tối đa 60 cảnh train mới. Ưu tiên xe máy đỗ/dắt, xe đạp có người, ba gác/xích lô, biển và đèn nhìn nghiêng hoặc từ sau. Tìm cảnh Việt Nam trước, kiểm nguồn và quyền sử dụng, loại trùng ảnh và cảnh với train/val, holdout lớp 3 và tập Mapillary chẩn đoán. | Manifest ghi nguồn, giấy phép, ID gốc, số cảnh nhận/loại, số instance từng lớp. Chỉ nhận cảnh đã rà toàn khung. |
 | **C · Đo hiệu quả** | Chấm lượt full đang chạy để có mốc riêng. Với A, dùng bộ pilot làm gốc, chỉ thay nhãn đã xác nhận. Giữ pretrained weights, notebook, seed 21, 20 epoch, batch 8, optimizer, augmentation và split như pilot. Nếu B được duyệt, so A+B với A theo cùng công thức. Mỗi lần chỉ chạy một fit GPU. | Chấm từ chính ZIP, ghi chênh mask mAP, AP50/AP75, AP từng lớp, tập Việt Nam và khoảng bootstrap ghép cặp theo cảnh. So `best` và `last` cùng cách cho các lượt. |
 
-**Đề nghị duyệt A + C trước.** Đây là cách kiểm trực tiếp liệu sửa nhãn người–xe và đường biên có mang lại cải thiện. Gói B có thể duyệt sau khi thấy lớp nào thực sự thiếu cảnh. Các kích thước mẫu ở trên là đề xuất của đội.
+Đối chứng A so nhãn đã sửa với pilot. Đối chứng A+B thêm 31 ảnh vào đúng bộ A. [Sổ quyết định A](experiments/overnight/team21-btc-decisions.json) · [Manifest B](experiments/overnight/team21-road-manifest.json)
 
 ## Quy tắc chọn bài
 

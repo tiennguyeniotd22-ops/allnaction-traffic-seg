@@ -6,6 +6,10 @@
 
 ## Dữ liệu bổ sung sau vòng 4
 
+Đội 21 dùng 50 cảnh train của bộ 1.156 ảnh để đối chiếu theo guideline BTC. Đã sửa 19 cảnh và áp dụng cùng quyết định cho ba biến thể, tổng cộng 43 thao tác. Sổ quyết định ghi cả trường hợp còn nghi vấn sau lượt tự kiểm. [Mẫu theo seed 21](experiments/overnight/team21-btc-sample.json) · [Quyết định theo cảnh](experiments/overnight/team21-btc-decisions.json) · [SHA của từng nhãn đã xuất](experiments/overnight/team21-btc-manifest.json)
+
+Đội bổ sung 31 ảnh COCO train2017 với 59 instance sau khi rà toàn khung. Từ 38 ứng viên, sáu ảnh bị loại do cảnh có dấu hiệu trùng, một ảnh do đường biên xe máy lấn sang ô tô. Ảnh giữ giấy phép Flickr CC BY 2.0 hoặc CC BY-SA 2.0 của từng nguồn, annotation COCO dùng CC BY 4.0. Ánh xạ người đang ngồi và xe thành một instance, tách người đứng cạnh xe, chuyển bán tải sang Car, vẽ thêm từng mặt biển nhìn thấy. Bộ mới có 1.187 ảnh train và 140 ảnh val. [Manifest từng ảnh, URL nguồn, giấy phép và lớp](experiments/overnight/team21-road-manifest.json) · [Quyết định nhận và loại](experiments/overnight/team21-road-selection.json) · [Điều khoản COCO](https://cocodataset.org/#termsofuse)
+
 Tất cả số lượng dưới đây tính theo ảnh hoặc crop đưa vào train. Validation 140 giữ nguyên ảnh và nhãn. Các bản tăng cường giữ giấy phép của ảnh cha.
 
 Bản `e3-riderqc-v1` lấy 1.156 ảnh train của `e3-weatherqc-v1`. Tám ảnh COCO val2017 đã thuộc split train của nhóm và một ảnh mưa cùng cha được sửa nhãn theo ID annotation nguồn. Hai xích lô được chuyển sang lớp 3, người đang đi bộ được tách khỏi xe, hành khách cùng ngồi trên xe hai bánh được gộp và hình xe đạp trên mặt đường được bỏ. Toàn bộ ảnh, các nhãn khác và split được kiểm theo từng mục trong ZIP. Bản kê ghi SHA và số instance của cả 11 lớp. [COCO và điều khoản sử dụng](https://cocodataset.org/#termsofuse) · [Manifest thay đổi](experiments/overnight/coco-riderqc-manifest.json)

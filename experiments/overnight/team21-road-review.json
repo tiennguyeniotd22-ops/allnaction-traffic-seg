@@ -1,0 +1,605 @@
+{
+ "team_id": 21,
+ "excluded_final_review": {
+  "cc000000037322": "The motorcycle contour includes a large right portion of the car behind it. Excluded at final overlay review."
+ },
+ "source_selection": "Visual full-frame screening of 205 road candidates and 54 parked-vehicle candidates excluding earlier added parents. Candidate lists overlap. Secondary check of selected polygons at larger scale. Automated scene checks follow.",
+ "inputs": {
+  "team21-road-candidates": "adac613146b0a534c25ed23a91236448afce6070295c4e4bed7256b3cbc8cbbe",
+  "team21-parked-candidates": "26d7c0d72cf3244eaa12c4878d00b2012fb78c549bd5337c24d19a4a3f4db3c8"
+ },
+ "keep": {
+  "cc000000129100": {
+   "folder": "team21-road-candidates",
+   "index": 6,
+   "reason": "Two bicycle riders, including one cut by the left border."
+  },
+  "cc000000231334": {
+   "folder": "team21-road-candidates",
+   "index": 11,
+   "reason": "Visible bicycle and foreground person or occupied motorcycle are separate instances."
+  },
+  "cc000000357758": {
+   "folder": "team21-road-candidates",
+   "index": 25,
+   "reason": "Visible bicycle and foreground person or occupied motorcycle are separate instances."
+  },
+  "cc000000046112": {
+   "folder": "team21-road-candidates",
+   "index": 36,
+   "reason": "Parked or isolated buses, with near/far buses and people separately labeled where visible."
+  },
+  "cc000000083691": {
+   "folder": "team21-road-candidates",
+   "index": 39,
+   "reason": "Parked or isolated buses, with near/far buses and people separately labeled where visible."
+  },
+  "cc000000169656": {
+   "folder": "team21-road-candidates",
+   "index": 42,
+   "reason": "Parked or isolated buses, with near/far buses and people separately labeled where visible."
+  },
+  "cc000000281887": {
+   "folder": "team21-road-candidates",
+   "index": 48,
+   "reason": "Parked or isolated buses, with near/far buses and people separately labeled where visible."
+  },
+  "cc000000352481": {
+   "folder": "team21-road-candidates",
+   "index": 52,
+   "reason": "Parked or isolated buses, with near/far buses and people separately labeled where visible."
+  },
+  "cc000000479038": {
+   "folder": "team21-road-candidates",
+   "index": 59,
+   "reason": "Parked or isolated buses, with near/far buses and people separately labeled where visible."
+  },
+  "cc000000559040": {
+   "folder": "team21-road-candidates",
+   "index": 66,
+   "reason": "Parked or isolated buses, with near/far buses and people separately labeled where visible."
+  },
+  "cc000000143908": {
+   "folder": "team21-road-candidates",
+   "index": 81,
+   "reason": "Occupied motorcycle and rider form one instance, including motion blur or occlusion."
+  },
+  "cc000000190141": {
+   "folder": "team21-road-candidates",
+   "index": 83,
+   "reason": "Occupied motorcycle and rider form one instance, including motion blur or occlusion."
+  },
+  "cc000000229317": {
+   "folder": "team21-road-candidates",
+   "index": 87,
+   "reason": "Occupied motorcycle and rider form one instance, including motion blur or occlusion."
+  },
+  "cc000000403432": {
+   "folder": "team21-road-candidates",
+   "index": 94,
+   "reason": "Occupied motorcycle and rider form one instance, including motion blur or occlusion."
+  },
+  "cc000000489070": {
+   "folder": "team21-road-candidates",
+   "index": 129,
+   "reason": "Stop sign face separated from post. Flag worker is a separate person."
+  },
+  "cc000000504850": {
+   "folder": "team21-road-candidates",
+   "index": 131,
+   "reason": "Stop sign face separated from post. Flag worker is a separate person."
+  },
+  "cc000000024699": {
+   "folder": "team21-road-candidates",
+   "index": 103,
+   "reason": "Additional cut-off street sign or one-way plate is visible.",
+   "add": [
+    {
+     "cls": 9,
+     "xy": [
+      [
+       480,
+       42
+      ],
+      [
+       500,
+       32
+      ],
+      [
+       500,
+       56
+      ],
+      [
+       480,
+       67
+      ]
+     ]
+    }
+   ]
+  },
+  "cc000000240038": {
+   "folder": "team21-road-candidates",
+   "index": 116,
+   "reason": "Additional cut-off street sign or one-way plate is visible.",
+   "add": [
+    {
+     "cls": 9,
+     "xy": [
+      [
+       13,
+       195
+      ],
+      [
+       34,
+       194
+      ],
+      [
+       35,
+       202
+      ],
+      [
+       13,
+       204
+      ]
+     ]
+    }
+   ]
+  },
+  "cc000000440286": {
+   "folder": "team21-road-candidates",
+   "index": 158,
+   "reason": "Two medium traffic-light housings visible through rain. Distant third glow has an indeterminate housing below the threshold."
+  },
+  "cc000000033144": {
+   "folder": "team21-road-candidates",
+   "index": 172,
+   "reason": "Box truck or truncated front of a truck, label excludes its shadow."
+  },
+  "cc000000551050": {
+   "folder": "team21-road-candidates",
+   "index": 203,
+   "reason": "Box truck or truncated front of a truck, label excludes its shadow."
+  },
+  "cc000000219655": {
+   "folder": "team21-road-candidates",
+   "index": 186,
+   "reason": "Pickup body and bed form one Car. Detached bed cap in the yard is not a vehicle.",
+   "relabel": {
+    "0": 0
+   }
+  },
+  "cc000000267136": {
+   "folder": "team21-road-candidates",
+   "index": 189,
+   "reason": "Pickup body and bed form one Car. Detached bed cap in the yard is not a vehicle.",
+   "relabel": {
+    "0": 0
+   }
+  },
+  "cc000000105192": {
+   "folder": "team21-parked-candidates",
+   "index": 8,
+   "reason": "Unoccupied bicycle, including close crops of recognizable frame components."
+  },
+  "cc000000246156": {
+   "folder": "team21-parked-candidates",
+   "index": 18,
+   "reason": "Unoccupied bicycle, including close crops of recognizable frame components."
+  },
+  "cc000000308911": {
+   "folder": "team21-parked-candidates",
+   "index": 21,
+   "reason": "Unoccupied bicycle, including close crops of recognizable frame components."
+  },
+  "cc000000316694": {
+   "folder": "team21-parked-candidates",
+   "index": 22,
+   "reason": "Unoccupied bicycle, including close crops of recognizable frame components."
+  },
+  "cc000000497455": {
+   "folder": "team21-parked-candidates",
+   "index": 32,
+   "reason": "Unoccupied bicycle, including close crops of recognizable frame components."
+  },
+  "cc000000221474": {
+   "folder": "team21-parked-candidates",
+   "index": 38,
+   "reason": "Parked unoccupied motorcycle or recognizable cropped motorcycle. Background objects checked."
+  },
+  "cc000000399142": {
+   "folder": "team21-parked-candidates",
+   "index": 44,
+   "reason": "Parked unoccupied motorcycle or recognizable cropped motorcycle. Background objects checked."
+  },
+  "cc000000399308": {
+   "folder": "team21-parked-candidates",
+   "index": 45,
+   "reason": "Parked unoccupied motorcycle or recognizable cropped motorcycle. Background objects checked."
+  },
+  "cc000000439502": {
+   "folder": "team21-parked-candidates",
+   "index": 49,
+   "reason": "Parked unoccupied motorcycle or recognizable cropped motorcycle. Background objects checked."
+  },
+  "cc000000449768": {
+   "folder": "team21-parked-candidates",
+   "index": 50,
+   "reason": "Parked unoccupied motorcycle or recognizable cropped motorcycle. Background objects checked."
+  },
+  "cc000000266652": {
+   "folder": "team21-parked-candidates",
+   "index": 20,
+   "reason": "Street and bicycle-lane signs. A bicycle icon on a sign is not a Bicycle instance.",
+   "drop": [
+    0
+   ],
+   "add": [
+    {
+     "cls": 9,
+     "xy": [
+      [
+       118,
+       98
+      ],
+      [
+       400,
+       87
+      ],
+      [
+       405,
+       89
+      ],
+      [
+       405,
+       136
+      ],
+      [
+       120,
+       144
+      ],
+      [
+       116,
+       141
+      ]
+     ]
+    },
+    {
+     "cls": 9,
+     "xy": [
+      [
+       177,
+       217
+      ],
+      [
+       244,
+       216
+      ],
+      [
+       248,
+       219
+      ],
+      [
+       246,
+       263
+      ],
+      [
+       174,
+       264
+      ],
+      [
+       174,
+       221
+      ]
+     ]
+    },
+    {
+     "cls": 9,
+     "xy": [
+      [
+       174,
+       265
+      ],
+      [
+       245,
+       264
+      ],
+      [
+       244,
+       298
+      ],
+      [
+       172,
+       299
+      ]
+     ]
+    },
+    {
+     "cls": 9,
+     "xy": [
+      [
+       245,
+       396
+      ],
+      [
+       264,
+       395
+      ],
+      [
+       264,
+       422
+      ],
+      [
+       245,
+       423
+      ]
+     ]
+    }
+   ]
+  },
+  "cc000000419856": {
+   "folder": "team21-parked-candidates",
+   "index": 28,
+   "reason": "Front basket with fruit and cloth attached to bicycle belongs to the cycle mask.",
+   "union": {
+    "0": [
+     [
+      145,
+      221
+     ],
+     [
+      151,
+      201
+     ],
+     [
+      175,
+      191
+     ],
+     [
+      181,
+      174
+     ],
+     [
+      196,
+      181
+     ],
+     [
+      209,
+      170
+     ],
+     [
+      227,
+      174
+     ],
+     [
+      236,
+      177
+     ],
+     [
+      250,
+      176
+     ],
+     [
+      263,
+      186
+     ],
+     [
+      266,
+      162
+     ],
+     [
+      267,
+      131
+     ],
+     [
+      272,
+      120
+     ],
+     [
+      278,
+      120
+     ],
+     [
+      286,
+      132
+     ],
+     [
+      297,
+      162
+     ],
+     [
+      302,
+      157
+     ],
+     [
+      330,
+      157
+     ],
+     [
+      341,
+      165
+     ],
+     [
+      339,
+      188
+     ],
+     [
+      352,
+      180
+     ],
+     [
+      367,
+      188
+     ],
+     [
+      377,
+      180
+     ],
+     [
+      385,
+      181
+     ],
+     [
+      385,
+      191
+     ],
+     [
+      399,
+      192
+     ],
+     [
+      403,
+      203
+     ],
+     [
+      413,
+      208
+     ],
+     [
+      418,
+      213
+     ],
+     [
+      435,
+      213
+     ],
+     [
+      439,
+      222
+     ],
+     [
+      434,
+      233
+     ],
+     [
+      420,
+      243
+     ],
+     [
+      416,
+      265
+     ],
+     [
+      399,
+      311
+     ],
+     [
+      389,
+      319
+     ],
+     [
+      366,
+      303
+     ],
+     [
+      347,
+      284
+     ],
+     [
+      326,
+      272
+     ],
+     [
+      291,
+      271
+     ],
+     [
+      254,
+      268
+     ],
+     [
+      199,
+      261
+     ],
+     [
+      165,
+      258
+     ],
+     [
+      159,
+      276
+     ],
+     [
+      143,
+      282
+     ]
+    ]
+   }
+  },
+  "cc000000486595": {
+   "folder": "team21-parked-candidates",
+   "index": 31,
+   "reason": "Row of parked scooters with a bicycle at the left. Front instances retain boundary pixels.",
+   "front": [
+    11,
+    1,
+    8,
+    2,
+    10,
+    9,
+    7,
+    6,
+    3,
+    5,
+    4,
+    0
+   ]
+  },
+  "cc000000037322": {
+   "folder": "team21-parked-candidates",
+   "index": 34,
+   "reason": "Parked motorcycle in front of a car, plus a temporary traffic sign.",
+   "add": [
+    {
+     "cls": 9,
+     "xy": [
+      [
+       42,
+       41
+      ],
+      [
+       46,
+       40
+      ],
+      [
+       134,
+       47
+      ],
+      [
+       138,
+       51
+      ],
+      [
+       138,
+       97
+      ],
+      [
+       135,
+       102
+      ],
+      [
+       45,
+       94
+      ],
+      [
+       41,
+       90
+      ]
+     ]
+    }
+   ],
+   "front": [
+    1,
+    0,
+    2
+   ]
+  },
+  "cc000000146701": {
+   "folder": "team21-parked-candidates",
+   "index": 36,
+   "reason": "A three-wheeled roadster has no rider. Other vehicle under the organizer's other road vehicles rule.",
+   "relabel": {
+    "1": 3
+   }
+  }
+ }
+}

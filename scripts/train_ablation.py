@@ -16,6 +16,7 @@ CHANGES = {
     "no-copy-paste": {"copy_paste": (0.35, 0.0)},
     "mask-ratio-4": {"mask_ratio": (2, 4)},
     "lower-lr": {"lr0": (0.002, 0.0007)},
+    "head-transfer": {"lr0": (0.002, 0.0007)},
     "sgd": {"optimizer": ("AdamW", "SGD")},
     "linear-lr": {"cos_lr": (True, False)},
 }

@@ -22,6 +22,8 @@ def main():
     p.add_argument("candidates",type=Path,nargs="+")
     p.add_argument("--base-version",default="e2-v1")
     p.add_argument("--previous-extension", action="append", type=Path, default=[])
+    p.add_argument("--reference-zip", action="append", type=Path, default=[],
+                   help="Additional frozen evaluation ZIP containing images")
     a=p.parse_args()
     cv2.setNumThreads(2)
     cv2.setRNGSeed(26)
@@ -42,6 +44,13 @@ def main():
             for name in z.namelist():
                 if name.startswith("images/") and Path(name).suffix.lower() in (".jpg",".png",".jpeg"):
                     add(file+"/"+name,"base",z.read(name))
+    for archive in a.reference_zip:
+        with ZipFile(archive) as z:
+            members = [name for name in z.namelist() if Path(name).suffix.lower() in (".jpg",".png",".jpeg")]
+            if not members:
+                raise ValueError(f"No reference images in {archive}")
+            for name in members:
+                add(archive.stem+"/"+name,"base",z.read(name))
     previous=json.loads((a.root/"e2-v1/manifest.json").read_text())["records"]
     for r in previous:
         key=r["key"]
@@ -93,6 +102,8 @@ def main():
     report=dict(base_dataset_sha256=sha((a.root/a.base_version/"dataset.zip").read_bytes()),holdout_sha256=sha((a.root/"e2-v1/holdout.zip").read_bytes()),
                 candidate_manifest_sha256={folder.name:sha((folder/"manifest.json").read_bytes()) for folder in a.candidates},
                 descriptor_images=len(names),checked=len(checked),close_hash=exact,same_scene=results)
+    if a.reference_zip:
+        report["reference_sha256"] = {p.name: sha(p.read_bytes()) for p in a.reference_zip}
     a.out.write_text(json.dumps(report,indent=1))
     print(len(names),len(checked),len(exact),len(results),flush=True)
 

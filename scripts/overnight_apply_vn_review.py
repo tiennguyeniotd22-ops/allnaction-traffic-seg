@@ -23,7 +23,10 @@ def edit(archive, record):
     name = record["image"]
     image_path = Path(name)
     assert image_path.parent.as_posix() == "images/train" and image_path.suffix == ".jpg"
-    if not image_path.name.startswith(("vn_sign_", "bdd_")):
+    if re.fullmatch(r"zz_plus_cc\d{12}\.jpg", image_path.name):
+        assert record["source"] == "COCO train2017"
+        assert image_path.stem == f"zz_plus_cc{record['coco_image_id']:012d}"
+    elif not image_path.name.startswith(("vn_sign_", "bdd_")):
         assert re.fullmatch(r"zz_drive_(?:syn_(?:rain|night)_)?\d{12}\.jpg", image_path.name)
         assert record["source"] == "COCO val2017"
     label = "labels/train/" + Path(name).stem + ".txt"

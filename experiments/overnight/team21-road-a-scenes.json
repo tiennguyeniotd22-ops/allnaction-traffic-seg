@@ -1,0 +1,99 @@
+{
+ "base_dataset_sha256": "7141c5527ec6bb2a86bb897f336435bcfd2a0be705efb6909e9dd92cfc527010",
+ "holdout_sha256": "9e518defa9f4567814bd7f7d9a472130c3a0c7f05e0f54b6488e5bc6b2d4c0b0",
+ "candidate_manifest_sha256": {
+  "team21-road-reviewed": "e4b49bb156ff57702dbc85525ad1d16eb1b672622bc7432ae2d65234cc9484c5"
+ },
+ "descriptor_images": 1796,
+ "checked": 221,
+ "close_hash": [],
+ "same_scene": [
+  {
+   "a": "cc000000024699",
+   "b": "base",
+   "left": "cc000000024699/parent",
+   "right": "dataset/images/train/zz_drive_syn_rain_000000460229.jpg",
+   "inliers": 11
+  },
+  {
+   "a": "cc000000246156",
+   "b": "base",
+   "left": "cc000000246156/parent",
+   "right": "dataset/images/train/bdd_night_000092.jpg",
+   "inliers": 29
+  },
+  {
+   "a": "cc000000246156",
+   "b": "base",
+   "left": "cc000000246156/parent",
+   "right": "dataset/images/train/zz_plus_cc000000079498.jpg",
+   "inliers": 20
+  },
+  {
+   "a": "cc000000246156",
+   "b": "base",
+   "left": "cc000000246156/parent",
+   "right": "dataset/images/train/bdd_night_000114.jpg",
+   "inliers": 61
+  },
+  {
+   "a": "cc000000246156",
+   "b": "base",
+   "left": "cc000000246156/parent",
+   "right": "dataset/images/train/zz_drive_000000130699.jpg",
+   "inliers": 13
+  },
+  {
+   "a": "cc000000246156",
+   "b": "base",
+   "left": "cc000000246156/parent",
+   "right": "dataset/images/train/zz_plus_kt000170.jpg",
+   "inliers": 17
+  },
+  {
+   "a": "cc000000246156",
+   "b": "base",
+   "left": "cc000000246156/parent",
+   "right": "dataset/images/train/zz_drive_000000230450.jpg",
+   "inliers": 16
+  },
+  {
+   "a": "cc000000246156",
+   "b": "base",
+   "left": "cc000000246156/parent",
+   "right": "dataset/images/train/zz_new_co329.jpg",
+   "inliers": 17
+  },
+  {
+   "a": "cc000000316694",
+   "b": "base",
+   "left": "cc000000316694/parent",
+   "right": "dataset/images/val/vn_sign_8c9d51b15b61ed3d87.jpg",
+   "inliers": 11
+  },
+  {
+   "a": "cc000000352481",
+   "b": "base",
+   "left": "cc000000352481/parent",
+   "right": "prior-parent/kt000170",
+   "inliers": 10
+  },
+  {
+   "a": "cc000000449768",
+   "b": "base",
+   "left": "cc000000449768/parent",
+   "right": "dataset/images/train/zz_plus_cc000000102096.jpg",
+   "inliers": 10
+  },
+  {
+   "a": "cc000000497455",
+   "b": "base",
+   "left": "cc000000497455/parent",
+   "right": "dataset/images/train/zz_plus_cc000000102096.jpg",
+   "inliers": 76
+  }
+ ],
+ "reference_sha256": {
+  "probe-frozen.zip": "cf990065d5f00c2cbc364d9f273c3adc3214cfd74b8ab7a2f2d19242bac835ca"
+ }
+}

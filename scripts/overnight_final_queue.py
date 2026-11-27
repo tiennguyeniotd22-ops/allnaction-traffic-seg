@@ -19,6 +19,7 @@ DATA = {
     "e3-weather-v1": "98c08b696635b776991aa26d8f0eafbbf8781c45a6bfb4c25dcbc9bbac06dbb8",
     "e3-weatherqc-v1": "f125ebfd5846fe6c948dd6c1bb33ce70c63cfb4fd7a505e7453e709d8af70a5e",
     "e3-riderqc-v1": "90f7cd78bacc169d02e9d7bb828d83e7150f487e3f7f9b1fed3d28f39050b59c",
+    "e3-signqc-v1": "7d9bac10728c970f7c8ef850b8c0cb3bbecefec9fb356382312eb03bd8607b12",
     "e3-bdd-v1": "5e056fb7fead9c24f78db2f7057d77ea57743fa5a4c15aad01b6857b31f5199e",
     "e3-vistas-v1": "3cf51625f61792c51914e5f3a661f25abe4d5380f69c1f8f4c3cc3d2329afc0d",
     "e3-vnrepair-v1": "03b99ac7680044dfb2ae2b1e22839d78fcfc20cf853e6c33c39b2b4d5e52daa2",
@@ -31,6 +32,7 @@ PILOTS = {
     "e3-vnrepair20": "e3-vnrepair-v1",
     "e3-weatherqc20": "e3-weatherqc-v1",
     "e3-riderqc20": "e3-riderqc-v1",
+    "e3-signqc-sgd20": "e3-signqc-v1",
 }
 
 
@@ -119,6 +121,7 @@ def main():
         ("e6-linear20", "e3-tax20", "linear-lr", 15),
         ("e3-riderqc20", "e6-lowerlr20", "lower-lr", 16),
         ("e6-sgd20", "e3-tax20", "sgd", 15),
+        ("e3-signqc-sgd20", "e6-sgd20", "sgd", 16),
         ("e3-weatherqc20", "e3-weather20", "control", 16),
         ("e3-vnrepair20", "e3-vistas20", "control", 20),
     ]:

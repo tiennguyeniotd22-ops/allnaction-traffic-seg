@@ -20,6 +20,9 @@ Các số dưới đây là điểm mask trên thang 100. 140 ảnh gồm 60 ả
 | E6 AdamW lr0 0,0007 | 1.113 | 20 | 23,57 | 41,13 | 23,47 | 19,13 | 22,41 | 22,93 |
 | E3 thêm Mapillary | 1.411 | 20 | 23,07 | 40,21 | 23,44 | 17,50 | 22,56 | 20,70 |
 | E6 lịch learning rate tuyến tính | 1.113 | 20 | 22,74 | 39,57 | 23,29 | 18,16 | 22,59 | 20,69 |
+| E6 SGD | 1.113 | 20 | 24,53 | 42,38 | 24,80 | 20,87 | 23,26 | 23,47 |
+
+Trên cùng bộ taxonomy, đổi optimizer từ AdamW sang SGD tăng 1,72 điểm val140. Khoảng bootstrap ghép cặp 95% xấp xỉ −0,001 đến +3,349 điểm. Holdout lớp Other vehicle giảm từ 62,28 xuống 38,68 AP. Trên L4, fit và validation gốc mất 683 giây, đỉnh cấp phát PyTorch 4.738 MiB. SHA-256 của ZIP là `6278f0b2d1f1e442088413e54a1d40a0c4e29403e1fbd7b496c6299a1b6a0f73`. [Điểm và checksum](experiments/overnight/verified-scores.json)
 
 Ở ngưỡng confidence 0,25 và mask IoU 0,50, E6 AdamW nhận đúng 10/54 xe máy trống, 10/44 xe đạp trống, 10/33 xe đạp có người và 41/152 biển báo. Khi xét riêng từng nhãn chuẩn, có thêm 70 biển với mask đúng lớp và IoU đủ nhưng confidence thấp hơn 0,25. Đếm TP dùng ghép cặp một-một của evaluator. Mỗi AP tích lũy kết quả qua các ngưỡng confidence. Trên tập chẩn đoán Mapillary46, E6 AdamW đạt 22,51 và E3 Mapillary đạt 24,19. [Lỗi E6](experiments/overnight/errors-e6-lowerlr20.json) · [Lỗi vòng 4](experiments/overnight/errors-control100.json) · [Kết quả Mapillary46](experiments/overnight/probe-scores.json)
 

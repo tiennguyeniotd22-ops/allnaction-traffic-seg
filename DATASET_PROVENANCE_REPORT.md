@@ -40,6 +40,10 @@ Bản `e3-vnrepair-v1` giữ 1.411 ảnh train của bản Vistas. Sau khi duy�
 
 Tập chẩn đoán Mapillary lấy từ 109 ảnh cha khác với 373 ảnh nguồn đã khảo sát để train. Đã xem 91 cặp ảnh và overlay, loại các cặp có dấu hiệu trùng cảnh khi kiểm cả ảnh cha và crop. Khóa 46 ảnh trước suy luận. Tập này đo khả năng khái quát sang cảnh khác, giữ độc lập với tiêu chí chọn checkpoint trên val140. Phân bố GT thô có 10 lớp, lớp Other vehicle được đo trên holdout 6 ảnh riêng. [Manifest, giấy phép và checksum](experiments/overnight/probe-lock.json)
 
+### Rà biển báo và người đi xe trên ảnh COCO của nhóm
+
+Bản `e3-signqc-v1` kế thừa 1.156 ảnh train của bản riderQC. Sau khi xem 120 vùng phóng to, nhóm có bản sửa cho 11 ảnh gốc và 4 biến thể trong train. Thêm 46 dòng polygon và bỏ 2 dòng, gồm sửa liên kết người với xe đạp ở ảnh 277005. Giữ nguyên 140 cặp ảnh và nhãn validation theo SHA-256. Các ảnh khảo sát từ IDD chưa được đưa vào bộ dữ liệu này. [Quyết định sửa](experiments/overnight/focus-sign-edits.json) · [Manifest và số instance của 11 lớp](experiments/overnight/signqc-manifest.json)
+
 ## Dữ liệu vòng 4 ngày 28/11/2026
 
 Vòng 4 dùng lại trọn bộ 780 ảnh của vòng 3, gồm 225 ảnh BDD100K, 75 ảnh Vietnam Traffic Sign Detection v5 và 480 ảnh COCO hoặc biến thể. ZIP dữ liệu có SHA-256 `91268bb2a4b520de7cb9eb1f2f9d59b740671a539ab73d1d3bba300e9d51e7a6`. 640 ảnh dùng để train, 140 ảnh để so checkpoint. Các bộ Poribohon-BD, LVIS và các ảnh biển báo bổ sung vẫn nằm ngoài lần train này. [Số ảnh, instance và bộ tham số vòng 4](experiments/round4/run_report.json)

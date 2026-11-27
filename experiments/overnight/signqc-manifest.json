@@ -1,0 +1,43 @@
+{
+ "dataset_sha256": "7d9bac10728c970f7c8ef850b8c0cb3bbecefec9fb356382312eb03bd8607b12",
+ "base_sha256": "90f7cd78bacc169d02e9d7bb828d83e7150f487e3f7f9b1fed3d28f39050b59c",
+ "decisions_sha256": "852d3f443907973d95f81bf29fd696a64ce6bae5e7f10321522091df86eff051",
+ "validation_manifest_sha256": "23c92420f1742f9d6091c09930bb43e055558064b604a2b61291b62eaeeb2013",
+ "checked_val_pairs": 140,
+ "train": 1156,
+ "changed_train_annotations": 15,
+ "operations": {
+  "append": 46,
+  "delete": 2
+ },
+ "instances_by_class": [
+  3568,
+  429,
+  347,
+  117,
+  334,
+  276,
+  254,
+  132,
+  2785,
+  1066,
+  1153
+ ],
+ "changed_members": {
+  "labels/train/zz_drive_000000026204.txt": "b1423a8bd324af03a05de7f46b5cbce72201e674aa9134b98bc59f417ff3468a",
+  "labels/train/zz_drive_000000088432.txt": "bdc15d3271af9d2d4926bbf1fa16ab5d84faf09e1c7959d1516b44c2dad70011",
+  "labels/train/zz_drive_000000175438.txt": "ca9510d7ba0b69787f085a92c767a448c6dea565283ffe384c1fc76650f73e5a",
+  "labels/train/zz_drive_000000222094.txt": "a77e980b5594ea5224478ccd7b4fad1812ea6201b988bbe023a477cdb7caafbb",
+  "labels/train/zz_drive_syn_night_000000222094.txt": "708711842310e9bb67a6eff2e3454df61df5b0f0b384936087d076ce56ac0b40",
+  "labels/train/zz_drive_000000226417.txt": "a907634745caf5070afd08b4c5406f9de3005746ecf68e4504e7b8cb6efdfa69",
+  "labels/train/zz_drive_000000226802.txt": "b24b758fa18615d21c230b2ea0564341b11db588f9fd0a402d8993c9c296e010",
+  "labels/train/zz_drive_000000230450.txt": "ea0eafa3939b25cf196ffc5e22e1392e112950039b931589af3ab5cfe33b817b",
+  "labels/train/zz_drive_syn_night_000000230450.txt": "644348f5ac5804a5d2333168fe14728c07b41a67e4523cb947a05192bdf3f39b",
+  "labels/train/zz_drive_000000277005.txt": "8ded0a879b21c9783118d52a1db80c6f7acba98e3b129ac8e7c90db7e853144c",
+  "labels/train/zz_drive_000000361103.txt": "fb1c352b31a7adaf009dbeff97f3457c180964f7fc3c38f6c626049516c0f814",
+  "labels/train/zz_drive_000000423617.txt": "fbee0eb3a6b0f1bd5159c5068bf21e5ec1521aa02cc5b235bb2eb660730735d1",
+  "labels/train/zz_drive_syn_night_000000423617.txt": "38eff462e5171eab308f160c46c81ec83f9e177ac06b39ecfee20b41fd445950",
+  "labels/train/zz_drive_000000501023.txt": "dcde1777ec64991704e615ce1686f8f0acda2ec1c77f9fe2f74db5cb384899bd",
+  "labels/train/zz_drive_syn_rain_000000501023.txt": "dcde1777ec64991704e615ce1686f8f0acda2ec1c77f9fe2f74db5cb384899bd"
+ }
+}

@@ -62,6 +62,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("out", type=Path)
     parser.add_argument("--per-bucket", type=int, default=36)
+    parser.add_argument("--seed", type=int, default=26)
+    parser.add_argument("--exclude-index", type=Path, help="Exclude every parent ID in a prior collection")
     args = parser.parse_args()
     folder = args.out
     for d in ("images", "native"):
@@ -96,10 +98,15 @@ def main():
             pools[b].append(key)
         records[key] = dict(key="vista_" + key, width=i["width"], height=i["height"], source_split="training",
                             image=image, annotation=mask, segments=a["segments_info"])
-    rng = random.Random(26)
+    excluded = set()
+    if args.exclude_index:
+        prior = json.loads(args.exclude_index.read_bytes())
+        assert prior["revision"] == REV
+        excluded = {r["key"].removeprefix("vista_") for r in prior["records"]}
+    rng = random.Random(args.seed)
     chosen = {}
     for bucket in sorted(pools, key=lambda b: (len(pools[b]), b)):
-        options = sorted(set(pools[bucket]) - chosen.keys())
+        options = sorted(set(pools[bucket]) - chosen.keys() - excluded)
         rng.shuffle(options)
         chosen.update({k: bucket for k in options[:args.per_bucket]})
 
@@ -116,7 +123,9 @@ def main():
                   credit="Neuhold, Ollmann, Rota Bulò and Kontschieder, ICCV 2017; Mapillary Research",
                   license="CC BY-NC-SA 4.0", license_url="https://creativecommons.org/licenses/by-nc-sa/4.0/",
                   revision=REV, mirror=BASE, source_index_sha256=INDEX_SHA, categories=categories,
-                  candidate_pool={k: len(v) for k, v in pools.items()}, records=picked)
+                  candidate_pool={k: len(v) for k, v in pools.items()}, records=picked,
+                  seed=args.seed, excluded_parents=len(excluded),
+                  excluded_index_sha256=sha256(args.exclude_index.read_bytes()).hexdigest() if args.exclude_index else None)
     (folder / "index.json").write_text(json.dumps(report, indent=1))
     print(len(picked), Counter(r["selection"] for r in picked), flush=True)
 

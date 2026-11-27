@@ -5,6 +5,9 @@
 - **Chiến lược:** Khai thác Open Prelabel (`IDD`/`BDD100K`/`Roboflow`) → Teacher `yolo26x-seg.pt` Pseudo-Label ảnh Dashcam VN → Sửa nhanh trên CVAT → Fine-tune & Data-Centric Loop.
 
 ## Cấu Trúc Repo
+
+Quy ước gán nhãn của giải nằm trong bản gốc do ban tổ chức cung cấp. Nhóm dùng checklist QC để duyệt polygon trên CVAT và kiểm lại mask sau khi xuất YOLO-seg. [Guideline chính thức](labeling_guideline.md) · [Checklist QC](HUONG_DAN_QC.md) · [Đề xuất tăng điểm mask](DE_XUAT_TANG_DIEM_MASK.md)
+
 - `ALLNACTION_1DAY_HACKATHON_PLAYBOOK.md`: Kế hoạch 1 ngày & phân công 5 thành viên song song.
 - `DATASET_PROVENANCE_REPORT.md`: Bảng khai báo nguồn dữ liệu công khai, giấy phép & ánh xạ 11 lớp.
 - `configs/traffic_11_classes.yaml`: Định nghĩa chuẩn 11 lớp (`0..10`).

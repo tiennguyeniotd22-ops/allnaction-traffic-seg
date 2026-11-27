@@ -1,0 +1,75 @@
+{
+  "score": {
+    "score": 24.127267882244873,
+    "map50": 0.41554999916356977,
+    "map75": 0.2449184497834894,
+    "map50_95": 0.24127267882244874,
+    "per_class_ap": {
+      "Car": 0.40272098452484373,
+      "Bus": 0.39521026681487637,
+      "Truck": 0.19913654801230907,
+      "Motorcycle": 0.07450316424579316,
+      "Motorcyclist": 0.3507435446204645,
+      "Bicycle": 0.1344899538786617,
+      "Cyclist": 0.15657180929257736,
+      "Pedestrian": 0.2709808708702313,
+      "Sign": 0.2725846220419682,
+      "Traffic light": 0.15578502392276153
+    },
+    "per_class_ap50": {
+      "Car": 0.6599613812055082,
+      "Bus": 0.5174759097741386,
+      "Truck": 0.32346227706509034,
+      "Motorcycle": 0.15876653646339467,
+      "Motorcyclist": 0.5916753955773898,
+      "Bicycle": 0.2421506518696915,
+      "Cyclist": 0.2896902402436508,
+      "Pedestrian": 0.5455551031110247,
+      "Sign": 0.43236609870841336,
+      "Traffic light": 0.3943963976173956
+    },
+    "n_images": 140,
+    "n_gt_per_class": {
+      "Car": 546,
+      "Bus": 35,
+      "Truck": 82,
+      "Other vehicle": 0,
+      "Motorcycle": 54,
+      "Motorcyclist": 70,
+      "Bicycle": 44,
+      "Cyclist": 33,
+      "Pedestrian": 418,
+      "Sign": 152,
+      "Traffic light": 154
+    },
+    "n_gt_ignored": 233,
+    "classes_without_gt": [
+      "Other vehicle"
+    ],
+    "n_detections": 13895,
+    "warnings": [
+      "class 'Other vehicle' has no ground truth in this split and is excluded from the mean"
+    ],
+    "by_source": {}
+  },
+  "cpu": {
+    "n_images": 140,
+    "n_instances": 13895,
+    "threads": 2,
+    "latency_ms_p50": 130.38415599658038,
+    "latency_ms_max": 219.49777800182346,
+    "decode_ms_p50": 64.73215699952561,
+    "decode_ms_max": 214.75760700559476,
+    "model_load_s": 0.127,
+    "total_s": 15.783,
+    "output_bytes": 1841897,
+    "peak_rss_mb": 378.3,
+    "predictions": "/home/pc/baseline-cvat300/overnight/replay-cpu-team21-qc20/tmplk9v4a6b/predictions_val.json"
+  },
+  "zip_sha256": "73931a2cb2f1450f53688b62fe2e03fffc74ea4dadf1f5a487c6ce0c379e0fe6",
+  "dataset_sha256": "33362fd1aee1760da38f0f67e41a97c61dcc6aed6c10561bfbf9ef058755c2ef",
+  "prepared_sha256": "7e8e27dd018b71d8b1c9a9835680ec6088b0d707950883e6cd73276700936b10",
+  "notebook_sha256": "9cf720e6cad44b8dec33e9a6fafc8425ce74e61d1fb37da65584b2ac9d4a73c5",
+  "validation_sha256": "23c92420f1742f9d6091c09930bb43e055558064b604a2b61291b62eaeeb2013",
+  "predictions_sha256": "0169144d2cae091c9dcd81a615671a283ceb67631c6c6ede1b8d53dd02f36dcf"
+}

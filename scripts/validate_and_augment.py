@@ -13,6 +13,12 @@ from pathlib import Path
 
 import cv2
 import numpy as np
+from PIL import Image
+
+if __package__:
+    from .mask_geometry import polygon_area_at_640
+else:
+    from mask_geometry import polygon_area_at_640
 
 CLASSES = [
     "Car", "Bus", "Truck", "Other vehicle", "Motorcycle",
@@ -33,11 +39,19 @@ def validate_split(data_dir: Path, split: str, min_area_640: float = 64.0) -> di
     bad_lines = 0
     small_masks = 0
     empty_labels = 0
+    missing_labels = 0
+    unreadable_images = 0
 
     for img_p in imgs:
+        try:
+            with Image.open(img_p) as image:
+                width, height = image.size
+        except OSError:
+            unreadable_images += 1
+            continue
         lbl_p = lbl_dir / f"{img_p.stem}.txt"
         if not lbl_p.exists():
-            empty_labels += 1
+            missing_labels += 1
             continue
         text = lbl_p.read_text(encoding="utf-8").strip()
         if not text:
@@ -49,12 +63,16 @@ def validate_split(data_dir: Path, split: str, min_area_640: float = 64.0) -> di
             if len(parts) < 7 or (len(parts) - 1) % 2 != 0:
                 bad_lines += 1
                 continue
-            cls_id = int(float(parts[0]))
-            coords = np.array([float(v) for v in parts[1:]], dtype=np.float32).reshape(-1, 2)
-            if not (0 <= cls_id < len(CLASSES)) or np.any(coords < 0.0) or np.any(coords > 1.0):
+            try:
+                cls_id = int(parts[0])
+                coords = np.array(parts[1:], dtype=np.float64).reshape(-1, 2)
+            except ValueError:
                 bad_lines += 1
                 continue
-            area = float(cv2.contourArea(coords * 640.0))
+            if not (0 <= cls_id < len(CLASSES)) or not np.isfinite(coords).all() or np.any(coords < 0.0) or np.any(coords > 1.0):
+                bad_lines += 1
+                continue
+            area = polygon_area_at_640(coords, width, height)
             if area < min_area_640:
                 small_masks += 1
             counts[CLASSES[cls_id]] += 1
@@ -63,6 +81,8 @@ def validate_split(data_dir: Path, split: str, min_area_640: float = 64.0) -> di
         "exists": True,
         "images": len(imgs),
         "empty_bg_images": empty_labels,
+        "missing_labels": missing_labels,
+        "unreadable_image_headers": unreadable_images,
         "bad_lines": bad_lines,
         "small_masks_lt_64px": small_masks,
         "class_counts": {c: counts[c] for c in CLASSES},

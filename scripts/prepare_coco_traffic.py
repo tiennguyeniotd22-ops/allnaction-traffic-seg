@@ -23,6 +23,11 @@ import cv2
 import numpy as np
 import yaml
 
+if __package__:
+    from .mask_geometry import export_coordinates, polygon_area_at_640
+else:
+    from mask_geometry import export_coordinates, polygon_area_at_640
+
 COMPETITION_CLASSES = {
     0: "Car",
     1: "Bus",
@@ -84,13 +89,6 @@ def repair_and_simplify_polygon(poly_norm: np.ndarray, grid: int = 640) -> np.nd
     peri = cv2.arcLength(largest, True)
     approx = cv2.approxPolyDP(largest, 0.0015 * peri, True).reshape(-1, 2).astype(np.float32) / float(grid - 1)
     return np.clip(approx, 0.0, 1.0)
-
-
-def polygon_area_at_640(poly_norm: np.ndarray, orig_w: int, orig_h: int) -> float:
-    """Estimate mask pixel area after aspect-preserving resize to max_dim=640."""
-    scale = 640.0 / float(max(orig_w, orig_h))
-    pts = np.column_stack([poly_norm[:, 0] * orig_w * scale, poly_norm[:, 1] * orig_h * scale]).astype(np.float32)
-    return float(cv2.contourArea(pts))
 
 
 def box_overlap_rider(box_p: list[float], box_b: list[float]) -> bool:
@@ -259,10 +257,10 @@ def build_starter_dataset(
         lines = []
         for cls_id, poly in final_objs:
             poly = repair_and_simplify_polygon(poly)
-            if len(poly) < 3 or polygon_area_at_640(poly, w, h) < min_area_640:
+            coords, exported = export_coordinates(poly)
+            if len(poly) < 3 or polygon_area_at_640(exported, w, h) < min_area_640:
                 dropped_small += 1
                 continue
-            coords = " ".join(f"{x:.6f} {y:.6f}" for x, y in poly)
             lines.append(f"{cls_id} {coords}")
             stats[split][COMPETITION_CLASSES[cls_id]] += 1
 
@@ -294,7 +292,7 @@ def main() -> None:
     parser.add_argument("--cache", type=Path, default=Path("raw_cache"))
     parser.add_argument("--max-images", type=int, default=1000)
     parser.add_argument("--val-ratio", type=float, default=0.2)
-    parser.add_argument("--min-area", type=float, default=65.0)
+    parser.add_argument("--min-area", type=float, default=64.0)
     parser.add_argument("--seed", type=int, default=2026)
     parser.add_argument("--zip", action="store_true")
     args = parser.parse_args()

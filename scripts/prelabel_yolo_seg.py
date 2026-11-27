@@ -17,6 +17,11 @@ import cv2
 import numpy as np
 import yaml
 
+if __package__:
+    from .mask_geometry import export_coordinates, polygon_area_at_640
+else:
+    from mask_geometry import export_coordinates, polygon_area_at_640
+
 # ==============================================================================
 # 1. BẢNG 11 LỚP CHÍNH THỨC CỦA CUỘC THI
 # ==============================================================================
@@ -59,12 +64,6 @@ def simplify_polygon(poly_norm: np.ndarray, epsilon_ratio: float = 0.002) -> np.
     if len(approx) >= 3:
         return np.clip(approx, 0.0, 1.0)
     return np.clip(poly_norm, 0.0, 1.0)
-
-
-def polygon_area_at_640(poly_norm: np.ndarray) -> float:
-    """Estimate mask pixel area at 640x640 (matches Step 2 check in train_and_export.ipynb)."""
-    pts = (poly_norm * 640.0).astype(np.float32)
-    return float(cv2.contourArea(pts))
 
 
 def box_iou_or_rider_overlap(box_person: np.ndarray, box_bike: np.ndarray) -> bool:
@@ -156,6 +155,7 @@ def run_prelabel(
             verbose=False,
         )
         res = results[0]
+        height, width = res.orig_shape
         lines = []
 
         if res.masks is not None and res.boxes is not None:
@@ -207,10 +207,10 @@ def run_prelabel(
                 poly_clean = simplify_polygon(poly)
                 if len(poly_clean) < 3:
                     continue
-                if polygon_area_at_640(poly_clean) < min_area_640:
+                coords_str, exported = export_coordinates(poly_clean)
+                if polygon_area_at_640(exported, width, height) < min_area_640:
                     dropped_small += 1
                     continue
-                coords_str = " ".join(f"{x:.6f} {y:.6f}" for x, y in poly_clean)
                 lines.append(f"{comp_cls} {coords_str}")
                 stats[COMPETITION_CLASSES[comp_cls]] += 1
 

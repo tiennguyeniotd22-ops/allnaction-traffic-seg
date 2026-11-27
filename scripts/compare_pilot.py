@@ -17,6 +17,7 @@ from ultralytics import YOLO
 import yaml
 
 from mask_geometry import polygon_area_at_640
+from train_ablation import CHANGES
 
 
 def read(path):
@@ -32,6 +33,7 @@ def main():
     for k in ("baseline","pilot","manifest","out","notebook"):
         p.add_argument("--"+k, required=True, type=Path)
     p.add_argument("--allow-schedule-change", action="store_true")
+    p.add_argument("--experiment", choices=CHANGES, default="control")
     args = p.parse_args()
     ns = {"__name__":"__main__"}
     for i in (1,2,3,4):
@@ -79,8 +81,17 @@ def main():
     differences = {k: [configs[0].get(k), configs[1].get(k)] for k in configs[0].keys() | configs[1].keys()
                    if configs[0].get(k) != configs[1].get(k)}
     allowed = {"epochs", "patience"} if args.allow_schedule_change else set()
-    if differences.keys() - allowed:
+    training_changes = {k: v for k, v in differences.items() if k not in allowed}
+    if training_changes != {k: list(v) for k, v in CHANGES[args.experiment].items()}:
         raise ValueError(f"Unexpected training changes: {differences}")
+    if args.experiment != "control":
+        control, trial = (read(p / "resources.json") for p in (args.baseline, args.pilot))
+        assert control.get("experiment", "control") == "control" and trial["experiment"] == args.experiment
+        for k in ("dataset_sha256", "initial_weights_sha256", "notebook_sha256"):
+            assert control[k] == trial[k]
+        if args.experiment == "repeat-rare":
+            sampling = read(args.pilot / "sampling.json")
+            assert sampling["unique_train"] < sampling["draws_per_epoch"] <= 2 * sampling["unique_train"]
     rng = np.random.default_rng(26)
     diffs = []
     for _ in range(300):
@@ -143,7 +154,7 @@ def main():
     value=dict(scores=scores, paired_scene_bootstrap_95_points=np.percentile(diffs,[2.5,97.5]).tolist(),
                bootstrap_replicates=len(diffs), area_comparisons=n,tiny_by_split=tiny,
                validation_sha_verified=len(manifest),training_config_equal=not differences,
-               training_config_differences=differences, onnx_parity=parity,
+               training_config_differences=differences, experiment=args.experiment, onnx_parity=parity,
                opsets={i.domain:i.version for i in graph.opset_import},onnx_sha256=sha(data),
                best_sha256=sha(pt.read_bytes()),zip_sha256=sha(path.read_bytes()),zip_bytes=path.stat().st_size)
     args.out.write_text(json.dumps(value,indent=1))

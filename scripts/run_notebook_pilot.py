@@ -8,6 +8,8 @@ import time
 
 import torch
 
+from train_ablation import CHANGES, configure_train_args
+
 
 def digest(path):
     with path.open("rb") as f:
@@ -21,6 +23,7 @@ def main():
     parser.add_argument("--revision", required=True)
     parser.add_argument("--epochs", type=int, default=20)
     parser.add_argument("--patience", type=int)
+    parser.add_argument("--experiment", choices=CHANGES, default="control")
     parser.add_argument("--notebook", type=Path, default=Path("train_and_export.ipynb"))
     args = parser.parse_args()
     if args.epochs < 1 or (args.patience is not None and args.patience < 1):
@@ -37,7 +40,13 @@ def main():
     ns = {"__name__": "__main__"}
 
     def cell(i):
-        exec(compile("".join(cells[i]["source"]), f"notebook-cell-{i}", "exec"), ns)
+        source = "".join(cells[i]["source"])
+        if i == 15 and args.experiment != "control":
+            marker = "model.train(**TRAIN_ARGS)"
+            assert source.count(marker) == 1
+            ns["configure_experiment"] = lambda cfg: configure_train_args(cfg, args.experiment, run)
+            source = source.replace(marker, "configure_experiment(TRAIN_ARGS)\n" + marker)
+        exec(compile(source, f"notebook-cell-{i}", "exec"), ns)
 
     for i in (1, 2, 3, 4, 5, 7):
         cell(i)
@@ -51,7 +60,7 @@ def main():
     torch.cuda.reset_peak_memory_stats()
     start = time.monotonic()
     cell(15)
-    resources = dict(revision=args.revision, dataset_sha256=digest(dataset),
+    resources = dict(revision=args.revision, experiment=args.experiment, dataset_sha256=digest(dataset),
                      initial_weights_sha256=weights_sha, notebook_sha256=notebook_sha,
                      gpu=torch.cuda.get_device_name(), fit_and_native_val_seconds=time.monotonic()-start,
                      peak_allocated_mib=torch.cuda.max_memory_allocated()/2**20,

@@ -14,6 +14,12 @@ E1 vượt vòng 4 0,09 điểm, với khoảng bootstrap ghép cặp 95% từ �
 
 **Bộ train sửa taxonomy.** Rà 493 polygon Truck và 58 cặp polygon chồng lấn trên train. Đã đổi 116 nhãn thành Car, 4 thành Bus, 8 thành Other vehicle, bỏ 52 annotation trùng và loại 4 ảnh mới có mask nhập hai vật thể hoặc che khuất sai. Sửa 26 polygon train tự cắt, IoU raster sau lưu đạt 1,00 cho cả 26. Còn 11 polygon tự cắt trong GT validation đã khóa. Bộ mới có 1.113 ảnh train, 10.036 instance train và 140 cặp validation khớp SHA. So sánh với E3 Việt Nam sẽ đo tác động gộp của bổ sung ảnh và sửa nhãn. [Quyết định theo dòng nguồn](experiments/overnight/taxonomy-decisions.json) · [Manifest kiểm chứng](experiments/overnight/taxonomy-manifest.json)
 
+### Kiểm thử cấu hình cho E4–E6
+
+Trên L4, Ultralytics 8.4.214 đã nạp thành công các cấu hình thử riêng biệt gồm tắt Copy-Paste, mask ratio 4, lr0 0,0007, SGD và lịch learning rate tuyến tính. Cấu hình gốc dùng Copy-Paste ở chế độ `flip`, lấy vật thể từ chính ảnh. Chế độ `mixup` lấy vật thể từ một ảnh khác. Cả hai cách chọn vật thể đều không ưu tiên theo lớp.
+
+Thử cơ chế lặp ảnh có lớp hiếm trên bộ E2 với seed 26. Ngưỡng tần suất hiện diện theo ảnh là 0,12 và mỗi ảnh xuất hiện tối đa hai lần trong một epoch. Bộ đọc thực tế nhận đủ 802 ảnh riêng biệt và 835 lượt lấy mẫu, gồm 33 lượt lặp. Đây là số đo đầu vào huấn luyện. Điểm AP của từng thay đổi cần một lượt train và chấm ONNX riêng trên cùng bộ dữ liệu.
+
 ## Vòng 4 hoàn tất ngày 28/11/2026
 
 Train đủ 100 epoch trên L4 với 640 ảnh train. Hình ảnh và nhãn của 140 ảnh validation khớp checksum vòng 3. Thay đổi epoch từ 20 lên 100 và patience từ 20 lên 25, giữ seed 26, batch 8. Trên bộ chấm ONNX của notebook, mask mAP@[.50:.95] tăng từ 21,35 lên **22,01**, AP50 từ 36,82 lên **38,72**. Khoảng bootstrap 95% của chênh lệch mAP theo cảnh là −0,45 đến +2,20 điểm. Riêng 15 ảnh Việt Nam đạt 18,79 so với 18,85. Lớp Other vehicle có 0 GT. Điểm public của ZIP vòng 4 đang chờ đội nộp.

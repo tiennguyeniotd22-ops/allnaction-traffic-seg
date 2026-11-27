@@ -19,12 +19,14 @@ DATA = {
     "e3-weather-v1": "98c08b696635b776991aa26d8f0eafbbf8781c45a6bfb4c25dcbc9bbac06dbb8",
     "e3-bdd-v1": "5e056fb7fead9c24f78db2f7057d77ea57743fa5a4c15aad01b6857b31f5199e",
     "e3-vistas-v1": "3cf51625f61792c51914e5f3a661f25abe4d5380f69c1f8f4c3cc3d2329afc0d",
+    "e3-vnrepair-v1": "03b99ac7680044dfb2ae2b1e22839d78fcfc20cf853e6c33c39b2b4d5e52daa2",
 }
 PILOTS = {
     "e3-tax20": "e3-tax-v2", "e4-repeat20": "e3-tax-v2", "e4-nocopy20": "e3-tax-v2",
     "e5-mask420": "e3-tax-v2", "e6-lowerlr20": "e3-tax-v2", "e6-linear20": "e3-tax-v2",
     "e6-sgd20": "e3-tax-v2", "e3-weather20": "e3-weather-v1",
     "e3-bdd20": "e3-bdd-v1", "e3-vistas20": "e3-vistas-v1",
+    "e3-vnrepair20": "e3-vnrepair-v1",
 }
 
 
@@ -92,15 +94,19 @@ def main():
     deadline = datetime.fromisoformat(args.deadline)
     if deadline.tzinfo is None:
         p.error("Deadline must include a UTC offset")
-    while subprocess.run(["tmux", "has-session", "-t", "=weathertrials"], stderr=subprocess.DEVNULL).returncode == 0:
-        time.sleep(15)
-    for name, base in [("e3-bdd20", "e3-weather20"), ("e3-vistas20", "e3-bdd20")]:
-        # Always reserve at least an hour to fit and check a full model.
-        if deadline.timestamp() - time.time() < 85 * 60:
+    for session in ("weathertrials", "parametertrials"):
+        while subprocess.run(["tmux", "has-session", "-t", "=" + session], stderr=subprocess.DEVNULL).returncode == 0:
+            time.sleep(10)
+    for name, base in [("e3-bdd20", "e3-weather20"), ("e3-vistas20", "e3-bdd20"),
+                       ("e3-vnrepair20", "e3-vistas20")]:
+        if verified(name) is not None:
+            continue
+        # Allow roughly 18 minutes for a 1,411-image pilot, preserving an hour for E7.
+        if deadline.timestamp() - time.time() < 78 * 60:
             print("Reserving remaining time for E7", flush=True)
             break
         if verified(base) is None:
-            base = "e3-tax20"
+            raise RuntimeError(f"Expected verified matched data pilot {base}")
         train_and_score(name, PILOTS[name], base, "control", args.revision, 20, 20)
     scores = {name: value for name in PILOTS if (value := verified(name)) is not None}
     best = max(scores, key=scores.get)

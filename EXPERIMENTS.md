@@ -14,6 +14,10 @@ Các số dưới đây là điểm mask trên thang 100. 140 ảnh gồm 60 ả
 | E3 sửa taxonomy | 1.113 | 20 | 22,81 | 39,68 | 22,79 | 17,76 | 21,25 | 21,30 |
 | E4 lặp ảnh lớp hiếm | 1.113 | 20 | 22,02 | 38,58 | 22,54 | 18,16 | 21,89 | 20,95 |
 | E4 tắt Copy-Paste | 1.113 | 20 | 22,43 | 39,09 | 22,90 | 18,38 | 21,53 | 21,16 |
+| E3 thời tiết và Việt Nam | 1.156 | 20 | 23,22 | 40,12 | 23,13 | 18,88 | 22,58 | 22,61 |
+| E3 thêm BDD semantic | 1.199 | 20 | 22,62 | 39,55 | 22,34 | 16,42 | 21,35 | 21,83 |
+
+Việc thêm 43 crop BDD giảm 0,60 điểm so với E3 thời tiết trên 140 ảnh, khoảng bootstrap ghép cặp 95% từ −1,55 đến +0,90 điểm. Trên holdout lớp 3, AP tăng từ 52,42 lên 55,24. Mỗi ZIP đều được chấm bằng ONNX và đối chiếu checksum với checkpoint tương ứng. [Kết quả từng lớp và kiểm tra ONNX](experiments/overnight/verified-scores.json)
 
 E3 sửa taxonomy tăng 1,56 điểm so với E3 Việt Nam cùng 20 epoch. Khoảng bootstrap ghép cặp 95% từ +0,17 đến +2,59 điểm. Thay đổi gồm cả ảnh mới và sửa nhãn nên chưa tách được đóng góp riêng. Holdout lớp 3 đạt 62,28 AP. E4 dùng cùng dữ liệu, lấy mẫu 1.166 lượt từ 1.113 ảnh mỗi epoch. Chênh lệch so với E3 sửa taxonomy là −0,79 điểm, khoảng 95% từ −2,46 đến +0,54. Holdout lớp 3 đạt 57,64 AP.
 

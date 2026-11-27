@@ -1,0 +1,720 @@
+{
+ "role": "diagnostic only; never used for training or model selection",
+ "zip_sha256": "cf990065d5f00c2cbc364d9f273c3adc3214cfd74b8ab7a2f2d19242bac835ca",
+ "files": {
+  "labels/vista_1YjCK0SG4qhv8KY0-nuRbw.txt": "668604dbbca34bf3b79b10105943e0b0b6c33a3459f16a8bbcc73e3595f9eb38",
+  "images/vista_1YjCK0SG4qhv8KY0-nuRbw.jpg": "f132ef0db6469020e7d99ddc65ad28a5a6e5e131214cd03a56d5c2ba7c21bc69",
+  "labels/vista_2XfnUDVnl8MWf-UPVnAkng.txt": "e181b350c9f1704973b516d5c936f19baa225ca7c1ed7f1abd350ecabfc7c85a",
+  "images/vista_2XfnUDVnl8MWf-UPVnAkng.jpg": "70d8f15190a36c08926f35b10641ac62e5bfec209d77ebf50539f02569e4fd52",
+  "labels/vista_2qhLc6lfG56O_1eQX4RBlw.txt": "3538d0d605c46c193eadf022d215691569f36dced625c43152131b9c0921cdcc",
+  "images/vista_2qhLc6lfG56O_1eQX4RBlw.jpg": "b1faf8c6030ed54c08131f6db41b2ea0a87202218c0d272797571d70ee024d04",
+  "labels/vista_49yrqxpf5jzgaG0nvRs2Dg.txt": "1936ae481668da554927287406f20105c6bfefd56b719477151f4573bc82ffe2",
+  "images/vista_49yrqxpf5jzgaG0nvRs2Dg.jpg": "74e8df076080f5b7f02167f1cefcd93f4c8da0cfdc92661000cf32473a949a9e",
+  "labels/vista_4SOhLdRtZvd4yu0OW7eI2w.txt": "3f6f5a6dfd825e14eb1c6c85a2a3df30057b80ac07befe7ce9d271268e4b6cff",
+  "images/vista_4SOhLdRtZvd4yu0OW7eI2w.jpg": "446da552c9a0bda4b1257a338c57512e0c10a6ff09058a01192a03cd93972fe9",
+  "labels/vista_4SUJ-7NBxri8N-9qmhL8aQ.txt": "3520d2e873949d8b93fcb7a1e2e3d63ea895055711a8ae6c73e558302edd863c",
+  "images/vista_4SUJ-7NBxri8N-9qmhL8aQ.jpg": "b57c85011b9e52902cb7a788ec0f95f41ba86fc5082e16cbb65f681978361487",
+  "labels/vista_4nwhXaqbkc0CQSnONaecGg.txt": "89efd3d80fafb419d97ac4a8ffa80fd4ab9e8ae6f0dc25b42ec9b90c6bef6905",
+  "images/vista_4nwhXaqbkc0CQSnONaecGg.jpg": "08414ed8df48e3dc1b00f9abe788016c7420f64a1025b5dc827cf4943fcf8015",
+  "labels/vista_5F3GkvWHknzbw6i5bF6ixg.txt": "e99f07f713cf631ea980ec65889281fdd64be85f8ad88000ced39e0916a2c66e",
+  "images/vista_5F3GkvWHknzbw6i5bF6ixg.jpg": "b4bff71492a3a2d8d0b8b86d00a78b57d82185ac13d38617251569310d417257",
+  "labels/vista_7CgTC5v7XzdyZnAI4dju5Q.txt": "8d21e558a4555d9af81efd56f38b57912e2e6fdcbce5ca508a809964f7a7ecb7",
+  "images/vista_7CgTC5v7XzdyZnAI4dju5Q.jpg": "2ec2952ba88a2dc825f1208e34ca65b63f8cca5eef611546ea1cfe65e5c46236",
+  "labels/vista_ECx2AvhcDEgFFcc4HXghgA.txt": "05d9d905fb9ed16149b680cdeb3a55f1dd4bec7aff3e3efe44fd093f3648efdd",
+  "images/vista_ECx2AvhcDEgFFcc4HXghgA.jpg": "56d1fb042220d554a9e1bdb5e84318918bdd02bbb9f25262f5e07cb201feb6b1",
+  "labels/vista_EtiHSNRcVld7JaD6TH_I4Q.txt": "8d0c84a6b697788f4e6e31ed0a277b590d22f82866b7b724c64ecbbef44a9291",
+  "images/vista_EtiHSNRcVld7JaD6TH_I4Q.jpg": "7bb34ac8f0f732b1beddd406d997f72a2d4bd561a0359bf9e9641c0a63ce6318",
+  "labels/vista_FiBH3zmdR4X36jz2UlG1tA.txt": "8043ee5b6f992228a137d28d1d04fab3108321cc1f791b5075949b4c044ec823",
+  "images/vista_FiBH3zmdR4X36jz2UlG1tA.jpg": "c285ff30d78f066f64808c916c0c0c97ad35d2632f7d13127c1b60e5cf589d11",
+  "labels/vista_GDflkcGiPU_9yr_QRqjO_Q.txt": "0b65471842d5cbf3a2668a0817f498744f79690c5601bc83090686ce802bfcc9",
+  "images/vista_GDflkcGiPU_9yr_QRqjO_Q.jpg": "21b20f847e42ebe73f4e7594717ba12ba48e916ef9eb41924594cd2c98c44160",
+  "labels/vista_GHAJejfKl4JEzUfWucy9fw.txt": "9b71e07fa97e2ffb17dc511f2f1630a4b02c8a616e4023c260084532cf7ffbe1",
+  "images/vista_GHAJejfKl4JEzUfWucy9fw.jpg": "542de425ec1b875e02ad6b7b6ba4528219523fc7befbffb5cc202e267035d037",
+  "labels/vista_GRikpPHAFi4SwRZ4S0hm9g.txt": "0556c59561a004501dc5661270526705f13771b229177a973d1b4917efc3ff6a",
+  "images/vista_GRikpPHAFi4SwRZ4S0hm9g.jpg": "7f7dd7e882758afa442b4ff80122550f128b3b527b950a447de811a375c2cbe0",
+  "labels/vista_GXxTgwyU2xLib62bxtcN-A.txt": "2ed1a968521b2385822e515ab94db464daeef9bb7f74f1820bea868760bcc9fd",
+  "images/vista_GXxTgwyU2xLib62bxtcN-A.jpg": "d81496edca98713605f80d16304b3470a328a71a28741d2f4e320602972b6985",
+  "labels/vista_Gc3n1_vnjUzXuWPLVcaQ1Q.txt": "e524ade0f2eaecf8ab12734dbcaeb1975cd2ff641fffb0accd3a7ce8a57167c0",
+  "images/vista_Gc3n1_vnjUzXuWPLVcaQ1Q.jpg": "ae1ffec00a16b2cc35f5cf223aec6b5bdd0d7cb7861eb3d42cdc29b906b680a4",
+  "labels/vista_Gjawb6pYeqHxIEJNViR9RQ.txt": "04034b2801f3c0ed35574ad22f6e8c66255a3e4105ffc045bde538a9ff7a6433",
+  "images/vista_Gjawb6pYeqHxIEJNViR9RQ.jpg": "0d26638b177e8df35ce2f8d2b3b6edc9fe640232df74a32fb07d359df316f136",
+  "labels/vista_Gl6VE4nGhr6gSVEKlO3UZw.txt": "b34667dc3494b4855d11d768416d5fb473ebccb8427679f289d6d088d144084b",
+  "images/vista_Gl6VE4nGhr6gSVEKlO3UZw.jpg": "8af28633e5ced578007992b2e4219af497d885c09e1d8a888608a18f6eaac079",
+  "labels/vista_IR32Ac4-HM6ZODjXZQzdaA.txt": "3ca9f23c3b53bf118715d6d3bfcdc477f956d0443d25e7b06b8c057e4c79c363",
+  "images/vista_IR32Ac4-HM6ZODjXZQzdaA.jpg": "bbc99bffb3bc35c84dfbd7928124ccfbc6c05624ab5f66a108a5f3f238825bd4",
+  "labels/vista_JN-T95IHc0-4TR8ym302zA.txt": "4dd5e1800bb36528f57f3ff33abbee96b144658b278b7e7b7440d2e90b380fad",
+  "images/vista_JN-T95IHc0-4TR8ym302zA.jpg": "f65dfc1ec4ec5090d28daf4b0773873af36ae603882481f6cca8c5e9087240a8",
+  "labels/vista_JSrhSScrZXwkb3Ui3esCAw.txt": "3af0dcfb3ca589d03de62f7f4248e259319377a5bfc92d21489a78baf9f17e8b",
+  "images/vista_JSrhSScrZXwkb3Ui3esCAw.jpg": "fcea850c4b72970e1c0af93a1d55745df5d8a1809f1d7ab2efbc35cfdb726844",
+  "labels/vista_K2hH5KpKVeR_bFmdQwlyHg.txt": "f8fa8fd56a01a1425847d58cf8b99867cb95c63b6b45d6667afb7d23f094e359",
+  "images/vista_K2hH5KpKVeR_bFmdQwlyHg.jpg": "0498ccee166e5af40cd39a2d7ad1d8509e6f8ac5dbf9932189c11a3baa204b19",
+  "labels/vista_KOWhwZ-8uu17bI4tOxftcA.txt": "99506ef18852b5887778099495dd13a1ea467f4552a82d6f2d26cc7cfb0eb2ab",
+  "images/vista_KOWhwZ-8uu17bI4tOxftcA.jpg": "0d93dc044c7db29731bcddbe20e7a55643c4de81b0623aaf527a945c8dd2a12a",
+  "labels/vista_KP0rojDhsd5Br-lZcgBz_g.txt": "3bbd68cfcbccd34824332ada44de7f058e72fffa055825f4b306a2b2bd465efe",
+  "images/vista_KP0rojDhsd5Br-lZcgBz_g.jpg": "cc9b2a22d6aec58661f824a37035d5099a335abbb9ba888fcbc251c36ea5bc8e",
+  "labels/vista_LcV8zok_E0dEZm7K-hul1g.txt": "bee301af65d7d42ad3564c5f656bcd159ac3808e30edd93b7c37ae5a20b84bb6",
+  "images/vista_LcV8zok_E0dEZm7K-hul1g.jpg": "bd4c3b2e9d254e74fdf6a71e26333b5f4d417204a97cee68a0ae07a286ead793",
+  "labels/vista_cAIwgdOcvA4XejRc88MNFg.txt": "a8f5808c1639416195ee644eefe0ebb2e8642109065b904eef9043b0a685a165",
+  "images/vista_cAIwgdOcvA4XejRc88MNFg.jpg": "fad2a5775e5e39dca1da10952f5de60e11e9dbe9535ca6aaed62d3948e8500dd",
+  "labels/vista_di_5rah7DuywYiXN35evKQ.txt": "5c624e823285ad3d8ebc59c63ab268e5e3307723a4a0e5b076ca977f2876a930",
+  "images/vista_di_5rah7DuywYiXN35evKQ.jpg": "2ae977bc6fdaa2c7784c812634b17c7097d540c56d50b4d6beb7a8fe7daac086",
+  "labels/vista_eEdV7XIvgBLXkghAvHd6vw.txt": "bd152eea43f73a7b0fd1610096fa393472bbf36e04540ea3954c5482ec81dca4",
+  "images/vista_eEdV7XIvgBLXkghAvHd6vw.jpg": "ffa092779ed2cc99e4d0198c41d41ebdeb1b67ff93149f0d82ea6144339faa97",
+  "labels/vista_fQKSuuEg5PgAh3RCNDoJvw.txt": "69b2dcbf1d2ae8dca9e72e1ab9206491f78a7980834623e660c871319601b8e0",
+  "images/vista_fQKSuuEg5PgAh3RCNDoJvw.jpg": "c7a169617d715e49a6bd636258e06bd6c0db4043bd86557a7e649d29cccff4dc",
+  "labels/vista_fZvV32Qp6t3mu4e4Em11hQ.txt": "a6781b21190f399cd472198eb8f2aa6c956f45dfed88b34fd82f86dfe0d2cf01",
+  "images/vista_fZvV32Qp6t3mu4e4Em11hQ.jpg": "448317362527ff2b49b6820ecf4f121ddab8d3a3d3d10852a0169d0edbd0355b",
+  "labels/vista_fmtqC5IuvmJTa1A25H-dpw.txt": "053facbdc1f113706e0e114a655c8d5fdcf15e35d099461f8cfdb92276119e88",
+  "images/vista_fmtqC5IuvmJTa1A25H-dpw.jpg": "1303c9c19bfba7e57660000a94282957720b32dd18c71be918c8c4a55dc7421b",
+  "labels/vista_gA3k8i5vRVAoySm3UksNUw.txt": "5579a643960bc43e25347b5f6ea41ebb8953f44a8cfa8f2843fc7c3015e8407d",
+  "images/vista_gA3k8i5vRVAoySm3UksNUw.jpg": "2ad627e3dd555bf5b5dd2b35261f98d9e78d6a7ce9b6e12d87fa585dfc69944b",
+  "labels/vista_gdkWbb6uxvBA4wUInMVyBQ.txt": "3a7eff6ab95dbb6794b0c4acf20e7e2185d75c9f1ddf64b44b94d2daa0741eec",
+  "images/vista_gdkWbb6uxvBA4wUInMVyBQ.jpg": "288858b5df24d08656ea0cacd4b9105ed0c7cefa42f300d93a2178b18ddce142",
+  "labels/vista_gpb11C_uGexTyN_kHqMk3A.txt": "a952b83621ea82f5cf75710502d9ec9bdcde399768010fc255dc38642b772b0f",
+  "images/vista_gpb11C_uGexTyN_kHqMk3A.jpg": "d5a3f63b6e375f6852b2b766f329fc964d6fc7bab31b9bca0997a86238f00925",
+  "labels/vista_hQFcT1Rv2PRlVL6qzJQB3g.txt": "5030650d04af765cfd94e6cb98f83d0c45459e7abd3896f285b9cf6bff6a3b85",
+  "images/vista_hQFcT1Rv2PRlVL6qzJQB3g.jpg": "5a7cc04f0e0da594c99b766c6596b54086aef8e07e152eed4bb9b299305b8e4b",
+  "labels/vista_heowJTklyVPT8CRPQEvx3g.txt": "c13236ca6633ea91337a1d42474de56fee6eca2058d660790caca2b0eb986266",
+  "images/vista_heowJTklyVPT8CRPQEvx3g.jpg": "b619ad6a4cdc17bfe5a0076d0cb401a534bf856d22a3e5677f56297d347e94ca",
+  "labels/vista_iYh3EVtbClosNQFklmDKMg.txt": "93ef86dd71791d2711edc155c24e43b97463b64dc281d1c1fd2ab0ffc01c3e4a",
+  "images/vista_iYh3EVtbClosNQFklmDKMg.jpg": "0e8449f86b095f0636c9d6b8d1742f202916baae8665b9b360d1eec3c6a98169",
+  "labels/vista_jBreCCzISfL_1PBP8EjUAg.txt": "591669838bea2ed10f4f88eb86f4d4deb275ff84bab887c43f64abdb6864a53c",
+  "images/vista_jBreCCzISfL_1PBP8EjUAg.jpg": "f453245e4ae6259526174f9f15ae3f168d93ca333229cab00166f945ade37166",
+  "labels/vista_k5Hh3RskxyOyBfztPdFovA.txt": "8fb91b9a2b17d9ed1f63c662e3772aef5990b560642c70fc9a658db641f43625",
+  "images/vista_k5Hh3RskxyOyBfztPdFovA.jpg": "b4a218d6a78947d9cda6e596848eca345bfd1d5baf65d7b0f65687c4440a2ee7",
+  "labels/vista_k8_2u0w87pmHER0PXkBugA.txt": "d8385c323bdc4ade6a4f41359d30e8fef53712a4769a5ca91f2ae7e77e75e94c",
+  "images/vista_k8_2u0w87pmHER0PXkBugA.jpg": "0f4a8564cd5037add6064f087f2fd15d8ce15a1e2f9e1b27ff05d86e2872b975",
+  "labels/vista_kOD_Zl-l2rTDDIQm4ksCng.txt": "ddffda3724c3a7142e5d5db31182ef119e901eb1f0f4f2485bc0ea73fb79b1e0",
+  "images/vista_kOD_Zl-l2rTDDIQm4ksCng.jpg": "abb354d178ab6c1311c492b9a54b4099a73ad4b2ec6156a6a230573b355d0d96",
+  "labels/vista_kdruBIkPiZX0MjickcPMQQ.txt": "bd7f08083abea9e691dd97401241cdd900fc6ae5011c6658823a6c9120b8cc2d",
+  "images/vista_kdruBIkPiZX0MjickcPMQQ.jpg": "4f452cfe7ec721a9a11f0518e9188a5899322933093dffa7b99cc717a50382d7",
+  "labels/vista_koi27sRoPE94ukYr6gWOQg.txt": "06f87662bfe9ab596ed0cf04adac7ac4d149f82b21bc11a7714d710a3c7496f6",
+  "images/vista_koi27sRoPE94ukYr6gWOQg.jpg": "557f3f3bf0024ade9a205675db1620165f6205c009dfe78d1e31f3f186928ba5",
+  "labels/vista_l9zDO7fuLt7XNn9pTDBuFg.txt": "48ba62454a7362495ba1559af24b9f2ab5e17b4bf7feb2daa0586b1e0b20afc0",
+  "images/vista_l9zDO7fuLt7XNn9pTDBuFg.jpg": "b9dbeb1bf4dddc9600d545ea240435b07ff0e889288c0a362886867d430a8e87",
+  "labels/vista_lbFquP0VRccYnShR4RIO8w.txt": "bfc796da58b8c880aa386c67005324b801aebed014d14b09dee8e2d3cce2f999",
+  "images/vista_lbFquP0VRccYnShR4RIO8w.jpg": "703798f39ab1cbc0e297b08cd78ce8f7d226facebfe4515f9832341ff4225fa6"
+ },
+ "records": [
+  {
+   "key": "vista_1YjCK0SG4qhv8KY0-nuRbw",
+   "roi": [
+    1382,
+    338,
+    2560,
+    1290
+   ],
+   "selection": "bicyclist",
+   "parent_sha256": "43aa1b4461c9ed750fa192704f7635df2517a88607cdcf9dac12f0a314e22f90",
+   "source_mask_sha256": "05b3194645ca265ebe66088af6d445c570fac2061403c7c29c6c315b10c687b3",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/1YjCK0SG4qhv8KY0-nuRbw.jpg"
+  },
+  {
+   "key": "vista_2XfnUDVnl8MWf-UPVnAkng",
+   "roi": [
+    0,
+    0,
+    3264,
+    2448
+   ],
+   "selection": "bicyclist",
+   "parent_sha256": "ef639bcd89a7885144fe759ce2d29fd87cf67c5ff2c2c1592e52060862b6ce78",
+   "source_mask_sha256": "548d1e9ed36317445d16a95e1f52330818b38b10487d26dc839062b640a49e0c",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/2XfnUDVnl8MWf-UPVnAkng.jpg"
+  },
+  {
+   "key": "vista_2qhLc6lfG56O_1eQX4RBlw",
+   "roi": [
+    865,
+    1507,
+    1873,
+    2475
+   ],
+   "selection": "bus",
+   "parent_sha256": "6fd227ac5c0148fabbd59e18832904027242e66116b3d5f3a918c55ae024f246",
+   "source_mask_sha256": "7994cfd78b9a030ba8884e86738c28438b49553345c9db2183b3b545288fde2d",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/2qhLc6lfG56O_1eQX4RBlw.jpg"
+  },
+  {
+   "key": "vista_49yrqxpf5jzgaG0nvRs2Dg",
+   "roi": [
+    1763,
+    538,
+    3264,
+    2056
+   ],
+   "selection": "direction-front",
+   "parent_sha256": "df0eb0d7edf3c5166e20e38460e05be7e1e4d358ece58bc2dbc79c40cc50da23",
+   "source_mask_sha256": "b4382328decf30bd415823ca2254c26e232ca25d89fa2474071f9e812db088bb",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/49yrqxpf5jzgaG0nvRs2Dg.jpg"
+  },
+  {
+   "key": "vista_4SOhLdRtZvd4yu0OW7eI2w",
+   "roi": [
+    0,
+    0,
+    3264,
+    2448
+   ],
+   "selection": "bus",
+   "parent_sha256": "11a9765f8122d4e7967b93b3316915bba72035112df806659b633d3b59bba110",
+   "source_mask_sha256": "b765880d14b6f8eeff2f40c373c6b69c3bf165b0b69c6696ff12501a9be3ba8a",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/4SOhLdRtZvd4yu0OW7eI2w.jpg"
+  },
+  {
+   "key": "vista_4SUJ-7NBxri8N-9qmhL8aQ",
+   "roi": [
+    0,
+    657,
+    1833,
+    2510
+   ],
+   "selection": "motorcycle",
+   "parent_sha256": "105102cbf83fadffbbea05f4fb2660acde5573364b1a0f27db850a53f8f5a5ab",
+   "source_mask_sha256": "beeace622cf310d577cc5a13cec126180974db1c0469757552150e8f6dd5f74a",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/4SUJ-7NBxri8N-9qmhL8aQ.jpg"
+  },
+  {
+   "key": "vista_4nwhXaqbkc0CQSnONaecGg",
+   "roi": [
+    1185,
+    364,
+    3264,
+    1861
+   ],
+   "selection": "bus",
+   "parent_sha256": "7c80fc6c8e91e5851cc1226d41a280699e45334ed15742add909db39888f790b",
+   "source_mask_sha256": "379a84cd9f325274fcedf24b2a34a9ed58954a097a98c301b31df48377ecbd6e",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/4nwhXaqbkc0CQSnONaecGg.jpg"
+  },
+  {
+   "key": "vista_5F3GkvWHknzbw6i5bF6ixg",
+   "roi": [
+    882,
+    538,
+    2383,
+    2056
+   ],
+   "selection": "bus",
+   "parent_sha256": "9df29c83e3a6627e18ff5651bb77ca847e57cc8f804843974c8b1082dee42233",
+   "source_mask_sha256": "feb4dd0cb71a62ee7add52ecc39312b57b637c4483396a9980043dceb28477e5",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/5F3GkvWHknzbw6i5bF6ixg.jpg"
+  },
+  {
+   "key": "vista_7CgTC5v7XzdyZnAI4dju5Q",
+   "roi": [
+    979,
+    538,
+    3264,
+    2056
+   ],
+   "selection": "motorcyclist",
+   "parent_sha256": "8e84ef878089cef13481d606df08f4982c25ef4f6d875f8dea90b635540a2f42",
+   "source_mask_sha256": "91f7a6abc1b9533e5eb1b25eea62b9744c22a5cd5fe2049f985ea390f126aad6",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/7CgTC5v7XzdyZnAI4dju5Q.jpg"
+  },
+  {
+   "key": "vista_ECx2AvhcDEgFFcc4HXghgA",
+   "roi": [
+    490,
+    538,
+    2775,
+    2056
+   ],
+   "selection": "motorcyclist",
+   "parent_sha256": "865c3c76dcda8d16fb077a9083f6cfd9cd58842ae88d9094bbbdaf8cf71f34bf",
+   "source_mask_sha256": "604ee59c74a6174dff85596f0b0089f4355432965dd2404e77f59da094508fdf",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/ECx2AvhcDEgFFcc4HXghgA.jpg"
+  },
+  {
+   "key": "vista_EtiHSNRcVld7JaD6TH_I4Q",
+   "roi": [
+    0,
+    0,
+    3264,
+    2448
+   ],
+   "selection": "direction-front",
+   "parent_sha256": "32e614b1d1179fcba8061e0753a0cbb0df2acbc8daa3f1b7f011f2c4e1ae78cf",
+   "source_mask_sha256": "f3729e1d7a9ba96213bb66d5d578be971486c6584042a328142f37320159ebff",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/EtiHSNRcVld7JaD6TH_I4Q.jpg"
+  },
+  {
+   "key": "vista_FiBH3zmdR4X36jz2UlG1tA",
+   "roi": [
+    0,
+    0,
+    3264,
+    2448
+   ],
+   "selection": "bicyclist",
+   "parent_sha256": "3151c402371b540b8e59d4f8e15699b54a39efee7f5923f7d4de7fbf36aa5060",
+   "source_mask_sha256": "834a4dd519ff5ab25d1e1342953622f16cbec56815c158d8a518534e36dfe9b1",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/FiBH3zmdR4X36jz2UlG1tA.jpg"
+  },
+  {
+   "key": "vista_GDflkcGiPU_9yr_QRqjO_Q",
+   "roi": [
+    480,
+    264,
+    1600,
+    1008
+   ],
+   "selection": "direction-front",
+   "parent_sha256": "0796a9ce9885d7be6970cbbd148ca9bd47c4ea8a474fa62fff8da41284291c80",
+   "source_mask_sha256": "2a288657a07d15e5fdefb7576e86e036a61454232c12e774e4727458600d124f",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/GDflkcGiPU_9yr_QRqjO_Q.jpg"
+  },
+  {
+   "key": "vista_GHAJejfKl4JEzUfWucy9fw",
+   "roi": [
+    0,
+    538,
+    2285,
+    2056
+   ],
+   "selection": "direction-front",
+   "parent_sha256": "0ffe507269d4bb75b88d6416c97d689345ece80169285b0a4c567313f0eab37a",
+   "source_mask_sha256": "7249f2d6a3384e92b78555b2eed5952389dfaae939c1d3fce18de3288ece2f33",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/GHAJejfKl4JEzUfWucy9fw.jpg"
+  },
+  {
+   "key": "vista_GRikpPHAFi4SwRZ4S0hm9g",
+   "roi": [
+    490,
+    538,
+    2775,
+    2056
+   ],
+   "selection": "direction-front",
+   "parent_sha256": "ad9681eff11239f829f02a6239937ef87dbdc3c6269948783f967f82ee70ca8b",
+   "source_mask_sha256": "e8bd49886c38dac850ed70b909a9f70bbecfbb3fef88b8026dc3305beda3d313",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/GRikpPHAFi4SwRZ4S0hm9g.jpg"
+  },
+  {
+   "key": "vista_GXxTgwyU2xLib62bxtcN-A",
+   "roi": [
+    0,
+    0,
+    3264,
+    2448
+   ],
+   "selection": "direction-front",
+   "parent_sha256": "a45f53a8e5b581aef44bf7e563a38ba2bf5faa1fe81e3c973381d6d80d18645b",
+   "source_mask_sha256": "7150a6aee271fea5684300117ae2440bd1c7afc05c69a50a7a54c5c16e4a935b",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/GXxTgwyU2xLib62bxtcN-A.jpg"
+  },
+  {
+   "key": "vista_Gc3n1_vnjUzXuWPLVcaQ1Q",
+   "roi": [
+    0,
+    0,
+    3840,
+    2160
+   ],
+   "selection": "motorcyclist",
+   "parent_sha256": "c3ab1dca5b9db7c8f09a93fbfd4a633a69aaa456f709d7a74624096ac8d90ed0",
+   "source_mask_sha256": "0bc79ba1c49b637fe52a039334e15eabd85431b38816dc474d2dd72760c266b9",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/Gc3n1_vnjUzXuWPLVcaQ1Q.jpg"
+  },
+  {
+   "key": "vista_Gjawb6pYeqHxIEJNViR9RQ",
+   "roi": [
+    0,
+    0,
+    3264,
+    2448
+   ],
+   "selection": "bus",
+   "parent_sha256": "603f56758761a4d42f6d2630233d3e9b45dd6cabacc24fe3ddf5f36bf2549d43",
+   "source_mask_sha256": "e0c8a0e5680b258cfdb053d21b563f12511b9ec5549efc04073c45c790f45624",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/Gjawb6pYeqHxIEJNViR9RQ.jpg"
+  },
+  {
+   "key": "vista_Gl6VE4nGhr6gSVEKlO3UZw",
+   "roi": [
+    979,
+    538,
+    3264,
+    2056
+   ],
+   "selection": "bus",
+   "parent_sha256": "8d9c0ff9b894ab139721eb6197bb9fd247a9a8905f29498108b5c92a38759cce",
+   "source_mask_sha256": "e39b5be5d4d9824cc1e66cfa6fb76134001fbeb1c8732bc2c559b9b738d1f8dd",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/Gl6VE4nGhr6gSVEKlO3UZw.jpg"
+  },
+  {
+   "key": "vista_IR32Ac4-HM6ZODjXZQzdaA",
+   "roi": [
+    0,
+    0,
+    3264,
+    2448
+   ],
+   "selection": "motorcycle",
+   "parent_sha256": "93cb01c7b3bf0bb327f0c240c42c74c8ae73b57dee38e6717a948ebf908ff1e3",
+   "source_mask_sha256": "ec8bcb9c5c9399afbfe0a1668852545ebf456d266d80e121a93d5faa68f2dff2",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/IR32Ac4-HM6ZODjXZQzdaA.jpg"
+  },
+  {
+   "key": "vista_JN-T95IHc0-4TR8ym302zA",
+   "roi": [
+    0,
+    0,
+    4000,
+    3000
+   ],
+   "selection": "bus",
+   "parent_sha256": "5d4c58b694997e8dc6d253a0e738c45aad805963aa7a741aecae1e47b39f0d70",
+   "source_mask_sha256": "7acf345f7e29e1d1e09008be9149eeedbdb54dbdebea4259691139e94bc09242",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/JN-T95IHc0-4TR8ym302zA.jpg"
+  },
+  {
+   "key": "vista_JSrhSScrZXwkb3Ui3esCAw",
+   "roi": [
+    0,
+    0,
+    3264,
+    1836
+   ],
+   "selection": "bus",
+   "parent_sha256": "b2891f96e577123a582a0fbfb5ab806bb0156535dfdbefaa4bc4004fb31097e2",
+   "source_mask_sha256": "1d47a0b73a7b9790e280f2bab900f05a222ca7211cba729f92c2054128c1c522",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/JSrhSScrZXwkb3Ui3esCAw.jpg"
+  },
+  {
+   "key": "vista_K2hH5KpKVeR_bFmdQwlyHg",
+   "roi": [
+    979,
+    539,
+    3265,
+    2057
+   ],
+   "selection": "bus",
+   "parent_sha256": "88cb715ffa94f5441aa90132a9d58ea61a9218424029236657c3baeb6702ceb4",
+   "source_mask_sha256": "cb5d682016d3b63b7e9311e600439adcdafdb9c25d05906ee3825c0b453c7e31",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/K2hH5KpKVeR_bFmdQwlyHg.jpg"
+  },
+  {
+   "key": "vista_KOWhwZ-8uu17bI4tOxftcA",
+   "roi": [
+    288,
+    156,
+    1632,
+    989
+   ],
+   "selection": "bicycle",
+   "parent_sha256": "aa009b7ba643a7d97ad449455dd8e54e371d531e056d27600f658e14866cf22b",
+   "source_mask_sha256": "8930f4fc1cf47f0f7c3751b5b3a0865e3221c5313d7cff595f74232e20571cd0",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/KOWhwZ-8uu17bI4tOxftcA.jpg"
+  },
+  {
+   "key": "vista_KP0rojDhsd5Br-lZcgBz_g",
+   "roi": [
+    1655,
+    511,
+    2471,
+    1294
+   ],
+   "selection": "motorcyclist",
+   "parent_sha256": "2ad0757268041449f97069787fcb52515690ca0219fdc0ed470f4ef9fb969462",
+   "source_mask_sha256": "4793739658583176d1145662c187c2f7f57d7bf4eaf03daa8933275d8aa567b8",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/KP0rojDhsd5Br-lZcgBz_g.jpg"
+  },
+  {
+   "key": "vista_LcV8zok_E0dEZm7K-hul1g",
+   "roi": [
+    1104,
+    1479,
+    2076,
+    2262
+   ],
+   "selection": "motorcyclist",
+   "parent_sha256": "86aa89361174c7bb30084f4c40ae203134bfac5367bbee253f48ecfabde7f631",
+   "source_mask_sha256": "51600b0f623b345baabaaff3e002f0eda86767ab2c975e2d97ecc617305fbcf1",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/LcV8zok_E0dEZm7K-hul1g.jpg"
+  },
+  {
+   "key": "vista_cAIwgdOcvA4XejRc88MNFg",
+   "roi": [
+    0,
+    0,
+    2560,
+    1440
+   ],
+   "selection": "motorcyclist",
+   "parent_sha256": "1a8f066e4d3b9ce635a726f106f94eeb7179190da0d1d93d241e295fa64990bd",
+   "source_mask_sha256": "d7e4bac434545b8aaa104e6818f952cad4b751c7629c495f99ecff9c5f71eff3",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/cAIwgdOcvA4XejRc88MNFg.jpg"
+  },
+  {
+   "key": "vista_di_5rah7DuywYiXN35evKQ",
+   "roi": [
+    0,
+    0,
+    3840,
+    2160
+   ],
+   "selection": "bicycle",
+   "parent_sha256": "41de3fdfc9e11df8d29c1624bbe920c6bd7ddfa9f4391c537c73e6614af2e121",
+   "source_mask_sha256": "98f49632760f1a0ec579dae8f8e09fdb1eb0712ddb079155980d88560688cd37",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/di_5rah7DuywYiXN35evKQ.jpg"
+  },
+  {
+   "key": "vista_eEdV7XIvgBLXkghAvHd6vw",
+   "roi": [
+    979,
+    538,
+    3264,
+    2056
+   ],
+   "selection": "bicyclist",
+   "parent_sha256": "a56cf7d76773840f61b7f1473866a179bda2c6fd05e8290cb7bcc5ebf767fa0b",
+   "source_mask_sha256": "584f320e1d33e31fc8a8c907dd50cc4796877cb64a3a409cc04102533d8e2e0f",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/eEdV7XIvgBLXkghAvHd6vw.jpg"
+  },
+  {
+   "key": "vista_fQKSuuEg5PgAh3RCNDoJvw",
+   "roi": [
+    0,
+    426,
+    1192,
+    1626
+   ],
+   "selection": "direction-front",
+   "parent_sha256": "7cbf6eec7b1feeeb5580d3747d76754359b6df032296890b05c265b6b3ffee92",
+   "source_mask_sha256": "7394b08c317e31ac3a4968c9cdb16923bbb26fbd413253b4e1fd3dc0d987780e",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/fQKSuuEg5PgAh3RCNDoJvw.jpg"
+  },
+  {
+   "key": "vista_fZvV32Qp6t3mu4e4Em11hQ",
+   "roi": [
+    0,
+    1130,
+    816,
+    1913
+   ],
+   "selection": "bicyclist",
+   "parent_sha256": "d03d71a890decc71a3d4d98b7e56375c69f62805ac98e156aca50f42e731640b",
+   "source_mask_sha256": "79f24e86389b112d6b8d7545a0aea8d684f5a43d78917d9e9b3da2ba057dbbc9",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/fZvV32Qp6t3mu4e4Em11hQ.jpg"
+  },
+  {
+   "key": "vista_fmtqC5IuvmJTa1A25H-dpw",
+   "roi": [
+    0,
+    0,
+    3984,
+    2988
+   ],
+   "selection": "direction-front",
+   "parent_sha256": "106bc18d39241c50ccde70f0614697004b25369641ae276f490418a5f209d6c3",
+   "source_mask_sha256": "b68e024ada3d77025467754d2e00b25e01bc486449bda9f2437573790cac0253",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/fmtqC5IuvmJTa1A25H-dpw.jpg"
+  },
+  {
+   "key": "vista_gA3k8i5vRVAoySm3UksNUw",
+   "roi": [
+    0,
+    0,
+    2048,
+    1536
+   ],
+   "selection": "motorcycle",
+   "parent_sha256": "f10953d8f400ebc0a748053a19bf1321599d1b53cb1eff0e286d1109dfe11819",
+   "source_mask_sha256": "64ea4f70ea83d1ff5baa7d8f57c8998a774d457082cafcfa9faecfac9f8faf2e",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/gA3k8i5vRVAoySm3UksNUw.jpg"
+  },
+  {
+   "key": "vista_gdkWbb6uxvBA4wUInMVyBQ",
+   "roi": [
+    1763,
+    404,
+    3264,
+    1542
+   ],
+   "selection": "motorcycle",
+   "parent_sha256": "01c2500a5f1dc32b4f67df312dacf9f5414d4a321227c13bc1b2c938d2c19885",
+   "source_mask_sha256": "5490d5455898d978e874f52ca7caea3bf5dee533eba0c65520a6ff969316009c",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/gdkWbb6uxvBA4wUInMVyBQ.jpg"
+  },
+  {
+   "key": "vista_gpb11C_uGexTyN_kHqMk3A",
+   "roi": [
+    0,
+    0,
+    2048,
+    1536
+   ],
+   "selection": "bus",
+   "parent_sha256": "34605741f0fba08a7badcbe766a1fb10ce8010bd4e744aa60b7ed4694f2e49ec",
+   "source_mask_sha256": "fefef041caa2645d547cc7c41177cc33e0a77ef2ace9efe5118e819e28465928",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/gpb11C_uGexTyN_kHqMk3A.jpg"
+  },
+  {
+   "key": "vista_hQFcT1Rv2PRlVL6qzJQB3g",
+   "roi": [
+    0,
+    538,
+    1501,
+    2056
+   ],
+   "selection": "bicyclist",
+   "parent_sha256": "be4c42569c0f95cbe440d2fde281ef1250fa5ff43d53e96510c7ec52734f7e53",
+   "source_mask_sha256": "bcc9682ff56390cc6c593c13161676e6b2fa3e263f483f34e714183243c72cab",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/hQFcT1Rv2PRlVL6qzJQB3g.jpg"
+  },
+  {
+   "key": "vista_heowJTklyVPT8CRPQEvx3g",
+   "roi": [
+    882,
+    538,
+    2383,
+    2056
+   ],
+   "selection": "direction-front",
+   "parent_sha256": "984b409d8573770cd9ee8d6bde41f697843281246716a5965f746dc75266b9a1",
+   "source_mask_sha256": "cdb3a466717e2d12039c5d37777cf5b71c13ccad17de638b39d33165d759b42e",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/heowJTklyVPT8CRPQEvx3g.jpg"
+  },
+  {
+   "key": "vista_iYh3EVtbClosNQFklmDKMg",
+   "roi": [
+    0,
+    538,
+    1501,
+    2056
+   ],
+   "selection": "motorcyclist",
+   "parent_sha256": "0097154333be4d500c98d2110b3ca76f3b2d93215c463312dcfae2cb71d3f7b5",
+   "source_mask_sha256": "44305f876d2d38905206a5911c5699905ec1b685368c55a2e362d2f007204445",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/iYh3EVtbClosNQFklmDKMg.jpg"
+  },
+  {
+   "key": "vista_jBreCCzISfL_1PBP8EjUAg",
+   "roi": [
+    1152,
+    311,
+    3840,
+    1978
+   ],
+   "selection": "bicyclist",
+   "parent_sha256": "80c378807e59a3ec948a3538c1d0c70f6783093b1b4b31df7c1c5d132d2e5f66",
+   "source_mask_sha256": "67b9516b26a108c7cb2867f3142c7aea362ecf9eb3ca0d5846dda0ac709749d7",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/jBreCCzISfL_1PBP8EjUAg.jpg"
+  },
+  {
+   "key": "vista_k5Hh3RskxyOyBfztPdFovA",
+   "roi": [
+    0,
+    0,
+    3264,
+    2448
+   ],
+   "selection": "bicycle",
+   "parent_sha256": "d9f211afd71e1a728ab1c3a46731129050d5232aa4f54cd1cc0fee4436da7671",
+   "source_mask_sha256": "5adb47e15e930a460c941fe0fdf9be8421fb3564292d841f9aadf8925f69a6af",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/k5Hh3RskxyOyBfztPdFovA.jpg"
+  },
+  {
+   "key": "vista_k8_2u0w87pmHER0PXkBugA",
+   "roi": [
+    211,
+    542,
+    1219,
+    1510
+   ],
+   "selection": "bicyclist",
+   "parent_sha256": "0fef0c43f2a48437de1233e5e8f44cd108d0a07e68b3cccea3c67384e4a54694",
+   "source_mask_sha256": "eb33df5ae9ce550fb979c3bbdeaacbe92de27367b2d307337f530f30ec25658a",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/k8_2u0w87pmHER0PXkBugA.jpg"
+  },
+  {
+   "key": "vista_kOD_Zl-l2rTDDIQm4ksCng",
+   "roi": [
+    0,
+    156,
+    1344,
+    989
+   ],
+   "selection": "motorcycle",
+   "parent_sha256": "187343c30e297a5d2ab2be97cb1d8a85e3697be489a50f67e10d3268c6b45226",
+   "source_mask_sha256": "cdb7f5de8f6e3fb0fa1d99255cd327b751d8455b315c76e900a2fbadba0939b8",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/kOD_Zl-l2rTDDIQm4ksCng.jpg"
+  },
+  {
+   "key": "vista_kdruBIkPiZX0MjickcPMQQ",
+   "roi": [
+    700,
+    426,
+    1892,
+    1626
+   ],
+   "selection": "motorcyclist",
+   "parent_sha256": "10ae04f84b36684b1e8b1684770df5922010d90a3cf7a66b13004f103fc87d81",
+   "source_mask_sha256": "5c290fbf95b1e8a6d668dcdb4c14acd77b286d52ba8b33100800421f56ea70c6",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/kdruBIkPiZX0MjickcPMQQ.jpg"
+  },
+  {
+   "key": "vista_koi27sRoPE94ukYr6gWOQg",
+   "roi": [
+    0,
+    0,
+    3456,
+    2592
+   ],
+   "selection": "motorcyclist",
+   "parent_sha256": "25ad4d871716a5bd97b775f36256190447ce6625d0bab23b40410593578c5d9c",
+   "source_mask_sha256": "d7867af62bbb21efdc521272de01ec8d9cbaed40d702fdca4b857b1faa84c687",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/koi27sRoPE94ukYr6gWOQg.jpg"
+  },
+  {
+   "key": "vista_l9zDO7fuLt7XNn9pTDBuFg",
+   "roi": [
+    0,
+    0,
+    3264,
+    2448
+   ],
+   "selection": "motorcycle",
+   "parent_sha256": "7b5e3533a375b2008f88d95beb8bcc8b9582cc5cd66e174dfb4cf61023df0a78",
+   "source_mask_sha256": "d4e649783ca6fef2858d2eec27cd3e1be9d59e12bcdb2a5b429573a775a7afbe",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/l9zDO7fuLt7XNn9pTDBuFg.jpg"
+  },
+  {
+   "key": "vista_lbFquP0VRccYnShR4RIO8w",
+   "roi": [
+    0,
+    423,
+    1792,
+    1613
+   ],
+   "selection": "motorcyclist",
+   "parent_sha256": "802909667b2e40223e54008c5f36410e40f4053d0c73728dc6cf79d6b2cc60d1",
+   "source_mask_sha256": "884a4d52c3c8f97c6b341d53240e47d9975b2fbf28a7e4ce2b1395a1df6f8b11",
+   "source_url": "https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/resolve/16ce879b802c3873a1a9e0da4113de0db1b522bf/training/images/lbFquP0VRccYnShR4RIO8w.jpg"
+  }
+ ],
+ "source": "https://www.mapillary.com/dataset/vistas",
+ "license": "CC BY-NC-SA 4.0",
+ "revision": "16ce879b802c3873a1a9e0da4113de0db1b522bf",
+ "raw_instances_by_class": [
+  297,
+  23,
+  13,
+  0,
+  20,
+  23,
+  17,
+  14,
+  68,
+  272,
+  158
+ ],
+ "reviewed": 91,
+ "approved_visual": 61,
+ "after_scene_exclusion": 46,
+ "scene_report_sha256": "44a1fa169738b616a10d68f13f981c1113c1e12005c637d946c6821f2ef30455",
+ "reference_train_sha256": "3cf51625f61792c51914e5f3a661f25abe4d5380f69c1f8f4c3cc3d2329afc0d",
+ "checked_class3_holdout": "9e518defa9f4567814bd7f7d9a472130c3a0c7f05e0f54b6488e5bc6b2d4c0b0"
+}

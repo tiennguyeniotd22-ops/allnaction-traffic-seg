@@ -1,0 +1,159 @@
+{
+ "scope": "All 17 validation-versus-train-or-candidate flags from the original SIFT pass. Visual checks compare scene geometry, location cues and camera view. This review cannot establish global independence of every scene.",
+ "source_sha256": "df375926c4a22cdd009e35c96cfd0cb1fc80702d1e825a7816d9182ba447325c",
+ "pairs": [
+  {
+   "a": "images/train/bdd_daytime_000168.jpg",
+   "b": "images/val/bdd_rainy_000233.jpg",
+   "inliers": 11,
+   "fraction": 0.44,
+   "review": "Open, divided highway versus a city street with a painted zebra crossing.",
+   "decision": "different visible scenes",
+   "train_exposure": "original training split"
+  },
+  {
+   "a": "images/train/bdd_night_000232.jpg",
+   "b": "images/val/bdd_rainy_000718.jpg",
+   "inliers": 8,
+   "fraction": 0.471,
+   "review": "Dry intersection with broad white crosswalk bars versus a wet road with a right-turn arrow. Storefronts and lane markings differ.",
+   "decision": "different visible scenes",
+   "train_exposure": "original training split"
+  },
+  {
+   "a": "images/train/bdd_night_000232.jpg",
+   "b": "images/val/bdd_night_000045.jpg",
+   "inliers": 9,
+   "fraction": 0.692,
+   "review": "Wide zebra crossing and red car ahead versus traffic queues, a taxi and a different storefront layout.",
+   "decision": "different visible scenes",
+   "train_exposure": "original training split"
+  },
+  {
+   "a": "images/train/vn_sign_7adc8cef102c613d5f.jpg",
+   "b": "images/val/vn_sign_59026f492dae7cdf63.jpg",
+   "inliers": 8,
+   "fraction": 0.4,
+   "review": "Overhead blue direction signs versus a vertical restriction sign beside a building facade.",
+   "decision": "different visible scenes",
+   "train_exposure": "original training split"
+  },
+  {
+   "a": "images/train/vn_sign_f24776df551552d6fd.jpg",
+   "b": "images/val/zz_drive_000000424162.jpg",
+   "inliers": 9,
+   "fraction": 0.409,
+   "review": "Roadside Vietnamese signs versus cyclists and a dog in an open paved space.",
+   "decision": "different visible scenes",
+   "train_exposure": "original training split"
+  },
+  {
+   "a": "images/train/zz_drive_000000015440.jpg",
+   "b": "images/val/zz_drive_000000011197.jpg",
+   "inliers": 9,
+   "fraction": 0.391,
+   "review": "Stop sign at sunset beside a railing versus a person and intersection in daylight.",
+   "decision": "different visible scenes",
+   "train_exposure": "original training split"
+  },
+  {
+   "a": "images/train/zz_drive_000000119516.jpg",
+   "b": "images/val/bdd_daytime_000073.jpg",
+   "inliers": 13,
+   "fraction": 0.812,
+   "review": "Curved illuminated high-rise and pedestrian street versus highway flyovers photographed in daylight.",
+   "decision": "different visible scenes",
+   "train_exposure": "original training split"
+  },
+  {
+   "a": "images/train/zz_drive_000000166391.jpg",
+   "b": "images/val/bdd_rainy_000681.jpg",
+   "inliers": 12,
+   "fraction": 0.545,
+   "review": "Open intersection with suspended signals versus a rain-covered residential road.",
+   "decision": "different visible scenes",
+   "train_exposure": "original training split"
+  },
+  {
+   "a": "images/train/zz_drive_000000260266.jpg",
+   "b": "images/val/bdd_rainy_000433.jpg",
+   "inliers": 8,
+   "fraction": 0.615,
+   "review": "Signal on a tall pole against blue sky versus downtown traffic queues and construction.",
+   "decision": "different visible scenes",
+   "train_exposure": "original training split"
+  },
+  {
+   "a": "images/val/bdd_daytime_000073.jpg",
+   "b": "images/train/zz_drive_000000542625.jpg",
+   "inliers": 9,
+   "fraction": 0.391,
+   "review": "Highway flyover and distant gantry versus a bird and a taxi in an urban intersection.",
+   "decision": "different visible scenes",
+   "train_exposure": "original training split"
+  },
+  {
+   "a": "images/val/bdd_night_000093.jpg",
+   "b": "images/train/bdd_night_000191.jpg",
+   "inliers": 8,
+   "fraction": 0.571,
+   "review": "Striped crosswalk at a lit intersection versus dark road with double yellow center line and parked cars.",
+   "decision": "different visible scenes",
+   "train_exposure": "original training split"
+  },
+  {
+   "a": "images/val/bdd_rainy_000062.jpg",
+   "b": "images/train/bdd_night_000131.jpg",
+   "inliers": 8,
+   "fraction": 0.615,
+   "review": "Wet shopping street with lights reflected off pavement versus multi-lane approach under green lights.",
+   "decision": "different visible scenes",
+   "train_exposure": "original training split"
+  },
+  {
+   "a": "images/val/vn_sign_a6d624dd1f1c263af1.jpg",
+   "b": "vn012",
+   "inliers": 9,
+   "fraction": 0.321,
+   "review": "Similar sign/viaduct corridor, insufficient evidence of independence; candidate absent from E2 retained list.",
+   "decision": "exclude candidate",
+   "train_exposure": "candidate excluded"
+  },
+  {
+   "a": "images/val/vn_sign_cf60aa3c194b460e9b.jpg",
+   "b": "vn035",
+   "inliers": 13,
+   "fraction": 0.481,
+   "review": "Similar elevated-road corridor; excluded candidate absent from E2 retained list.",
+   "decision": "exclude candidate",
+   "train_exposure": "candidate excluded"
+  },
+  {
+   "a": "images/val/zz_drive_000000266981.jpg",
+   "b": "co250",
+   "inliers": 9,
+   "fraction": 0.692,
+   "review": "Different bus locations, street setting and surrounding buildings; candidate absent from E2 retained list.",
+   "decision": "different visible scenes",
+   "train_exposure": "candidate excluded"
+  },
+  {
+   "a": "vn014",
+   "b": "images/val/vn_sign_4e5414ada444373fc9.jpg",
+   "inliers": 8,
+   "fraction": 0.444,
+   "review": "Likely same elevated-road corridor, candidate excluded and absent from E2 retained list.",
+   "decision": "exclude candidate",
+   "train_exposure": "candidate excluded"
+  },
+  {
+   "a": "co024",
+   "b": "images/val/bdd_daytime_000165.jpg",
+   "inliers": 8,
+   "fraction": 0.4,
+   "review": "Bus in a depot versus a taxi on a multi-lane highway surrounded by offices.",
+   "decision": "different visible scenes",
+   "train_exposure": "retained"
+  }
+ ]
+}

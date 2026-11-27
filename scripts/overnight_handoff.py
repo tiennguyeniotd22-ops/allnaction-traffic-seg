@@ -160,10 +160,14 @@ def main():
         lines.insert(lines.index("## Tái lập") + 2, f"Checkpoint được chọn ở cuối epoch {snap}.\n")
     if "reuses_fit_from" in resource:
         extraction = (
-            f'.venv/bin/python "$SCRIPTS/overnight_last_checkpoint.py" overnight/replay-{best} '
+            f'.venv/bin/python "select-{best}.py" overnight/replay-{best} '
             f'overnight/replay-{best}-selected train_and_export.ipynb audit_phase12/validation-manifest.json'
         )
-        lines.insert(lines.index("```", lines.index("## Tái lập")), extraction + (f" --epoch {snap}" if snap else ""))
+        end = lines.index("```", lines.index("## Tái lập"))
+        lines[end:end] = [
+            f'git -C "replay-code-{best}" show 8f8c648a0d266f7f6afc79024e9ac3a0ec84979f:scripts/overnight_last_checkpoint.py > "select-{best}.py"',
+            extraction + (f" --epoch {snap}" if snap else ""),
+        ]
     for name, sha in {**checks, "model.onnx":entry["onnx_sha256"], "dataset.zip":resource["dataset_sha256"],
                       "notebook":resource["notebook_sha256"], "weights khởi tạo":resource["initial_weights_sha256"]}.items():
         lines.append(f"| {name} | `{sha}` |")

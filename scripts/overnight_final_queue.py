@@ -141,9 +141,32 @@ def main():
                 raise
             print(f"{name} excluded pending verification, exit {exc.returncode}: {exc.cmd}", flush=True)
     scores = {name: value for name in PILOTS if (value := verified(name)) is not None}
+    versions = dict(PILOTS)
+    # Native validation selects the parent best.pt. Its retained last.pt can score
+    # differently after official export. Compare the final epoch of each reviewed pilot.
+    for parent in ("e3-riderqc20", "e3-signqc-sgd20"):
+        if parent not in scores:
+            continue
+        candidate = "last-" + parent
+        run = ROOT / candidate
+        env = dict(os.environ, CUDA_VISIBLE_DEVICES="", OPENBLAS_NUM_THREADS="1", OMP_NUM_THREADS="1", MKL_NUM_THREADS="1")
+        with (ROOT / (candidate + "-export.log")).open("a") as log:
+            subprocess.run([PYTHON, CODE / "overnight_last_checkpoint.py", ROOT / parent, run,
+                            "train_and_export.ipynb", "audit_phase12/validation-manifest.json"],
+                           check=True, env=env, stdout=log, stderr=subprocess.STDOUT)
+        if not (run / "run_report.json").is_file():
+            assert read(run / "checkpoint-selection.json")["identical_tensors"]
+            continue
+        if read(run / "run_report.json")["val_estimate"]["map50_95"] <= max(scores.values()):
+            continue
+        resource = read(ROOT / parent / "resources.json")
+        train_and_score(candidate, PILOTS[parent], parent, resource["experiment"], resource["revision"], 20, 20)
+        scores[candidate] = verified(candidate)
+        versions[candidate] = PILOTS[parent]
     best = max(scores, key=scores.get)
     recipe = read(ROOT / best / "resources.json").get("experiment", "control")
-    assert read(ROOT / best / "resources.json")["dataset_sha256"] == DATA[PILOTS[best]]
+    version = versions[best]
+    assert read(ROOT / best / "resources.json")["dataset_sha256"] == DATA[version]
     with (ROOT / best / "runs/train/results.csv").open() as f:
         times = [float(r["time"]) for r in csv.DictReader(f)]
     per_epoch = statistics.median(b - a for a, b in zip(times, times[1:]))
@@ -152,7 +175,7 @@ def main():
     if epochs < 25:
         raise RuntimeError(f"Insufficient time for E7 ({epochs} epochs)")
     decision = dict(pilot=best, pilot_scores=scores, metric="official ONNX val140 mask mAP50-95",
-                    version=PILOTS[best], recipe=recipe, dataset_sha256=DATA[PILOTS[best]], epochs=epochs,
+                    version=version, recipe=recipe, dataset_sha256=DATA[version], epochs=epochs,
                     patience=25, median_epoch_seconds=per_epoch, deadline=args.deadline, revision=args.revision)
     decision["snapshot_interval_epochs"] = 20
     print(json.dumps(decision), flush=True)
@@ -160,7 +183,7 @@ def main():
     if plan.exists() and read(plan) != decision:
         raise RuntimeError("Existing E7 selection differs")
     plan.write_text(json.dumps(decision, indent=2))
-    train_and_score("e7-final", PILOTS[best], best, recipe, args.revision, epochs, 25, final=True)
+    train_and_score("e7-final", version, best, recipe, args.revision, epochs, 25, final=True)
 
 
 if __name__ == "__main__":

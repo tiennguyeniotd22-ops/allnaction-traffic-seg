@@ -19,6 +19,9 @@ Các số dưới đây là điểm mask trên thang 100. 140 ảnh gồm 60 ả
 | E5 mask ratio 4 | 1.113 | 20 | 23,20 | 40,25 | 23,30 | 16,52 | 21,72 | 21,45 |
 | E6 AdamW lr0 0,0007 | 1.113 | 20 | 23,57 | 41,13 | 23,47 | 19,13 | 22,41 | 22,93 |
 | E3 thêm Mapillary | 1.411 | 20 | 23,07 | 40,21 | 23,44 | 17,50 | 22,56 | 20,70 |
+| E6 lịch learning rate tuyến tính | 1.113 | 20 | 22,74 | 39,57 | 23,29 | 18,16 | 22,59 | 20,69 |
+
+Ở ngưỡng confidence 0,25 và mask IoU 0,50, E6 AdamW nhận đúng 10/54 xe máy trống, 10/44 xe đạp trống, 10/33 xe đạp có người và 41/152 biển báo. Khi xét riêng từng nhãn chuẩn, có thêm 70 biển với mask đúng lớp và IoU đủ nhưng confidence thấp hơn 0,25. Đếm TP dùng ghép cặp một-một của evaluator. Mỗi AP tích lũy kết quả qua các ngưỡng confidence. Trên tập chẩn đoán Mapillary46, E6 AdamW đạt 22,51 và E3 Mapillary đạt 24,19. [Lỗi E6](experiments/overnight/errors-e6-lowerlr20.json) · [Lỗi vòng 4](experiments/overnight/errors-control100.json) · [Kết quả Mapillary46](experiments/overnight/probe-scores.json)
 
 E6 giảm riêng learning rate ban đầu so với E3 taxonomy và tăng 0,76 điểm trên val140. Khoảng bootstrap ghép cặp 95% từ −0,77 đến +2,25 điểm. L4 mất 692,6 giây cho fit và native validation, đỉnh bộ nhớ PyTorch cấp phát 4.992 MiB. Holdout lớp 3 đạt 51,32 AP. Điểm E3 thêm Mapillary cao hơn E3 BDD 0,45 điểm, khoảng 95% từ −0,81 đến +1,68. Holdout lớp 3 của Mapillary đạt 43,99 AP.
 

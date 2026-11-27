@@ -169,5 +169,119 @@
   "probe_sha256": "cf990065d5f00c2cbc364d9f273c3adc3214cfd74b8ab7a2f2d19242bac835ca",
   "manifest_sha256": "46711918dca2800f4ed8f0ff7cc580d3764b2c2d6d432aa3e0411f9280cb681e",
   "notebook_sha256": "83e498336ed0a6081753ae49dc1dc2b93ca4066e28515a3204c799a9904876fd"
+ },
+ "e6-lowerlr20": {
+  "score": 22.511206903172457,
+  "map50": 0.3639147577275527,
+  "map75": 0.23160135533163012,
+  "map50_95": 0.22511206903172457,
+  "per_class_ap": {
+   "Car": 0.47312646129557034,
+   "Bus": 0.2501796343985705,
+   "Truck": 0.1937135952366607,
+   "Motorcycle": 0.23691163233970455,
+   "Motorcyclist": 0.2555320500994199,
+   "Bicycle": 0.053114311431143105,
+   "Cyclist": 0.3076100110011001,
+   "Pedestrian": 0.14361596908973256,
+   "Sign": 0.15395702753606091,
+   "Traffic light": 0.18335999788928287
+  },
+  "per_class_ap50": {
+   "Car": 0.7164998830959807,
+   "Bus": 0.3214664372017611,
+   "Truck": 0.25092647847804195,
+   "Motorcycle": 0.41875364006988935,
+   "Motorcyclist": 0.42485804481069234,
+   "Bicycle": 0.10774077407740772,
+   "Cyclist": 0.5611936193619362,
+   "Pedestrian": 0.26742189468217026,
+   "Sign": 0.23336227851775607,
+   "Traffic light": 0.3369245269798916
+  },
+  "n_images": 46,
+  "n_gt_per_class": {
+   "Car": 213,
+   "Bus": 22,
+   "Truck": 11,
+   "Other vehicle": 0,
+   "Motorcycle": 14,
+   "Motorcyclist": 19,
+   "Bicycle": 15,
+   "Cyclist": 13,
+   "Pedestrian": 36,
+   "Sign": 126,
+   "Traffic light": 87
+  },
+  "n_gt_ignored": 349,
+  "classes_without_gt": [
+   "Other vehicle"
+  ],
+  "n_detections": 4600,
+  "warnings": [
+   "class 'Other vehicle' has no ground truth in this split and is excluded from the mean"
+  ],
+  "by_source": {},
+  "zip_sha256": "96dc340b539491d72eb4f7c8ff2289b4a1eeccd51d38b538afb5ad507503bee9",
+  "probe_sha256": "cf990065d5f00c2cbc364d9f273c3adc3214cfd74b8ab7a2f2d19242bac835ca",
+  "manifest_sha256": "46711918dca2800f4ed8f0ff7cc580d3764b2c2d6d432aa3e0411f9280cb681e",
+  "notebook_sha256": "83e498336ed0a6081753ae49dc1dc2b93ca4066e28515a3204c799a9904876fd"
+ },
+ "e3-vistas20": {
+  "score": 24.187446228507614,
+  "map50": 0.3992337233191369,
+  "map75": 0.2531862147435541,
+  "map50_95": 0.24187446228507614,
+  "per_class_ap": {
+   "Car": 0.4638373864832813,
+   "Bus": 0.2533003300330033,
+   "Truck": 0.18292002871546995,
+   "Motorcycle": 0.25378955542613085,
+   "Motorcyclist": 0.28857143985075195,
+   "Bicycle": 0.0669091833475645,
+   "Cyclist": 0.3658885503935009,
+   "Pedestrian": 0.12819934630118118,
+   "Sign": 0.22249089661813648,
+   "Traffic light": 0.19283790568174072
+  },
+  "per_class_ap50": {
+   "Car": 0.7191540432143932,
+   "Bus": 0.3248709486333249,
+   "Truck": 0.24174882687931332,
+   "Motorcycle": 0.4283634245777519,
+   "Motorcyclist": 0.5142428528567142,
+   "Bicycle": 0.117707715472008,
+   "Cyclist": 0.6453604975882203,
+   "Pedestrian": 0.2716685481272195,
+   "Sign": 0.3505883580293535,
+   "Traffic light": 0.37863201781307065
+  },
+  "n_images": 46,
+  "n_gt_per_class": {
+   "Car": 213,
+   "Bus": 22,
+   "Truck": 11,
+   "Other vehicle": 0,
+   "Motorcycle": 14,
+   "Motorcyclist": 19,
+   "Bicycle": 15,
+   "Cyclist": 13,
+   "Pedestrian": 36,
+   "Sign": 126,
+   "Traffic light": 87
+  },
+  "n_gt_ignored": 349,
+  "classes_without_gt": [
+   "Other vehicle"
+  ],
+  "n_detections": 4600,
+  "warnings": [
+   "class 'Other vehicle' has no ground truth in this split and is excluded from the mean"
+  ],
+  "by_source": {},
+  "zip_sha256": "2b72787be43a07cd8e3b0bde7bc11d1ffb0429e02549d68920990fa0a714d5d3",
+  "probe_sha256": "cf990065d5f00c2cbc364d9f273c3adc3214cfd74b8ab7a2f2d19242bac835ca",
+  "manifest_sha256": "46711918dca2800f4ed8f0ff7cc580d3764b2c2d6d432aa3e0411f9280cb681e",
+  "notebook_sha256": "83e498336ed0a6081753ae49dc1dc2b93ca4066e28515a3204c799a9904876fd"
  }
 }

@@ -129,5 +129,62 @@
    "last_tensors_sha256": "c7cdfbd2c90f8292272d8ea829e6ecbdb3196b9324359dbc7122b686f09108c8",
    "identical_tensors": true
   }
+ },
+ "last-e6-lowerlr20": {
+  "checkpoint_selection": {
+   "parent_submission_sha256": "96dc340b539491d72eb4f7c8ff2289b4a1eeccd51d38b538afb5ad507503bee9",
+   "parent_weights_sha256": "29bf020543d8d5f45ca8c09e24aac4ccec03301b7f096060ae36e7eff0ee112f",
+   "parent_tensors_sha256": "bf4a611bf3f6316faedee87930ca4ec44f09922e36e1c95b8dac66c550d5d683",
+   "last_sha256": "7c0a32d26dc4b50289c33b46b7942b741f946d8de39685f963795f32da8598ea",
+   "last_tensors_sha256": "bf4a611bf3f6316faedee87930ca4ec44f09922e36e1c95b8dac66c550d5d683",
+   "identical_tensors": true
+  }
+ },
+ "last-e3-vistas20": {
+  "checkpoint_selection": {
+   "parent_submission_sha256": "2b72787be43a07cd8e3b0bde7bc11d1ffb0429e02549d68920990fa0a714d5d3",
+   "parent_weights_sha256": "3c247d68c4c7d447d7678ecb7771371b27a17a74feec89db9e8d56555890806a",
+   "parent_tensors_sha256": "c1e4e6c5df4243f46a02b7f714eadce6a365198fbc38fc1f73a03cf31728276d",
+   "last_sha256": "b34edb9163d920811c882a9c531cb08090d6725f8aeb7881de5d9f24dac00ac5",
+   "last_tensors_sha256": "b41f8cb35a059ce4999a0c6e96cf10641bcbf665236d3fcc70c741c34b0ed7e1",
+   "identical_tensors": false
+  },
+  "val_estimate": {
+   "latency_ms_p50": 126.99336100195069,
+   "map50": 0.41085259554656267,
+   "map50_95": 0.2326495504799307,
+   "n_images": 140,
+   "note": "Official ONNX self-check on the frozen team validation split.",
+   "per_class_ap": {
+    "Bicycle": 0.1146204957307364,
+    "Bus": 0.3999328506326059,
+    "Car": 0.38251115944259684,
+    "Cyclist": 0.13651245624277503,
+    "Motorcycle": 0.07119010681599165,
+    "Motorcyclist": 0.35462120061038865,
+    "Pedestrian": 0.24138532276328006,
+    "Sign": 0.26918234918870176,
+    "Traffic light": 0.15440791614100075,
+    "Truck": 0.20213164723122987
+   },
+   "score_x100": 23.26495504799307
+  },
+  "submission": {
+   "entries": [
+    "model.onnx"
+   ],
+   "zip_bytes": 9664504,
+   "zip_sha256": "54fede290f7ea5b17832af24f8fab909b7fe0128d38aeeaa4c88b7b057334cbf"
+  }
+ },
+ "last-e5-mask420": {
+  "checkpoint_selection": {
+   "parent_submission_sha256": "eb1efe61f3d9d8b1c99bf91fe1050a3ec131df405f53f7125e4db769178dbc0e",
+   "parent_weights_sha256": "e69e6f12d7ef2d25c4a3da9e61ed6ee744c60af12f25342a5c06b35773cd8f15",
+   "parent_tensors_sha256": "1be55ff1e0aedd6c44a65017f143705ff0af5265a90604671518e76d30b3aaad",
+   "last_sha256": "03b6374ad5b6493a0dd85866b02885cc96fd21bbe65574deb463effd770400ea",
+   "last_tensors_sha256": "1be55ff1e0aedd6c44a65017f143705ff0af5265a90604671518e76d30b3aaad",
+   "identical_tensors": true
+  }
  }
 }

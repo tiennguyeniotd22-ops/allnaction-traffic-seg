@@ -184,9 +184,10 @@ def main():
     p=argparse.ArgumentParser()
     p.add_argument("kind",choices=("kitti","muses"));p.add_argument("root",type=Path);p.add_argument("out",type=Path)
     p.add_argument("--workers",type=int,default=4)
+    p.add_argument("--index",type=Path,help="Use a verified snapshot of complete pairs")
     a=p.parse_args()
     for name in ("images","labels","views"):(a.out/name).mkdir(parents=True,exist_ok=True)
-    records=json.loads((a.root/"index.json").read_text())["records"]
+    records=json.loads((a.index or a.root/"index.json").read_text())["records"]
     with ProcessPoolExecutor(a.workers) as pool:
         result=list(pool.map(process,records,repeat(a.kind),repeat(a.root),repeat(a.out),chunksize=3))
     (a.out/"manifest.json").write_text(json.dumps(result,indent=1))

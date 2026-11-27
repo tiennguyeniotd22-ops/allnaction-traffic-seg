@@ -9,6 +9,12 @@ Các số dưới đây là điểm mask trên thang 100. 140 ảnh gồm 60 ả
 | Vòng 4 | 640 | 100 | 22,01 | 38,72 | 22,50 | 18,79 | 23,96 | 18,19 |
 | E1 geometry100 | 640 | 100 | 22,10 | 39,24 | 21,38 | 15,96 | 22,35 | 19,04 |
 | E2 pilot | 802 | 20 | 21,14 | 37,89 | 20,61 | 15,29 | 19,59 | 19,64 |
+| E2 full | 802 | 88/100 | 21,73 | 38,97 | 21,21 | 14,83 | 21,07 | 19,97 |
+| E3 Việt Nam | 834 | 20 | 21,25 | 37,06 | 20,59 | 16,54 | 19,83 | 19,36 |
+
+E2 full chọn trọng số ở epoch 63 rồi dừng sớm ở epoch 88. So với vòng 4, chênh lệch trên 140 ảnh là −0,28 điểm, khoảng bootstrap ghép cặp 95% từ −1,92 đến +1,81. Trên holdout độc lập có 7 đối tượng thuộc 3 nhóm cảnh, E2 full đạt 65,52 AP và 76,49 AP50 cho lớp Other vehicle. Tập Việt Nam 15 ảnh giảm 3,96 điểm so với vòng 4. ZIP E2 full có SHA-256 `f30726d608fb6a829fd4d8b79f511c8e18ff5a2ef556760ac7e8c96fd3fdd5c9`.
+
+E3 Việt Nam thêm 7 crop camera và 25 crop biển vào E2. Ở cùng 20 epoch, chênh lệch mAP toàn tập là +0,11 điểm, khoảng bootstrap 95% từ −1,12 đến +1,43. Trên 15 ảnh Việt Nam, mAP tăng 1,25 điểm. Holdout lớp 3 đạt 49,30 AP và 61,71 AP50. Đã kiểm tra SHA-256 ZIP `7edf062d8dab458fcafecfc805f4f10a0679818fdd1f5eac3785c718ec529a0e`, checkpoint, ONNX và 140 cặp validation.
 
 E1 vượt vòng 4 0,09 điểm, với khoảng bootstrap ghép cặp 95% từ −1,27 đến +1,23. E2 pilot vượt E1 cùng 20 epoch 0,35 điểm, với khoảng từ −1,08 đến +2,12. Val140 có 0 GT lớp 3. Trên holdout 6 ảnh, 7 GT, 3 nhóm cảnh, E2 pilot đạt AP lớp 3 41,00 và AP50 49,27. Hai checkpoint 100 epoch trước E2 có AP lớp 3 bằng 0. Toàn bộ AP theo lớp, điểm từng nguồn, checksum ZIP, tài nguyên GPU và kết quả đối chiếu ONNX có trong [bảng điểm máy đọc](experiments/overnight/verified-scores.json).
 

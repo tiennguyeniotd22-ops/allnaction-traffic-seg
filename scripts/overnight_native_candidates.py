@@ -59,12 +59,12 @@ def coco(root, per_bucket):
             yield item, body, label, folder / "views" / (row["key"] + ".jpg")
 
 
-def native(root, kind, selection):
-    folder = root / (kind + "-curated")
-    index = read(root / kind / "index.json")
+def native(root, kind, selection, folder=None, index_path=None):
+    folder = folder or root / (kind + "-curated")
+    index = read(index_path or root / kind / "index.json")
     for row in read(folder / "manifest.json"):
         key = row["key"]
-        if "roi" not in row or selection is not None and int(key[2:]) not in selection:
+        if "roi" not in row or selection is not None and key not in selection:
             continue
         parent = root / kind / "images" / (key + ".png")
         body = (folder / "images" / (key + ".jpg")).read_bytes()
@@ -83,14 +83,18 @@ def main():
     p.add_argument("--coco-per-bucket", type=int, default=0)
     p.add_argument("--kitti", type=Path)
     p.add_argument("--muses", action="store_true")
+    p.add_argument("--muses-index", type=Path)
+    p.add_argument("--muses-curated", type=Path)
+    p.add_argument("--muses-qc", type=Path)
     a = p.parse_args()
     sources = []
     if a.coco_per_bucket:
         sources.append(coco(a.root, a.coco_per_bucket))
     if a.kitti:
-        sources.append(native(a.root, "kitti", set(read(a.kitti)["keep"])))
+        sources.append(native(a.root, "kitti", {f"kt{n:06d}" for n in read(a.kitti)["keep"]}))
     if a.muses:
-        sources.append(native(a.root, "muses", None))
+        keep = set(read(a.muses_qc)["keep"]) if a.muses_qc else None
+        sources.append(native(a.root, "muses", keep, a.muses_curated, a.muses_index))
     for sub in ("images", "labels", "views"):
         (a.out / sub).mkdir(exist_ok=True, parents=True)
     records = []

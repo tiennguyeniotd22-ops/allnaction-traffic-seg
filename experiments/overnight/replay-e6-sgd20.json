@@ -1,0 +1,75 @@
+{
+  "score": {
+    "score": 24.532555405198135,
+    "map50": 0.4237819908378843,
+    "map75": 0.24799182729206795,
+    "map50_95": 0.24532555405198134,
+    "per_class_ap": {
+      "Car": 0.40532541147354584,
+      "Bus": 0.38098713867831346,
+      "Truck": 0.23158512481985544,
+      "Motorcycle": 0.05983177843331,
+      "Motorcyclist": 0.3661088602402772,
+      "Bicycle": 0.13160877784559522,
+      "Cyclist": 0.14368811944254473,
+      "Pedestrian": 0.2949361618062384,
+      "Sign": 0.2568042794189375,
+      "Traffic light": 0.1823798883611959
+    },
+    "per_class_ap50": {
+      "Car": 0.676328357796001,
+      "Bus": 0.464565904009852,
+      "Truck": 0.36431990996620855,
+      "Motorcycle": 0.18009770894838975,
+      "Motorcyclist": 0.5982901186146421,
+      "Bicycle": 0.2800564095772007,
+      "Cyclist": 0.27288675001598983,
+      "Pedestrian": 0.5727516672946651,
+      "Sign": 0.3930190344768512,
+      "Traffic light": 0.4355040476790427
+    },
+    "n_images": 140,
+    "n_gt_per_class": {
+      "Car": 546,
+      "Bus": 35,
+      "Truck": 82,
+      "Other vehicle": 0,
+      "Motorcycle": 54,
+      "Motorcyclist": 70,
+      "Bicycle": 44,
+      "Cyclist": 33,
+      "Pedestrian": 418,
+      "Sign": 152,
+      "Traffic light": 154
+    },
+    "n_gt_ignored": 233,
+    "classes_without_gt": [
+      "Other vehicle"
+    ],
+    "n_detections": 14000,
+    "warnings": [
+      "class 'Other vehicle' has no ground truth in this split and is excluded from the mean"
+    ],
+    "by_source": {}
+  },
+  "cpu": {
+    "n_images": 140,
+    "n_instances": 14000,
+    "threads": 2,
+    "latency_ms_p50": 112.82982899865601,
+    "latency_ms_max": 204.25909400364617,
+    "decode_ms_p50": 50.870135502918856,
+    "decode_ms_max": 217.78880099736853,
+    "model_load_s": 0.111,
+    "total_s": 13.208,
+    "output_bytes": 1962521,
+    "peak_rss_mb": 371.1,
+    "predictions": "/home/pc/baseline-cvat300/overnight/replay-cpu-e6-sgd20/tmp3vtqbv_i/predictions_val.json"
+  },
+  "zip_sha256": "6278f0b2d1f1e442088413e54a1d40a0c4e29403e1fbd7b496c6299a1b6a0f73",
+  "dataset_sha256": "d9fabdc563c4de14d4cb8205dcd10e6ffcc849186cfe69c8fa1a20b11efc0dad",
+  "prepared_sha256": "a64c35a5cb6c7f6a6eac80216563c7b1ac3572433ccbc17406b064d326151ede",
+  "notebook_sha256": "83e498336ed0a6081753ae49dc1dc2b93ca4066e28515a3204c799a9904876fd",
+  "validation_sha256": "23c92420f1742f9d6091c09930bb43e055558064b604a2b61291b62eaeeb2013",
+  "predictions_sha256": "cf1c81e4aa0ae392e5ce4818beb425533a0bb1f251a9ace48e19f49230d21e70"
+}

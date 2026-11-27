@@ -1,0 +1,381 @@
+{
+ "run": "e6-sgd20",
+ "zip_sha256": "6278f0b2d1f1e442088413e54a1d40a0c4e29403e1fbd7b496c6299a1b6a0f73",
+ "val_manifest_sha256": "23c92420f1742f9d6091c09930bb43e055558064b604a2b61291b62eaeeb2013",
+ "predictions_sha256": "9d8861e1778534a8c4d6ae39f372725b3b7cd426a23a7a087c77dfa7c6065446",
+ "official_score": 0.24532555405198134,
+ "confidence": 0.25,
+ "by_class": {
+  "Car": {
+   "gt": 546,
+   "0.5": {
+    "tp": 358,
+    "fp": 177,
+    "fn": 188
+   },
+   "0.75": {
+    "tp": 246,
+    "fp": 292,
+    "fn": 300
+   },
+   "0.9": {
+    "tp": 76,
+    "fp": 462,
+    "fn": 470
+   }
+  },
+  "Bus": {
+   "gt": 35,
+   "0.5": {
+    "tp": 18,
+    "fp": 76,
+    "fn": 17
+   },
+   "0.75": {
+    "tp": 17,
+    "fp": 77,
+    "fn": 18
+   },
+   "0.9": {
+    "tp": 12,
+    "fp": 82,
+    "fn": 23
+   }
+  },
+  "Truck": {
+   "gt": 82,
+   "0.5": {
+    "tp": 25,
+    "fp": 13,
+    "fn": 57
+   },
+   "0.75": {
+    "tp": 20,
+    "fp": 18,
+    "fn": 62
+   },
+   "0.9": {
+    "tp": 11,
+    "fp": 27,
+    "fn": 71
+   }
+  },
+  "Other vehicle": {
+   "gt": 0,
+   "0.5": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0
+   },
+   "0.75": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0
+   },
+   "0.9": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0
+   }
+  },
+  "Motorcycle": {
+   "gt": 54,
+   "0.5": {
+    "tp": 13,
+    "fp": 19,
+    "fn": 41
+   },
+   "0.75": {
+    "tp": 5,
+    "fp": 27,
+    "fn": 49
+   },
+   "0.9": {
+    "tp": 1,
+    "fp": 31,
+    "fn": 53
+   }
+  },
+  "Motorcyclist": {
+   "gt": 70,
+   "0.5": {
+    "tp": 39,
+    "fp": 14,
+    "fn": 31
+   },
+   "0.75": {
+    "tp": 31,
+    "fp": 22,
+    "fn": 39
+   },
+   "0.9": {
+    "tp": 3,
+    "fp": 50,
+    "fn": 67
+   }
+  },
+  "Bicycle": {
+   "gt": 44,
+   "0.5": {
+    "tp": 12,
+    "fp": 11,
+    "fn": 32
+   },
+   "0.75": {
+    "tp": 7,
+    "fp": 16,
+    "fn": 37
+   },
+   "0.9": {
+    "tp": 1,
+    "fp": 22,
+    "fn": 43
+   }
+  },
+  "Cyclist": {
+   "gt": 33,
+   "0.5": {
+    "tp": 10,
+    "fp": 13,
+    "fn": 23
+   },
+   "0.75": {
+    "tp": 7,
+    "fp": 16,
+    "fn": 26
+   },
+   "0.9": {
+    "tp": 1,
+    "fp": 22,
+    "fn": 32
+   }
+  },
+  "Pedestrian": {
+   "gt": 418,
+   "0.5": {
+    "tp": 226,
+    "fp": 117,
+    "fn": 192
+   },
+   "0.75": {
+    "tp": 143,
+    "fp": 200,
+    "fn": 275
+   },
+   "0.9": {
+    "tp": 9,
+    "fp": 334,
+    "fn": 409
+   }
+  },
+  "Sign": {
+   "gt": 152,
+   "0.5": {
+    "tp": 35,
+    "fp": 21,
+    "fn": 117
+   },
+   "0.75": {
+    "tp": 34,
+    "fp": 22,
+    "fn": 118
+   },
+   "0.9": {
+    "tp": 17,
+    "fp": 39,
+    "fn": 135
+   }
+  },
+  "Traffic light": {
+   "gt": 154,
+   "0.5": {
+    "tp": 66,
+    "fp": 47,
+    "fn": 88
+   },
+   "0.75": {
+    "tp": 30,
+    "fp": 82,
+    "fn": 124
+   },
+   "0.9": {
+    "tp": 1,
+    "fp": 111,
+    "fn": 153
+   }
+  }
+ },
+ "by_condition": {
+  "daytime": {
+   "images": 15,
+   "map50_95": 0.24814825141199343,
+   "gt": {
+    "Car": 147,
+    "Bus": 4,
+    "Truck": 3,
+    "Other vehicle": 0,
+    "Motorcycle": 0,
+    "Motorcyclist": 0,
+    "Bicycle": 0,
+    "Cyclist": 0,
+    "Pedestrian": 7,
+    "Sign": 30,
+    "Traffic light": 16
+   }
+  },
+  "night": {
+   "images": 15,
+   "map50_95": 0.38979712325500254,
+   "gt": {
+    "Car": 100,
+    "Bus": 1,
+    "Truck": 1,
+    "Other vehicle": 0,
+    "Motorcycle": 0,
+    "Motorcyclist": 0,
+    "Bicycle": 0,
+    "Cyclist": 0,
+    "Pedestrian": 3,
+    "Sign": 31,
+    "Traffic light": 25
+   }
+  },
+  "rainy": {
+   "images": 15,
+   "map50_95": 0.20543872305261557,
+   "gt": {
+    "Car": 77,
+    "Bus": 4,
+    "Truck": 3,
+    "Other vehicle": 0,
+    "Motorcycle": 1,
+    "Motorcyclist": 0,
+    "Bicycle": 0,
+    "Cyclist": 0,
+    "Pedestrian": 3,
+    "Sign": 26,
+    "Traffic light": 8
+   }
+  },
+  "unknown": {
+   "images": 80,
+   "map50_95": 0.2346802765560043,
+   "gt": {
+    "Car": 211,
+    "Bus": 25,
+    "Truck": 61,
+    "Other vehicle": 0,
+    "Motorcycle": 40,
+    "Motorcyclist": 29,
+    "Bicycle": 40,
+    "Cyclist": 23,
+    "Pedestrian": 388,
+    "Sign": 7,
+    "Traffic light": 104
+   }
+  },
+  "vietnam": {
+   "images": 15,
+   "map50_95": 0.20872330963770833,
+   "gt": {
+    "Car": 11,
+    "Bus": 1,
+    "Truck": 14,
+    "Other vehicle": 0,
+    "Motorcycle": 13,
+    "Motorcyclist": 41,
+    "Bicycle": 4,
+    "Cyclist": 10,
+    "Pedestrian": 17,
+    "Sign": 58,
+    "Traffic light": 1
+   }
+  }
+ },
+ "gt_overlap_diagnostics": {
+  "Car": {
+   "correct_mask_below_conf25": 101,
+   "correct_class_mask_at_conf25": 358,
+   "same_class_box_matches_mask_below_50": 10,
+   "no_above_match": 76,
+   "other_class_mask_at_conf25": 1
+  },
+  "Sign": {
+   "correct_class_mask_at_conf25": 35,
+   "correct_mask_below_conf25": 79,
+   "no_above_match": 36,
+   "other_class_mask_at_conf25": 2
+  },
+  "Traffic light": {
+   "correct_mask_below_conf25": 49,
+   "correct_class_mask_at_conf25": 66,
+   "no_above_match": 39
+  },
+  "Bus": {
+   "no_above_match": 7,
+   "other_class_mask_at_conf25": 5,
+   "correct_class_mask_at_conf25": 18,
+   "correct_mask_below_conf25": 5
+  },
+  "Pedestrian": {
+   "correct_mask_below_conf25": 95,
+   "no_above_match": 89,
+   "correct_class_mask_at_conf25": 226,
+   "other_class_mask_at_conf25": 1,
+   "same_class_box_matches_mask_below_50": 7
+  },
+  "Truck": {
+   "correct_class_mask_at_conf25": 25,
+   "correct_mask_below_conf25": 13,
+   "no_above_match": 19,
+   "other_class_mask_at_conf25": 25
+  },
+  "Motorcycle": {
+   "no_above_match": 24,
+   "correct_mask_below_conf25": 11,
+   "correct_class_mask_at_conf25": 13,
+   "other_class_mask_at_conf25": 3,
+   "same_class_box_matches_mask_below_50": 3
+  },
+  "Motorcyclist": {
+   "no_above_match": 13,
+   "correct_mask_below_conf25": 8,
+   "correct_class_mask_at_conf25": 39,
+   "other_class_mask_at_conf25": 10
+  },
+  "Bicycle": {
+   "correct_mask_below_conf25": 11,
+   "other_class_mask_at_conf25": 2,
+   "no_above_match": 17,
+   "correct_class_mask_at_conf25": 12,
+   "same_class_box_matches_mask_below_50": 2
+  },
+  "Cyclist": {
+   "correct_class_mask_at_conf25": 10,
+   "correct_mask_below_conf25": 4,
+   "no_above_match": 8,
+   "other_class_mask_at_conf25": 11
+  },
+  "Other vehicle": {}
+ },
+ "class_confusions": {
+  "Bus -> Truck": 2,
+  "Car -> Bus": 1,
+  "Sign -> Car": 1,
+  "Sign -> Traffic light": 1,
+  "Bus -> Car": 3,
+  "Motorcyclist -> Motorcycle": 4,
+  "Motorcycle -> Car": 3,
+  "Motorcyclist -> Pedestrian": 5,
+  "Pedestrian -> Motorcyclist": 1,
+  "Bicycle -> Motorcycle": 1,
+  "Cyclist -> Pedestrian": 8,
+  "Cyclist -> Motorcyclist": 1,
+  "Truck -> Car": 16,
+  "Bicycle -> Car": 1,
+  "Cyclist -> Bicycle": 2,
+  "Truck -> Bus": 9,
+  "Motorcyclist -> Cyclist": 1
+ },
+ "note": "Operating counts use official one-to-one matching. The separate overlap diagnosis checks each valid GT independently; one detection can overlap multiple GT. Condition mAP excludes classes with no GT in that subset."
+}

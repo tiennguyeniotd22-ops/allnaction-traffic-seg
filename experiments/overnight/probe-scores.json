@@ -283,5 +283,62 @@
   "probe_sha256": "cf990065d5f00c2cbc364d9f273c3adc3214cfd74b8ab7a2f2d19242bac835ca",
   "manifest_sha256": "46711918dca2800f4ed8f0ff7cc580d3764b2c2d6d432aa3e0411f9280cb681e",
   "notebook_sha256": "83e498336ed0a6081753ae49dc1dc2b93ca4066e28515a3204c799a9904876fd"
+ },
+ "e6-sgd20": {
+  "score": 22.964868686797715,
+  "map50": 0.35924674845637256,
+  "map75": 0.24389554989206985,
+  "map50_95": 0.22964868686797715,
+  "per_class_ap": {
+   "Car": 0.48402331992632186,
+   "Bus": 0.2991434279174524,
+   "Truck": 0.21638435359294328,
+   "Motorcycle": 0.21266315820771267,
+   "Motorcyclist": 0.21548904890489054,
+   "Bicycle": 0.09018316347763808,
+   "Cyclist": 0.2882988298829883,
+   "Pedestrian": 0.15251253601959758,
+   "Sign": 0.15849158895271856,
+   "Traffic light": 0.17929744179750837
+  },
+  "per_class_ap50": {
+   "Car": 0.7177158746187305,
+   "Bus": 0.4002839967254644,
+   "Truck": 0.26781391475300775,
+   "Motorcycle": 0.3319210299408319,
+   "Motorcyclist": 0.31353135313531355,
+   "Bicycle": 0.16487858463265678,
+   "Cyclist": 0.5094509450945094,
+   "Pedestrian": 0.29486112897004607,
+   "Sign": 0.24277889125596186,
+   "Traffic light": 0.3492317654372035
+  },
+  "n_images": 46,
+  "n_gt_per_class": {
+   "Car": 213,
+   "Bus": 22,
+   "Truck": 11,
+   "Other vehicle": 0,
+   "Motorcycle": 14,
+   "Motorcyclist": 19,
+   "Bicycle": 15,
+   "Cyclist": 13,
+   "Pedestrian": 36,
+   "Sign": 126,
+   "Traffic light": 87
+  },
+  "n_gt_ignored": 349,
+  "classes_without_gt": [
+   "Other vehicle"
+  ],
+  "n_detections": 4600,
+  "warnings": [
+   "class 'Other vehicle' has no ground truth in this split and is excluded from the mean"
+  ],
+  "by_source": {},
+  "zip_sha256": "6278f0b2d1f1e442088413e54a1d40a0c4e29403e1fbd7b496c6299a1b6a0f73",
+  "probe_sha256": "cf990065d5f00c2cbc364d9f273c3adc3214cfd74b8ab7a2f2d19242bac835ca",
+  "manifest_sha256": "46711918dca2800f4ed8f0ff7cc580d3764b2c2d6d432aa3e0411f9280cb681e",
+  "notebook_sha256": "83e498336ed0a6081753ae49dc1dc2b93ca4066e28515a3204c799a9904876fd"
  }
 }

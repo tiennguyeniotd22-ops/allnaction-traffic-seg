@@ -27,3 +27,5 @@ __pycache__/
 .ipynb_checkpoints/
 .venv/
 .DS_Store
+
+raw_cache/

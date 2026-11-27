@@ -4,6 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 from zipfile import ZipFile
+from notebook_identity import verified_team
 
 
 def digest(data):
@@ -17,7 +18,7 @@ def main():
     args = parser.parse_args()
     manifest = json.loads(args.manifest.read_text())
     assert digest(args.holdout.read_bytes()) == manifest["holdout_sha256"]
-    assert digest(args.notebook.read_bytes()) == "83e498336ed0a6081753ae49dc1dc2b93ca4066e28515a3204c799a9904876fd"
+    verified_team(json.loads((args.run / "run_report.json").read_bytes()), digest(args.notebook.read_bytes()))
     args.out.mkdir(parents=True, exist_ok=True)
     records = [r for r in manifest["records"] if r["role"] == "holdout"]
     images, labels = args.out / "images", args.out / "labels"

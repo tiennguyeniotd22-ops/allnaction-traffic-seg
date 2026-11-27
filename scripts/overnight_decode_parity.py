@@ -13,6 +13,7 @@ from pycocotools import mask as masks
 from scipy.optimize import linear_sum_assignment
 import torch
 from ultralytics import YOLO
+from notebook_identity import verified_team
 
 
 def read(path):
@@ -54,8 +55,8 @@ def main():
     submission = root / "submission/submission.zip"
     assert sha(weights) == report["train"]["best_sha256"]
     assert sha(submission) == report["submission"]["zip_sha256"]
-    assert sha(args.notebook) == "83e498336ed0a6081753ae49dc1dc2b93ca4066e28515a3204c799a9904876fd"
-    assert version("ultralytics") == "8.4.214" and report["team_id"] == report["seed"] == 26
+    verified_team(report, sha(args.notebook))
+    assert version("ultralytics") == "8.4.214"
     files = sorted((root / "dataset/images/val").glob("*.jpg"))
     manifest = {r["file"]: r for r in read(args.manifest)}
     source = read(root / "dataset/source_map.json")["files"]

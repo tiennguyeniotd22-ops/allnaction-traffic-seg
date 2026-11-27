@@ -1,0 +1,28 @@
+{
+  "pilot": "last-e3-riderqc20",
+  "pilot_scores": {
+    "e3-tax20": 0.22813678846023716,
+    "e4-repeat20": 0.22021551319456303,
+    "e4-nocopy20": 0.22430688235436363,
+    "e5-mask420": 0.23201292018495365,
+    "e6-lowerlr20": 0.23569126411853764,
+    "e6-linear20": 0.22739668051607925,
+    "e6-sgd20": 0.24532555405198134,
+    "e3-weather20": 0.23219506074267787,
+    "e3-bdd20": 0.22615302049022604,
+    "e3-vistas20": 0.23067808253497404,
+    "e3-riderqc20": 0.24334515821822283,
+    "e3-signqc-sgd20": 0.24243751744105657,
+    "last-e3-riderqc20": 0.2506818045913691
+  },
+  "metric": "official ONNX val140 mask mAP50-95",
+  "version": "e3-riderqc-v1",
+  "recipe": "lower-lr",
+  "dataset_sha256": "90f7cd78bacc169d02e9d7bb828d83e7150f487e3f7f9b1fed3d28f39050b59c",
+  "epochs": 100,
+  "patience": 25,
+  "median_epoch_seconds": 28.994,
+  "deadline": "2026-11-28T06:00:00+07:00",
+  "revision": "24c811dfbeccd4eb7ace00aec27a29ca7b97d533",
+  "snapshot_interval_epochs": 20
+}

@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from zipfile import ZipFile
+from notebook_identity import verified_team
 
 
 def sha(path):
@@ -20,11 +21,12 @@ def main():
     report = json.loads(args.report.read_bytes())
     resources = json.loads(args.resources.read_bytes())
     manifest = json.loads(args.validation.read_bytes())
-    assert sha(args.notebook) == resources["notebook_sha256"] == "83e498336ed0a6081753ae49dc1dc2b93ca4066e28515a3204c799a9904876fd"
+    assert sha(args.notebook) == resources["notebook_sha256"]
+    verified_team(report, resources["notebook_sha256"])
     assert sha(args.dataset) == resources["dataset_sha256"]
     assert sha(args.submission) == report["submission"]["zip_sha256"]
     assert sha(args.validation) == "23c92420f1742f9d6091c09930bb43e055558064b604a2b61291b62eaeeb2013"
-    assert report["team_id"] == report["seed"] == 26 and len(manifest) == 140
+    assert len(manifest) == 140
     with ZipFile(args.submission) as archive:
         assert archive.namelist() == ["model.onnx"]
         assert hashlib.sha256(archive.read("model.onnx")).hexdigest() == report["model"]["onnx_sha256"]

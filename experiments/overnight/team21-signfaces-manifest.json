@@ -1,0 +1,29 @@
+{
+ "dataset_sha256": "935c2e808540529595eb21fc175a79df35f7f2050615b7cc480ef047a3935ba0",
+ "base_sha256": "33362fd1aee1760da38f0f67e41a97c61dcc6aed6c10561bfbf9ef058755c2ef",
+ "decisions_sha256": "ac32a7adf150e9ac69935b90702143949862fe951dde943dd5eabb6611382f69",
+ "validation_manifest_sha256": "23c92420f1742f9d6091c09930bb43e055558064b604a2b61291b62eaeeb2013",
+ "checked_val_pairs": 140,
+ "train": 1156,
+ "changed_train_annotations": 2,
+ "operations": {
+  "append": 3
+ },
+ "instances_by_class": [
+  3570,
+  429,
+  346,
+  117,
+  343,
+  267,
+  256,
+  130,
+  2795,
+  1025,
+  1153
+ ],
+ "changed_members": {
+  "labels/train/zz_drive_000000093154.txt": "faa43081d2b156a8e942564dfce345ab38acd150f1a9a30d6d99f33e94becb43",
+  "labels/train/zz_drive_000000213605.txt": "ee2563f0d6d014865f074639b50155955e4421387e0fab0ade29eb66b9cc152d"
+ }
+}

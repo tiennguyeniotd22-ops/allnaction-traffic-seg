@@ -1,0 +1,143 @@
+{
+ "base_sha256": "33362fd1aee1760da38f0f67e41a97c61dcc6aed6c10561bfbf9ef058755c2ef",
+ "sample": {
+  "seed": 21,
+  "pool": 1076,
+  "sample": [
+   "images/train/zz_drive_000000161128.jpg",
+   "images/train/zz_plus_cc000000207179.jpg",
+   "images/train/zz_new_bd061.jpg",
+   "images/train/zz_plus_cc000000496214.jpg",
+   "images/train/zz_drive_000000339870.jpg",
+   "images/train/zz_plus_cc000000465537.jpg",
+   "images/train/zz_plus_rfvn048.jpg",
+   "images/train/zz_drive_000000213605.jpg",
+   "images/train/zz_plus_kt000169.jpg",
+   "images/train/zz_drive_000000426372.jpg",
+   "images/train/bdd_daytime_000042.jpg",
+   "images/train/bdd_daytime_000122.jpg",
+   "images/train/zz_plus_c023p0.jpg",
+   "images/train/zz_plus_cc000000242771.jpg",
+   "images/train/bdd_rainy_000507.jpg",
+   "images/train/zz_drive_000000093154.jpg"
+  ]
+ },
+ "sampling": "Random(21).sample(sorted original train filenames after excluding _syn_), 16 of 1076. Read raw first, then overlays; not independent dual annotation.",
+ "ambiguous": [
+  "161128 civic profanity sign, class eligibility unresolved; withheld"
+ ],
+ "records": [
+  {
+   "image": "images/train/zz_drive_000000093154.jpg",
+   "size": [
+    427,
+    640
+   ],
+   "image_sha256": "2b3a21fc80e5544c4d2206b84e9dfcbd5dbd3605e7937ebfbbade72c3f116351",
+   "label_sha256": "d076254a1417e3279df037a23ce3c4a2412958eb19922bec15a7115d4e0a6e5e",
+   "source": "COCO val2017",
+   "reason": "Manually outlined visible regulatory/directional sign faces after blind original-image inspection. Poles and shop signs excluded.",
+   "actions": [
+    {
+     "op": "append",
+     "cls": 9,
+     "pixels": [
+      [
+       30,
+       113
+      ],
+      [
+       32,
+       109
+      ],
+      [
+       36,
+       108
+      ],
+      [
+       117,
+       116
+      ],
+      [
+       121,
+       119
+      ],
+      [
+       122,
+       220
+      ],
+      [
+       119,
+       225
+      ],
+      [
+       32,
+       222
+      ],
+      [
+       29,
+       218
+      ]
+     ]
+    },
+    {
+     "op": "append",
+     "cls": 9,
+     "pixels": [
+      [
+       220,
+       242
+      ],
+      [
+       240,
+       240
+      ],
+      [
+       240,
+       264
+      ],
+      [
+       220,
+       265
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "image": "images/train/zz_drive_000000213605.jpg",
+   "size": [
+    480,
+    640
+   ],
+   "image_sha256": "fa2219d8ac3130ba9ca1e1c9c7ed2b19949a99850854cae14734b9abbd477583",
+   "label_sha256": "78d30a88cdffecc5a341b1b6a1926c52f4a3b4e6097b3c0f695d2a755dfa45da",
+   "source": "COCO val2017",
+   "reason": "Manually outlined visible regulatory/directional sign faces after blind original-image inspection. Poles and shop signs excluded.",
+   "actions": [
+    {
+     "op": "append",
+     "cls": 9,
+     "pixels": [
+      [
+       279,
+       301
+      ],
+      [
+       343,
+       289
+      ],
+      [
+       345,
+       307
+      ],
+      [
+       280,
+       320
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

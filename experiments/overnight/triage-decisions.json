@@ -1,0 +1,34 @@
+{
+  "base_sha256": "90f7cd78bacc169d02e9d7bb828d83e7150f487e3f7f9b1fed3d28f39050b59c",
+  "coco": {
+    "245448": {
+      "remove": [3, 4, 9],
+      "add": [[4, [152154]], [8, [184179]], [0, [1369932]], [4, [2047601]]],
+      "reason": "The foreground motorcycle is parked. The standing instructor has a separate visible silhouette. The silver crew-cab pickup behind the group maps to Car. Both visible pickup sections and the small motorcycle at the right edge are present in the native masks."
+    },
+    "274460": {
+      "remove": [2],
+      "add": [[8, [1306109]], [6, [1766646]]],
+      "reason": "The standing adult in the foreground is separate from the distant bicycle behind his head on the promenade."
+    },
+    "291634": {
+      "remove": [1, 2, 13],
+      "add": [[4, [246217]], [4, [1361968]], [4, [150133], [128292]], [8, [184742]], [8, [218842]], [8, [221494]]],
+      "reason": "The motorcycles in the diagonal row are parked. The three people on the pavement have distinct native masks. The closer green bicycle occludes the nearest motorcycle."
+    },
+    "301376": {
+      "remove": [5],
+      "add": [[0, [138143]]],
+      "reason": "The visible halves of the approaching vehicle on either side of the traffic signal pole belong to the same car."
+    },
+    "457848": {
+      "remove": [0, 1],
+      "add": [[4, [153186]], [4, [151185]], [8, [252726]], [8, [252571]]],
+      "reason": "The silhouettes above the two parked motorcycles are standing behind them. Separate the motorcycles and people using their visible COCO masks."
+    }
+  },
+  "bdd": {
+    "bdd_rainy_000507": {"row": 10, "from_cls": 10, "cls": 0, "reason": "Rear of the dark car in the middle lane. The existing polygon follows the vehicle outline."},
+    "bdd_night_000131": {"row": 7, "from_cls": 8, "cls": 10, "reason": "Illuminated green traffic signal. The existing polygon follows the visible lens."}
+  }
+}

@@ -73,15 +73,17 @@ def main():
         p.add_argument(k, type=Path)
     args = p.parse_args()
     parent = file_sha(args.dataset)
-    if parent != "f125ebfd5846fe6c948dd6c1bb33ce70c63cfb4fd7a505e7453e709d8af70a5e":
-        raise ValueError("The source-row decisions refer to e3-weatherqc-v1")
+    plan = read(args.plan)
+    original_base = "f125ebfd5846fe6c948dd6c1bb33ce70c63cfb4fd7a505e7453e709d8af70a5e"
+    if parent != plan.get("base_sha256", original_base):
+        raise ValueError("Source rows must refer to the exact reviewed dataset")
     with ZipFile(args.source) as z:
         body = z.read("annotations/instances_val2017.json")
     assert sha(body) == COCO_SHA256
     annotations = {a["id"]: a for a in json.loads(body)["annotations"]}
     records = []
     with ZipFile(args.dataset) as z:
-        for scene, entry in read(args.plan).items():
+        for scene, entry in plan.get("coco", plan).items():
             suffix = f"{int(scene):012d}.jpg"
             original = "images/train/zz_drive_" + suffix
             sibling_names = [n for n in z.namelist() if n.startswith("images/") and n.endswith(suffix)]
@@ -105,6 +107,19 @@ def main():
                 records.append(dict(image=image, size=size, image_sha256=sha(raw), label_sha256=sha(label),
                                     source="COCO val2017", coco_image_id=int(scene), reason=entry["reason"],
                                     actions=drops + additions))
+        for name, entry in plan.get("bdd", {}).items():
+            assert name.startswith("bdd_") and Path(name).name == name
+            image = f"images/train/{name}.jpg"
+            siblings = [n for n in z.namelist() if n.startswith("images/") and n.endswith(name + ".jpg")]
+            assert siblings == [image]
+            raw = z.read(image)
+            label = z.read(f"labels/train/{name}.txt")
+            line = label.decode().splitlines()[entry["row"]]
+            assert int(line.split()[0]) == entry["from_cls"]
+            records.append(dict(image=image, size=Image.open(BytesIO(raw)).size,
+                                image_sha256=sha(raw), label_sha256=sha(label), source="BDD100K",
+                                reason=entry["reason"], actions=[dict(op="relabel", row=entry["row"],
+                                from_cls=entry["from_cls"], cls=entry["cls"], old_row_sha256=sha(line.encode()))]))
     report = dict(base_sha256=parent, source_json_sha256=COCO_SHA256, plan_sha256=file_sha(args.plan), records=records)
     args.out.write_text(json.dumps(report, separators=(",", ":")) + "\n")
     fits = [a["source_iou"] for r in records for a in r["actions"] if "source_iou" in a]

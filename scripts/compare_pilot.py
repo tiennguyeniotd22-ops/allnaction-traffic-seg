@@ -33,6 +33,8 @@ def main():
     for k in ("baseline","pilot","manifest","out","notebook"):
         p.add_argument("--"+k, required=True, type=Path)
     p.add_argument("--allow-schedule-change", action="store_true")
+    p.add_argument("--historical-team26", action="store_true",
+                   help="Compare to the archived seed-26 experiment after the team confirmed seed 21")
     p.add_argument("--experiment", choices=CHANGES, default="control")
     p.add_argument("--decoded-parity", type=Path,
                    help="Full validation replay from overnight_decode_parity.py, for subpixel box deltas")
@@ -83,6 +85,12 @@ def main():
     differences = {k: [configs[0].get(k), configs[1].get(k)] for k in configs[0].keys() | configs[1].keys()
                    if configs[0].get(k) != configs[1].get(k)}
     allowed = {"epochs", "patience"} if args.allow_schedule_change else set()
+    if args.historical_team26:
+        assert differences.get("seed") == [26, 21]
+        for folder, team in [(args.baseline, 26), (args.pilot, 21)]:
+            report = read(folder / "run_report.json")
+            assert report["train"]["train_args"]["seed"] == report["team_id"] == report["seed"] == team
+        allowed.add("seed")
     training_changes = {k: v for k, v in differences.items() if k not in allowed}
     if training_changes != {k: list(v) for k, v in CHANGES[args.experiment].items()}:
         raise ValueError(f"Unexpected training changes: {differences}")

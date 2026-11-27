@@ -9,6 +9,7 @@ import shutil
 from tempfile import TemporaryDirectory
 
 from ultralytics import YOLO
+from notebook_identity import verified_team
 
 
 def digest(path):
@@ -29,9 +30,10 @@ def main():
         p.error("Set CUDA_VISIBLE_DEVICES to an empty string for CPU screening")
     resource = read(a.reference / "resources.json")
     report = read(a.reference / "run_report.json")
-    assert digest(a.notebook) == resource["notebook_sha256"] == "83e498336ed0a6081753ae49dc1dc2b93ca4066e28515a3204c799a9904876fd"
+    assert digest(a.notebook) == resource["notebook_sha256"]
+    verified_team(report, resource["notebook_sha256"])
     assert version("ultralytics") == report["environment"]["packages"]["ultralytics"] == "8.4.214"
-    assert report["seed"] == report["team_id"] == 26 and report["model"]["nc"] == 11
+    assert report["model"]["nc"] == 11
     identity = dict(weights_sha256=digest(a.weights), checkpoint=a.weights.as_posix(),
                     validation_sha256=digest(a.validation), reference_zip=report["submission"]["zip_sha256"],
                     notebook_sha256=resource["notebook_sha256"])

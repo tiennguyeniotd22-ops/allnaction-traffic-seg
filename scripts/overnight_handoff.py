@@ -4,7 +4,9 @@ import csv
 import hashlib
 import json
 from pathlib import Path
+import subprocess
 from zipfile import ZipFile
+from notebook_identity import TEAM_ID, verified_team
 
 
 def read(path):
@@ -27,7 +29,11 @@ def main():
     args = p.parse_args()
     root, repo = args.root.resolve(), args.repo.resolve()
     board = read(repo / "experiments/overnight/verified-scores.json")
-    best = max(board, key=lambda key: board[key]["scores"]["all140"]["map50_95"])
+    eligible = [k for k, v in board.items() if v["resources"].get("team_id") == TEAM_ID
+                and (root / k / "replay.json").is_file()]
+    if not eligible:
+        raise ValueError(f"No independently replayed submission for team {TEAM_ID}")
+    best = max(eligible, key=lambda key: board[key]["scores"]["all140"]["map50_95"])
     entry = board[best]
     run = root / best
     report = read(run / "run_report.json")
@@ -43,12 +49,15 @@ def main():
     with ZipFile(run / "submission.zip") as z:
         assert z.namelist() == ["model.onnx"] and hashlib.sha256(z.read("model.onnx")).hexdigest() == entry["onnx_sha256"] == report["model"]["onnx_sha256"]
     assert report["model"]["architecture"] == "yolo26n-seg" and report["model"]["nc"] == 11
-    assert report["seed"] == report["team_id"] == 26 and report["export_args"]["imgsz"] == 640
+    assert verified_team(report, resource["notebook_sha256"]) == TEAM_ID and report["export_args"]["imgsz"] == 640
     assert entry["opsets"][""] == 17 and comp["validation_sha_verified"] == 140
     assert len(comp["onnx_parity"]) == 6 and report["environment"]["packages"]["ultralytics"] == "8.4.214"
     scores = entry["scores"]
     overall = scores["all140"]
     assert comp["scores"]["pilot"] == scores and overall["map50_95"] == report["val_estimate"]["map50_95"]
+    replayed = read(run / "replay.json")
+    assert replayed["zip_sha256"] == checks["submission.zip"] and replayed["dataset_sha256"] == resource["dataset_sha256"]
+    assert abs(replayed["score"]["map50_95"] - overall["map50_95"]) < 1e-8
     assert sum(overall["n_gt_per_class"].values()) == 1588 and overall["n_images"] == 140
     versions = []
     for path in root.glob("*/manifest.json"):
@@ -80,10 +89,11 @@ def main():
     decision = report.get("checkpoint_selection", {})
     snap = decision.get("snapshot_epoch")
     revision = resource["revision"]
+    tools_revision = subprocess.check_output(["git", "-C", str(repo), "rev-parse", "HEAD"], text=True).strip()
     lines = [
         "# Bàn giao mô hình phân đoạn giao thông",
         "",
-        f"**Tệp nộp của nhóm** · [{best}/submission.zip]({best}/submission.zip). "
+        f"**Tệp nộp của đội {TEAM_ID}** · [{best}/submission.zip]({best}/submission.zip). "
         f"Mask mAP trên 140 ảnh validation đạt **{points(overall['map50_95'])}/100**. "
         "Điểm public và private của tệp này chờ hệ thống cuộc thi chấm.",
         "",
@@ -125,7 +135,7 @@ def main():
         f"Run `{best}`, bộ dữ liệu `{version.name}`, {count['images']} ảnh và {count['instances']} instance train. "
         f"Chạy {epochs}/{cfg['epochs']} epoch, batch {cfg['batch']}, optimizer {cfg['optimizer']}, lr0 {cfg['lr0']}, "
         f"mask_ratio {cfg['mask_ratio']}, copy_paste {cfg['copy_paste']}, patience {cfg['patience']}. "
-        f"TEAM_ID và seed đều bằng 26. GPU {resource['gpu']}, fit và native validation {resource['fit_and_native_val_seconds']:.1f} giây, "
+        f"TEAM_ID và seed đều bằng {TEAM_ID}. GPU {resource['gpu']}, fit và native validation {resource['fit_and_native_val_seconds']:.1f} giây, "
         f"đỉnh PyTorch cấp phát {resource['peak_allocated_mib']:.0f} MiB. Latency CPU p50 trong lượt đo "
         f"{report['val_estimate']['latency_ms_p50']:.1f} ms/ảnh.",
         "",
@@ -134,19 +144,19 @@ def main():
         "",
         "```bash",
         f'git clone --no-checkout https://github.com/tiennguyeniotd22-ops/allnaction-traffic-seg.git "replay-code-{best}"',
-        f'git -C "replay-code-{best}" checkout --detach {revision}',
+        f'git -C "replay-code-{best}" checkout --detach {tools_revision}',
         f'SCRIPTS="$PWD/replay-code-{best}/scripts"',
-        f'.venv/bin/python "$SCRIPTS/run_notebook_pilot.py" --dataset overnight/{version.name}/dataset.zip '
+        f'NOTEBOOK="$PWD/replay-code-{best}/notebooks/train_and_export.ipynb"',
+        f'.venv/bin/python "$SCRIPTS/run_notebook_pilot.py" --notebook "$NOTEBOOK" --dataset overnight/{version.name}/dataset.zip '
         f'--run overnight/replay-{best} --revision {revision} --epochs {cfg["epochs"]} --patience {cfg["patience"]} --experiment {resource.get("experiment","control")}'
-        + (" --snapshot-every 20" if snap else ""),
+        + (f" --snapshot-every {snap}" if snap else ""),
         "```",
         "",
         "Để chấm lại trực tiếp tệp nộp trên CPU của VM, chạy từ cùng thư mục. "
         "Lệnh này dựng lại tập dữ liệu từ ZIP rồi đối chiếu fingerprint của bộ đã chuẩn hóa, 140 cặp SHA và AP từng lớp.",
         "",
         "```bash",
-        f'git -C "replay-code-{best}" show 410dd136439c01f5550295860ff3cd0bf9991078:scripts/replay_submission.py > "replay-{best}.py"',
-        f'.venv/bin/python "replay-{best}.py" --notebook train_and_export.ipynb --dataset overnight/{version.name}/dataset.zip '
+        f'.venv/bin/python "$SCRIPTS/replay_submission.py" --notebook "$NOTEBOOK" --dataset overnight/{version.name}/dataset.zip '
         f'--submission overnight/{best}/submission/submission.zip --report overnight/{best}/run_report.json '
         f'--resources overnight/{best}/resources.json --validation audit_phase12/validation-manifest.json --out overnight/replay-cpu-new-{best}',
         "```",
@@ -160,12 +170,11 @@ def main():
         lines.insert(lines.index("## Tái lập") + 2, f"Checkpoint được chọn ở cuối epoch {snap}.\n")
     if "reuses_fit_from" in resource:
         extraction = (
-            f'.venv/bin/python "select-{best}.py" overnight/replay-{best} '
-            f'overnight/replay-{best}-selected train_and_export.ipynb audit_phase12/validation-manifest.json'
+            f'.venv/bin/python "$SCRIPTS/overnight_last_checkpoint.py" overnight/replay-{best} '
+            f'overnight/replay-{best}-selected "$NOTEBOOK" audit_phase12/validation-manifest.json'
         )
         end = lines.index("```", lines.index("## Tái lập"))
         lines[end:end] = [
-            f'git -C "replay-code-{best}" show 8f8c648a0d266f7f6afc79024e9ac3a0ec84979f:scripts/overnight_last_checkpoint.py > "select-{best}.py"',
             extraction + (f" --epoch {snap}" if snap else ""),
         ]
     for name, sha in {**checks, "model.onnx":entry["onnx_sha256"], "dataset.zip":resource["dataset_sha256"],

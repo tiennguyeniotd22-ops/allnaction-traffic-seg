@@ -1,0 +1,38 @@
+{
+ "dataset_sha256": "33362fd1aee1760da38f0f67e41a97c61dcc6aed6c10561bfbf9ef058755c2ef",
+ "base_sha256": "90f7cd78bacc169d02e9d7bb828d83e7150f487e3f7f9b1fed3d28f39050b59c",
+ "decisions_sha256": "546115be1e739e16b77345d49de0c198ecd329bafc4f5d1f286f6b97c4460109",
+ "validation_manifest_sha256": "23c92420f1742f9d6091c09930bb43e055558064b604a2b61291b62eaeeb2013",
+ "checked_val_pairs": 140,
+ "train": 1156,
+ "changed_train_annotations": 9,
+ "operations": {
+  "delete": 14,
+  "append": 25,
+  "relabel": 2
+ },
+ "instances_by_class": [
+  3570,
+  429,
+  346,
+  117,
+  343,
+  267,
+  256,
+  130,
+  2795,
+  1022,
+  1153
+ ],
+ "changed_members": {
+  "labels/train/zz_drive_000000245448.txt": "ef2a257a23ca7a4056209c8483d08c304d91d6ff508860472366191f547bea82",
+  "labels/train/zz_drive_000000274460.txt": "4a718e5157ce979fa5712e400010aec0a1499a0471e229949ea7a298474d1501",
+  "labels/train/zz_drive_syn_night_000000274460.txt": "53b668489e726d9c1c124e76a0fd48e2b1c456716ea40126403702fddbd45575",
+  "labels/train/zz_drive_000000291634.txt": "11e44e364700b8a4f8109a0b5e45e912cb115a7859cb557f9524e1c062c37bb2",
+  "labels/train/zz_drive_syn_rain_000000291634.txt": "c8aec02646c654ba806497a1e153fb7accb91525a9768665f3e958e740f5ac77",
+  "labels/train/zz_drive_000000301376.txt": "54bf0059e180f011b39a4e63a2e4004c3042b66022610bb199df5df3be032e78",
+  "labels/train/zz_drive_000000457848.txt": "84974690abb01b38fcb1017327b7949b1e3fa3abb8723919344e21c231f07805",
+  "labels/train/bdd_rainy_000507.txt": "6317498f702cdab52ea74980109d1df62284b92f44f156f227b5862115368733",
+  "labels/train/bdd_night_000131.txt": "15732a18eadefc001b712d23f914666013a25a33187a37a921f435072eaefde5"
+ }
+}

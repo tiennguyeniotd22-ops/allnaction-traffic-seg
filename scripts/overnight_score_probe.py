@@ -4,6 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 from zipfile import ZipFile
+from notebook_identity import NOTEBOOK_TEAMS
 
 
 def sha(data):
@@ -19,7 +20,7 @@ def main():
     checksum = sha(a.submission.read_bytes())
     assert sha(a.pack.read_bytes()) == lock["zip_sha256"]
     nb = a.notebook.read_bytes()
-    assert sha(nb) == "83e498336ed0a6081753ae49dc1dc2b93ca4066e28515a3204c799a9904876fd"
+    assert sha(nb) in NOTEBOOK_TEAMS
     result = a.out / "score.json"
     if result.exists():
         record = json.loads(result.read_bytes())

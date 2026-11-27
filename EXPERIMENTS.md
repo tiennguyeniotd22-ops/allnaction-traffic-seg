@@ -1,5 +1,15 @@
 # Nhật Ký Thí Nghiệm — AllnAction RoboTaxi (YOLO26n-seg, 11 Lớp)
 
+## Đội 21 · Ca huấn luyện sáng 28/11
+
+Trưởng nhóm đã xác nhận **TEAM_ID = 21**. Cả notebook trên nhánh chính và lượt train trên L4 đều dùng seed 21. Các kết quả seed 26 bên dưới là lịch sử thí nghiệm. Lượt E7 seed 26 đã dừng khi nhóm xác nhận lại mã đội. Chỉ các ZIP có bằng chứng seed 21 trong tham số notebook, cấu hình trainer, báo cáo và kết quả chấm lại trên CPU mới được chọn để bàn giao.
+
+Bản seed 26 tốt nhất đã xác minh đạt 25,0682 trên val140, AP50 44,07 và AP75 25,61. Cùng fit riderQC, checkpoint cuối đạt cao hơn 0,73 điểm so với checkpoint trainer chọn, khoảng bootstrap 95% từ −0,09 đến +1,49. Lượt signQC SGD đạt 24,24 và epoch cuối của nó đạt 24,52 theo bộ chấm notebook. [Chấm lại từ ZIP](experiments/overnight/replay-last-e3-riderqc20.json) · [Bảng kết quả đã xác minh](experiments/overnight/verified-scores.json)
+
+Lượt pilot đội 21 dùng 1.156 ảnh train. Sau khi đối chiếu ảnh gốc và mask COCO, nhóm tách các xe đỗ khỏi người đứng phía sau, khôi phục phần nhìn thấy bị cắt của hai ô tô và sửa hai trường hợp BDD nhầm lớp. Tính cả biến thể cùng cảnh, 9 file nhãn thay đổi, 25 polygon được thêm, 14 polygon được thay bằng cách bỏ dòng cũ và 2 dòng đổi lớp. Bộ train có 10.428 instance. [Quyết định theo ảnh và ID nguồn](experiments/overnight/triage-decisions.json) · [Manifest](experiments/overnight/team21-triage-manifest.json)
+
+Trong một lần kiểm riêng, dùng seed 21 để rút 16 ảnh từ 1.076 tên file train sau khi loại các biến thể có `_syn_`. Xem ảnh gốc trước rồi đối chiếu polygon cho thấy ảnh `093154` thiếu hai mặt biển hướng dẫn nhường đường cho xe đạp và `213605` thiếu bảng chỉ dẫn đường Castro. Ba polygon mới được vẽ trên ảnh gốc. Giữ nguyên trường hợp biển cấm chửi thề ở `161128` vì chức năng điều tiết giao thông chưa rõ. Tất cả ảnh và 140 cặp validation đã được đối chiếu khi đóng gói. [Mẫu kiểm và tọa độ đã duyệt](experiments/overnight/team21-random-qc.json) · [Manifest bộ 10.431 instance train](experiments/overnight/team21-signfaces-manifest.json)
+
 ## So sánh qua đêm trên validation cố định
 
 Các số dưới đây là điểm mask trên thang 100. 140 ảnh gồm 60 ảnh nhóm và 80 ảnh Drive. 15 ảnh Việt Nam nằm trong 60 ảnh nhóm. Mỗi lượt dùng seed 26, cùng weights khởi tạo và cùng notebook.

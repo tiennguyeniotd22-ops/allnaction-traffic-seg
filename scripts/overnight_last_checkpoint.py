@@ -9,6 +9,7 @@ from tempfile import TemporaryDirectory
 
 import numpy as np
 from ultralytics import YOLO
+from notebook_identity import verified_team
 
 
 def read(path):
@@ -37,9 +38,10 @@ def main():
     last = weights / "last.pt" if a.epoch is None else parent / "snapshots" / f"epoch-{a.epoch:03}.pt"
     assert sha(weights / "best.pt") == report["train"]["best_sha256"]
     resources = read(parent / "resources.json")
-    assert sha(a.notebook) == resources["notebook_sha256"] == "83e498336ed0a6081753ae49dc1dc2b93ca4066e28515a3204c799a9904876fd"
+    assert sha(a.notebook) == resources["notebook_sha256"]
+    team = verified_team(report, resources["notebook_sha256"])
     assert version("ultralytics") == report["environment"]["packages"]["ultralytics"] == "8.4.214"
-    assert report["seed"] == report["team_id"] == 26 and report["model"]["architecture"] == "yolo26n-seg"
+    assert report["model"]["architecture"] == "yolo26n-seg"
     if out.exists():
         prior = read(out / "checkpoint-selection.json")
         assert prior["last_sha256"] == sha(last) and prior["parent_submission_sha256"] == report["submission"]["zip_sha256"]
@@ -106,7 +108,7 @@ def main():
         # the new export fields from actual output, then the inherited dataset stats are checked.
         data = report["dataset"]
         audit = ns["analyze_dataset"](run / "dataset", report["classes"], checker.config.min_gt_area_px, 640)
-        new = ns["build_manifest"](26, 26, report["params"], data, audit, trainer, submission, eval_result,
+        new = ns["build_manifest"](team, team, report["params"], data, audit, trainer, submission, eval_result,
                                    {"installed":report["environment"]["packages"]}, report["classes"])
         assert new["dataset"] == data
         assert new["model"]["architecture"] == "yolo26n-seg" and new["model"]["nc"] == 11

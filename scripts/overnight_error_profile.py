@@ -8,6 +8,7 @@ from tempfile import TemporaryDirectory
 
 import numpy as np
 from pycocotools import mask as mu
+from notebook_identity import verified_team
 
 
 def read(path):
@@ -26,7 +27,7 @@ def main():
     a = p.parse_args()
     manifest = {r["file"]: r for r in read(a.validation)}
     report = read(a.run / "run_report.json")
-    assert sha(a.notebook) == "83e498336ed0a6081753ae49dc1dc2b93ca4066e28515a3204c799a9904876fd"
+    verified_team(report, sha(a.notebook))
     assert sha(a.run / "submission/submission.zip") == report["submission"]["zip_sha256"]
     mapping = read(a.run / "dataset/source_map.json")["files"]
     images = sorted((a.run / "dataset/images/val").glob("*.jpg"))

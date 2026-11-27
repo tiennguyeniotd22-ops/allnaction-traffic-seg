@@ -1,4 +1,4 @@
-"""Apply pixel-reviewed edits to original Vietnamese train annotations, preserving all other ZIP members."""
+"""Apply pixel-reviewed edits to original team training annotations and verify all ZIP members."""
 import argparse
 from collections import Counter
 from io import BytesIO
@@ -20,7 +20,9 @@ def file_sha(path):
 
 def edit(archive, record):
     name = record["image"]
-    assert name.startswith("images/train/vn_sign_") and Path(name).suffix == ".jpg"
+    image_path = Path(name)
+    assert image_path.parent.as_posix() == "images/train" and image_path.suffix == ".jpg"
+    assert image_path.name.startswith(("vn_sign_", "bdd_"))
     label = "labels/train/" + Path(name).stem + ".txt"
     data = archive.read(name)
     old = archive.read(label)
@@ -61,7 +63,11 @@ def main():
     for name in ("base", "decisions", "validation", "out"):
         parser.add_argument(name, type=Path)
     args = parser.parse_args()
-    rows = read(args.decisions)["records"]
+    decisions = read(args.decisions)
+    rows = decisions["records"]
+    base_hash = file_sha(args.base)
+    if "base_sha256" in decisions and decisions["base_sha256"] != base_hash:
+        raise ValueError("Review was prepared for a different parent archive")
     val = read(args.validation)
     assert len(val) == 140 and len({r["file"] for r in val}) == 140
     args.out.mkdir(exist_ok=True, parents=True)
@@ -95,7 +101,7 @@ def main():
     if target.exists() and file_sha(target) != digest:
         raise FileExistsError(target)
     temp.replace(target)
-    summary = dict(dataset_sha256=digest, base_sha256=file_sha(args.base), decisions_sha256=file_sha(args.decisions),
+    summary = dict(dataset_sha256=digest, base_sha256=base_hash, decisions_sha256=file_sha(args.decisions),
                    validation_manifest_sha256=file_sha(args.validation), checked_val_pairs=len(val),
                    train=n_train, changed_train_annotations=len(rows),
                    operations=Counter(a["op"] for r in rows for a in r["actions"]),

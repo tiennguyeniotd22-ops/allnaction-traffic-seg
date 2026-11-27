@@ -55,6 +55,10 @@ Tổng 640 / 140. SHA-256 bộ ZIP lần 3 bắt đầu `91268bb2`. E1 dùng cù
 
 **Nguồn đang chờ QC.** Poribohon-BD do Shaira Tabassum, Md. Sabbir Ullah, Nakib Hossain Al-nur và Swakkhar Shatabda công bố theo CC BY 4.0. Lấy 58 ảnh từ bản mẫu của tác giả, sàng lọc theo tên lớp, kích thước và dHash. Dùng 129 box CNG và 45 box rickshaw làm prompt SAM ViT-H cho lớp 3. Bảo toàn 174 mask PNG, 150 polygon đạt IoU với SAM ít nhất 0,93. Nhóm cần xem lại 24 mask khó chuyển thành polygon và duyệt đủ 11 lớp từng ảnh. Số ảnh nguồn này đã dùng trong E1 bằng 0. Manifest của gói lưu SHA gốc, SHA ảnh resize, đường dẫn XML, box, kích thước và tác giả. [Dataset và giấy phép](https://data.mendeley.com/datasets/pwyyg8zmk5/1) · [Bản mẫu tại commit nguồn](https://github.com/shairatabassum/BangladeshiVehiclesDataset/tree/d185287ebff01849089d560be0cc9f75305f89ee)
 
+### Rà lại nhãn trên bộ thời tiết
+
+`e3-weatherqc-v1` kế thừa cùng 1.156 ảnh train và điều kiện sử dụng của `e3-weather-v1`. Có 13 thao tác trên 11 ảnh BDD và 49 thao tác trên 24 ảnh Việt Nam. Ví dụ, một polygon ở mép phải bám theo ô tô đằng sau hàng rào nhưng mang nhãn Sign. Một polygon khác bao cả đầu kéo và phần rơ-moóc. Hai xe tiện ích nhỏ còn khó phân biệt với pickup được ghi lại để duyệt tiếp. Đã so từng thành phần ZIP với bản cha và xác minh SHA của 140 cặp validation. [Quyết định theo ảnh](experiments/overnight/weather-original-polygon-qc.json) · [Checksum và số instance từng lớp](experiments/overnight/weatherqc-manifest.json)
+
 ## Kế hoạch nguồn của các phiên bản cũ
 
 | STT | Tên Bộ Dữ Liệu | Đường Dẫn (URL) | Giấy Phép (License) | Số Ảnh Đã Dùng (Train / Val) | Ghi Chú Xử Lý |

@@ -17,6 +17,7 @@ PYTHON = ".venv/bin/python"
 DATA = {
     "e3-tax-v2": "d9fabdc563c4de14d4cb8205dcd10e6ffcc849186cfe69c8fa1a20b11efc0dad",
     "e3-weather-v1": "98c08b696635b776991aa26d8f0eafbbf8781c45a6bfb4c25dcbc9bbac06dbb8",
+    "e3-weatherqc-v1": "f125ebfd5846fe6c948dd6c1bb33ce70c63cfb4fd7a505e7453e709d8af70a5e",
     "e3-bdd-v1": "5e056fb7fead9c24f78db2f7057d77ea57743fa5a4c15aad01b6857b31f5199e",
     "e3-vistas-v1": "3cf51625f61792c51914e5f3a661f25abe4d5380f69c1f8f4c3cc3d2329afc0d",
     "e3-vnrepair-v1": "03b99ac7680044dfb2ae2b1e22839d78fcfc20cf853e6c33c39b2b4d5e52daa2",
@@ -27,6 +28,7 @@ PILOTS = {
     "e6-sgd20": "e3-tax-v2", "e3-weather20": "e3-weather-v1",
     "e3-bdd20": "e3-bdd-v1", "e3-vistas20": "e3-vistas-v1",
     "e3-vnrepair20": "e3-vnrepair-v1",
+    "e3-weatherqc20": "e3-weatherqc-v1",
 }
 
 
@@ -97,12 +99,14 @@ def main():
     for session in ("weathertrials", "parametertrials"):
         while subprocess.run(["tmux", "has-session", "-t", "=" + session], stderr=subprocess.DEVNULL).returncode == 0:
             time.sleep(10)
-    for name, base in [("e3-bdd20", "e3-weather20"), ("e3-vistas20", "e3-bdd20"),
-                       ("e3-vnrepair20", "e3-vistas20")]:
+    for name, base, pilot_minutes in [("e3-bdd20", "e3-weather20", 16),
+                                      ("e3-weatherqc20", "e3-weather20", 16),
+                                      ("e3-vistas20", "e3-bdd20", 18),
+                                      ("e3-vnrepair20", "e3-vistas20", 18)]:
         if verified(name) is not None:
             continue
         # Allow roughly 18 minutes for a 1,411-image pilot, preserving an hour for E7.
-        if deadline.timestamp() - time.time() < 78 * 60:
+        if deadline.timestamp() - time.time() < (60 + pilot_minutes) * 60:
             print("Reserving remaining time for E7", flush=True)
             break
         if verified(base) is None:

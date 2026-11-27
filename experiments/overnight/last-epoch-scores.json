@@ -1,0 +1,133 @@
+{
+ "last-e3-bdd20": {
+  "checkpoint_selection": {
+   "parent_submission_sha256": "626032c3e7ad17e3751663f61570e428fa784b90eeae9541a01f1911d7528e98",
+   "parent_weights_sha256": "c968dce1beed0511bfea5a7c4fd03ae607e1797333790f7a39fb9a00ed17c021",
+   "parent_tensors_sha256": "85f98e38c04f4b7fccb641a030ad810d6c3afe6e7f42b2160c58186f1bacbd73",
+   "last_sha256": "57038bad05f860df474cfc4e1c94a7f49243a687047e66dcafe8491470c0eef8",
+   "last_tensors_sha256": "f131e96de57520fae6919d923886747780e7cf898f023b497d3e0af6be61ea82",
+   "identical_tensors": false
+  },
+  "val_estimate": {
+   "latency_ms_p50": 117.49564750061836,
+   "map50": 0.39448546360937503,
+   "map50_95": 0.2249411304663972,
+   "n_images": 140,
+   "note": "Official ONNX self-check on the frozen team validation split.",
+   "per_class_ap": {
+    "Bicycle": 0.11170562644776838,
+    "Bus": 0.37318075418613883,
+    "Car": 0.38827059343654535,
+    "Cyclist": 0.09847216560887818,
+    "Motorcycle": 0.0680179787717281,
+    "Motorcyclist": 0.33408476105763113,
+    "Pedestrian": 0.24104249008493123,
+    "Sign": 0.2820333261197923,
+    "Traffic light": 0.15829245530650768,
+    "Truck": 0.19431115364405038
+   },
+   "score_x100": 22.49411304663972
+  },
+  "submission": {
+   "entries": [
+    "model.onnx"
+   ],
+   "zip_bytes": 9664090,
+   "zip_sha256": "19b8ffb7f68f2eb348291a0c6f457bd746e5b0b77832ca1385fec95af7d5bcf2"
+  }
+ },
+ "last-e2-full100": {
+  "checkpoint_selection": {
+   "parent_submission_sha256": "f30726d608fb6a829fd4d8b79f511c8e18ff5a2ef556760ac7e8c96fd3fdd5c9",
+   "parent_weights_sha256": "7720c10dde9e6122422c5bfc51aba990209ff3071abedeba2b891e716e105abb",
+   "parent_tensors_sha256": "661bc7129214bdcae7dac16c24381c029e109a0e07febb0920808bb155a29522",
+   "last_sha256": "407bd27c7dca5df85391338c866144c304d5066daa3d2f14fe871ac125618810",
+   "last_tensors_sha256": "c475326faec494d9bf00c2bf0d2d2607f19d7b001e32ecd7f506904af8f97043",
+   "identical_tensors": false
+  },
+  "val_estimate": {
+   "latency_ms_p50": 127.16380949495942,
+   "map50": 0.3788563900827973,
+   "map50_95": 0.21515137748904528,
+   "n_images": 140,
+   "note": "Official ONNX self-check on the frozen team validation split.",
+   "per_class_ap": {
+    "Bicycle": 0.09903050401917643,
+    "Bus": 0.36224123407785747,
+    "Car": 0.39029815187461325,
+    "Cyclist": 0.15046241549322834,
+    "Motorcycle": 0.0604571019397566,
+    "Motorcyclist": 0.20552630099084404,
+    "Pedestrian": 0.24720417724003557,
+    "Sign": 0.31106638690388294,
+    "Traffic light": 0.163576023268389,
+    "Truck": 0.1616514790826694
+   },
+   "score_x100": 21.51513774890453
+  },
+  "submission": {
+   "entries": [
+    "model.onnx"
+   ],
+   "zip_bytes": 9660996,
+   "zip_sha256": "d5e121bee748187c78d6480e2fdbdea26686fd759d5079fe695ca9129ef14973"
+  }
+ },
+ "last-control100": {
+  "checkpoint_selection": {
+   "parent_submission_sha256": "412fee1ba894c34b2946703888821df8b29b2ff48b6ec4e8f6ad325ae1dc2c47",
+   "parent_weights_sha256": "4802f2fe939687fc3abb836edce5a66d8d972e13bb9b659c6f4f74bc680cbcef",
+   "parent_tensors_sha256": "f6f5f30da9e090e15b8947f5d78123a64e412fdd59a4b23e985554ab0fbe13e5",
+   "last_sha256": "ae523a6bace82608671ea52776f5a8c6e23ad7f3ba466a8f2ab846eb4166d26c",
+   "last_tensors_sha256": "7f5f2831ae28e7ee1eb8ff398870436d3ffab0b72fd7d1815bc7a0e5e22f5de4",
+   "identical_tensors": false
+  },
+  "val_estimate": {
+   "latency_ms_p50": 114.79050550042302,
+   "map50": 0.3952611735657626,
+   "map50_95": 0.21886442382462487,
+   "n_images": 140,
+   "note": "Official ONNX self-check on the frozen team validation split.",
+   "per_class_ap": {
+    "Bicycle": 0.06417810713513038,
+    "Bus": 0.3388075876294082,
+    "Car": 0.39380700185946066,
+    "Cyclist": 0.17927066481832626,
+    "Motorcycle": 0.06703270402444421,
+    "Motorcyclist": 0.27036329413161175,
+    "Pedestrian": 0.23927838148208216,
+    "Sign": 0.28878872545785056,
+    "Traffic light": 0.1701779933671126,
+    "Truck": 0.17693977834082214
+   },
+   "score_x100": 21.886442382462487
+  },
+  "submission": {
+   "entries": [
+    "model.onnx"
+   ],
+   "zip_bytes": 9660991,
+   "zip_sha256": "30d79b3635ea50d209be55bdf0df6cba99da12c2838e042b1b7a07fce7cb99bb"
+  }
+ },
+ "last-e3-tax20": {
+  "checkpoint_selection": {
+   "parent_submission_sha256": "fd6378883c220c08afd3f6c9cee043b94ad1b57357e44d0bd81192c512874e37",
+   "parent_weights_sha256": "934736a348208ecfd60a49bdf9016251783cd6115c0f10ebaa84043b91cf94b2",
+   "parent_tensors_sha256": "252754e9ec9f2eca33aa821589e1c83cb8cd78deaf80dcf62810f246e4a1160b",
+   "last_sha256": "21a176d6311f69a38ea25810995dfbc5b6aa0c309a42a68ff1546aa51ee127eb",
+   "last_tensors_sha256": "252754e9ec9f2eca33aa821589e1c83cb8cd78deaf80dcf62810f246e4a1160b",
+   "identical_tensors": true
+  }
+ },
+ "last-e3-weather20": {
+  "checkpoint_selection": {
+   "parent_submission_sha256": "414b614ef5f216b18b25c38f53897645e65da9eab2e05bd799e8600b9460ff02",
+   "parent_weights_sha256": "92935bf6a2dc0f6477f6a8922e5f663a57a35b04891a7db2a156febaaa0a23f3",
+   "parent_tensors_sha256": "c7cdfbd2c90f8292272d8ea829e6ecbdb3196b9324359dbc7122b686f09108c8",
+   "last_sha256": "5da3ffdeb9974787a666e4a0afa99f0df71d4822ac49c5ee99448dc159a3f613",
+   "last_tensors_sha256": "c7cdfbd2c90f8292272d8ea829e6ecbdb3196b9324359dbc7122b686f09108c8",
+   "identical_tensors": true
+  }
+ }
+}

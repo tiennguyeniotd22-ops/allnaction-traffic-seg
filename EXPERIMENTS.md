@@ -16,6 +16,9 @@ Các số dưới đây là điểm mask trên thang 100. 140 ảnh gồm 60 ả
 | E4 tắt Copy-Paste | 1.113 | 20 | 22,43 | 39,09 | 22,90 | 18,38 | 21,53 | 21,16 |
 | E3 thời tiết và Việt Nam | 1.156 | 20 | 23,22 | 40,12 | 23,13 | 18,88 | 22,58 | 22,61 |
 | E3 thêm BDD semantic | 1.199 | 20 | 22,62 | 39,55 | 22,34 | 16,42 | 21,35 | 21,83 |
+| E5 mask ratio 4 | 1.113 | 20 | 23,20 | 40,25 | 23,30 | 16,52 | 21,72 | 21,45 |
+
+E5 thay riêng `mask_ratio` từ 2 thành 4 trên bộ E3 taxonomy. Chênh lệch trên 140 ảnh là +0,39 điểm, khoảng bootstrap ghép cặp 95% từ −0,87 đến +1,46. Fit và validation gốc mất 634 giây trên L4, đỉnh bộ nhớ PyTorch cấp phát 3.520 MiB. Trên 46 crop Mapillary khóa riêng, vòng 4 đạt 18,73, weather đạt 21,65 và BDD đạt 21,86. Tập này có 556 GT được tính, 349 GT bị loại theo ngưỡng của evaluator và 0 GT lớp 3. [Điểm chẩn đoán và checksum](experiments/overnight/probe-scores.json)
 
 Việc thêm 43 crop BDD giảm 0,60 điểm so với E3 thời tiết trên 140 ảnh, khoảng bootstrap ghép cặp 95% từ −1,55 đến +0,90 điểm. Trên holdout lớp 3, AP tăng từ 52,42 lên 55,24. Mỗi ZIP đều được chấm bằng ONNX và đối chiếu checksum với checkpoint tương ứng. [Kết quả từng lớp và kiểm tra ONNX](experiments/overnight/verified-scores.json)
 

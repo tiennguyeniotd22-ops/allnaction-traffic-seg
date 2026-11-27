@@ -81,7 +81,7 @@ def train_and_score(name, version, reference, recipe, revision, epochs, patience
                             "--manifest", ROOT / "e2-v1/manifest.json", "--notebook", "train_and_export.ipynb",
                             "--out", out / "held"], check=True, env=env, stdout=f, stderr=subprocess.STDOUT)
         if not (out / "comparison.json").exists():
-            options = ["--allow-schedule-change"] if final else []
+            options = ["--allow-schedule-change"] if final else ["--experiment", recipe]
             subprocess.run([PYTHON, CODE / "compare_pilot.py", "--baseline", ROOT / reference, "--pilot", run,
                             "--notebook", "train_and_export.ipynb", "--manifest", "audit_phase12/validation-manifest.json",
                             "--out", out / "comparison.json", *options], check=True, env=env, stdout=f, stderr=subprocess.STDOUT)
@@ -99,19 +99,30 @@ def main():
     for session in ("weathertrials", "parametertrials"):
         while subprocess.run(["tmux", "has-session", "-t", "=" + session], stderr=subprocess.DEVNULL).returncode == 0:
             time.sleep(10)
-    for name, base, pilot_minutes in [("e3-bdd20", "e3-weather20", 16),
-                                      ("e3-weatherqc20", "e3-weather20", 16),
-                                      ("e3-vistas20", "e3-bdd20", 18),
-                                      ("e3-vnrepair20", "e3-vistas20", 18)]:
+    for name, base, recipe, pilot_minutes in [
+        ("e3-bdd20", "e3-weather20", "control", 16),
+        ("e3-vistas20", "e3-bdd20", "control", 20),
+        ("e6-lowerlr20", "e3-tax20", "lower-lr", 15),
+        ("e6-linear20", "e3-tax20", "linear-lr", 15),
+        ("e6-sgd20", "e3-tax20", "sgd", 15),
+        ("e3-weatherqc20", "e3-weather20", "control", 16),
+        ("e3-vnrepair20", "e3-vistas20", "control", 20),
+    ]:
         if verified(name) is not None:
             continue
-        # Allow roughly 18 minutes for a 1,411-image pilot, preserving an hour for E7.
-        if deadline.timestamp() - time.time() < (60 + pilot_minutes) * 60:
+        remaining_pilot = 3 if (ROOT / name / "run_report.json").is_file() else pilot_minutes
+        if deadline.timestamp() - time.time() < (60 + remaining_pilot) * 60:
             print("Reserving remaining time for E7", flush=True)
             break
         if verified(base) is None:
             raise RuntimeError(f"Expected verified matched data pilot {base}")
-        train_and_score(name, PILOTS[name], base, "control", args.revision, 20, 20)
+        try:
+            train_and_score(name, PILOTS[name], base, recipe, args.revision, 20, 20)
+        except subprocess.CalledProcessError as exc:
+            # A scoring failure quarantines only this candidate; a fit failure needs diagnosis.
+            if not (ROOT / name / "run_report.json").is_file():
+                raise
+            print(f"{name} excluded pending verification, exit {exc.returncode}: {exc.cmd}", flush=True)
     scores = {name: value for name in PILOTS if (value := verified(name)) is not None}
     best = max(scores, key=scores.get)
     recipe = read(ROOT / best / "resources.json").get("experiment", "control")

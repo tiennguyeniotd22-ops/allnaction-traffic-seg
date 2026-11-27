@@ -5,6 +5,7 @@ from io import BytesIO
 import hashlib
 import json
 from pathlib import Path
+import re
 from zipfile import ZipFile
 
 import numpy as np
@@ -22,7 +23,9 @@ def edit(archive, record):
     name = record["image"]
     image_path = Path(name)
     assert image_path.parent.as_posix() == "images/train" and image_path.suffix == ".jpg"
-    assert image_path.name.startswith(("vn_sign_", "bdd_"))
+    if not image_path.name.startswith(("vn_sign_", "bdd_")):
+        assert re.fullmatch(r"zz_drive_(?:syn_(?:rain|night)_)?\d{12}\.jpg", image_path.name)
+        assert record["source"] == "COCO val2017"
     label = "labels/train/" + Path(name).stem + ".txt"
     data = archive.read(name)
     old = archive.read(label)
@@ -43,6 +46,8 @@ def edit(archive, record):
         assert 0 <= i < len(lines) and i not in changed
         cls, coords = lines[i].split(maxsplit=1)
         assert int(cls) == action["from_cls"]
+        if "old_row_sha256" in action:
+            assert sha(lines[i].encode()) == action["old_row_sha256"]
         if op == "relabel":
             assert 0 <= action["cls"] < 11 and action["cls"] != int(cls)
             changed[i] = f"{action['cls']} {coords}"

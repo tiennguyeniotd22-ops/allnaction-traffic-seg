@@ -1,0 +1,90 @@
+{
+ "dataset_sha256": "90f7cd78bacc169d02e9d7bb828d83e7150f487e3f7f9b1fed3d28f39050b59c",
+ "base_sha256": "f125ebfd5846fe6c948dd6c1bb33ce70c63cfb4fd7a505e7453e709d8af70a5e",
+ "decisions_sha256": "7ea7ba5272aefac34fdf63cc182c277cfcf6278e88837582a5d60e7850c2ffc4",
+ "validation_manifest_sha256": "23c92420f1742f9d6091c09930bb43e055558064b604a2b61291b62eaeeb2013",
+ "checked_val_pairs": 140,
+ "train": 1156,
+ "changed_train_annotations": 9,
+ "operations": {
+  "delete": 32,
+  "append": 40
+ },
+ "instances_by_class": [
+  3568,
+  429,
+  347,
+  117,
+  334,
+  276,
+  254,
+  132,
+  2785,
+  1022,
+  1153
+ ],
+ "changed_members": {
+  "labels/train/zz_drive_000000019109.txt": "27b3a5e6e01017d1fa765ffb770923e4f12b324bf64a4a0c46313d3b0dd8a861",
+  "labels/train/zz_drive_syn_rain_000000019109.txt": "0afab2084527d1c982c2cf174313f63812dc3d09fcbc91bcc1ace395e04cf17b",
+  "labels/train/zz_drive_000000038829.txt": "065a64cbc7874b16603da772184fc4197a06cadbe59fecf5a53e52ee78c389c1",
+  "labels/train/zz_drive_000000065350.txt": "7acd65f668f780ca5ad23a594410424238ec17c61f89d81198c4c3bebec4d1a1",
+  "labels/train/zz_drive_000000102411.txt": "bb1e80c3984c7b8cc1059ff17d34ce76569077fa82ff1e44e56251b6a8fcf797",
+  "labels/train/zz_drive_000000181542.txt": "892f4bc72772bf0754dafdf8d889302dcc6edba804e5b9e0a1bafabd587221d6",
+  "labels/train/zz_drive_000000184611.txt": "6927d1a7cc059d938b21a19518f33af56ba45aa20c8925d573deee7ea5549f31",
+  "labels/train/zz_drive_000000295809.txt": "f614601f6f4e7ff4f5d0ef62ef467c71225f937389f517cf062617e84c4ff2e0",
+  "labels/train/zz_drive_000000356612.txt": "7e815727f346eb74306d874ef26623b8d962ad982713492678ee3ae21ab672a6"
+ },
+ "reviewed_original_scenes": 8,
+ "inspected_source_bike_crops": 391,
+ "inspected_original_frames": 134,
+ "source_json_sha256": "e8c7f7908f1d7278341fae127d0da654f102f11bd7b21d8aeefa635b8c810b6f",
+ "plan_sha256": "bec4720ccbe210f383f830088dc001d2720a929f63c9088f0399ba02c69586f1",
+ "minimum_serialized_source_union_iou": 0.9911051946873204,
+ "reviewed_inputs": [
+  {
+   "image": "images/train/zz_drive_000000019109.jpg",
+   "image_sha256": "5469f123ab838c9fdcc567c13148399dcb4cfa4eeee80e6e56a13627808a6d54",
+   "label_sha256": "dd75975528df24fe2a3a36951d77739de36282e722e622a34673cbd419b5eaa6"
+  },
+  {
+   "image": "images/train/zz_drive_syn_rain_000000019109.jpg",
+   "image_sha256": "06496fe31e4aecb6817ceee55ad19b847b018f103d8ba27cbaedd81d2866b08c",
+   "label_sha256": "7cfc3112a0a44ecf3bb7556a02e9b6fb0b08f081d68829d72fb604e5ed3b393f"
+  },
+  {
+   "image": "images/train/zz_drive_000000038829.jpg",
+   "image_sha256": "73f5b0fe070aaec65bbb7263d16d3d717a75304333fe939dcf086bd85d6ff2f9",
+   "label_sha256": "d9c8504d74016000c6855d92d79b4e9df01fe1e989aeaa4fc224f40f0438386c"
+  },
+  {
+   "image": "images/train/zz_drive_000000065350.jpg",
+   "image_sha256": "963a129714e3675b99b6a405a2cb46eca5678241358bb6b6bbefc3c3f1943ae0",
+   "label_sha256": "4d2bd107083fdb03f5ac3802a06b989723f064f1558af2c814bf199d6014f4d9"
+  },
+  {
+   "image": "images/train/zz_drive_000000102411.jpg",
+   "image_sha256": "83e2901c3cebc353618ce7a7410e0ab80876eb592896f531fed76957aef34883",
+   "label_sha256": "f5fb94a07c391b7794c8e1c55bef46f38c0d2f694694d1755c9f672f9c2e98b9"
+  },
+  {
+   "image": "images/train/zz_drive_000000181542.jpg",
+   "image_sha256": "c0fdc24e1516a871e5dd195ff34a0da7b2227ef6486492545fb2548743ba4bf5",
+   "label_sha256": "416109625d59bb7a4fb7032958babb3e5578ef15d99b91bddf0de43c82111b2d"
+  },
+  {
+   "image": "images/train/zz_drive_000000184611.jpg",
+   "image_sha256": "641165f214240ca23cb4b8ef4df24b6e9d325131f5c2ea51d2a7ee0112d217d0",
+   "label_sha256": "a225958b99cfb70e1bb3e334ae9933516699654c62b4059bcab2089b79fa4662"
+  },
+  {
+   "image": "images/train/zz_drive_000000295809.jpg",
+   "image_sha256": "852cd3d0eaae0f7c91cb121c4510a8e1470df56d0508a0eb38379a0dd5596115",
+   "label_sha256": "05b558ba0712617e95aa24d4a807d31ca7630024194cfbaeb0624bcce5039797"
+  },
+  {
+   "image": "images/train/zz_drive_000000356612.jpg",
+   "image_sha256": "92d4db8b8ea208bddba73c0c89331960e194cf87eb5841e3050f62796131a60e",
+   "label_sha256": "6704732d845f1a1993cb09977d1e0bef4036d3928d35229caec6e4ca20a27408"
+  }
+ ]
+}

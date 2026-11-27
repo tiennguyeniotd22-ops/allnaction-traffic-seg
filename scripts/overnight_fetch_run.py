@@ -53,6 +53,12 @@ def main():
     assert metric["all140"]["map50_95"]==json.loads(bodies["run_report.json"])["val_estimate"]["map50_95"]
     board=json.loads(args.scoreboard.read_text())
     result={k:compare[k] for k in ("paired_scene_bootstrap_95_points","onnx_parity","zip_sha256","onnx_sha256","best_sha256","zip_bytes","opsets")}
+    if "decoded_parity" in compare:
+        replay = compare["decoded_parity"]
+        assert replay["passed"] and replay["zip_sha256"] == digest(pack)
+        assert replay["best_sha256"] == digest(bodies["best.pt"])
+        assert replay["onnx"]["map50_95"] == metric["all140"]["map50_95"]
+        result["decoded_parity"] = replay
     result.update(scores=metric, resources=resources, holdout=held)
     if args.run in board and result!=board[args.run]:
         raise RuntimeError("Scoreboard already contains a different record")

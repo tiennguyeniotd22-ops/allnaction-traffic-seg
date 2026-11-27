@@ -1,4 +1,4 @@
-"""Evaluate last.pt from a finished fit with the original competition export and decoder."""
+"""Score a retained single checkpoint with the original competition export and decoder."""
 import argparse
 import hashlib
 from importlib.metadata import version
@@ -28,12 +28,13 @@ def main():
     p = argparse.ArgumentParser()
     for name in ("parent", "out", "notebook", "validation"):
         p.add_argument(name, type=Path)
+    p.add_argument("--epoch", type=int, help="Use the saved end-of-epoch snapshot (one-based)")
     a = p.parse_args()
     parent = a.parent.resolve()
     out = a.out.resolve()
     report = read(parent / "run_report.json")
     weights = parent / "runs/train/weights"
-    last = weights / "last.pt"
+    last = weights / "last.pt" if a.epoch is None else parent / "snapshots" / f"epoch-{a.epoch:03}.pt"
     assert sha(weights / "best.pt") == report["train"]["best_sha256"]
     resources = read(parent / "resources.json")
     assert sha(a.notebook) == resources["notebook_sha256"] == "83e498336ed0a6081753ae49dc1dc2b93ca4066e28515a3204c799a9904876fd"
@@ -56,6 +57,8 @@ def main():
     choice = dict(parent=str(parent), parent_submission_sha256=report["submission"]["zip_sha256"],
                   parent_weights_sha256=sha(weights / "best.pt"), parent_tensors_sha256=before,
                   last_sha256=sha(last), last_tensors_sha256=after, identical_tensors=before == after)
+    if a.epoch is not None:
+        choice["snapshot_epoch"] = a.epoch
     # The original fit is immutable. Work in a new, atomically published directory.
     out.parent.mkdir(parents=True, exist_ok=True)
     with TemporaryDirectory(dir=out.parent) as root:
@@ -112,7 +115,7 @@ def main():
         write(run / "train_info.json", trainer)
         write(run / "resources.json", dict(resources, reuses_fit_from=str(parent), additional_fit_seconds=0))
         run.rename(out)
-        print("Last-epoch official val140", parent.name, result["score"], flush=True)
+        print("Checkpoint official val140", parent.name, last.name, result["score"], flush=True)
 
 
 if __name__ == "__main__":

@@ -12,12 +12,13 @@ from datetime import datetime
 
 
 ROOT = Path("overnight")
-CODE = ROOT / "ablation"
+CODE = Path(os.getenv("PLANTCARE_TRAIN_SCRIPTS", ROOT / "ablation"))
 PYTHON = ".venv/bin/python"
 DATA = {
     "e3-tax-v2": "d9fabdc563c4de14d4cb8205dcd10e6ffcc849186cfe69c8fa1a20b11efc0dad",
     "e3-weather-v1": "98c08b696635b776991aa26d8f0eafbbf8781c45a6bfb4c25dcbc9bbac06dbb8",
     "e3-weatherqc-v1": "f125ebfd5846fe6c948dd6c1bb33ce70c63cfb4fd7a505e7453e709d8af70a5e",
+    "e3-riderqc-v1": "90f7cd78bacc169d02e9d7bb828d83e7150f487e3f7f9b1fed3d28f39050b59c",
     "e3-bdd-v1": "5e056fb7fead9c24f78db2f7057d77ea57743fa5a4c15aad01b6857b31f5199e",
     "e3-vistas-v1": "3cf51625f61792c51914e5f3a661f25abe4d5380f69c1f8f4c3cc3d2329afc0d",
     "e3-vnrepair-v1": "03b99ac7680044dfb2ae2b1e22839d78fcfc20cf853e6c33c39b2b4d5e52daa2",
@@ -29,6 +30,7 @@ PILOTS = {
     "e3-bdd20": "e3-bdd-v1", "e3-vistas20": "e3-vistas-v1",
     "e3-vnrepair20": "e3-vnrepair-v1",
     "e3-weatherqc20": "e3-weatherqc-v1",
+    "e3-riderqc20": "e3-riderqc-v1",
 }
 
 
@@ -69,7 +71,8 @@ def train_and_score(name, version, reference, recipe, revision, epochs, patience
         with (ROOT / (name + ".log")).open("a") as f:
             subprocess.run([PYTHON, CODE / "run_notebook_pilot.py", "--dataset", dataset, "--run", run,
                             "--revision", revision, "--epochs", str(epochs), "--patience", str(patience),
-                            "--experiment", recipe], check=True, stdout=f, stderr=subprocess.STDOUT)
+                            "--experiment", recipe, *(["--snapshot-every", "20"] if final else [])],
+                           check=True, stdout=f, stderr=subprocess.STDOUT)
     resources = read(run / "resources.json")
     assert resources["dataset_sha256"] == DATA[version] and resources["experiment"] == recipe
     out = score_dir(name)
@@ -81,10 +84,20 @@ def train_and_score(name, version, reference, recipe, revision, epochs, patience
                             "--manifest", ROOT / "e2-v1/manifest.json", "--notebook", "train_and_export.ipynb",
                             "--out", out / "held"], check=True, env=env, stdout=f, stderr=subprocess.STDOUT)
         if not (out / "comparison.json").exists():
-            options = ["--allow-schedule-change"] if final else ["--experiment", recipe]
-            subprocess.run([PYTHON, CODE / "compare_pilot.py", "--baseline", ROOT / reference, "--pilot", run,
+            same_recipe = read(ROOT / reference / "resources.json").get("experiment", "control") == recipe
+            options = ["--allow-schedule-change"] if final else ["--experiment", "control" if same_recipe else recipe]
+            compare = [PYTHON, CODE / "compare_pilot.py", "--baseline", ROOT / reference, "--pilot", run,
                             "--notebook", "train_and_export.ipynb", "--manifest", "audit_phase12/validation-manifest.json",
-                            "--out", out / "comparison.json", *options], check=True, env=env, stdout=f, stderr=subprocess.STDOUT)
+                            "--out", out / "comparison.json", *options]
+            io = dict(env=env, stdout=f, stderr=subprocess.STDOUT)
+            result = subprocess.run(compare, **io)
+            if result.returncode == 65:
+                decoded = ROOT / "decoded" / name
+                subprocess.run([PYTHON, CODE / "overnight_decode_parity.py", run, "train_and_export.ipynb",
+                                "audit_phase12/validation-manifest.json", decoded], check=True, **io)
+                subprocess.run([*compare, "--decoded-parity", decoded / "decoded-comparison.json"], check=True, **io)
+            else:
+                result.check_returncode()
     print(name, "verified", verified(name), flush=True)
 
 
@@ -104,6 +117,7 @@ def main():
         ("e3-vistas20", "e3-bdd20", "control", 20),
         ("e6-lowerlr20", "e3-tax20", "lower-lr", 15),
         ("e6-linear20", "e3-tax20", "linear-lr", 15),
+        ("e3-riderqc20", "e6-lowerlr20", "lower-lr", 16),
         ("e6-sgd20", "e3-tax20", "sgd", 15),
         ("e3-weatherqc20", "e3-weather20", "control", 16),
         ("e3-vnrepair20", "e3-vistas20", "control", 20),
@@ -137,6 +151,7 @@ def main():
     decision = dict(pilot=best, pilot_scores=scores, metric="official ONNX val140 mask mAP50-95",
                     version=PILOTS[best], recipe=recipe, dataset_sha256=DATA[PILOTS[best]], epochs=epochs,
                     patience=25, median_epoch_seconds=per_epoch, deadline=args.deadline, revision=args.revision)
+    decision["snapshot_interval_epochs"] = 20
     print(json.dumps(decision), flush=True)
     plan = ROOT / "e7-selection.json"
     if plan.exists() and read(plan) != decision:

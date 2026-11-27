@@ -1,0 +1,256 @@
+{
+ "19109": {
+  "reason": "Parked scooters in front of a cafe. Separate the sidewalk and cafe patrons. The face at x=55,y=174 is an advertisement on the kiosk.",
+  "remove": [
+   2,
+   3,
+   4,
+   5,
+   8,
+   10,
+   11,
+   17
+  ],
+  "add": [
+   [
+    4,
+    [
+     148051
+    ]
+   ],
+   [
+    4,
+    [
+     155355
+    ]
+   ],
+   [
+    4,
+    [
+     155874
+    ]
+   ],
+   [
+    4,
+    [
+     245859
+    ]
+   ],
+   [
+    4,
+    [
+     1789837
+    ]
+   ],
+   [
+    4,
+    [
+     1791159
+    ]
+   ],
+   [
+    4,
+    [
+     1791194
+    ]
+   ],
+   [
+    8,
+    [
+     1292605
+    ]
+   ],
+   [
+    8,
+    [
+     1316008
+    ]
+   ],
+   [
+    8,
+    [
+     1726831
+    ]
+   ],
+   [
+    8,
+    [
+     1691370
+    ]
+   ],
+   [
+    8,
+    [
+     1692596
+    ]
+   ],
+   [
+    8,
+    [
+     1704009
+    ]
+   ],
+   [
+    8,
+    [
+     1680320
+    ]
+   ]
+  ]
+ },
+ "38829": {
+  "reason": "Two students share the same bicycle. COCO splits the bicycle into front and rear parts. The foreground scooter is driven by the rider with a white helmet. The distant blue-shirt rider crosses behind it.",
+  "remove": [
+   0,
+   1,
+   4,
+   5
+  ],
+  "add": [
+   [
+    7,
+    [
+     127622,
+     128391,
+     192078,
+     235455
+    ]
+   ],
+   [
+    5,
+    [
+     1789984,
+     234903
+    ]
+   ]
+  ],
+  "note": "The distant blue-shirt rider's motorcycle outline is insufficient in the source; leave for a separate manual trace."
+ },
+ "65350": {
+  "reason": "Two skateboarders are in front of stationary bicycles behind a railing. Separate people and bikes.",
+  "remove": [
+   0,
+   2
+  ],
+  "add": [
+   [
+    8,
+    [
+     220110
+    ]
+   ],
+   [
+    6,
+    [
+     1767412
+    ]
+   ],
+   [
+    8,
+    [
+     201781
+    ]
+   ],
+   [
+    6,
+    [
+     1335681
+    ]
+   ]
+  ]
+ },
+ "102411": {
+  "reason": "Two helmeted people are seated on the same motorcycle. The person nearer the beach in the gap above the handlebars is separate.",
+  "remove": [
+   8,
+   10,
+   11
+  ],
+  "add": [
+   [
+    5,
+    [
+     152893,
+     212924,
+     233845
+    ]
+   ],
+   [
+    8,
+    [
+     208071
+    ]
+   ]
+  ]
+ },
+ "181542": {
+  "reason": "A woman walking across the frame occludes a motorcycle. The seated helmeted rider behind her belongs to the motorcycle.",
+  "remove": [
+   7,
+   9
+  ],
+  "add": [
+   [
+    5,
+    [
+     149762,
+     1313796
+    ],
+    [
+     1239145
+    ]
+   ],
+   [
+    8,
+    [
+     1239145
+    ]
+   ]
+  ]
+ },
+ "184611": {
+  "reason": "A passenger carriage on three cycle wheels is a pedicab. Use its visible vehicle silhouette, remove the rider from pedestrian labels.",
+  "remove": [
+   6,
+   8
+  ],
+  "add": [
+   [
+    3,
+    [
+     126763
+    ],
+    [
+     205786
+    ]
+   ]
+  ],
+  "note": "The small cart further up the sidewalk needs independent identification."
+ },
+ "295809": {
+  "reason": "Bicycle painted on the pavement is a road marking.",
+  "remove": [
+   0
+  ],
+  "add": []
+ },
+ "356612": {
+  "reason": "A tricycle passenger carriage at the right is a pedicab. Remove the seated people from pedestrian/two-wheel labels.",
+  "remove": [
+   3,
+   4
+  ],
+  "add": [
+   [
+    3,
+    [
+     241773
+    ],
+    [
+     210852,
+     220018
+    ]
+   ]
+  ]
+ }
+}

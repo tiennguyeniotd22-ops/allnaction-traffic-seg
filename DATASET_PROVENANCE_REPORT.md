@@ -8,6 +8,8 @@
 
 Tất cả số lượng dưới đây tính theo ảnh hoặc crop đưa vào train. Validation 140 giữ nguyên ảnh và nhãn. Các bản tăng cường giữ giấy phép của ảnh cha.
 
+Bản `e3-riderqc-v1` lấy 1.156 ảnh train của `e3-weatherqc-v1`. Tám ảnh COCO val2017 đã thuộc split train của nhóm và một ảnh mưa cùng cha được sửa nhãn theo ID annotation nguồn. Hai xích lô được chuyển sang lớp 3, người đang đi bộ được tách khỏi xe, hành khách cùng ngồi trên xe hai bánh được gộp và hình xe đạp trên mặt đường được bỏ. Toàn bộ ảnh, các nhãn khác và split được kiểm theo từng mục trong ZIP. Bản kê ghi SHA và số instance của cả 11 lớp. [COCO và điều khoản sử dụng](https://cocodataset.org/#termsofuse) · [Manifest thay đổi](experiments/overnight/coco-riderqc-manifest.json)
+
 | Phiên bản | Thành phần bổ sung | Nguồn nhãn và ánh xạ |
 |---|---|---|
 | E2, 802 train | 126 COCO train2017, 32 Poribohon-BD, 4 crop biển Việt Nam v5 | COCO dùng mask instance gốc. Với Poribohon, box nguồn làm prompt SAM, duyệt lớp 3 theo loại xe và kiểm các đối tượng khác trong crop. 6 ảnh/crop Poribohon khác được khóa riêng cho holdout. |

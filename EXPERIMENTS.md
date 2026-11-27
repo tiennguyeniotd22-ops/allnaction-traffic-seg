@@ -17,6 +17,14 @@ Các số dưới đây là điểm mask trên thang 100. 140 ảnh gồm 60 ả
 | E3 thời tiết và Việt Nam | 1.156 | 20 | 23,22 | 40,12 | 23,13 | 18,88 | 22,58 | 22,61 |
 | E3 thêm BDD semantic | 1.199 | 20 | 22,62 | 39,55 | 22,34 | 16,42 | 21,35 | 21,83 |
 | E5 mask ratio 4 | 1.113 | 20 | 23,20 | 40,25 | 23,30 | 16,52 | 21,72 | 21,45 |
+| E6 AdamW lr0 0,0007 | 1.113 | 20 | 23,57 | 41,13 | 23,47 | 19,13 | 22,41 | 22,93 |
+| E3 thêm Mapillary | 1.411 | 20 | 23,07 | 40,21 | 23,44 | 17,50 | 22,56 | 20,70 |
+
+E6 giảm riêng learning rate ban đầu so với E3 taxonomy và tăng 0,76 điểm trên val140. Khoảng bootstrap ghép cặp 95% từ −0,77 đến +2,25 điểm. L4 mất 692,6 giây cho fit và native validation, đỉnh bộ nhớ PyTorch cấp phát 4.992 MiB. Holdout lớp 3 đạt 51,32 AP. Điểm E3 thêm Mapillary cao hơn E3 BDD 0,45 điểm, khoảng 95% từ −0,81 đến +1,68. Holdout lớp 3 của Mapillary đạt 43,99 AP.
+
+Khi so E6 với PyTorch FP32, một tọa độ box của ONNX trên một ảnh lệch 0,011505 pixel và vượt ngưỡng tensor ban đầu. Chạy cả hai bản qua decoder và scorer của BTC trên đủ 140 ảnh cho chênh lệch mAP −0,00000541 điểm. Trong 1.339 instance có confidence từ 0,25, cả 1.339 khớp lớp và có mask IoU ≥0,99, trong đó 1.337 trùng từng pixel. Đã kiểm riêng prototype, điểm lớp và hệ số mask ở ngưỡng tensor ban đầu. [Kết quả và checksum từng ZIP](experiments/overnight/verified-scores.json)
+
+**Rà lại ca người và xe.** Đã đối chiếu 391 crop xe hai bánh ở 134 ảnh gốc COCO trong train. Bản `e3-riderqc-v1` sửa tám ảnh gốc và một biến thể mưa, giữ 1.156 ảnh train. Bỏ 32 dòng cũ và ghi 40 polygon sau đối chiếu ảnh cùng ID nguồn. IoU nhỏ nhất sau khi ghi polygon với mask nguồn đã ghép hoặc trừ phần khuất là 0,9911. Toàn bộ 140 cặp validation khớp manifest. Chênh lệch với E6 gồm cả dữ liệu thời tiết, sửa BDD/Việt Nam và sửa COCO nên chỉ đo được tác động gộp. [Quyết định từng ảnh](experiments/overnight/coco-rider-decisions.json) · [Manifest](experiments/overnight/coco-riderqc-manifest.json)
 
 E5 thay riêng `mask_ratio` từ 2 thành 4 trên bộ E3 taxonomy. Chênh lệch trên 140 ảnh là +0,39 điểm, khoảng bootstrap ghép cặp 95% từ −0,87 đến +1,46. Fit và validation gốc mất 634 giây trên L4, đỉnh bộ nhớ PyTorch cấp phát 3.520 MiB. Trên 46 crop Mapillary khóa riêng, vòng 4 đạt 18,73, weather đạt 21,65 và BDD đạt 21,86. Tập này có 556 GT được tính, 349 GT bị loại theo ngưỡng của evaluator và 0 GT lớp 3. [Điểm chẩn đoán và checksum](experiments/overnight/probe-scores.json)
 

@@ -23,11 +23,13 @@ def main():
     parser.add_argument("--revision", required=True)
     parser.add_argument("--epochs", type=int, default=20)
     parser.add_argument("--patience", type=int)
+    parser.add_argument("--snapshot-every", type=int, default=0,
+                        help="Copy the saved EMA checkpoint every N completed epochs for offline scoring")
     parser.add_argument("--experiment", choices=CHANGES, default="control")
     parser.add_argument("--notebook", type=Path, default=Path("train_and_export.ipynb"))
     args = parser.parse_args()
-    if args.epochs < 1 or (args.patience is not None and args.patience < 1):
-        parser.error("epochs and patience must be positive")
+    if args.epochs < 1 or (args.patience is not None and args.patience < 1) or args.snapshot_every < 0:
+        parser.error("Invalid epochs, patience, or snapshot interval")
     run = args.run.resolve()
     dataset = args.dataset.resolve()
     notebook_sha = digest(args.notebook)
@@ -39,6 +41,15 @@ def main():
         raise ValueError("Initial weights differ from round 3")
     ns = {"__name__": "__main__"}
 
+    def retain_snapshot(trainer):
+        epoch = trainer.epoch + 1
+        if epoch % args.snapshot_every == 0:
+            target = run / "snapshots" / f"epoch-{epoch:03}.pt"
+            target.parent.mkdir(exist_ok=True)
+            temp = target.with_suffix(".partial")
+            shutil.copyfile(trainer.last, temp)
+            temp.replace(target)
+
     def cell(i):
         source = "".join(cells[i]["source"])
         if i == 15 and args.experiment != "control":
@@ -46,6 +57,11 @@ def main():
             assert source.count(marker) == 1
             ns["configure_experiment"] = lambda cfg: configure_train_args(cfg, args.experiment, run)
             source = source.replace(marker, "configure_experiment(TRAIN_ARGS)\n" + marker)
+        if i == 15 and args.snapshot_every:
+            marker = "model.train(**TRAIN_ARGS)"
+            assert source.count(marker) == 1
+            ns["retain_snapshot"] = retain_snapshot
+            source = source.replace(marker, 'model.add_callback("on_model_save", retain_snapshot)\n' + marker)
         exec(compile(source, f"notebook-cell-{i}", "exec"), ns)
 
     for i in (1, 2, 3, 4, 5, 7):

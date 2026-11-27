@@ -26,6 +26,7 @@ from prepare_coco_traffic import (
     COMPETITION_CLASSES,
     box_overlap_rider,
     coco_seg_to_norm_poly,
+    download_annotations,
     download_one,
     merge_polygons,
     polygon_area_at_640,
@@ -36,13 +37,13 @@ ANNOTATIONS_ZIP = Path("raw_cache/annotations_trainval2017.zip")
 
 
 def extract_train_json(cache_dir: Path) -> Path:
-    """Extract instances_train2017.json from cached COCO annotations zip."""
+    """Extract instances_train2017.json from cached COCO annotations zip (auto-downloads if missing)."""
     json_path = cache_dir / "annotations" / "instances_train2017.json"
     if json_path.exists():
         return json_path
     zip_path = cache_dir / "annotations_trainval2017.zip"
     if not zip_path.exists():
-        raise FileNotFoundError(f"Không tìm thấy {zip_path}. Chạy prepare_coco_traffic.py trước.")
+        download_annotations(cache_dir)
     print("[1/4] Đang giải nén instances_train2017.json (~469 MB)...")
     with zipfile.ZipFile(zip_path, "r") as zf:
         zf.extract("annotations/instances_train2017.json", cache_dir)

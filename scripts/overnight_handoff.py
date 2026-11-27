@@ -73,6 +73,10 @@ def main():
         rows = list(csv.DictReader(stream))
     epochs = int(rows[-1]["epoch"])
     count = report["dataset"]["counts"]["train"]
+    previous = read(root.parent / "round4/run_report.json")
+    assert previous["dataset"]["counts"]["val"] == report["dataset"]["counts"]["val"]
+    before = previous["val_estimate"]["per_class_ap"]
+    assert previous["classes"] == report["classes"]
     decision = report.get("checkpoint_selection", {})
     snap = decision.get("snapshot_epoch")
     revision = resource["revision"]
@@ -85,6 +89,7 @@ def main():
         "",
         f"[Checkpoint PyTorch]({best}/best.pt) · [Báo cáo notebook]({best}/run_report.json) · "
         f"[Cấu hình]({best}/args.yaml) · [Lịch sử epoch]({best}/results.csv) · "
+        f"[Log huấn luyện]({best}/training.log) · "
         f"[Dữ liệu dùng cho notebook]({version.name}/dataset.zip) · [Manifest dữ liệu]({version.name}/manifest.json)",
         "",
         "## Kết quả",
@@ -100,17 +105,20 @@ def main():
         "Nhóm 60 gồm 45 ảnh BDD100K và 15 ảnh Việt Nam. Tập Drive có 80 ảnh. "
         "Evaluator tính 1.588 instance hợp lệ trong 1.821 nhãn validation. Lớp 3 chỉ có số đo ở holdout riêng.",
         "",
-        "| ID | Lớp | Instance train | GT hợp lệ val | Mask AP |",
-        "|---:|---|---:|---:|---:|",
+        "| ID | Lớp | Instance train vòng 4 → bản chọn | GT hợp lệ val | Mask AP vòng 4 | Mask AP bản chọn |",
+        "|---:|---|---:|---:|---:|---:|",
     ]
     for cid, name in enumerate(report["classes"]):
         ap = overall["per_class_ap"].get(name)
-        lines.append(f"| {cid} | {name} | {report['dataset']['per_class'][name]['train_instances']} | "
-                     f"{overall['n_gt_per_class'][name]} | {points(ap) if ap is not None else 'Thiếu GT'} |")
+        old_count = previous["dataset"]["per_class"][name]["train_instances"]
+        new_count = report["dataset"]["per_class"][name]["train_instances"]
+        lines.append(f"| {cid} | {name} | {old_count} → {new_count} | {overall['n_gt_per_class'][name]} | "
+                     f"{points(before[name]) if name in before else 'Thiếu GT'} | {points(ap) if ap is not None else 'Thiếu GT'} |")
     lines += [
         "",
         f"Holdout Other vehicle có 7 instance trong 6 ảnh thuộc 3 nhóm cảnh, đạt {points(held['map50_95'])} AP. "
-        "Cỡ mẫu Việt Nam và holdout nhỏ. Việc chọn giữa nhiều lượt trên cùng validation có thể làm điểm local lạc quan.",
+        "Tập Việt Nam có 15 ảnh, trong đó hai khung 62b71b và 645dbe có cảnh rất giống nhau. "
+        "Việc chọn giữa nhiều lượt trên cùng validation có thể làm điểm local lạc quan.",
         "",
         "## Tái lập",
         "",
@@ -133,6 +141,16 @@ def main():
         + (" --snapshot-every 20" if snap else ""),
         "```",
         "",
+        "Để chấm lại trực tiếp tệp nộp trên CPU của VM, chạy từ cùng thư mục. "
+        "Lệnh này dựng lại tập dữ liệu từ ZIP rồi đối chiếu fingerprint của bộ đã chuẩn hóa, 140 cặp SHA và AP từng lớp.",
+        "",
+        "```bash",
+        f'git -C "replay-code-{best}" show 410dd136439c01f5550295860ff3cd0bf9991078:scripts/replay_submission.py > "replay-{best}.py"',
+        f'.venv/bin/python "replay-{best}.py" --notebook train_and_export.ipynb --dataset overnight/{version.name}/dataset.zip '
+        f'--submission overnight/{best}/submission/submission.zip --report overnight/{best}/run_report.json '
+        f'--resources overnight/{best}/resources.json --validation audit_phase12/validation-manifest.json --out overnight/replay-cpu-new-{best}',
+        "```",
+        "",
         f"ZIP {report['submission']['zip_bytes']:,} byte, chứa đúng một `model.onnx`. Export FP32, opset 17, batch 1, 640×640.",
         "",
         "| Tệp | SHA-256 |",
@@ -140,6 +158,12 @@ def main():
     ]
     if snap:
         lines.insert(lines.index("## Tái lập") + 2, f"Checkpoint được chọn ở cuối epoch {snap}.\n")
+    if "reuses_fit_from" in resource:
+        extraction = (
+            f'.venv/bin/python "$SCRIPTS/overnight_last_checkpoint.py" overnight/replay-{best} '
+            f'overnight/replay-{best}-selected train_and_export.ipynb audit_phase12/validation-manifest.json'
+        )
+        lines.insert(lines.index("```", lines.index("## Tái lập")), extraction + (f" --epoch {snap}" if snap else ""))
     for name, sha in {**checks, "model.onnx":entry["onnx_sha256"], "dataset.zip":resource["dataset_sha256"],
                       "notebook":resource["notebook_sha256"], "weights khởi tạo":resource["initial_weights_sha256"]}.items():
         lines.append(f"| {name} | `{sha}` |")
@@ -147,6 +171,7 @@ def main():
               f"[Holdout lớp 3]({best}/held-score.json) · [Tài nguyên]({best}/resources.json) · "
               "[Nguồn dữ liệu và điều khoản](../../allnaction-traffic-seg/DATASET_PROVENANCE_REPORT.md)", ""]
     dest = root / "BAN_GIAO.md"
+    assert b"PILOT_COMPLETE" in (run / "training.log").read_bytes()
     temp = dest.with_suffix(".partial")
     temp.write_text("\n".join(lines), encoding="utf-8")
     temp.replace(dest)

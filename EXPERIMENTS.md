@@ -21,6 +21,11 @@ Các số dưới đây là điểm mask trên thang 100. 140 ảnh gồm 60 ả
 | E3 thêm Mapillary | 1.411 | 20 | 23,07 | 40,21 | 23,44 | 17,50 | 22,56 | 20,70 |
 | E6 lịch learning rate tuyến tính | 1.113 | 20 | 22,74 | 39,57 | 23,29 | 18,16 | 22,59 | 20,69 |
 | E6 SGD | 1.113 | 20 | 24,53 | 42,38 | 24,80 | 20,87 | 23,26 | 23,47 |
+| E3 sửa người đi xe, AdamW lr0 0,0007 | 1.156 | 20 | 24,33 | 42,85 | 24,67 | 19,13 | 22,90 | 23,05 |
+
+So với E6 AdamW cùng cấu hình, bộ sửa người đi xe tăng 0,77 điểm trên val140 (khoảng bootstrap ghép cặp 95% từ −0,55 đến +1,84). BDD45 đạt 23,32 và holdout Other vehicle đạt 51,07. Fit và validation gốc mất 703 giây trên L4, đỉnh cấp phát 4.677 MiB. Bộ này gồm cả dữ liệu và các sửa nhãn tích lũy từ những vòng trước. [Manifest các ca sửa](experiments/overnight/coco-riderqc-manifest.json) · [Điểm theo nguồn và SHA](experiments/overnight/verified-scores.json)
+
+Phép chấm độc lập trên CPU dựng lại val140 từ ZIP dữ liệu và dùng ZIP nộp của E6 SGD. Kết quả khớp từng lớp và tái hiện mức 24,532555 điểm. Trên Mapillary46, E6 SGD đạt 22,96. [Kết quả chạy lại](experiments/overnight/replay-e6-sgd20.json) · [Mapillary46](experiments/overnight/probe-scores.json)
 
 Trên cùng bộ taxonomy, đổi optimizer từ AdamW sang SGD tăng 1,72 điểm val140. Khoảng bootstrap ghép cặp 95% xấp xỉ −0,001 đến +3,349 điểm. Holdout lớp Other vehicle giảm từ 62,28 xuống 38,68 AP. Trên L4, fit và validation gốc mất 683 giây, đỉnh cấp phát PyTorch 4.738 MiB. SHA-256 của ZIP là `6278f0b2d1f1e442088413e54a1d40a0c4e29403e1fbd7b496c6299a1b6a0f73`. [Điểm và checksum](experiments/overnight/verified-scores.json)
 

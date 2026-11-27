@@ -38,6 +38,14 @@ def main():
     compare=json.loads(bodies["comparison.json"])
     held=json.loads(bodies["held-score.json"])
     resources=json.loads(bodies["resources.json"])
+    fit_name = Path(resources.get("reuses_fit_from", args.run)).name
+    if not re.fullmatch("[a-z0-9-]+", fit_name):
+        raise ValueError(f"Unexpected source run name: {fit_name}")
+    log = subprocess.check_output(["ssh", "-o", "BatchMode=yes", args.ssh,
+                                   f"cd ~/baseline-cvat300 && cat overnight/{fit_name}.log"])
+    if b"PILOT_COMPLETE" not in log:
+        raise ValueError(f"Incomplete training log for {fit_name}")
+    bodies["training.log"] = log
     pack=bodies["submission.zip"]
     assert len(pack)==compare["zip_bytes"]<=42*2**20
     assert digest(pack)==compare["zip_sha256"]==held["zip_sha256"]

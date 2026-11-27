@@ -13,6 +13,7 @@ import numpy as np
 from PIL import Image, ImageDraw
 from pycocotools import mask as mu
 from rasterio.features import shapes
+from scipy.ndimage import find_objects
 from shapely import affinity
 from shapely.geometry import shape
 from shapely.ops import unary_union
@@ -176,17 +177,52 @@ def candidates(w,h,objects):
         yield x,y,x+cw,y+ch
 
 
+def idd_instances(annotation, size):
+    """Paint every source polygon in z-order, including background occluders."""
+    assert size == (annotation["imgWidth"], annotation["imgHeight"])
+    classes = {"car": 0, "bus": 1, "truck": 2, "autorickshaw": 3, "trailer": 3,
+               "motorcycle": 4, "bicycle": 6, "person": 8, "rider": -2,
+               "traffic sign": 9, "traffic light": 10, "vehicle fallback": -1,
+               "caravan": -1, "out of roi": -1, "rectification border": -1}
+    painted = Image.new("I", size, 0)
+    draw = ImageDraw.Draw(painted)
+    metadata = {}
+    for index, obj in enumerate(annotation["objects"], 1):
+        poly = obj["polygon"]
+        if obj.get("deleted") or len(poly) < 2:
+            continue
+        label = obj["label"]
+        cls = classes.get(label)
+        if label.endswith("group") and label[:-5] in classes:
+            cls = -1
+        code = 0 if cls is None else index
+        draw.polygon([tuple(v) for v in poly], fill=code)
+        if code:
+            metadata[code] = cls, obj["id"]
+    pixels = np.array(painted)
+    objects = {}
+    for index, window in enumerate(find_objects(pixels), 1):
+        if window is not None:
+            y, x = window
+            cls, uid = metadata[index]
+            objects[index] = cls, [x.start, y.start, x.stop, y.stop], uid
+    return pixels, objects
+
+
 def process(row,kind,root,out,categories=None):
     cv2.setNumThreads(1)
     key=row["key"]
-    a=(root/"native"/(key+".png")).read_bytes()
+    a=(root/"native"/(key+(".json" if kind=="idd" else ".png"))).read_bytes()
     suffix = Path(row["image"]).suffix
     b=(root/"images"/(key+suffix)).read_bytes()
     assert digest(a)==row["annotation_sha256"] and digest(b)==row["image_sha256"]
     source=Image.open(BytesIO(b)).convert("RGB")
     w,h=source.size
-    mask=Image.open(BytesIO(a))
-    assert mask.size==source.size
+    if kind=="idd":
+        pixels, objects = idd_instances(json.loads(a), source.size)
+    else:
+        mask=Image.open(BytesIO(a))
+        assert mask.size==source.size
     if kind=="bdd-sem":
         pixels, objects = bdd_components(np.asarray(mask))
     elif kind=="vistas":
@@ -194,22 +230,25 @@ def process(row,kind,root,out,categories=None):
     elif kind=="kitti":
         grid=np.asarray(mask)
         items=[(int(v),int(v)//256,int(v)%256==0) for v in np.unique(grid)]
-    else:
+    elif kind!="idd":
         rgb=np.asarray(mask.convert("RGB"),dtype=np.int32)
         grid=rgb[...,0]+256*rgb[...,1]+65536*rgb[...,2]
         items=[(s["id"],s["category_id"],bool(s["iscrowd"])) for s in row["segments"]]
-    if kind not in ("bdd-sem", "vistas"):
+    if kind not in ("bdd-sem", "vistas", "idd"):
         pixels,objects=semantic_components(grid,items)
     associate(pixels,objects)
     options=[]
     if kind=="bdd-sem":
         target = {"17-empty":4, "17-rider":5, "18-empty":6, "18-rider":7, "15":1, "6":10, "7":9}[row["bucket"]]
         windows = bdd_windows(w,h,objects,target)
+    elif kind=="idd":
+        target = row["target"]
+        windows = list(candidates(w,h,objects)) + list(bdd_windows(w,h,objects,target))
     else:
         windows = candidates(w,h,objects)
     for roi in dict.fromkeys(windows):
         x,y,xx,yy=roi;cw,ch=xx-x,yy-y
-        stride=max(1,round(max(w,h)/900)) if kind=="vistas" else 1
+        stride=max(1,round(max(w,h)/900)) if kind in ("vistas","idd") else 1
         region=pixels[y:yy:stride,x:xx:stride]
         counts=np.bincount(region.ravel())
         measures=[(int(i),float(counts[i])*(640*stride/max(cw,ch))**2) for i in np.flatnonzero(counts) if i]
@@ -224,7 +263,7 @@ def process(row,kind,root,out,categories=None):
             if not any(c == focus and area >= 140 for c,area in relevant) or len(relevant) > 19:
                 continue
             score += 2.5*np.sqrt(cw*ch/(w*h)) - .13*len(relevant)
-        if kind=="bdd-sem":
+        if kind in ("bdd-sem","idd"):
             target_areas = [area for c,area in relevant if c==target]
             if not target_areas or max(target_areas)<250 or len(relevant)>10:
                 continue
@@ -233,7 +272,7 @@ def process(row,kind,root,out,categories=None):
     for _,roi,measures in sorted(options,key=lambda e:-e[0])[:8]:
         x,y,xx,yy=roi;cw,ch=xx-x,yy-y
         region=pixels[y:yy,x:xx]
-        if kind=="vistas":
+        if kind in ("vistas","idd"):
             counts=np.bincount(region.ravel())
             measures=[(int(i),float(counts[i])*(640/max(cw,ch))**2) for i in np.flatnonzero(counts) if i]
             if any(objects[i][0]<0 and area>=24 for i,area in measures):
@@ -248,8 +287,8 @@ def process(row,kind,root,out,categories=None):
                 if pts is None: raise ValueError("empty ring")
                 line=encode(cls,pts,cw,ch)
                 norm=np.asarray(line.split()[1:],float).reshape(-1,2)
-                target=mu.encode(np.asfortranarray(native,dtype=np.uint8))
-                fit=float(mu.iou([to_rle(norm*[cw,ch],cw,ch)],[target],[0])[0,0])
+                native_rle=mu.encode(np.asfortranarray(native,dtype=np.uint8))
+                fit=float(mu.iou([to_rle(norm*[cw,ch],cw,ch)],[native_rle],[0])[0,0])
                 if fit<(.94 if area>=64 else .8):raise ValueError("mask conversion loss")
             except (ValueError,ArithmeticError):
                 if area>=18:
@@ -271,13 +310,14 @@ def process(row,kind,root,out,categories=None):
         return dict(key=key,roi=list(roi),size=[cw,ch],source_sha256=row["image_sha256"],source_mask_sha256=row["annotation_sha256"],
                     image_sha256=digest(img),label_sha256=digest(lbl),source_image=row["image"],source_mask=row["annotation"],
                     drive=row.get("drive"),condition=row.get("condition"),objects=rows,omitted_tiny_or_unresolved_below_cutoff=tiny,
+                    **({"role":row["role"], "target":target} if kind=="idd" else {}),
                     **({"selection":row["bucket"]} if kind=="bdd-sem" else {"selection":row["selection"]} if kind=="vistas" else {}))
     return dict(key=key,rejected="ambiguous source regions, small objects or polygon fit")
 
 
 def main():
     p=argparse.ArgumentParser()
-    p.add_argument("kind",choices=("kitti","muses","bdd-sem","vistas"));p.add_argument("root",type=Path);p.add_argument("out",type=Path)
+    p.add_argument("kind",choices=("kitti","muses","bdd-sem","vistas","idd"));p.add_argument("root",type=Path);p.add_argument("out",type=Path)
     p.add_argument("--workers",type=int,default=4)
     p.add_argument("--index",type=Path,help="Use a verified snapshot of complete pairs")
     a=p.parse_args()

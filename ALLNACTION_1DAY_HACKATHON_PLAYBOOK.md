@@ -1,127 +1,88 @@
-# AllnAction Robotaxi Hackathon — Kế Hoạch 1 Ngày & Tổ Chức GitHub (5 Thành Viên)
+# AllnAction RoboTaxi Data-Centric Hackathon — Kế Hoạch & Chiến Thuật 1 Ngày (5 Thành Viên)
 
-- **Bài toán:** Traffic Instance Segmentation (**11 lớp giao thông**)
-- **Mô hình:** `yolo26n-seg`
-- **Thước đo chấm điểm:** **Mask mAP@[.5:.95]** (`metrics/mAP50-95(M)`)
-- **Hình thức:** 5 thành viên làm **online song song**, train trên **Colab / Kaggle GPU**, dữ liệu tự xây dựng trong **1 ngày**.
+- **Bài toán:** Instance Segmentation giao thông Việt Nam (**11 lớp cố định**).
+- **Bảng 11 lớp chuẩn:**
+  `0: Car` | `1: Bus` | `2: Truck` | `3: Other vehicle` *(xích lô, xe ba gác...)* | `4: Motorcycle` *(không người)* | `5: Motorcyclist` *(xe máy + người)* | `6: Bicycle` *(không người)* | `7: Cyclist` *(xe đạp + người)* | `8: Pedestrian` | `9: Sign` *(biển báo)* | `10: Traffic light` *(đèn giao thông)*.
+- **Mô hình nộp bài:** `yolo26n-seg` (`Ultralytics 8.4.214`, `imgsz=640`, xuất `ONNX` opset 17) — **Mô hình cố định, cuộc thi Data-Centric (cải thiện dữ liệu)**.
+- **Thước đo:** `100 × Mask mAP@[.5:.95]`
+- **Chiến lược cốt lõi:** **Khai thác Prelabel có sẵn → Dựng Model Pretrain/Teacher → Pseudo-Label ảnh Việt Nam → Fine-tune `yolo26n-seg` → Vòng lặp Data-Centric.**
 
 ---
 
-## 1. Tổ Chức GitHub & Lưu Trữ Dữ Liệu
+## 1. Kiến Trúc Chiến Thuật 4 Tầng (Từ Prelabel Đến Fine-Tune)
 
-### 1.1. Cấu Trúc Repo GitHub
-**Nguyên tắc:** GitHub chỉ chứa code, config và script. **Tuyệt đối không push ảnh, file nhãn `.txt` nặng hoặc file `.pt` lên GitHub.**
+```text
+[Tầng 1: Open Prelabel]   IDD + BDD100K + Roboflow VN ──(Remap 11 lớp)──► Data Nền (60%)
+                                                                              │
+[Tầng 2: Model Teacher]   Train Model Pretrain / Dùng yolo26x-seg.pt ◄────────┘
+                                  │
+                                  ▼ (Pseudo-Label + Rule tách Motorcyclist/Cyclist)
+[Tầng 3: Data Việt Nam]   Ảnh Dashcam VN ──► Sửa nhanh trên CVAT ──► Tập Val Khóa Cứng + Train VN (30%)
+                                                                              │
+[Tầng 4: Fine-tune Nộp]   Gộp Data Nền + VN + Copy-Paste (10%) ──► Fine-tune yolo26n-seg (640) ──► ONNX
+```
+
+### Tại Sao Chiến Thuật Này Tối Ưu Trong 1 Ngày?
+1. **Không vẽ tay từ đầu:** Tận dụng sẵn polygon của **IDD** (rất giống VN: có `motorcycle`, `rider`, `autorickshaw`), **BDD100K** (ngày/đêm/mưa) và **Roboflow Universe** (`vietnam traffic`).
+2. **Dùng Model lớn làm Teacher (`yolo26x-seg.pt` hoặc Model v1):** Tự động sinh polygon sắc nét cho ảnh Dashcam Việt Nam (`retina_masks=True`, `imgsz=960`), kết hợp rule hình học (`person` giao `motorcycle` → `Motorcyclist`) để giảm 80% công sửa nhãn.
+3. **Khóa tập `val` đúng bối cảnh thi:** Toàn bộ tập `val` (80–120 ảnh) lấy từ **ảnh giao thông Việt Nam đã sửa tay sạch tuyệt đối**, giúp điểm `mAP@[.5:.95]` phản ánh đúng thực tế.
+4. **Cải thiện theo hướng Data-Centric (Cell 21):** Vì `yolo26n-seg` và `imgsz=640` bị khóa cứng lúc chấm, thắng thua nằm ở **sửa nhầm lớp** (`Motorcycle`/`Motorcyclist`, `Bicycle`/`Cyclist`, `Truck`/`Other vehicle`), **xóa mask `< 64 px`**, và **Copy-Paste lớp hiếm**.
+
+---
+
+## 2. Tổ Chức GitHub & Hạ Tầng Online (Colab / Server GCP)
+
+### 2.1. Cấu Trúc Repo GitHub
+**Nguyên tắc:** GitHub chỉ chứa code và cấu hình; **tuyệt đối không push ảnh, file `.txt`, `.zip`, `.pt` lên Git.**
 
 ```text
 allnaction-traffic-seg/
-├── .gitignore                  # Chặn dataset/, runs/, *.pt, *.zip, *.jpg, *.png
-├── README.md                   # Hướng dẫn chạy nhanh cho cả đội
-├── requirements.txt            # ultralytics, pillow, numpy, pandas, scipy
+├── .gitignore                  # Chặn dataset/, data/, runs/, *.pt, *.onnx, *.zip, *.jpg, *.png
+├── README.md
 ├── configs/
-│   └── traffic_11_classes.yaml # File YAML chuẩn 11 lớp dùng chung toàn đội
+│   └── traffic_11_classes.yaml # Khớp chính xác 11 lớp ở Cell 10 của train_and_export.ipynb
 ├── scripts/
-│   ├── seed_utils.py           # Khóa TEAM_SEED = 2026
-│   ├── auto_prelabel.py        # (Người 5) Chạy YOLO/SAM tạo nhãn nháp
-│   ├── validate_dataset.py     # (Người 5) Kiểm tra lỗi polygon, tọa độ [0,1], leak train/val
-│   ├── copy_paste_aug.py       # (Người 5) Nhân bản mask lớp hiếm
-│   └── train_eval.py           # (Người 4) Train yolo26n-seg & chấm Mask mAP@[.5:.95]
+│   ├── prelabel_yolo_seg.py    # Prelabel ảnh VN + lọc mask < 64px + xuất data.yaml chuẩn CVAT
+│   ├── remap_open_datasets.py  # Remap ID từ IDD / BDD100K / Roboflow về 0..10
+│   ├── validate_dataset.py     # Check polygon >= 3 đỉnh, tọa độ [0,1], lọc trùng hash & leak val
+│   └── copy_paste_aug.py       # Nhân bản mask lớp hiếm (< 100 instances)
 └── notebooks/
-    └── colab_runner.ipynb      # Notebook 1-click kéo Git + unzip data + train trên Colab/Kaggle
+    └── train_and_export.ipynb  # Notebook chuẩn cuộc thi (TEAM_ID cố định cho cả 5 người)
 ```
 
-### 1.2. Nội Dung `.gitignore` Bắt Buộc
-```gitignore
-dataset_traffic_11/
-data/
-runs/
-*.pt
-*.onnx
-*.zip
-*.jpg
-*.jpeg
-*.png
-__pycache__/
-.ipynb_checkpoints/
-```
-
-### 1.3. Quy Tắc Branch GitHub (Tránh Conflict)
-- `main`: Code chạy ổn định đã test trên Colab.
-- `feat/data-tools`: Nhánh riêng của **Người 5** (pre-label, validate, copy-paste, eval).
-- `feat/train-pipeline`: Nhánh riêng của **Người 4** (train, tune hyperparameter, TTA).
-- Người 1, 2, 3 không cần sửa code; chỉ pull `main` nếu cần chạy script local.
-
-### 1.4. Nơi Lưu Data & Weights
-| Thành Phần | Nơi Lưu Trữ | Quy Ước Đặt Tên |
-| :--- | :--- | :--- |
-| **Gán nhãn online** | **CVAT Online / Roboflow** | Chung 1 workspace, 11 lớp cố định (`0..10`). |
-| **Kho Data trung tâm** | **Google Drive chung (`/AllnAction_Data/`)** | `val_locked.zip`, `shardA_v1.zip`, `shardB_v1.zip`, `shardC_v1.zip`. |
-| **Weights & Logs** | **Google Drive (`/AllnAction_Runs/`)** | Lưu `best.pt`, `results.csv`, biểu đồ PR/Confusion Matrix. |
+### 2.2. Nơi Lưu Trữ & Chạy GPU
+- **Train GPU:** Dùng **Server GCP** của đội (kết nối qua VS Code Remote-SSH hoặc Colab *Connect to local runtime*) hoặc **Colab T4 / Kaggle GPU**.
+- **Lưu Data & Weights:** Nén `.zip` để trên **Google Drive chung** (hoặc trực tiếp trên ổ SSD của Server GCP). Nếu dùng Colab, **bắt buộc giải nén vào `/content/`** trước khi train, không đọc ảnh trực tiếp từ Drive.
 
 ---
 
-## 2. Phân Công 5 Thành Viên Chạy Song Song 100%
+## 3. Phân Công 5 Thành Viên Chạy Song Song 100%
 
 | Thành Viên | Vai Trò | Nhiệm Vụ Cụ Thể | Đầu Ra |
 | :--- | :--- | :--- | :--- |
-| **Người 1** | **Data Shard A (Cao tốc / Ban ngày)** | Gom ảnh & sửa nhãn pre-label cho cảnh đường thoáng, xe lớn (`car`, `truck`, `bus`, `road`). | `shardA_XXXX.jpg` + `.txt` |
-| **Người 2** | **Data Shard B (Đô thị / Giao lộ)** | Gom ảnh & sửa nhãn cảnh đông (`pedestrian`, `motorcycle`, `bicycle`, `traffic_light`, `traffic_sign`). | `shardB_XXXX.jpg` + `.txt` |
-| **Người 3** | **Data Shard C (Đêm / Mưa / Edge-case)** | Gom ảnh & sửa nhãn cảnh khó (`obstacle_cone`, `lane_marking` mờ, ánh sáng yếu). | `shardC_XXXX.jpg` + `.txt` |
-| **Người 4** | **GPU & Training Lead** | Dựng Colab/Kaggle GPU, khóa `TEAM_SEED=2026`, chạy smoke-test bằng data giả lập, train & tune `yolo26n-seg`. | `best.pt` + Bảng điểm `mAP@[.5:.95]` |
-| **Người 5** | **Auto-Prelabel, QC & Eval Lead** | Map open dataset, chạy auto-prelabel hỗ trợ 1-2-3, viết `validate_dataset.py`, làm `copy_paste`, soi lỗi từng lớp. | `val_locked.zip` + `data_v1/v2.zip` + Báo cáo lỗi |
-
-**Quy tắc prefix chống trùng file:** Mọi ảnh và nhãn của Shard A, B, C bắt buộc đặt tiền tố `shardA_`, `shardB_`, `shardC_`. Khi gộp chỉ cần giải nén vào chung `images/train` và `labels/train`.
+| **Người 1** | **Open Prelabel & Remap** | Tải IDD / BDD100K / Roboflow VN, chạy script remap chuẩn 11 lớp `0..10`, lọc bỏ nhãn lỗi. | `open_prelabel_v1.zip` |
+| **Người 2** | **Thu Thập & Cắt Frame VN** | Kéo video Dashcam/Motovlog VN (ngày, đêm, mưa, giao lộ), cắt 1 frame mỗi 3–5 giây (tránh trùng lặp), đẩy qua `prelabel_yolo_seg.py`. | `vn_raw_prelabeled.zip` |
+| **Người 3** | **CVAT Review & Khóa `Val`** | Sửa sạch biên mask trên CVAT (tách `Motorcyclist`/`Cyclist`, thêm `Other vehicle`, `Traffic sign`), chốt cứng tập `val` + lô `train` VN. | `val_locked.zip` + `vn_clean.zip` |
+| **Người 4** | **Model Pretrain & Fine-tune** | Dựng Server/Colab GPU, khóa `TEAM_ID`, train **Model v1 (Pretrain trên Open Data)** → làm Teacher → Fine-tune `yolo26n-seg` (`imgsz=640`) & xuất ONNX. | `best.pt`, `submission.zip`, `run_report.json` |
+| **Người 5** | **Data-Centric QC & Aug** | Viết script `validate_dataset.py` (chặn leak, trùng lặp, mask `< 64px`), soi **6 ảnh lỗi nhất (Bước 5)**, chạy `copy_paste` cứu lớp yếu. | `data_v2.zip` + Báo cáo lỗi từng lớp |
 
 ---
 
-## 3. Chiến Lược Gán Nhãn 1 Ngày (Không Vẽ Tay Từ Đầu)
+## 4. Lịch Trình Thực Chiến 1 Ngày (8 Giờ)
 
-1. **Bước 1 — Tận dụng Open Dataset (30 phút):** Kéo một phần ảnh từ BDD100K / Cityscapes / Roboflow Universe cho 8–9 lớp phổ thông, chạy script map ID về `0..10`.
-2. **Bước 2 — Auto-Prelabel:** Chạy `yolo26n-seg.pt` (hoặc model COCO lớn) để tự sinh file `.txt` nháp cho xe/người/đèn; dùng **SAM** trên CVAT/Roboflow click 1 lần cho `road`, `lane_marking`, `obstacle_cone`.
-3. **Bước 3 — Review & Fix:** Người 1, 2, 3 chỉ chỉnh sửa biên mask bị lẹm và bổ sung vật thể nhỏ bị sót (~1 phút/ảnh).
-4. **Mục tiêu số lượng trong 1 ngày:**
-   - **Tập `val` (khóa cứng):** **80 – 120 ảnh** sạch tuyệt đối, đủ 11 lớp.
-   - **Tập `train`:** **300 – 600 ảnh** (ưu tiên biên mask ôm sát để giữ IoU cao ở ngưỡng `0.75–0.95`).
-
----
-
-## 4. Lộ Trình Chi Tiết Trong 1 Ngày (8 Giờ Thực Chiến)
-
-| Khung Giờ | Người 1, 2, 3 (Data Shards) | Người 4 (GPU & Model) | Người 5 (Tooling & Eval) |
-| :--- | :--- | :--- | :--- |
-| **Giờ 0 – 1**<br>*(Khởi động)* | Gom ảnh thô theo 3 bối cảnh A, B, C. | Tạo repo GitHub, mở Colab/Kaggle GPU, test chạy smoke-test `yolo26n-seg`. | Chạy Auto-Prelabel, map open dataset, chốt xong **`val_locked.zip` (100 ảnh)**. |
-| **Giờ 1 – 3**<br>*(Data v1)* | Sửa nhãn nhanh, mỗi người xuất **80–100 ảnh** → đẩy `shardX_v1.zip` lên Drive. | Tune sẵn `colab_runner.ipynb`, chuẩn bị script train `imgsz=640`, `mask_ratio=2`. | Viết & chạy `validate_dataset.py` lọc polygon lỗi, gộp thành **`data_v1.zip`**. |
-| **Giờ 3 – 5**<br>*(Train v1 + Data v2)* | Tiếp tục làm **Data v2 (+100 ảnh/người)** trong lúc GPU đang chạy. | Giải nén `data_v1.zip` vào `/content/`, chạy train **Baseline v1** (`100 epochs`). | Phân tích kết quả v1 (`metrics.seg.maps`), chỉ ra 3 lớp có `mAP` thấp nhất. |
-| **Giờ 5 – 7**<br>*(Data v2 + Ép điểm)* | Tập trung bổ sung đúng 3 lớp yếu nhất + hoàn tất `shardX_v2.zip`. | Train **Model v2** với `data_v2.zip`, tăng `imgsz=960`, `copy_paste=0.3`, `AdamW`. | Chạy `copy_paste_aug.py` nhân bản lớp hiếm (`cone`, `bicycle`, `traffic_light`). |
-| **Giờ 7 – 8**<br>*(Chốt hạ)* | Kiểm tra lần cuối các mẫu sai điển hình trên ảnh test. | Chạy `model.val()` với `iou=0.70`, thử TTA (`augment=True`), lưu `best.pt` lên Drive. | Tổng hợp bảng điểm **Mask mAP@[.5:.95]** toàn bộ 11 lớp & file kết quả cuối. |
+| Khung Giờ | Mốc Công Việc | Hành Động Cụ Thể Của Đội |
+| :--- | :--- | :--- |
+| **Giờ 0 – 1**<br>*(Setup & Prelabel)* | Chốt hạ tầng & Nguồn data | • Người 4 dựng GitHub + Server/Colab GPU, test `train_and_export.ipynb` (Bước 0).<br>• Người 1 tải & remap Open Data (`open_prelabel_v1.zip`).<br>• Người 2 cắt 250 frame Dashcam VN + chạy `prelabel_yolo_seg.py`.<br>• Người 5 chốt script `validate_dataset.py`. |
+| **Giờ 1 – 3**<br>*(Model Pretrain + Chốt Val)* | Ra **Model v1** & **Val khóa cứng** | • Người 3 sửa sạch **100 ảnh VN** → đóng gói **`val_locked.zip`** (khóa cứng suốt giải).<br>• Người 4 train **Model v1 (Warm-up)** trên `open_prelabel_v1.zip` + `val_locked.zip` → lấy mốc điểm Baseline `mAP@[.5:.95]`. |
+| **Giờ 3 – 5**<br>*(Pseudo-Label & Sửa VN)* | Nạp Data Việt Nam sạch | • Dùng **Model v1** (hoặc `yolo26x-seg.pt`) **Pseudo-Label** thêm 200–300 ảnh Dashcam VN mới.<br>• Người 1, 2, 3 cùng vào CVAT sửa nhanh lô ảnh VN này (tập trung lớp hay nhầm). |
+| **Giờ 5 – 7**<br>*(Fine-tune v2 + Copy-Paste)* | Ép điểm **Mask mAP@[.5:.95]** | • Người 5 chạy `validate_dataset.py` gộp **Open + VN Clean + Copy-Paste** (đảm bảo mọi lớp `>= 100` instances, `imbalance <= 30x`).<br>• Người 4 fine-tune `yolo26n-seg` (`EPOCHS=80-100`, `imgsz=640`, `copy_paste=0.3`, `close_mosaic=10`, `mask_ratio=2`). |
+| **Giờ 7 – 8**<br>*(Active Learning & Nộp)* | Sửa 6 ảnh lỗi nhất & Chốt | • Chạy Bước 5 trên `val_locked.zip`, soi **6 ảnh lỗi nhất** và bảng điểm từng lớp.<br>• Sửa lỗi nhãn/bổ sung đúng lớp yếu → Fine-tune nhanh vòng cuối (20–30 epoch) → Xuất `submission.zip` + `run_report.json`. |
 
 ---
 
-## 5. Lệnh Chạy Chuẩn Trên Colab / Kaggle GPU
-
-```bash
-# 1. Mount Google Drive (chỉ trên Colab) & kéo code từ GitHub
-git clone https://github.com/<team>/allnaction-traffic-seg.git
-cd allnaction-traffic-seg
-pip install -U ultralytics pillow numpy
-
-# 2. Giải nén data vào ổ SSD cục bộ /content/ (KHÔNG train trực tiếp trên Drive)
-mkdir -p /content/dataset_traffic_11/images/train /content/dataset_traffic_11/labels/train
-mkdir -p /content/dataset_traffic_11/images/val   /content/dataset_traffic_11/labels/val
-
-unzip -q "/content/drive/MyDrive/AllnAction_Data/val_locked.zip" -d /content/dataset_traffic_11/
-unzip -q "/content/drive/MyDrive/AllnAction_Data/shard*_v2.zip"  -d /content/dataset_traffic_11/
-
-# 3. Kiểm tra lỗi nhãn & chạy train + chấm Mask mAP@[.5:.95]
-python scripts/validate_dataset.py --data /content/dataset_traffic_11
-python scripts/train_eval.py
-```
-
----
-
-## 6. Checklist Các Thông Số Quyết Định Điểm Mask mAP@[.5:.95]
-- [ ] `TEAM_SEED = 2026` và `deterministic=True` đã khóa ở mọi lần chạy.
-- [ ] Tập `val` được khóa cứng, không trộn lẫn ảnh `train` vào `val`.
-- [ ] `mask_ratio=2` (thay vì mặc định `4`) để giữ độ sắc nét của biên mask.
-- [ ] `imgsz=960` (hoặc `1280` nếu VRAM cho phép) để bắt tốt `traffic_light`, `traffic_sign`, `pedestrian`.
-- [ ] `copy_paste=0.3` bật trong lúc train để cứu các lớp ít mẫu.
-- [ ] `conf=0.001, iou=0.70` khi chạy `model.val()` để chấm đúng chuẩn **Mask mAP@[.5:.95]**.
+## 5. Checklist Kiểm Soát Chất Lượng (Trước Khi Bấm Nộp)
+- [ ] Mọi thành viên dùng chung 1 `TEAM_ID` (seed) duy nhất ở Cell 6.
+- [ ] Bước 2 (`analyze_dataset`) báo `REPORT["ok"] == True`, không có rò rỉ `train`/`val`.
+- [ ] Đã đối chiếu đúng 11 ID lớp (`0..10`) giữa CVAT, Open Data và Cell 10 của notebook.
+- [ ] Đã chạy xong **Bước 4 (Xuất ONNX opset 17, `<= 42 MiB`)** và **Bước 5 (Chấm thử `onnxruntime` CPU)**.
+- [ ] Đã tải đủ 2 file nộp bài: `submission.zip` và `run_report.json`.

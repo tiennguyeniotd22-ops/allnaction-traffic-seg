@@ -1,0 +1,19 @@
+# AllnAction RoboTaxi Data-Centric Competition — Official 11 Traffic Classes
+path: ./dataset_traffic_11
+train: images/train
+val: images/val
+test: images/test
+
+nc: 11
+names:
+  0: Car
+  1: Bus
+  2: Truck
+  3: Other vehicle
+  4: Motorcycle
+  5: Motorcyclist
+  6: Bicycle
+  7: Cyclist
+  8: Pedestrian
+  9: Sign
+  10: Traffic light

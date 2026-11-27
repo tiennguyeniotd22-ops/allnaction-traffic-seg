@@ -1,24 +1,21 @@
-# AllnAction · Traffic Instance Segmentation
+# AllnAction RoboTaxi Data-Centric Hackathon (11 Traffic Classes)
 
-Nhóm xây dựng bộ dữ liệu phân đoạn 11 lớp giao thông cho bài toán Robotaxi. Mô hình `yolo26n-seg` được đánh giá bằng Mask mAP@[.5:.95]. Mục tiêu trong ngày là 300–600 ảnh train và 80–120 ảnh validation đã khóa. [Playbook và phân công](ALLNACTION_1DAY_HACKATHON_PLAYBOOK.md)
+- **Mô hình cố định:** `yolo26n-seg` (`ultralytics==8.4.214`, `imgsz=640`, xuất `ONNX` opset 17)
+- **Thước đo:** `100 × Mask mAP@[.5:.95]`
+- **Chiến lược:** Khai thác Open Prelabel (`IDD`/`BDD100K`/`Roboflow`) → Teacher `yolo26x-seg.pt` Pseudo-Label ảnh Dashcam VN → Sửa nhanh trên CVAT → Fine-tune & Data-Centric Loop.
 
-## Nộp dữ liệu
+## Cấu Trúc Repo
+- `ALLNACTION_1DAY_HACKATHON_PLAYBOOK.md`: Kế hoạch 1 ngày & phân công 5 thành viên song song.
+- `DATASET_PROVENANCE_REPORT.md`: Bảng khai báo nguồn dữ liệu công khai, giấy phép & ánh xạ 11 lớp.
+- `configs/traffic_11_classes.yaml`: Định nghĩa chuẩn 11 lớp (`0..10`).
+- `scripts/prelabel_yolo_seg.py`: Auto-prelabel chuẩn YOLO Segmentation 1.0 + tự gộp `Motorcyclist` / `Cyclist`.
+- `scripts/validate_and_augment.py`: Kiểm tra lỗi polygon, mask `< 64px` & sinh ảnh cảnh khó (đêm/mưa).
+- `notebooks/train_and_export.ipynb`: Notebook huấn luyện, xuất ONNX và tự chấm thử của cuộc thi.
 
-1. Chọn đúng tiền tố của mình. Mỗi cặp ảnh và nhãn YOLO segmentation dùng cùng tên gốc, ví dụ `images/train/shardA_0001.jpg` và `labels/train/shardA_0001.txt`.
-2. Kiểm tra các polygon sau khi xuất từ CVAT hoặc Roboflow. Đóng gói thư mục `images/train/` và `labels/train/` vào cùng một ZIP. Tập `val_locked.zip` do người phụ trách QC quản lý riêng.
-3. Tải ZIP lên [thư mục AllnAction_Data](https://drive.google.com/drive/folders/1G06RBQwL3igPiVxMB3c-GYB_gwQvA8M0). Khi sửa dữ liệu, tăng số phiên bản để người train có thể tái lập lần chạy trước.
-4. Mở [phiếu nộp dữ liệu](https://github.com/tiennguyeniotd22-ops/allnaction-traffic-seg/issues/new?template=nop-du-lieu.yml), dán link **của file ZIP**, ghi số ảnh, số file nhãn và nguồn ảnh rồi bấm **Create**. Giữ quyền truy cập Drive trong nhóm.
-5. Người phụ trách QC kiểm tra khả năng tải file, cặp ảnh–nhãn, ID lớp `0..10`, tọa độ polygon và trùng ảnh với tập validation. Sau khi gộp, ghi phiên bản dataset vào Issue và đóng phiếu.
-
-| Thành viên | Bối cảnh | Tên gói đầu tiên |
-| --- | --- | --- |
-| Người 1 · Shard A | Cao tốc, ban ngày | `shardA_v1.zip` |
-| Người 2 · Shard B | Đô thị, giao lộ | `shardB_v1.zip` |
-| Người 3 · Shard C | Đêm, mưa và tình huống khó | `shardC_v1.zip` |
-
-## Làm việc với mã nguồn
-
-- `main` chứa phiên bản dùng chung của nhóm.
-- Người 4 làm pipeline huấn luyện trên `feat/train-pipeline`.
-- Người 5 làm công cụ tạo nhãn và QC trên `feat/data-tools`.
-- Ảnh, nhãn và ZIP nằm trong Drive `AllnAction_Data`. Weights và log huấn luyện dùng thư mục `AllnAction_Runs` theo playbook.
+## Chạy Nhanh Trên Colab / Server GPU
+```bash
+pip install -r requirements.txt
+python scripts/prelabel_yolo_seg.py --images raw_images/ --out dataset_traffic_11 --model yolo26x-seg.pt
+python scripts/validate_and_augment.py --data dataset_traffic_11 --augment-hard 0.30
+```
+Mở `notebooks/train_and_export.ipynb`, điền đúng `TEAM_ID` và `DATASET_PATH`, rồi chạy từ Bước 0 đến Bước 6.

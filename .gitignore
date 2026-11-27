@@ -1,19 +1,29 @@
+# Data & Artifacts (không đẩy lên Git)
 dataset_traffic_11/
-dataset/
 data/
-labels/
+prelabeled_data/
+raw_images/
 runs/
+work/
+_selfcheck/
+
+# Model weights & Archives
 *.pt
 *.onnx
 *.zip
+*.tar
+*.gz
+
+# Images & Labels
 *.jpg
 *.jpeg
 *.png
+*.bmp
 *.webp
-*.mp4
-shardA_*.txt
-shardB_*.txt
-shardC_*.txt
+
+# Python / Jupyter
 __pycache__/
+*.py[cod]
 .ipynb_checkpoints/
 .venv/
+.DS_Store

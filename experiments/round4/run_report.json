@@ -1,0 +1,235 @@
+{
+ "classes": [
+  "Car",
+  "Bus",
+  "Truck",
+  "Other vehicle",
+  "Motorcycle",
+  "Motorcyclist",
+  "Bicycle",
+  "Cyclist",
+  "Pedestrian",
+  "Sign",
+  "Traffic light"
+ ],
+ "created_at": "2026-11-27T17:13:42+00:00",
+ "dataset": {
+  "counts": {
+   "train": {
+    "images": 640,
+    "instances": 7778
+   },
+   "val": {
+    "images": 140,
+    "instances": 1821
+   }
+  },
+  "duplicates": {
+   "exact_groups": 0,
+   "leak_exact": 0,
+   "leak_near": 0,
+   "near_pairs": 32
+  },
+  "imbalance_ratio": 27.232323232323232,
+  "per_class": {
+   "Bicycle": {
+    "tiny": 6,
+    "train_images": 69,
+    "train_instances": 142,
+    "val_images": 18,
+    "val_instances": 45
+   },
+   "Bus": {
+    "tiny": 4,
+    "train_images": 153,
+    "train_instances": 252,
+    "val_images": 28,
+    "val_instances": 35
+   },
+   "Car": {
+    "tiny": 417,
+    "train_images": 438,
+    "train_instances": 2696,
+    "val_images": 102,
+    "val_instances": 623
+   },
+   "Cyclist": {
+    "tiny": 1,
+    "train_images": 62,
+    "train_instances": 99,
+    "val_images": 18,
+    "val_instances": 33
+   },
+   "Motorcycle": {
+    "tiny": 0,
+    "train_images": 64,
+    "train_instances": 152,
+    "val_images": 20,
+    "val_instances": 54
+   },
+   "Motorcyclist": {
+    "tiny": 0,
+    "train_images": 88,
+    "train_instances": 170,
+    "val_images": 22,
+    "val_instances": 70
+   },
+   "Other vehicle": {
+    "tiny": 0,
+    "train_images": 0,
+    "train_instances": 0,
+    "val_images": 0,
+    "val_instances": 0
+   },
+   "Pedestrian": {
+    "tiny": 114,
+    "train_images": 363,
+    "train_instances": 2286,
+    "val_images": 75,
+    "val_instances": 432
+   },
+   "Sign": {
+    "tiny": 297,
+    "train_images": 235,
+    "train_instances": 741,
+    "val_images": 61,
+    "val_instances": 218
+   },
+   "Traffic light": {
+    "tiny": 367,
+    "train_images": 251,
+    "train_instances": 890,
+    "val_images": 58,
+    "val_instances": 228
+   },
+   "Truck": {
+    "tiny": 4,
+    "train_images": 223,
+    "train_instances": 350,
+    "val_images": 42,
+    "val_instances": 83
+   }
+  },
+  "sha256": "7fc5b89eb11c821f353a7727de9d1dea0a545b8f02f2bc56b268ccc3813f0ec1",
+  "split_mode": "có sẵn (thư mục train/val trong dữ liệu)",
+  "warnings": [
+   "THIẾU HẲN trong train (0 đối tượng, AP của lớp này sẽ gần 0): Other vehicle",
+   "Ít ví dụ trong train (< 100 đối tượng): Cyclist (99)",
+   "Tập val có < 10 đối tượng ở các lớp: Other vehicle (0). AP của các lớp này trên val rất nhiễu (một vài vật thể đổi điểm nhiều).",
+   "1210 đối tượng có diện tích < 64 px ở thang 640: hệ thống chấm BỎ QUA vật thể nhỏ như vậy. Chúng không làm tăng điểm; nếu nhiều thì xem lại quy tắc nhãn (không gán vật quá nhỏ).",
+   "7 đa giác không hợp lệ (xem danh sách bên dưới); sửa hoặc xóa trước khi huấn luyện.",
+   "32 cặp ảnh GẦN GIỐNG nhau (perceptual hash, khoảng cách <= 2); có thể là các khung hình liền nhau của một video."
+  ]
+ },
+ "environment": {
+  "in_colab": false,
+  "packages": {
+   "numpy": "2.5.4",
+   "onnx": "1.23.2",
+   "onnxruntime": "1.32.0",
+   "onnxslim": "0.1.99",
+   "python": "3.12.16",
+   "torch": "2.9.1+cu128",
+   "torchvision": "0.24.1+cu128",
+   "ultralytics": "8.4.214"
+  },
+  "platform": "Linux-6.8.0-1073-gcp-x86_64-with-glibc2.35",
+  "python": "3.12.16"
+ },
+ "export_args": {
+  "batch": 1,
+  "dynamic": false,
+  "format": "onnx",
+  "imgsz": 640,
+  "opset": 17,
+  "simplify": true
+ },
+ "model": {
+  "architecture": "yolo26n-seg",
+  "content_fingerprint": "eafd5e14169ea443dd5a9deb51ec24e60eb1deab88b58d260127dbf0f2f261af",
+  "fingerprint": "458a79141316792c4017e5b7959310f6dd7f05c06c21473d9a0eafe4c7a9fc8e",
+  "nc": 11,
+  "onnx_sha256": "0829613eea5a02f8ac3f21add621bd864029cca86e6c894337c0add9baf3e402"
+ },
+ "notebook": {
+  "detscore_version": "0.2.0",
+  "name": "train_and_export",
+  "version": "3.0.0+7880385f"
+ },
+ "params": {
+  "BATCH": 8,
+  "CACHE": false,
+  "CONF_SHOW": 0.25,
+  "DUP_HAMMING_MAX": 2,
+  "EPOCHS": 100,
+  "MAX_IMBALANCE_RATIO": 30,
+  "MIN_TRAIN_INSTANCES": 100,
+  "MODEL_SIZE": "n",
+  "MODEL_WEIGHTS": "yolo26n-seg.pt",
+  "PATIENCE": 25,
+  "REMOVE_LEAKAGE_FROM_TRAIN": false,
+  "SELFCHECK_MAX_IMAGES": 300,
+  "TEAM_ID": 26,
+  "TRAIN_IMGSZ": 640,
+  "VAL_RATIO": 0.2,
+  "WORKERS": 2
+ },
+ "seed": 26,
+ "submission": {
+  "entries": [
+   "model.onnx"
+  ],
+  "zip_bytes": 9660994,
+  "zip_sha256": "412fee1ba894c34b2946703888821df8b29b2ff48b6ec4e8f6ad325ae1dc2c47"
+ },
+ "team_id": 26,
+ "train": {
+  "best_sha256": "4802f2fe939687fc3abb836edce5a66d8d972e13bb9b659c6f4f74bc680cbcef",
+  "best_tensors_sha256": "f6f5f30da9e090e15b8947f5d78123a64e412fdd59a4b23e985554ab0fbe13e5",
+  "best_weights": "/home/pc/baseline-cvat300/round4/control100/runs/train/weights/best.pt",
+  "device": "0",
+  "gpu": "NVIDIA L4",
+  "train_args": {
+   "batch": 8,
+   "cache": false,
+   "close_mosaic": 15,
+   "copy_paste": 0.35,
+   "cos_lr": true,
+   "data": "/home/pc/baseline-cvat300/round4/control100/dataset/data.yaml",
+   "deterministic": true,
+   "device": "0",
+   "epochs": 100,
+   "exist_ok": true,
+   "imgsz": 640,
+   "lr0": 0.002,
+   "mask_ratio": 2,
+   "name": "train",
+   "optimizer": "AdamW",
+   "overlap_mask": true,
+   "patience": 25,
+   "plots": true,
+   "seed": 26,
+   "workers": 2
+  }
+ },
+ "val_estimate": {
+  "latency_ms_p50": 149.26333949915715,
+  "map50": 0.3872012889625071,
+  "map50_95": 0.22013293740737197,
+  "n_images": 140,
+  "note": "tính trên val của đội bằng bộ chấm nhúng, không phải điểm trên bộ test ẩn",
+  "per_class_ap": {
+   "Bicycle": 0.063539072861835,
+   "Bus": 0.363195977899639,
+   "Car": 0.3915678463764668,
+   "Cyclist": 0.17108738045402702,
+   "Motorcycle": 0.058766922695889665,
+   "Motorcyclist": 0.26412141123258237,
+   "Pedestrian": 0.24188873076015724,
+   "Sign": 0.28788763234651504,
+   "Traffic light": 0.16447835443103256,
+   "Truck": 0.19479604501557532
+  },
+  "score_x100": 22.013293740737197
+ }
+}

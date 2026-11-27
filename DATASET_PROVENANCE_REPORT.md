@@ -4,6 +4,10 @@
 
 ---
 
+## Dữ liệu vòng 4 ngày 28/11/2026
+
+Vòng 4 dùng lại trọn bộ 780 ảnh của vòng 3, gồm 225 ảnh BDD100K, 75 ảnh Vietnam Traffic Sign Detection v5 và 480 ảnh COCO hoặc biến thể. ZIP dữ liệu có SHA-256 `91268bb2a4b520de7cb9eb1f2f9d59b740671a539ab73d1d3bba300e9d51e7a6`. 640 ảnh dùng để train, 140 ảnh để so checkpoint. Các bộ Poribohon-BD, LVIS và các ảnh biển báo bổ sung vẫn nằm ngoài lần train này. [Số ảnh, instance và bộ tham số vòng 4](experiments/round4/run_report.json)
+
 ## Snapshot thực tế của lần 3 và pilot E1
 
 | Nguồn | Train / val | Nguồn nhãn và giấy phép |

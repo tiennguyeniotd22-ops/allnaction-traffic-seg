@@ -1,5 +1,11 @@
 # Nhật Ký Thí Nghiệm — AllnAction RoboTaxi (YOLO26n-seg, 11 Lớp)
 
+## Vòng 4 hoàn tất ngày 28/11/2026
+
+Train đủ 100 epoch trên L4 với 640 ảnh train. Hình ảnh và nhãn của 140 ảnh validation khớp checksum vòng 3. Thay đổi epoch từ 20 lên 100 và patience từ 20 lên 25, giữ seed 26, batch 8. Trên bộ chấm ONNX của notebook, mask mAP@[.50:.95] tăng từ 21,35 lên **22,01**, AP50 từ 36,82 lên **38,72**. Khoảng bootstrap 95% của chênh lệch mAP theo cảnh là −0,45 đến +2,20 điểm. Riêng 15 ảnh Việt Nam đạt 18,79 so với 18,85. Lớp Other vehicle có 0 GT. Điểm public của ZIP vòng 4 đang chờ đội nộp.
+
+File ZIP có 9.660.994 byte, một entry `model.onnx` ở gốc, SHA-256 `412fee1ba894c34b2946703888821df8b29b2ff48b6ec4e8f6ad325ae1dc2c47`. ONNX opset 17 chạy được trên CPU và đã đối chiếu hai đầu ra với PyTorch trên ba ảnh. [Báo cáo notebook](experiments/round4/run_report.json) · [So sánh trên cùng 140 ảnh](experiments/round4/comparison.json)
+
 ## Kết quả kiểm chứng tối 27/11/2026
 
 **Giữ checkpoint lần 3.** Điểm dưới đây dùng ONNX và evaluator nhúng của BTC trên cùng 140 ảnh. Đơn vị là điểm trên thang 100. Tất cả ảnh và GT validation đã đối chiếu bằng SHA-256. Pilot E1 thay 36 đường biên ở 32 ảnh train, gồm 35 instance gốc và một bản tăng cường có nhãn trùng khớp. Giữ nguyên số instance, tên lớp, ảnh, split, pretrained weights và toàn bộ tham số huấn luyện. 35 ca được chọn sau khi Codex kiểm tra cặp overlay trước/sau, chưa qua duyệt chéo của thành viên.

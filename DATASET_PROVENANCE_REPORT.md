@@ -4,6 +4,16 @@
 
 ---
 
+## Dữ liệu bổ sung sau vòng 4
+
+Tất cả số lượng dưới đây tính theo ảnh hoặc crop đưa vào train. Validation 140 giữ nguyên ảnh và nhãn. Các bản tăng cường giữ giấy phép của ảnh cha.
+
+| Phiên bản | Thành phần bổ sung | Nguồn nhãn và ánh xạ |
+|---|---|---|
+| E2, 802 train | 126 COCO train2017, 32 Poribohon-BD, 4 crop biển Việt Nam v5 | COCO dùng mask instance gốc. Với Poribohon, box nguồn làm prompt SAM, duyệt lớp 3 theo loại xe và kiểm các đối tượng khác trong crop. 6 ảnh/crop Poribohon khác được khóa riêng cho holdout. |
+| E3 Việt Nam, 834 train | 7 crop camera giao thông từ Vietnam Traffic Detection v2 và 25 crop từ Traffic Sign in Ho Chi Minh City v4 | Box thành prompt, xem lại đường biên và lớp. Thêm 10 Car, 22 Motorcyclist, 26 Sign. Camera ban ngày có trường hợp tên lớp trong nguồn đảo ô tô và xe máy. Metadata của hai phiên bản khai báo Apache 2.0. [Vietnam Traffic Detection](https://www.kaggle.com/datasets/huanhuyle/vietnam-traffic-detection) · [Traffic Sign in Ho Chi Minh City](https://www.kaggle.com/datasets/nhduynguyn/traffic-sign-in-ho-chi-minh-city) |
+| E3 sửa taxonomy, 1.113 train | Giữ thêm 242 COCO train2017 và 37 cửa sổ KITTI instance segmentation 2015 sau duyệt | COCO lưu license Flickr riêng cho từng ảnh, annotation CC BY 4.0. KITTI ghi CC BY-NC-SA 3.0. Dùng mask gốc, ghép rider đã kiểm với xe, tách cụm biển và đèn, đối chiếu ảnh cha với split và holdout. Sổ sửa ghi checksum từng label thay đổi. [COCO](https://cocodataset.org/#termsofuse) · [KITTI](https://www.cvlibs.net/datasets/kitti/eval_instance_seg.php?benchmark=instanceSeg2015) · [Sổ sửa](experiments/overnight/taxonomy-decisions.json) |
+
 ## Dữ liệu vòng 4 ngày 28/11/2026
 
 Vòng 4 dùng lại trọn bộ 780 ảnh của vòng 3, gồm 225 ảnh BDD100K, 75 ảnh Vietnam Traffic Sign Detection v5 và 480 ảnh COCO hoặc biến thể. ZIP dữ liệu có SHA-256 `91268bb2a4b520de7cb9eb1f2f9d59b740671a539ab73d1d3bba300e9d51e7a6`. 640 ảnh dùng để train, 140 ảnh để so checkpoint. Các bộ Poribohon-BD, LVIS và các ảnh biển báo bổ sung vẫn nằm ngoài lần train này. [Số ảnh, instance và bộ tham số vòng 4](experiments/round4/run_report.json)

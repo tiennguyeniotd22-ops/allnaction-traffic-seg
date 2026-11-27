@@ -6,9 +6,9 @@
 
 | ID | Nhãn trên CVAT | Cách nhận diện và phần cần vẽ |
 |---:|---|---|
-| 0 | `Car` | Ô tô con gồm sedan, SUV, minivan, xe 7 chỗ, taxi, xe điện du lịch và xe cứu thương dạng van. Xe chở khách 9–15 chỗ thuộc lớp này. Vẽ thân từng xe. |
+| 0 | `Car` | Ô tô con gồm sedan, SUV, minivan, xe 7 chỗ, **xe bán tải (pickup)**, taxi, xe điện du lịch và xe cứu thương dạng van. Xe chở khách 9–15 chỗ thuộc lớp này. Vẽ thân từng xe. |
 | 1 | `Bus` | Xe buýt, xe khách từ 16 chỗ trở lên. Nếu góc ảnh khiến xe khách nhỏ khó phân biệt với minivan, đánh dấu để duyệt chung. |
-| 2 | `Truck` | Xe tải, xe ben, bán tải, xe bồn, xe cứu hỏa. Với đầu kéo, vẽ cabin và thân đầu kéo. Nếu thấy rơ-moóc phía sau, vẽ riêng phần đó theo lớp 3. |
+| 2 | `Truck` | Xe tải các cỡ, xe ben, xe bồn, xe cứu hỏa. Với đầu kéo, vẽ cabin và thân đầu kéo. Nếu thấy rơ-moóc phía sau, vẽ riêng phần đó theo lớp 3. |
 | 3 | `Other vehicle` | Ba gác, xích lô, xe lam, xe công trình, máy cày, rơ-moóc hoặc sơ-mi rơ-moóc. Dùng khi nhận ra loại phương tiện. Nếu chỉ thấy một mảng mờ chưa nhận diện được, mở issue. |
 | 4 | `Motorcycle` | Xe máy, xe tay ga, xe điện hai bánh kiểu xe máy khi yên trống. Áp dụng cho cả xe đang đỗ và xe có người **đi bộ dắt**. |
 | 5 | `Motorcyclist` | Có ít nhất một người ngồi trên xe máy. Vẽ **một instance cho xe và tất cả người ngồi trên xe**, kể cả người ngồi sau hoặc khi xe dừng đèn đỏ. |

@@ -1,0 +1,2436 @@
+{
+ "base_sha256": "5b7f2318575d558455ffb1ce7b1a9a62dbe4d2c69a47a1f1b9428d40b7cb606d",
+ "files": {
+  "labels/train/bdd_daytime_000094.txt": {
+   "label_sha256": "bef65bac3d5754abd724c1c437f169ff675126dae2e985c15a651fc9c4a9bbcc",
+   "image_sha256": "4e7c11be141f9503a26b68cc1fe4cc349cf03fa27d3c084d2b0060c8e76a9ab8",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "9323a6756df2adf0a34e68e6d89f5bdc12f086452c08432b448463e9a125093d",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/bdd_daytime_000152.txt": {
+   "label_sha256": "fd0e67a094fc74ce7550c165e0d1c2fc5552b742fe11e30bfe0e7ea3d8666b09",
+   "image_sha256": "5049a24b224c2bce9a0c0e157b9db1fd177f98b4e4636791794d4259a990a8b6",
+   "changes": [
+    {
+     "line": 28,
+     "old_class": 0,
+     "target": null,
+     "row_sha256": "fa7406dc21081e2e685fca61dd6331d7e6f1b26f3cc96b47d63ac3a779a954ed",
+     "reason": "Same visible instance as source line 29"
+    }
+   ]
+  },
+  "labels/train/bdd_daytime_000154.txt": {
+   "label_sha256": "4ded74f9d1dd81ce63a19338208aa0d1f1b255e5a7e4bb44203415a815782bce",
+   "image_sha256": "8cc97f164b76fa65b71ef914d30710cecdb749d6b3d63e1efa6beffd691cb609",
+   "changes": [
+    {
+     "line": 13,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "e2ed7a82d90dfeeb7f866daa40bdf106274f760928f5ebdc97bac2a303a10e99",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/bdd_night_000135.txt": {
+   "label_sha256": "12115edc6498c806f35a85a382b3666ba648789bd6090df8bde78409c586323c",
+   "image_sha256": "0513d17381dbfc50c5bfae615354aaa5a152eba87c8f3bf1db77bb51269b3158",
+   "changes": [
+    {
+     "line": 17,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "da3c100fc8cebc5aac738dc9e734ca62a65ff398e49e73bca35ccad1dd230fe3",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/bdd_night_000243.txt": {
+   "label_sha256": "fd88fb70f5da40944411a95e13a30168a1dcac26f777d67c1f0b643a29a4fb77",
+   "image_sha256": "2d961483603e52cbbff71f3b97505be47efaae1fda1b029f492e9ac671f2c1fa",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 10,
+     "target": null,
+     "row_sha256": "a4c7b5b9c78120174e3fe8b178c607abb28e23fbcf722872e59698e90f4bbb9c",
+     "reason": "Same visible instance as source line 25"
+    }
+   ]
+  },
+  "labels/train/bdd_rainy_000049.txt": {
+   "label_sha256": "978bed2c5e05bdfc86c64442b7831c9c8fb5ed4903628c1f1d7233a0db97b64a",
+   "image_sha256": "f0e70047312c21d9f006299d502f8a1404f72b80f7dd86223dfa557bc21ef2cf",
+   "changes": [
+    {
+     "line": 6,
+     "old_class": 0,
+     "target": null,
+     "row_sha256": "585fd76959eeb914c27de05ea7ac7e1eef0dc80d03e350a1d1c384f10f1749bc",
+     "reason": "Same visible instance as source line 7"
+    }
+   ]
+  },
+  "labels/train/bdd_rainy_000238.txt": {
+   "label_sha256": "38d7cff4cd827c597fc3c85d6a7a9540e01197b34a7b20d2603807124b2cbb3b",
+   "image_sha256": "77d608986e503984fff8119735b2790dfb7ee3fcdcce3c5fecf071df956c8ae8",
+   "changes": [
+    {
+     "line": 8,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "8bbf8b8c11d2ddcbd49f4691f9e60c1ad3a8bb9fecfdbb5bb9177a7308080c79",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/bdd_rainy_000507.txt": {
+   "label_sha256": "45e998dfe477783f77f6a9b547fbc4c39be791a327960da96f0bb42115c5862f",
+   "image_sha256": "e8b4f2b4a440ca8def44adb798fe8de48a640f75d893be0b783f5053532ce9f2",
+   "changes": [
+    {
+     "line": 18,
+     "old_class": 9,
+     "target": null,
+     "row_sha256": "8393f78b32f59ee84d242c54f3c83383786f1607384fbee3f89e6f428e835060",
+     "reason": "Same visible instance as source line 14"
+    }
+   ]
+  },
+  "labels/train/bdd_rainy_000538.txt": {
+   "label_sha256": "5fffde8416b4711fc24a749ecd36b42cb741ca473a24405f32d7ed5b3d53485c",
+   "image_sha256": "6f0c5f1f32e1728f38db64503a9b398d46ecb04c7734a04e031c78f61a4caf31",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "b9448867fc16a3561b18c01b7e5a90c6d2492f111828d08ead8a5fce796dbcb3",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 2,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "8d7eccb73b97733acac5e77d96963c5cb132c9653bf3e7cdcd257ba8e60bf6a6",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/bdd_rainy_000568.txt": {
+   "label_sha256": "e75becc999fd30b8c316982fc17ddb0ecaaac1402f9b63c7e158ccdd1e1395ba",
+   "image_sha256": "10364f48628ada6b3eb265af444a4004cd8060911b527cd15c9b98ab2fcb5462",
+   "changes": [
+    {
+     "line": 9,
+     "old_class": 0,
+     "target": null,
+     "row_sha256": "026b07fecc3bd6244defb3e8fc9e31e5cc01dc741f251996ff811a6cf0917a99",
+     "reason": "Same visible instance as source line 10"
+    }
+   ]
+  },
+  "labels/train/bdd_rainy_000569.txt": {
+   "label_sha256": "015661b102b67c0b3a9f1566d2c6be2d5504432a181a3dacc19d9458f1a001f3",
+   "image_sha256": "cff9bca83f78355072e031d73f0a31717a9311de188b3397ca2ae251792d8188",
+   "changes": [
+    {
+     "line": 7,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "90c1bad0c2245bf1b395c7f36185df9be580b7f676a88fec6d875b1cc2ab8b6c",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/bdd_rainy_000940.txt": {
+   "label_sha256": "38a791a0131008296d06ad0233c5abbf7751a5e1f21c7da1764445d1fae1cf9f",
+   "image_sha256": "1cc99f5a5b581c3462f8c18304b97ac1671579f72f9cba1f2169f8aeb51c8d28",
+   "changes": [
+    {
+     "line": 6,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "2cf938f640a5a8b78542202be9fdf87f69a4cb4cfae431ad0607297ae5c15880",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/bdd_rainy_001024.txt": {
+   "label_sha256": "d2ddb6f8169bdd74fbce3e555f8288022298b5c8729904c1c36a166bcb4176e0",
+   "image_sha256": "1e6f3fb8dad72c7aaa60de29e9bb1c206ec9726daef79b45fa8accf61a9b35d9",
+   "changes": [
+    {
+     "line": 7,
+     "old_class": 2,
+     "target": 1,
+     "row_sha256": "cd417f228dde1876ccce19fcc6a01e6e0fa08dc164a66b7162774bd7b6420aaa",
+     "reason": "Identifiable passenger bus"
+    }
+   ]
+  },
+  "labels/train/vn_sign_110f7256705b6b65d4.txt": {
+   "label_sha256": "5ca38bd7d9ef594c4f73810559c74cf6da0326493450024e597d2ae9fc3c97c0",
+   "image_sha256": "110f7256705b6b65d404da46e3f44d0715abe871eae87d8eabee08136d018e0a",
+   "changes": [
+    {
+     "line": 14,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "09099024a0a9d146cef1e6b88856e4389465c56871344673448f6d732f24e7e4",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/vn_sign_692b88cfef67f51d57.txt": {
+   "label_sha256": "6ec5e5a214738da6cbad0933adc79c59534b90d6f6baa84dff21f2510c7e1112",
+   "image_sha256": "692b88cfef67f51d57e95dc8ed7f5cf7d8b865b72e9559500b3faebab7b62b80",
+   "changes": [
+    {
+     "line": 5,
+     "old_class": 4,
+     "target": null,
+     "row_sha256": "5d318be28ce5da5cefc40f98ec67db9e9f9bc4a824578649fe5e4cd8f0deac4f",
+     "reason": "Same visible instance as source line 1"
+    }
+   ]
+  },
+  "labels/train/vn_sign_a293209a6f49ed34ce.txt": {
+   "label_sha256": "f56725508e56f271a87eab465a20b01f09d814b361b53e328fe605b18961e961",
+   "image_sha256": "a293209a6f49ed34ceb7be82cd9c4fa4932760cf9d5f5da3eb1170920f85789b",
+   "changes": [
+    {
+     "line": 10,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "5958ae869e1dbdd150b9610d11dbfa4e1349c9ca130dc5f4a57a2176c0ddf23e",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/vn_sign_e49820d4c95a2145cb.txt": {
+   "label_sha256": "3e76d79d8b217998c5ca5464ab0c794a51fe510a7dd2926f3cdb93b0976a6382",
+   "image_sha256": "e49820d4c95a2145cbc15a0f8fd7dba38872ea29614a5ad47d74bb960f581e48",
+   "changes": [
+    {
+     "line": 3,
+     "old_class": 9,
+     "target": null,
+     "row_sha256": "f9f43ad613129235aff221926a66e396230ee8eca368d401e8f750b070d66329",
+     "reason": "Same visible instance as source line 0"
+    }
+   ]
+  },
+  "labels/train/vn_sign_efa406e7b4e190fdbf.txt": {
+   "label_sha256": "e5d919429b71c8eb3b3db865042b00006b88ce5f465124253edb71f0996dda05",
+   "image_sha256": "efa406e7b4e190fdbfc2a063fe265cdf36b2b9d94913add1f9dcd99dcd48ee42",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "9ae7b9584b24a2a2772f035be4ddf0f5fbe54f2e69162f44b9b93c4d82687a2c",
+     "reason": "Retain visible instance after paired outline inspection"
+    },
+    {
+     "line": 2,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "93bba6624d377163eabfca33e22579a12c6ae3cd806dbe0167f5507f8beecf14",
+     "reason": "Same visible instance as source line 0"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000026204.txt": {
+   "label_sha256": "0e035a0dd55b27611f36ed002dde537eb2c79cc80218ef915c0ae83491d79bd0",
+   "image_sha256": "173a86fef1dbf7dd4c91dbc6ed7f1df26fdfdc398681aa04e558ee165f3ea326",
+   "changes": [
+    {
+     "line": 11,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "4b7166a092bcbb17caf85c4930719937a36dc1e10f1fe75455347e65b16f1ab1",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000032941.txt": {
+   "label_sha256": "ab238f11527f460a7553141913ac8cb366b94fd662286a869a4bb9089885ebba",
+   "image_sha256": "2b881cc082e3d79f6685320ddf02e04ec534e7f904a090a4e627eb445cb26ebc",
+   "changes": [
+    {
+     "line": 11,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "2d6f2f2630fe1a800406cfc2eee7766718f70f377cb5f6b3465dfbd580fed4f9",
+     "reason": "Same visible instance as source line 4"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000054967.txt": {
+   "label_sha256": "701fccaa3afa4deb82e113a498dbc6a4badd86c1d10dd3b80f45a49f31cc5096",
+   "image_sha256": "d40210c4e2241a0ac4de79f4cdc7a6c859dafb1b2b18469146f992c714fe9b2d",
+   "changes": [
+    {
+     "line": 9,
+     "old_class": 0,
+     "target": null,
+     "row_sha256": "f42f30f820f3e6bba77ed5bb5973a61402994ea01cbc60ba422a2d7eb7f5c14f",
+     "reason": "Same visible instance as source line 0"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000055167.txt": {
+   "label_sha256": "8d4ee4449f61e56f29d7eaa5ae11754494b76cb2c1c22e3ccfa69857425af647",
+   "image_sha256": "370ff0c32b47f0200f7a0d2bfa507f2684d24a29fbfde06f75ed354910ac371b",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "b2c7c1661b66372edbf96dd7586b8e3c25b1b1edf7e05561da81c303642b158c",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000067616.txt": {
+   "label_sha256": "6ef9b5ce1b5503cb0a45bb85cd9680ac31e6f8e6d33fa10beffafc99e5bed6e9",
+   "image_sha256": "824b722f5251918066fa4e2689167145918aa77cb8094a9fb2f2d70fd85d1ca1",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "8cb9a9e295493cfa521a6f0387fe3b9c70accff715c33a8d548150ee72cac927",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000074058.txt": {
+   "label_sha256": "f680dda5605112eee666ef4733fbed0ac864728a2de487e23c91fd6555af0b7d",
+   "image_sha256": "a619c4064a1a9af3f0d3c20abee5dc8bb05edda1ec0b240e28fb823b4fd9d204",
+   "changes": [
+    {
+     "line": 6,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "63935a5dc3b745a3b0f94d0e42b4d8a80e84864815ff4b0c0ef6e7f8f7faaedb",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000076417.txt": {
+   "label_sha256": "22c06ecff85d0971b42664c11ba1b568bb7f6f3a1190a14e45df4ebb4e37be8a",
+   "image_sha256": "740a8f0e6c980ad0587bb352a909308782f8c3a7fa3853cc6b06aa2ed1ff4675",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "8a70ba8e319413d803518924b84a5e90ba1bf5b059f90ebf5a0f9e137b143685",
+     "reason": "Same visible instance as source line 3"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000082821.txt": {
+   "label_sha256": "5f84c6552d3e431aef5335c73c2d4eff575123352a9fd0b0203c174217486e27",
+   "image_sha256": "1b37954bebee5b6bf285d5bb47e47f7bf99fa7ef9e7c57d70638bc3332b9eb99",
+   "changes": [
+    {
+     "line": 8,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "2ff1492e2195a82f6d14d14d19c197621cdd6c7470b596a0b9515cff8a76efc0",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000084752.txt": {
+   "label_sha256": "f20a7384b9260a2e54f4f5d45cf85a4a2eddf3caec0099fbcb9b176a1744d2c9",
+   "image_sha256": "94f8f85c762d5fd6f766dc85bebb0daaabdc1dfffe2c0d8b8b4f1e72b54dcc43",
+   "changes": [
+    {
+     "line": 2,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "0222baacfa360d65abc933f94ae6b2571892d9bd6b675ddce9c40efeb977f4ed",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 10,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "7c06edbc29a78e9f9f8f8e840e3c673e6588e937100f38a5814a467092c8eece",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000085376.txt": {
+   "label_sha256": "e3d76f523c9cb64145eb798dbc2c043c604d9cbc71047fff1adf7134ef326ba3",
+   "image_sha256": "0c61f0ddf5a17a348a194e16232f78d62391008b3e0aa4a204ce77c4ef6182c8",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "5ce87da2582b34fc53658bb1c6bd843b193d7c26b1577bef5bb896c20d477aaa",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "792cd5a9d77c4b7c4fcb4c8316417c1ca871d2692b2fa1f9d75434978b5a9052",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000088432.txt": {
+   "label_sha256": "affce54e96bbe5ad08c658260b6f76dfdd84b3e9804f79622e4cc301ae805d02",
+   "image_sha256": "8e0a6e5eb383a0550ee70fca079826a0e9c4468c4b17e8a60c4372043780253c",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "a4ed359fbbc8448b3fa4851ae0d9203fa8cfccfbb981bd4ada363c135520ba46",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000089556.txt": {
+   "label_sha256": "a841f29050c4ee3d243b0b7da5df90f97a7e346b71b0b7f1be3eee7b286b6639",
+   "image_sha256": "b78eb0eb1250b86210658687ff5063428e0cbff2858d4e07d8dee107ae1964f8",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "c0d027993daf6165ce0c9ae7252670338d6160a575529c3a8b07a3513b322ec3",
+     "reason": "Same visible instance as source line 12"
+    },
+    {
+     "line": 3,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "ec4ae8117e6c1ed4251934126b91d0d9bc254ad21f02a433c7f8a9c919f9b350",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 4,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "33cddfc3af822e3782490457955a20ffeb6fd322c52c933ddc1963b31f4accaf",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000109900.txt": {
+   "label_sha256": "7ac6b70fdab74fd19a9f6daf7be24c8bba473dc706afceed41394d06af344635",
+   "image_sha256": "72ea2b53ec449ad79e309dadae27b80e58fa25d64579799e90a3d2a790b3421b",
+   "changes": [
+    {
+     "line": 10,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "01881319e9fbe65d29434f8a92ba75fe0a02554eef276e37202c3b797c497878",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000122166.txt": {
+   "label_sha256": "e26c5ec00ef4b5eaa28a288356d485f33fae10bcd8d96542e0950af4d1ef0bac",
+   "image_sha256": "914e39f9c79ced1a519f1003c410b3ed7bfbc8315df4e0e0c35ac421079e9c6d",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "9eefbdd67eff11a56a94c1d58df8f3e7dccd3282b25413061c95eb7fc617a1a2",
+     "reason": "Retain visible instance after paired outline inspection"
+    },
+    {
+     "line": 2,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "a90c7a4bd2bf2eec9ad9cb30f7983acc82d31f2ddd0c03a966b48faefcac301f",
+     "reason": "Same visible instance as source line 12"
+    },
+    {
+     "line": 14,
+     "old_class": 0,
+     "target": null,
+     "row_sha256": "cb4704f8422d1692f94c29d9587b6791f04bafeeb9c0b1bef72a0c10e2921971",
+     "reason": "Same visible instance as source line 1"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000124798.txt": {
+   "label_sha256": "df3a33f942403ba5d3e0401bb0c54389b8a4afacac4205aefc1a38404da1ce72",
+   "image_sha256": "945dffc0d0e390d50539049ebbe2a80691f9f0c5bee67bc10a6ecc57a08ae536",
+   "changes": [
+    {
+     "line": 7,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "33ba7ac9f95b43aab14eacd052f675bb21f163a5a82eefe27530244790298c86",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000128051.txt": {
+   "label_sha256": "2a9a717a1110a1a1f3f386b71cec8a8b536f562ec9a2742aa1f1122a6d1991b8",
+   "image_sha256": "2497ae695583057b6adda26f862de2287d2052933c14b7f0a6027ecbb09a079c",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "964c8c8867b7c03220f6fe0bb533ea7e9724439b2f3fb0bafa79c182959115be",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000142472.txt": {
+   "label_sha256": "4a0c3b5396076b77a83cbd1a31ea68859ab79e6003afc3c1da921dd92edcb520",
+   "image_sha256": "db7173813c230d969afa81c1012904f95a680a4b6b756eb07e17e6727c88c0dd",
+   "changes": [
+    {
+     "line": 2,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "a03a42f3f0c613166794026d9f083eb6a3e00ee14ba303657f37b0fa438651fd",
+     "reason": "Retain visible instance after paired outline inspection"
+    },
+    {
+     "line": 8,
+     "old_class": 0,
+     "target": null,
+     "row_sha256": "f1d2ab0ed4589e82a307fc334a5487084eabbba8cf9c04ce06e3ade11401c5a9",
+     "reason": "Same visible instance as source line 2"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000142585.txt": {
+   "label_sha256": "227fb8d66a514afbd646ccb810ec4ef0dd8fdd8b9a217ec05ccb1d505e0ec0eb",
+   "image_sha256": "41277a4ea32031b3486e839d18ca61506931002fca4ff9214686c63e9c6bb983",
+   "changes": [
+    {
+     "line": 8,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "92a301fcb72703341df2d778961f989b6e332916ba18cd2b965687e668f711f2",
+     "reason": "Same visible instance as source line 2"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000144300.txt": {
+   "label_sha256": "0f58fde19f38563f90542cd3d6dcb0e6fcba8af64ddc3d309b8078a3b2b458ed",
+   "image_sha256": "859ad40927fb62779a65eb109b52881641ddf6bbc435aaed2bcac4d4ecc9a9c8",
+   "changes": [
+    {
+     "line": 2,
+     "old_class": 2,
+     "target": 3,
+     "row_sha256": "4c51269f991a1eb2b7d0eecb3de0c5738a1bdf51abd6f10d15e2640ea4115dca",
+     "reason": "Retain visible instance after paired outline inspection"
+    },
+    {
+     "line": 3,
+     "old_class": 1,
+     "target": null,
+     "row_sha256": "1b1830f890fa6c47d00653919574bba77e2f25a0509640dcb82422f3cbafd01f",
+     "reason": "Same visible instance as source line 2"
+    },
+    {
+     "line": 5,
+     "old_class": 1,
+     "target": null,
+     "row_sha256": "f4d1eda196c5905ecb497c7faf344c81e66663030860f6b19113da1df1b22a1c",
+     "reason": "Same visible instance as source line 6"
+    },
+    {
+     "line": 6,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "9210f9ed1218ca234d9a3ae27d97592dcc91ae4c025b467c587815eb6ee0f066",
+     "reason": "Retain visible instance after paired outline inspection"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000144706.txt": {
+   "label_sha256": "9fea39b6af1fc5b3a98c7a312093297906535e853513a41c8cd244808a4703d1",
+   "image_sha256": "0cca792ee55651c6cdda13c2f01a4047ee7423636ad1b6e8f4f124c4411f6b3f",
+   "changes": [
+    {
+     "line": 5,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "0d5bb90237482f504491a11999eac82e374af7f3bf3420082b488c8a6b6d8572",
+     "reason": "Same visible instance as source line 4"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000147725.txt": {
+   "label_sha256": "f65cf12e60d3030c2a6c952eac822e351ec6ea7c97c70926095998c869da8d02",
+   "image_sha256": "38d78e088e16ff5b2d6340fa27f39fdfe7c9c1f2142b4464a2f79b27fcc49602",
+   "changes": [
+    {
+     "line": 8,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "5b38c98e7e4a683825437a44b85c8ee762417fd86aa30876840f9d2f7c17ac85",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000153011.txt": {
+   "label_sha256": "96e9989926473eb564e35e9ac537afe7c1a3ec858ffa6c2d708633fa33547391",
+   "image_sha256": "e051d5c7180bec8cb38caae0cbeca57f4d09879d097065c581bb9f9c0d474a09",
+   "changes": [
+    {
+     "line": 13,
+     "old_class": 1,
+     "target": null,
+     "row_sha256": "890a95b8133da262a501ad608066eb27530bd4dbb133a003cb4a16d9f8139a97",
+     "reason": "Same visible instance as source line 15"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000155341.txt": {
+   "label_sha256": "bfcbcde254dad7cbebb563c11748faec4a8d1bb2c020e5a642a0595f28123cc7",
+   "image_sha256": "319c8d33adbc7718891fd134d321002121466e32ff4c877ef0014d2e1f1da026",
+   "changes": [
+    {
+     "line": 8,
+     "old_class": 2,
+     "target": 3,
+     "row_sha256": "4b1da110ff25b47444c1f8d43bcd0a9fd0230fa0ede55ddbd9d6b52269381b1c",
+     "reason": "Visible trailer, work machine or horse-drawn carriage"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000165681.txt": {
+   "label_sha256": "d96676edf9861135dfaa94dc12cfac53f34cf3cd4500762d15dfe24bbaa7d187",
+   "image_sha256": "7b23b958379742bd1fb13ade9a86b3e134a0493edf45039d3786e126b20cc9b2",
+   "changes": [
+    {
+     "line": 9,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "1bbaa5cb2a5102c378c673bb8cf54c68098d3de65f8f5eb34ae92484cfb0c043",
+     "reason": "Same visible instance as source line 3"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000166391.txt": {
+   "label_sha256": "7b6ce5fd99e0fed28227cf615f05ba12cf9835ee1dac8daa9ee08f6b931b1c26",
+   "image_sha256": "4ee9bb8a8ac31522bd24dc3068760d4cf7a9255257ba38572ba5b4c750360c35",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "f15444920d99a0d9894658aa69403892b82b5281acd16694430f71ba492b94d8",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 9,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "efb4b5586f9b6836303ef4f859aac3bf0d5d18f33213becc9e39ad317e59381c",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 10,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "6fd692dfae5addf9af273896d955b8db78cfdb6dbff7fae7bda7d2cef861c3d1",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 13,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "9ae914d7b93acf2c5857c1ddf383e5d81e57d3a064dd49110cba4cd02565db9f",
+     "reason": "Same visible instance as source line 6"
+    },
+    {
+     "line": 14,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "93c5481b5be8c282b6c4afa5a7032ebb19e7f702dc20e81f0f55bcf545277e7b",
+     "reason": "Same visible instance as source line 5"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000166747.txt": {
+   "label_sha256": "4c7614e5fa98daf8475b0768fdf6982f532961dd741e0d22f55e433d792a68dd",
+   "image_sha256": "a49b8ab0191de258ca77c4be4cd50a91321a2fd95f451e343eefbe8e21f44d82",
+   "changes": [
+    {
+     "line": 3,
+     "old_class": 2,
+     "target": 3,
+     "row_sha256": "85e2a44ba2daea810e60c0005ed6dc735dbc06491db1a138c2b7981f027724d6",
+     "reason": "Visible trailer, work machine or horse-drawn carriage"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000179265.txt": {
+   "label_sha256": "e4912c931ffeab5fa7b2970ce0cd476609d5c503d2c606d721a47c02fb0be561",
+   "image_sha256": "1fc867afe91c5a84b66bd6eaada8d8bcca2ce65b15433be23ba0e70c3af34410",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "4a1e66dcf05b4dab8d6f34a4d9baecaeb596440c78db34d07298bbf17e2e94da",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000181542.txt": {
+   "label_sha256": "fb9eaabc5d9420364aedfdd7d265bc08543829b1f2a5009ed123584f1a460333",
+   "image_sha256": "c0fdc24e1516a871e5dd195ff34a0da7b2227ef6486492545fb2548743ba4bf5",
+   "changes": [
+    {
+     "line": 8,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "96435b807013a78cea7d9aae87b3215f103148ff0b2d5d94b8d40d57e24a68c0",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000184324.txt": {
+   "label_sha256": "095d63dcccce960a7ac8bf61d5cf92898215ef2f22d76f238cd1dfab44c56a70",
+   "image_sha256": "5bfec85c40197744fc7fa8262a0a0e14ad1a6fc0e11cee4b7b0c5df97a146107",
+   "changes": [
+    {
+     "line": 18,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "8f0e00e08da3cc77c9eec566ca1ebbba1bd684a07932e4e261d038525183482d",
+     "reason": "Retain visible instance after paired outline inspection"
+    },
+    {
+     "line": 19,
+     "old_class": 1,
+     "target": null,
+     "row_sha256": "e7a886fa56057b13b03906e51b0d8c3e90c844b9327d9aebeecf9f0ade574f32",
+     "reason": "Same visible instance as source line 18"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000192670.txt": {
+   "label_sha256": "fc8f3a279257d829ba90f280dadb1365452bf64419ad250df7fde055c68a43e1",
+   "image_sha256": "78166d1775deaa41e93780921bccec43c99a293626f44eb19c41fe56bd12925e",
+   "changes": [
+    {
+     "line": 7,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "b114cb07519a4889d3636d542a9c4ea191e5d7c314ce45367cd09ba37c88e162",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000198805.txt": {
+   "label_sha256": "6dd9c95e51dc8ec3989a796a2f8ceb55a047173f971e68ce00c0156e8f526063",
+   "image_sha256": "18efd547be82ec756df749112925aafa3285e509349525ffbba6e22c70c621e6",
+   "changes": [
+    {
+     "line": 3,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "3ccd820aea5adfb024ee4f1be83d5b10cf17cac47664ff5efdec536fc1503c87",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 6,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "26368516d5055189c384d74fcfd60f33410b7b250d01efd40ec99e4fa6dd413d",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 7,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "8889c2edb0c44bcfd015e321de8c021bdb5c56fa5c8d7a4ac25671d550eed074",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000215723.txt": {
+   "label_sha256": "193c9728691d3188eb52470ed4bd47d0749307adf51d70175690263fc07aa3ba",
+   "image_sha256": "20e15853e22f5d69312b821e846671af204a12dc24631bc46f4ef8e72da19be7",
+   "changes": [
+    {
+     "line": 4,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "d7df02ac7e22711c4c9d567a7062f900f6907b5635127d1f4a40e9dfc5a33831",
+     "reason": "Same visible instance as source line 3"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000221754.txt": {
+   "label_sha256": "47f1e7da8a346c92bec6cd11f79ea6cd8bae8878c6fccbaa9c70933cffb36698",
+   "image_sha256": "adf36fb773d771873de8b852f975540d1faa239930292cc20704850fab72cc3d",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "5771bc226d56ff6e8fdc05c9ecb775ef87e988fcf00fb2c6adf8870b555bc81b",
+     "reason": "Retain visible instance after paired outline inspection"
+    },
+    {
+     "line": 8,
+     "old_class": 0,
+     "target": null,
+     "row_sha256": "a12df46cc0fcaf7682c98b9613ae4603a7bdb46885cfea6aace793a3c46acbca",
+     "reason": "Same visible instance as source line 1"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000222094.txt": {
+   "label_sha256": "2af8b1bac11540061ec657d36b947cb1161b863330016f10486c3c64ea30a098",
+   "image_sha256": "1d9bcba769c81d9703d4d5cf3502e8997916347c91648104f888866634b2de8b",
+   "changes": [
+    {
+     "line": 2,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "77f6ce28ac801132665c4db3fdb1ddbb6cfb02ed84c66c1e121542a08444975e",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 3,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "a43fe828719bf6d4e72f669c3424e849ba8fe9882c329f3af3731c3b122aa6f5",
+     "reason": "Same visible instance as source line 7"
+    },
+    {
+     "line": 4,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "e206510cac416ba36e4bde81b6674e54a9351de009f974a4033fcfa9797001c2",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 6,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "687c690d100018176017b7cb7cddb3e4fb2d3a3f7c9f90369be6165072fe80fb",
+     "reason": "Retain visible instance after paired outline inspection"
+    },
+    {
+     "line": 10,
+     "old_class": 0,
+     "target": null,
+     "row_sha256": "10255ff0a23d5cad82dfd852ea2e2bb1c36da3f6648ce0f9acdb4cd2674eb595",
+     "reason": "Same visible instance as source line 6"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000229948.txt": {
+   "label_sha256": "da95ec3e4a1a4e40bb8e250938a993dae003bc879bacdbd3a8f63dd885a2e387",
+   "image_sha256": "0b7d8fbfc3966e04899ceb96a391aacf7805749aee405cfb20226cb189f34009",
+   "changes": [
+    {
+     "line": 13,
+     "old_class": 2,
+     "target": 3,
+     "row_sha256": "48fa3dfb2a710e096a5d16323a8a053591aa82c44d3ca84f8333d95b93c734f8",
+     "reason": "Visible trailer, work machine or horse-drawn carriage"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000254814.txt": {
+   "label_sha256": "3db792c5abd86cecd6948275158eab79f05917ddc766d2bceb2c84a6d31f47ec",
+   "image_sha256": "915aec9b08643741b27129a6b789be3ba30fc47489b44cbe89771798be37d6bc",
+   "changes": [
+    {
+     "line": 17,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "0822f64be60f52976a2e2dcd39732bd53965588808f624ce828ad955e99c6409",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000259690.txt": {
+   "label_sha256": "f0473f6af4b4d8f68a53768e65c2d82f21a59f22d66dade46d3cea3c7bc44019",
+   "image_sha256": "d5296545bda4a910e90c0e252423bac9d61d11802d699ab2c27c562b7d00bd40",
+   "changes": [
+    {
+     "line": 19,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "fb5c4f69bf40075c090323eaed8200a7b13c03988fa50caf9590bf141320520e",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000287291.txt": {
+   "label_sha256": "a9989ed28ed38d0f06c2151bfc8a4a1c0f75cf0d8eb25a5b571321430c27f1e1",
+   "image_sha256": "e6dfa7707e0369473b6ac5d90377963b4d92042f0fe68b238cb01ee3d93c8118",
+   "changes": [
+    {
+     "line": 12,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "0e471fd94f815067a24e3644fc8d578d0b7dc6a12b381424460b256f7a48535e",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 13,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "688eaca041fed8f0a1d0ee095b9595b1dc2ecb71e1f81fcac602f1fae000e834",
+     "reason": "Same visible instance as source line 2"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000313182.txt": {
+   "label_sha256": "3a48c3be8d1965a2446b695bcc1adaddb409746efc78f858028fc3f76b2b4b0b",
+   "image_sha256": "eb866ca692e9cbffe64807c519b6b2ce6fec169734658331c3399613cd8ec20f",
+   "changes": [
+    {
+     "line": 8,
+     "old_class": 8,
+     "target": null,
+     "row_sha256": "010ff209fcea10bc3ee9bef5df4f1b973687bae166d63c328f452fcd5844db75",
+     "reason": "Same visible instance as source line 10"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000323571.txt": {
+   "label_sha256": "0ef2464f4cdf5c8bf996d999f53fc0c33251fa8de0ed8a3a30d4b97803129c28",
+   "image_sha256": "68c5546797645a48dbaa2e80d7bbf08cead6ca1e0a5536e721d185ae76a05bd1",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "b88bb0273adae21b499db8b2baa035fed5ad2c61015347077ee38e4687d4f0ac",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000335177.txt": {
+   "label_sha256": "9011c5a91503d46be7fdf721254f1ff97d22d237726cb2c572a18f3889e5b6c0",
+   "image_sha256": "2d9e08ded8ec4972f4653a4ff6956a03e99e06f717964f2176a5e66a950155a6",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "f6e78ba36ee6c96e7cb53e8f61717adc4fddf0b8f6e44c25485958d17c1655cf",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000357737.txt": {
+   "label_sha256": "a6678e6fe87dcb30029a4d48b9ac33d9ff8511aebf53ebd05a21e363a0684ffa",
+   "image_sha256": "2807fcb8cc5b8787e149247b2dc01f9dff1c56cc66cf9759ae1f58f39fd9879c",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "04ea2376f2cec3d9ec157e6e267305e8f3f6f76e287b99b30ad0439abbb11071",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000365745.txt": {
+   "label_sha256": "599cd6e8e0982a66e38d5de9caffa2151aea66d6fd6f0bbc95dbe77a42f25ef7",
+   "image_sha256": "e9140e80d2d1369203ca86f75f2e1e1d46cacef6481593d0e7a2e38ad1959049",
+   "changes": [
+    {
+     "line": 2,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "54728e56a7800986ac603b6ffb08e758cc76620ed7842d91f664e21bf8adaaa6",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000418696.txt": {
+   "label_sha256": "3cb4aec0177c965063d5569dc3a10f655985aa7843da0c2f46aa7a5bbbeeab2e",
+   "image_sha256": "2c9aa38b9e80707f5a11140141b85cdb9ad9fbf779cd0afe2b2785c6c2942faf",
+   "changes": [
+    {
+     "line": 2,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "047bc1d31282fddea5f6919cc423715d1fa4f1f8feccf159d5cd182a233d22ab",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000436883.txt": {
+   "label_sha256": "2cec1c62016eb7ff61e2482bb974a4167c08efb8445bbdc3f10dd357a9513bb4",
+   "image_sha256": "65cb98085b86ed663a6812a9368364178d845b3458694f1d8d23783f3b848477",
+   "changes": [
+    {
+     "line": 6,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "63a169ab0ac31c98b952c9f8bd792357c6ece2ebed7feb2d3aabd8bacdfe146b",
+     "reason": "Same visible instance as source line 10"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000447342.txt": {
+   "label_sha256": "45c2ba1956db0732afdc07eca1bd09f567786418239df7a448519c181b147683",
+   "image_sha256": "199402bfe3e935cf8c52e59271a9d5a0e2a20a7aa264472d7bcd0936b7c15d97",
+   "changes": [
+    {
+     "line": 3,
+     "old_class": 1,
+     "target": null,
+     "row_sha256": "a5aebce22aed99f9f467530d176ab2ffbb703790ae03c95c46535047301e1283",
+     "reason": "Same visible instance as source line 11"
+    },
+    {
+     "line": 11,
+     "old_class": 2,
+     "target": 1,
+     "row_sha256": "d6c81b94e86e58ee3def6bd675d1bf3f462cebdbbe1cd59d96c5b9c86a9ac886",
+     "reason": "Retain visible instance after paired outline inspection"
+    },
+    {
+     "line": 12,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "83809322a814a39c3240f091b7fda64b35b80d5dac0a9a50d66509c6b2e7829a",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000453841.txt": {
+   "label_sha256": "f744d56264f5977d017ae02511e7cf60812dfcb36fb1ff9ab8a3086360884037",
+   "image_sha256": "adf4b5c957aee8afdecd9c10efa3521026bb94e81fa37278604a6dcb45652fa2",
+   "changes": [
+    {
+     "line": 2,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "d7b8ec00aadf1f751dce4549050fcca8a3fa79fd55d5574f4f67080f003036f9",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000460147.txt": {
+   "label_sha256": "a2a3da92765196968c664cb3831cfc7cbf60305bb89f1dbdfbe4ca914e79752a",
+   "image_sha256": "b041d8c01473b72e2ea2f909174a4d2e5cdefae9a3d5abd06a9db91755392ad3",
+   "changes": [
+    {
+     "line": 18,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "40227cc9dfd7550bcb31bc65343821ac4cde191c299e8f84bac213c188bbd136",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 20,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "e49f23b182a0a94bd7e7808d3d110c25beaac84a829659b9928b1818eab83153",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000460229.txt": {
+   "label_sha256": "f3f5c65f20aa80b47c47e1568fdff75751d9221fc2bba897335eca9aded12a7e",
+   "image_sha256": "af84abd8715c5acb599da83f03174ca57bd0974ce00b6aa581c45bf7f92b6c8c",
+   "changes": [
+    {
+     "line": 2,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "6937459de7acc4c899bc8ba5124953587f3b958b6034c23384eda73a77986ba6",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000462756.txt": {
+   "label_sha256": "823b888d7fa9e2260059359f11772c4719fe3d7cdf8a5bbe2949ed25af22132b",
+   "image_sha256": "fd587baec12e47e21fbf4ac5375b5b41c92a26fe1326b7772ee53511c352fb61",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "5ec4e4b25344cbf5355fcbcc34111a2b0e6bfe5b6dbdb72e093fcc483c661fbd",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000478474.txt": {
+   "label_sha256": "d48b3c96f0a0e3b51d2245ff0d39651f6ea1a9ee3167d237f49d5f24d2df76b0",
+   "image_sha256": "c42290624ebf62118f2ca3ccee1ccaf905c3ba2468db26961f23b9a370d9f552",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 2,
+     "target": 3,
+     "row_sha256": "ebf76c7e3f08acdbc64226910bff01df40b195f2deab850481e04a197777d4c8",
+     "reason": "Visible trailer, work machine or horse-drawn carriage"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000495146.txt": {
+   "label_sha256": "eef4ab4091bcd905111a791bebe641064f353dd11341d09bcbd4a17e26eaf186",
+   "image_sha256": "cc4814681163a70e29c6aa2bb463b4d6a3c52a3c23f77b38357498c5ffee2d38",
+   "changes": [
+    {
+     "line": 6,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "8eb1f579325659ba7e2ee67b3615c2c6284ce9ea26165ef22aff74c985c61569",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000512564.txt": {
+   "label_sha256": "8ba74f20bcc2f44d8ace0723183b256505cffeddf7603bafc9561f76a1add459",
+   "image_sha256": "9286b499e47f7e38a13413a09c0738e59f62d0ef16397006350bfef1bc2fed5d",
+   "changes": [
+    {
+     "line": 12,
+     "old_class": 2,
+     "target": 1,
+     "row_sha256": "f58be424f163821e639db931efe33abd550afdcebc20d300788916678430d848",
+     "reason": "Identifiable passenger bus"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000521259.txt": {
+   "label_sha256": "623a96f3c69e6ae1466fc6b17c9f9f09454a70214c24aff4093037b3f0343a0e",
+   "image_sha256": "95040dd15929de9ee3e0bdb17dc8455197cee814a2293a42c5cccd537565c0ac",
+   "changes": [
+    {
+     "line": 3,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "f2f06f0f1663e4155facb8d04b7b8a7361d5c1f288e4d50286a39814c77d7ed5",
+     "reason": "Retain visible instance after paired outline inspection"
+    },
+    {
+     "line": 4,
+     "old_class": 0,
+     "target": null,
+     "row_sha256": "0ecf1648cbaae24222561656373b024723dc071b27541154e4a01e8c6a02fbfd",
+     "reason": "Same visible instance as source line 3"
+    }
+   ]
+  },
+  "labels/train/zz_drive_000000567640.txt": {
+   "label_sha256": "a5e623ee3160ae75fa88adf3bddea5042f76113c82e18e33ac17a1774d2426d5",
+   "image_sha256": "1576fd53f061a31167d63e752e8c1bb1d31f87677fb764b8544353d3cf517a61",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "1239b8509f352ccad4be474dac53fc3fc52b83048e4dd31ec24f279f6217fdb7",
+     "reason": "Retain visible instance after paired outline inspection"
+    },
+    {
+     "line": 2,
+     "old_class": 0,
+     "target": null,
+     "row_sha256": "d9c4370c468ad4047cf33567062c0a09cecff03ddd14d9192a92b4731c5932b2",
+     "reason": "Same visible instance as source line 1"
+    }
+   ]
+  },
+  "labels/train/zz_drive_syn_night_000000054967.txt": {
+   "label_sha256": "91bbab72ad062c898abc09e6302877b237c81b58ec5417f0fc3295185751e9f5",
+   "image_sha256": "2e4a7ca41201e295a10654b2e096685e4c3349541e949ce504940e33d044466b",
+   "changes": [
+    {
+     "line": 12,
+     "old_class": 0,
+     "target": null,
+     "row_sha256": "f42f30f820f3e6bba77ed5bb5973a61402994ea01cbc60ba422a2d7eb7f5c14f",
+     "reason": "Same visible instance as source line 11"
+    }
+   ]
+  },
+  "labels/train/zz_drive_syn_night_000000076417.txt": {
+   "label_sha256": "1f1cd1ca65f4551bd90414e354c12805b50db683c3d6a45b66d25eb84c4d6c29",
+   "image_sha256": "b1b30751ab754685b43f0b7a59f67f1e712354cb985c775c499c342a492b97e1",
+   "changes": [
+    {
+     "line": 3,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "8a70ba8e319413d803518924b84a5e90ba1bf5b059f90ebf5a0f9e137b143685",
+     "reason": "Same visible instance as source line 1"
+    }
+   ]
+  },
+  "labels/train/zz_drive_syn_night_000000153011.txt": {
+   "label_sha256": "86f139b4bfd3c24bb7e8b523ead476d46696f56505e9e20249c46ef452793836",
+   "image_sha256": "f5782529b1f934e0cce1929b234a3407a33e5593449ed147aadc6a45cfe43f84",
+   "changes": [
+    {
+     "line": 5,
+     "old_class": 1,
+     "target": null,
+     "row_sha256": "890a95b8133da262a501ad608066eb27530bd4dbb133a003cb4a16d9f8139a97",
+     "reason": "Same visible instance as source line 2"
+    }
+   ]
+  },
+  "labels/train/zz_drive_syn_night_000000215723.txt": {
+   "label_sha256": "56c8e099f9c9cbfd26c267a0a3edeca9f8c74d88633365de0af389e281ace7e6",
+   "image_sha256": "10942cfa92bd4cda208b80dfa21bf717fdede5467cbffd199999716d9491de08",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "d7df02ac7e22711c4c9d567a7062f900f6907b5635127d1f4a40e9dfc5a33831",
+     "reason": "Same visible instance as source line 3"
+    }
+   ]
+  },
+  "labels/train/zz_drive_syn_night_000000221754.txt": {
+   "label_sha256": "11e7308f7b0161227295a10ab9e26bd260243aced496c985207bad93941a9d2a",
+   "image_sha256": "ac6d1b60a71d3fa590e8e044034444195a8bea1ecc1ec701b8e926c039102cc0",
+   "changes": [
+    {
+     "line": 2,
+     "old_class": 0,
+     "target": null,
+     "row_sha256": "a12df46cc0fcaf7682c98b9613ae4603a7bdb46885cfea6aace793a3c46acbca",
+     "reason": "Same visible instance as source line 3"
+    },
+    {
+     "line": 3,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "5771bc226d56ff6e8fdc05c9ecb775ef87e988fcf00fb2c6adf8870b555bc81b",
+     "reason": "Retain visible instance after paired outline inspection"
+    }
+   ]
+  },
+  "labels/train/zz_drive_syn_night_000000222094.txt": {
+   "label_sha256": "542abcf62b4a1b68c75ae547b9fb903def41c1d88a687281a336c34dd74dffd9",
+   "image_sha256": "2d63757558a3e0b430aa878da1ec1ea7248dcf1eeace49ca22a884d817db3e59",
+   "changes": [
+    {
+     "line": 2,
+     "old_class": 0,
+     "target": null,
+     "row_sha256": "10255ff0a23d5cad82dfd852ea2e2bb1c36da3f6648ce0f9acdb4cd2674eb595",
+     "reason": "Same visible instance as source line 8"
+    },
+    {
+     "line": 6,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "77f6ce28ac801132665c4db3fdb1ddbb6cfb02ed84c66c1e121542a08444975e",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 7,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "a43fe828719bf6d4e72f669c3424e849ba8fe9882c329f3af3731c3b122aa6f5",
+     "reason": "Same visible instance as source line 5"
+    },
+    {
+     "line": 8,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "687c690d100018176017b7cb7cddb3e4fb2d3a3f7c9f90369be6165072fe80fb",
+     "reason": "Retain visible instance after paired outline inspection"
+    },
+    {
+     "line": 10,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "e206510cac416ba36e4bde81b6674e54a9351de009f974a4033fcfa9797001c2",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_syn_night_000000323571.txt": {
+   "label_sha256": "de5cc052ea0656a7da698d054a765adca8b29169738f3dd427ca1dc8b9cfbab0",
+   "image_sha256": "7f531ed0f589decc015c9bc689fc25cfe6c9f0dc364e92b37ec06fc88df91eb6",
+   "changes": [
+    {
+     "line": 3,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "b88bb0273adae21b499db8b2baa035fed5ad2c61015347077ee38e4687d4f0ac",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_syn_rain_000000074058.txt": {
+   "label_sha256": "4a346557bb5aece14697f44f8d046044236778ba021668f5cdf16246edd335e6",
+   "image_sha256": "723770212df5e97aa67461c6e47e2dedb9f2221cf9c4ccd55542de5ba4dbc6d6",
+   "changes": [
+    {
+     "line": 11,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "63935a5dc3b745a3b0f94d0e42b4d8a80e84864815ff4b0c0ef6e7f8f7faaedb",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_syn_rain_000000144706.txt": {
+   "label_sha256": "819e4b613750fe91a69392d0ea2945d32b970386720d4bd32dc2ceffc9457af8",
+   "image_sha256": "e3e31aa78eea993c55a425de7a9ce9994c30127cfc4a06d0e15e5b721babcb50",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "0d5bb90237482f504491a11999eac82e374af7f3bf3420082b488c8a6b6d8572",
+     "reason": "Same visible instance as source line 0"
+    }
+   ]
+  },
+  "labels/train/zz_drive_syn_rain_000000166747.txt": {
+   "label_sha256": "10b3dd013a49e8c63612120972ead86ebf67f6bdf224aad0085e4bc1e21a8323",
+   "image_sha256": "97302719604f6855696cb042cd19b4703a79b990194b28fc5743744c119a2032",
+   "changes": [
+    {
+     "line": 4,
+     "old_class": 2,
+     "target": 3,
+     "row_sha256": "85e2a44ba2daea810e60c0005ed6dc735dbc06491db1a138c2b7981f027724d6",
+     "reason": "Visible trailer, work machine or horse-drawn carriage"
+    }
+   ]
+  },
+  "labels/train/zz_drive_syn_rain_000000184324.txt": {
+   "label_sha256": "a4784453fb729c0651f4ec896aabb6004550de871959a1c676f711a0285b5544",
+   "image_sha256": "487e0e31f50e1c1b01c74ec522cc16fadc28002b767557129f6eac194d8e5635",
+   "changes": [
+    {
+     "line": 8,
+     "old_class": 1,
+     "target": null,
+     "row_sha256": "e7a886fa56057b13b03906e51b0d8c3e90c844b9327d9aebeecf9f0ade574f32",
+     "reason": "Same visible instance as source line 9"
+    },
+    {
+     "line": 9,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "8f0e00e08da3cc77c9eec566ca1ebbba1bd684a07932e4e261d038525183482d",
+     "reason": "Retain visible instance after paired outline inspection"
+    }
+   ]
+  },
+  "labels/train/zz_drive_syn_rain_000000198805.txt": {
+   "label_sha256": "3dfe2dd881b37a71be60eb8836eef2be21894c0fc705384e1e5d971ba30ad0c7",
+   "image_sha256": "46c1a344e6bf980c4d24c3014d90e3b450c43854e4e2aac78afe311089231901",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "26368516d5055189c384d74fcfd60f33410b7b250d01efd40ec99e4fa6dd413d",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 2,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "8889c2edb0c44bcfd015e321de8c021bdb5c56fa5c8d7a4ac25671d550eed074",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 5,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "3ccd820aea5adfb024ee4f1be83d5b10cf17cac47664ff5efdec536fc1503c87",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_syn_rain_000000460229.txt": {
+   "label_sha256": "f3f5c65f20aa80b47c47e1568fdff75751d9221fc2bba897335eca9aded12a7e",
+   "image_sha256": "06aa397c61e91d77b78c1ccb973074035ba21e0f9a06d77d06280245476a09d5",
+   "changes": [
+    {
+     "line": 2,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "6937459de7acc4c899bc8ba5124953587f3b958b6034c23384eda73a77986ba6",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_drive_syn_rain_000000521259.txt": {
+   "label_sha256": "ea7841c174b266e76bb548aa74e46a70c8e14cb936fe80375e6921d09dd492f2",
+   "image_sha256": "61cb55d83b5882a6e1d76ba61258d34e73bfcf435bfb5d87c7f92f6411ec86ef",
+   "changes": [
+    {
+     "line": 3,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "f2f06f0f1663e4155facb8d04b7b8a7361d5c1f288e4d50286a39814c77d7ed5",
+     "reason": "Retain visible instance after paired outline inspection"
+    },
+    {
+     "line": 4,
+     "old_class": 0,
+     "target": null,
+     "row_sha256": "0ecf1648cbaae24222561656373b024723dc071b27541154e4a01e8c6a02fbfd",
+     "reason": "Same visible instance as source line 3"
+    }
+   ]
+  },
+  "labels/train/zz_drive_syn_rain_000000567640.txt": {
+   "label_sha256": "572928118b652ef143da9ebcce6ecae58762e79f5e1586554d060da4307db4a6",
+   "image_sha256": "3331c9822dcc94d09795875d0126f21a8a73e7fb6f182208615224213f645342",
+   "changes": [
+    {
+     "line": 5,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "1239b8509f352ccad4be474dac53fc3fc52b83048e4dd31ec24f279f6217fdb7",
+     "reason": "Retain visible instance after paired outline inspection"
+    },
+    {
+     "line": 6,
+     "old_class": 0,
+     "target": null,
+     "row_sha256": "d9c4370c468ad4047cf33567062c0a09cecff03ddd14d9192a92b4731c5932b2",
+     "reason": "Same visible instance as source line 5"
+    }
+   ]
+  },
+  "labels/train/zz_new_co052.txt": {
+   "label_sha256": "b28a2ef20d4ea4dd473a1ecf4d296a4bce0eb16075684d583293a8c847d73c6d",
+   "image_sha256": "4eec496dc91eaf06587c31a112c5f5b49c362b513bce6252bff1d419fa4e58e4",
+   "changes": [
+    {
+     "line": 2,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "e236aba4f14485ff8af620c479be854bd26cad3718863bdca0eff64a6e61df8e",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_new_co115.txt": {
+   "label_sha256": "2131a4d133841039fa58d155cf32bb5c4ae69b6dab1df37772595c2d1d154319",
+   "image_sha256": "e785a7b76eb7c5812f47763a44675cf15a3e45846901fa7b04fcc2cd2538d400",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "4f7794f672f8b937d1f4020a2df28b08879bc3fe10988987f691e3c6b769372a",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_new_co119.txt": {
+   "label_sha256": "70f7779c6458129697b020bbffeb7ee4383016ff9297dd47dec15fc11edc2a1d",
+   "image_sha256": "f5b19a369888570c8cf1f55e2832d5ebc4ba860cbb216ee4b3334703b94f6725",
+   "changes": [
+    {
+     "line": 3,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "115758a7d871f9f8023a5c4a745ebdbb66d2e7d85e1bd90662a90de44b445181",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_new_co124.txt": {
+   "label_sha256": "bc8554c4bf81fc865226d229b5da4c59d50bd114ec921eb89863b7c119e4109e",
+   "image_sha256": "368ff4b611e89cbbabf6c55f619797163a8246a3fd9910964c80832476b83c3d",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "c3963a6d4099c40c9f0f13d9252e7b17f5faf1981f64b7113478f0149e6fe934",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_new_co154.txt": {
+   "label_sha256": "19c44f3d44c64b7b1944c16c2e5a608e1077d5407db819128ceb567d6a538fa8",
+   "image_sha256": "9cc06f6a26aa5665d90dfb8305b7819861e8293221b76027dc54b3c5e09f0d15",
+   "changes": [
+    {
+     "line": 6,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "c7f79e9be16fe18680a849a55e80eff7f9550030064e9890840f2583118fd379",
+     "reason": "Same visible instance as source line 3"
+    }
+   ]
+  },
+  "labels/train/zz_new_co179.txt": {
+   "label_sha256": "d2f2d890b7af23aa90c33e057ee3117f1f9b8b5da527ee0f95b7a8afb86d14da",
+   "image_sha256": "ca530ed86647a3a08c39311b96529c0dc20a3e46f9e54538df890d10303a7b86",
+   "changes": [
+    {
+     "line": 11,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "4ba9412036977fbca8c7017f2b132834c60143b8113841cd4d4e8e853a6db625",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_new_co280.txt": {
+   "label_sha256": "f2a4688caa9d0ccc7d738110ffef738092cc66c99b92500b41b439dd15860114",
+   "image_sha256": "7804e368f6545e0e19ad9a5f78887cf6942caf8a168767113902106778c8badd",
+   "changes": [
+    {
+     "line": 5,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "72a8a7eae84010fc96f3dec0380b7bf38625e4c31e8200b4b74f0e92be7fda8c",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 6,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "4d357fb6413c16c0b00cfbcc36817f340afdca6c73f1d1c0eb49e637ed8fddcf",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 7,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "0e6fc4deb5c0004428bfecb5b0b09ab76a009dd683a63c951ac72704fe24fa0f",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 11,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "719c4f3e823374f692ddf7198c9d020578f4d47ba6bef01363cffed6e46fb491",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_new_co301.txt": {
+   "label_sha256": "a995808ead7eec2287a7c17a10fbec4b301e0d3bfd2e2949990e8a8a66a9e841",
+   "image_sha256": "c6aa17568770a103a9c826242021dd1a17bb4f30e48da344f8a4f2a57c1fd0e0",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "09530d23efc00e7f704dbccae8678714f4296d8932b3bf61e4d8219850effbd7",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_new_co313.txt": {
+   "label_sha256": "8d324e2fa7d4a7d97d2ca5e653b5ce7c20a0db566cfa3091f54ffcccaad3304b",
+   "image_sha256": "3d3ac107e565996d7f5c0cfe767cd17c370082c925149d4584609518ee6cabff",
+   "changes": [
+    {
+     "line": 2,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "7cc60f67b732a1177d274fb530f592b03afe7d2c38e837f887abc620455b0579",
+     "reason": "Same visible instance as source line 0"
+    }
+   ]
+  },
+  "labels/train/zz_new_co358.txt": {
+   "label_sha256": "847933bfca6cff29b20db929597b532e0a1db967c5c805183874072e3bd5bdcd",
+   "image_sha256": "e8ba99cef265e6ae70dc90cd298bbff186904e6c1dfb67d7bbab3eb60280d179",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "eb4e473e9ed3c86da1207796b0e41226edef269d893dc430fef92930e58220c9",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_new_co421.txt": {
+   "label_sha256": "f995a084ab775287ec1d2806e8a5bd8cd9e6217c236a8bcf58274a5926f0fcaf",
+   "image_sha256": "d0a059e2d83250abb5772cef0d722ce162b13d6256a3c3e1f7344f31a011bdd3",
+   "changes": [
+    {
+     "line": 3,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "b95381d85de72ac9ecc9bf87679bb2d7ff356ef9e26e0c7c370132bee9818867",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_new_co440.txt": {
+   "label_sha256": "ec84168525895d423d9d6291dd1adfd43874e9fb126e1a71bec607d5fe5be2ca",
+   "image_sha256": "fdaad2fb371a74f5db19b933646289c0040d45529a077802f39053d164b2eea7",
+   "changes": [
+    {
+     "line": 9,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "017c526824bf2452026d0f441c180d5daf138df09bc9382fa8f22907dfe1993e",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_new_co442.txt": {
+   "label_sha256": "fa2da86d331a273d1e25fac99ad3f125faa9d0c313cd75444510a271f9ab81bf",
+   "image_sha256": "5b6854495a6be7a1464e1da0c17b3fb7914ad2d44d4476edb3b090d08129b3bb",
+   "changes": [
+    {
+     "line": 3,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "a764a2ae596a447b37c9207e208ad9c16a90e1046ef20afa0d2082bcdc42a711",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_new_co456.txt": {
+   "label_sha256": "d6954b654b6001e9f4da8b24bef1c7202d393e8700529477f1fdb094f90d5f5e",
+   "image_sha256": "8a5fc1863fd01cc4df74aec5639bdb58a4226eee3cf92a64f6a0f148655531ae",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "53ac3025d61d0afdafd268ba74b689618920a2fe5904cc01a5b163c7fe332b2d",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_new_co468.txt": {
+   "label_sha256": "98466cfebb800f7eeb76ecddda75532bb184f18dba4faed7fd62c286bb9f0707",
+   "image_sha256": "4d60f3e545b66be3689e2e771e7f0019598c5be77bbd7698dc696fa3af3bef81",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "44b18e879d9d319b3a179fde57adf771fdd1741590c0cd397229ce61a3b58eff",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000014388.txt": {
+   "label_sha256": "9c7cb0cb65a442bbd6ab854b6790195e341db397e466ad8b9e59b3f09ce137cf",
+   "image_sha256": "ac9799d411dca4018e4d0efad5d416b3b194be6a41b952c26125126576cd9133",
+   "exclude": "New image omitted: both car outlines include foreground subject"
+  },
+  "labels/train/zz_plus_cc000000038751.txt": {
+   "label_sha256": "2bcc4184f0dec7a5891d6f441e69ef69e12f6e1fb23b5d428d72a9f46e82ca4f",
+   "image_sha256": "9d09be153e65bad331d763d1c61e217eaf9154816282c8426735a6883bad5fda",
+   "changes": [
+    {
+     "line": 2,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "2bfa69660e79290b25d7ec8224526d23f1fc8b8c5d29b6d63884b86ef37c6890",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000040466.txt": {
+   "label_sha256": "2fd4b2f3a450484ac20d280e6958425bcf98da6fa741518007633fe6ef79aa4f",
+   "image_sha256": "849238b18684cf7d8d4e4ba068fe44c43d6abf6bf464f56c51361984bd8b5c29",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "78941cbf60a25bb6269595b204e70d5aa2636dc6fc35da7c5788a856ae9a066a",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000093232.txt": {
+   "label_sha256": "5f62f1a610c7480ad9cc0b5bc8e946bf94b15ef95a71260b762d1aefd2fded2d",
+   "image_sha256": "81b9a6081a31789b9bd5e1c1c6ff8f98afebf9232b7422d45ab8db295e380b9c",
+   "changes": [
+    {
+     "line": 9,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "9d6c3e961ae2b6d75edbaf7053dc27a68d16d2fee9e1ee0b4f30477660f03968",
+     "reason": "Same visible instance as source line 0"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000120759.txt": {
+   "label_sha256": "7818983fdbac18256fbd4a4ea0795280e5d8c5cd16a329c72cbb63673600e6a9",
+   "image_sha256": "8db2f52c147e3db275d94f1ccb3d707a11b7db6f44aee07198506c88e4d6fd7a",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": 3,
+     "row_sha256": "5b85257ccecb63b31d1d91fc1f4162a276aea057036daf640317bd962825aa17",
+     "reason": "Visible trailer, work machine or horse-drawn carriage"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000129925.txt": {
+   "label_sha256": "62d22f1da11521cb7a26fd808e41f28b14fee3620f46c43c78ae3125f8a0f4ff",
+   "image_sha256": "b2c1593df7897ec06e9c6eaa2ed5fe15193d269f5677678e6069ce8b2e643ff3",
+   "changes": [
+    {
+     "line": 2,
+     "old_class": 2,
+     "target": 3,
+     "row_sha256": "c18e4df83918565b6cbbc70a4348bd133fc18b5e711e05cad94df5ceb992241e",
+     "reason": "Visible trailer, work machine or horse-drawn carriage"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000132137.txt": {
+   "label_sha256": "0b5e25df96fbdc3281ebca7ff8026ebca012e06747a2c507fb599fc245f0ab01",
+   "image_sha256": "33cac2e67fcfcf55c1e338bf67044335f491bca513105569c0867c2202349bae",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "a63d929da53cbcdbbbba380de73978f953f688b2b0f4568a0f7742a726866a33",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 2,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "6e71b19effbe50a820a67e2576b97c1a52567aca6232c0a31bab3b58c42238c3",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000161578.txt": {
+   "label_sha256": "88735e726a1debedcc21961d30bd6638e48cdbdc11e3b14904e2109113df99c4",
+   "image_sha256": "b2c9d2a9e2ff1c6bece0281c6df06c5c85c5307247ba10772ce6bfed917d2837",
+   "changes": [
+    {
+     "line": 6,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "35930d7dd62166a200a02d95f54fd0de085b8586d92a3d7ff31019703763fae2",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000165960.txt": {
+   "label_sha256": "aec0bf28c47726d53ebe0dad96e8e8067e37b4fb6aaeef9ba2c445cc35717118",
+   "image_sha256": "e2c9ed0f390d094ffe0b87897ff08d9eee72ba09b86c887d254f77f197162aa7",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "0851c520221041af01845c9dc23055950ce94347588a822fa832271d42b9d6c4",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000195225.txt": {
+   "label_sha256": "5c1ab7e0678737aab81786ae5a2853de0e1d3c766e795a0af8c88262ee4520bc",
+   "image_sha256": "9063beeced11b53c7429f1b214cfff02b8d3b0c7466f72ac5d0ca6fed426ceba",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "e47ef3b3628dcef7193f19c11084497f7d5c4fc9c9ce3fec8fdbc87562da47b1",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000203304.txt": {
+   "label_sha256": "3552350a79e3b8d219caddbea53a0b19cb24e61b001c3b7eeb73eac9bb1a7dbf",
+   "image_sha256": "5f5aa3da74fb70af2513c4ed87863d6caf955f0444c2ee5bafffbea2bac09096",
+   "changes": [
+    {
+     "line": 3,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "319c4eea4ccc9decb823419962eb5b3c3255cf5705577de9b52bbef8061ea0e1",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 8,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "86880b2a219efd483931843ac1b95f901ad23bc6a3c69ecfe5892273a9c950c3",
+     "reason": "Same visible instance as source line 1"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000237495.txt": {
+   "label_sha256": "f51a6e13450bb81ab68c7c26c769df97c802c4508f261917f9e4da3702dcf6e8",
+   "image_sha256": "a701656900acc6f0e66500cf088b2cf37f1d4363ba7566fe7522bb3bfe8294a5",
+   "changes": [
+    {
+     "line": 3,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "723ba70a01dd967f3f52f8244c65a61e7d20f8e2bb64cd978be86351f8b29c65",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000237685.txt": {
+   "label_sha256": "ac003f084a7d8041ca420e4848091301fc785d2520147282634d77beaf488c7e",
+   "image_sha256": "175bc44ed4c734a503894f47874281df7e5038d1319603812adf02dd9c3b03d0",
+   "changes": [
+    {
+     "line": 9,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "b8d41552770f971f5af0fc77615a68b77e43212dc19bf93bb69cd503b31dacbc",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000256778.txt": {
+   "label_sha256": "d58bc01b7179de40b8f01a5724030cb8bcd409f0c687aa1b2b231dd4b5bc391f",
+   "image_sha256": "aba538e785e629d69e6bee010cb9e28921bd2e18bb5d6a05307d7a801882b801",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "7ff585d47f8e354128ab4f61ef9746309a7616b3c3a975e62c3b499e5ca33724",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000262937.txt": {
+   "label_sha256": "4e2cfc51773fa1857c0bfb0a0acea9671dc829cb7c9faa493b4036b0bf3da3b0",
+   "image_sha256": "fff4fc7a2245ae0c963c1f4e9198f2696e5da92cee2551984500d353a0ae992b",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "7a2b20b094133e9705f032e86659db93af58cc955e18216577f6cf1020470951",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000284510.txt": {
+   "label_sha256": "649e11548c272112c4be7b093e106f899bb64c929a6a9e0d85007e4ed9d3d596",
+   "image_sha256": "b4bb18818d96fc29d8a93cc372d0877886672a78d030315d4a4d1daebfb37688",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": null,
+     "row_sha256": "77553a9823a0335225c46575d649d7cc427dbb16fd2f587a1f59fe85b2cc76e9",
+     "reason": "Same visible instance as source line 3"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000293647.txt": {
+   "label_sha256": "c408af092773cbcb629fd7d0332b3003dad6d3e97ebc7704211c272eebf3be6c",
+   "image_sha256": "37fad8ae089428a9d1478d89761b1ffa5c69d038fcfa4ebf7750f09725bd3048",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 0,
+     "target": null,
+     "row_sha256": "e394686e4f8e27b59dde712c8d27dc5f38577d9f0e809cbd6a806fd150070351",
+     "reason": "Same visible instance as source line 9"
+    },
+    {
+     "line": 9,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "355de02697eab013f11e1644c379f6809a96d88e7abce1783a92ab65ec8759f7",
+     "reason": "Retain visible instance after paired outline inspection"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000295358.txt": {
+   "label_sha256": "0087e1f72d828877b18286fb15f1c1334c3cd7333f99884961713bb0e091e3ed",
+   "image_sha256": "c5f8c4203514b1035b5e9654c7dac20e4c856a6a08ea497f184b1ef4d4c1fd95",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "56dec8864a71863e70ddc3bdf21388294599065e06be5d61a189929dedc611b4",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000317036.txt": {
+   "label_sha256": "81520b71f5019edbced2d75915414cbaa28bc763868f13d7d7981ec167551102",
+   "image_sha256": "bc0a417c8757ba6dbfc32f63427b985066183bf308e8dd15df35deb0396d7f8f",
+   "changes": [
+    {
+     "line": 3,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "286428631ba0407165bdbc59a6effed175f6abc6d2a5067df17273b8f595598a",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 4,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "1b68137f06b82b8be11acfa231f67dfe2c68125a0c4a8e8f6f7ca550faaa5876",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000340445.txt": {
+   "label_sha256": "0f409a764b1c0cc2a28ff74a3a709530e7274069b0dd6c9a3c73e29cea972759",
+   "image_sha256": "e5a8d11a94816090db76e1a5bc40c8f060befd095c0874631c1ead836c52ff20",
+   "exclude": "New image omitted: tractor and trailer merged in source outline"
+  },
+  "labels/train/zz_plus_cc000000344307.txt": {
+   "label_sha256": "3b30637e66c7b10cc37faa7c8a90c870201572317ce93efa34161d1fca734955",
+   "image_sha256": "48df6e2efbed690c907027542b484dd3b33888529212855ff2b691a32d79e6e9",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 1,
+     "target": null,
+     "row_sha256": "d812ebcdfedf2d43b41bafbc90661a12fc68d2c48ca496fa915cfd4c3225355e",
+     "reason": "Same visible instance as source line 3"
+    },
+    {
+     "line": 3,
+     "old_class": 2,
+     "target": 1,
+     "row_sha256": "ecbf033c6b44cbf3fd46d29b525be9a56cec4356cc2eeb4092ca59ea313718c0",
+     "reason": "Retain visible instance after paired outline inspection"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000353358.txt": {
+   "label_sha256": "9eab18e2c17898323fb05b777d41c8190b2198fa7abfd1ad9e96660b1439029c",
+   "image_sha256": "e6ae0feb9d3177e979b777f621cf82593ccd589d574924a941c4385ab61a0e0e",
+   "exclude": "New image omitted: tractor and trailer merged in source outline"
+  },
+  "labels/train/zz_plus_cc000000375535.txt": {
+   "label_sha256": "f3cc2c7dcaec744bc01e8a7ca481c612854e5612a0a913e181720df82b21ba48",
+   "image_sha256": "f3107212471f64bfd0c45b68b78d7d1c30e431995188ba2895c0e283fe06e2c4",
+   "changes": [
+    {
+     "line": 10,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "005a5019376df3d2c110384b2ea9d7ed7116cbae221b10ff1451849ebf54d5b9",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000381759.txt": {
+   "label_sha256": "dc7e2e347caf4b2608653cd0191800ad158107160252dc3ace0dc43df6bc385a",
+   "image_sha256": "b3c57e2b1b2060b31ade4c444372475755bb463a6101dd894f7d20639c4e7d2d",
+   "exclude": "New image omitted: tractor and trailer merged in source outline"
+  },
+  "labels/train/zz_plus_cc000000385972.txt": {
+   "label_sha256": "afd59052809491375dbc123744e41f60f35e4ac4d7ed2a0b5a1c6e0f464c16d6",
+   "image_sha256": "2ec3f96a90bc33d3854703d38c1db063266cc57369f096e61f1fcb84de5aa97a",
+   "changes": [
+    {
+     "line": 6,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "9839faa0b1afe341b06fbbaa51817eefc3ecfa0e9d4e29c26b0d22cae14783fe",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 8,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "421ba78aca6b88a00dc4e9a8303e30582abe1702c0c1bd7316761795b9754b41",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000408799.txt": {
+   "label_sha256": "c176614e3900de1b9d00b71c66738c216a02bd3736f921850d73313257010b77",
+   "image_sha256": "3a32f0fe08d2139dda87e09066e974dc89fc7eb6620e07d6e3958fc3bda09364",
+   "changes": [
+    {
+     "line": 5,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "760f603dffa37802854dbbf440abe3cf6d7a4227472429cc777c1d3adee29f56",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000419645.txt": {
+   "label_sha256": "45f221b9e1d335abb5905e26cc92eb04612e29046a3deffe6ebf57e9b4b61016",
+   "image_sha256": "13ac034af5f2d61c93721817bc545a12d16e336e5c416d3dd3bc180dff1a6bc9",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "058834e18b3da6ce9d664bb66eb5201eb5e9e956e0beefe7fe92007a64e8f7e1",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 2,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "1adb3c169945d0f355b315e3edfc02e6cf90c5ab4258b06e5d2f5e245612f195",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000433941.txt": {
+   "label_sha256": "1ffe472a83d0832354edcd0e6d1d89195c636340de2b49dc9bca763399fe9b82",
+   "image_sha256": "8feee788b5856eb392cbb04cbafcdf9b7fdced3775e720cd06534dd50936fbe3",
+   "changes": [
+    {
+     "line": 6,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "8353a62385ad8df3b6d7c0d31b29592281d0f03463294f33a1c875221fae86e0",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000555355.txt": {
+   "label_sha256": "b1a731c18fc638f982c7291a86bc2128f35ae1aa40a4075366acbdfcaead5a9c",
+   "image_sha256": "5c7fc7ef2ac6b099f7c49a329b1c5ce0effcfb96860f66ecb14873c3209dd0f4",
+   "changes": [
+    {
+     "line": 0,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "dda74735f4d1074163d3a8ea13ad31c5bac7c704adf5e383d1051c6827003be0",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  },
+  "labels/train/zz_plus_cc000000557023.txt": {
+   "label_sha256": "77894751d0aad38276f470a47bab2f3b081faeaabd2e8be0bab9d9edba21ee79",
+   "image_sha256": "867ed36b76264c11cbf927f88c0cb86bdd25f10a0ed9d0e72d39b795fcfe9a44",
+   "changes": [
+    {
+     "line": 1,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "aed76abcd5bb651412b1dd2eb2e26743d578761c78efea14f76e7da06f2e25b0",
+     "reason": "Visible passenger vehicle or pickup"
+    },
+    {
+     "line": 2,
+     "old_class": 2,
+     "target": 0,
+     "row_sha256": "0af4f9118d700437540a047f174fc9ed2b709baebd60856df365f795a0c6e0b3",
+     "reason": "Visible passenger vehicle or pickup"
+    }
+   ]
+  }
+ },
+ "overlap_decisions": [
+  {
+   "file": "labels/train/bdd_daytime_000152.txt",
+   "iou": 0.748122,
+   "keep": 29,
+   "drop": 28,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/bdd_night_000243.txt",
+   "iou": 0.78778,
+   "keep": 25,
+   "drop": 0,
+   "cls": 10
+  },
+  {
+   "file": "labels/train/bdd_rainy_000049.txt",
+   "iou": 0.694267,
+   "keep": 7,
+   "drop": 6,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/bdd_rainy_000507.txt",
+   "iou": 0.767696,
+   "keep": 14,
+   "drop": 18,
+   "cls": 10
+  },
+  {
+   "file": "labels/train/bdd_rainy_000568.txt",
+   "iou": 0.753391,
+   "keep": 10,
+   "drop": 9,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/vn_sign_692b88cfef67f51d57.txt",
+   "iou": 0.998627,
+   "keep": 1,
+   "drop": 5,
+   "cls": 4
+  },
+  {
+   "file": "labels/train/vn_sign_e49820d4c95a2145cb.txt",
+   "iou": 0.997651,
+   "keep": 0,
+   "drop": 3,
+   "cls": 9
+  },
+  {
+   "file": "labels/train/vn_sign_efa406e7b4e190fdbf.txt",
+   "iou": 0.999808,
+   "keep": 0,
+   "drop": 2,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000032941.txt",
+   "iou": 0.79719,
+   "keep": 4,
+   "drop": 11,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000054967.txt",
+   "iou": 0.819055,
+   "keep": 0,
+   "drop": 9,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000076417.txt",
+   "iou": 0.959162,
+   "keep": 3,
+   "drop": 1,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000089556.txt",
+   "iou": 0.788402,
+   "keep": 12,
+   "drop": 1,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000122166.txt",
+   "iou": 0.933783,
+   "keep": 1,
+   "drop": 14,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000122166.txt",
+   "iou": 0.947486,
+   "keep": 12,
+   "drop": 2,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000142472.txt",
+   "iou": 0.871037,
+   "keep": 2,
+   "drop": 8,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000142585.txt",
+   "iou": 0.923161,
+   "keep": 2,
+   "drop": 8,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000144300.txt",
+   "iou": 0.920709,
+   "keep": 2,
+   "drop": 3,
+   "cls": 3
+  },
+  {
+   "file": "labels/train/zz_drive_000000144300.txt",
+   "iou": 0.937527,
+   "keep": 6,
+   "drop": 5,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000144706.txt",
+   "iou": 0.833627,
+   "keep": 4,
+   "drop": 5,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000153011.txt",
+   "iou": 0.860388,
+   "keep": 15,
+   "drop": 13,
+   "cls": 2
+  },
+  {
+   "file": "labels/train/zz_drive_000000165681.txt",
+   "iou": 0.775752,
+   "keep": 3,
+   "drop": 9,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000166391.txt",
+   "iou": 0.851839,
+   "keep": 5,
+   "drop": 14,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000166391.txt",
+   "iou": 0.904596,
+   "keep": 6,
+   "drop": 13,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000184324.txt",
+   "iou": 0.854883,
+   "keep": 18,
+   "drop": 19,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000215723.txt",
+   "iou": 0.970047,
+   "keep": 3,
+   "drop": 4,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000221754.txt",
+   "iou": 0.928006,
+   "keep": 1,
+   "drop": 8,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000222094.txt",
+   "iou": 0.682504,
+   "keep": 7,
+   "drop": 3,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000222094.txt",
+   "iou": 0.775064,
+   "keep": 6,
+   "drop": 10,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000287291.txt",
+   "iou": 0.835008,
+   "keep": 2,
+   "drop": 13,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000313182.txt",
+   "iou": 0.82238,
+   "keep": 10,
+   "drop": 8,
+   "cls": 8
+  },
+  {
+   "file": "labels/train/zz_drive_000000436883.txt",
+   "iou": 0.912619,
+   "keep": 10,
+   "drop": 6,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000447342.txt",
+   "iou": 0.860659,
+   "keep": 11,
+   "drop": 3,
+   "cls": 1
+  },
+  {
+   "file": "labels/train/zz_drive_000000521259.txt",
+   "iou": 0.875316,
+   "keep": 3,
+   "drop": 4,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_000000567640.txt",
+   "iou": 0.806803,
+   "keep": 1,
+   "drop": 2,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_syn_night_000000054967.txt",
+   "iou": 0.819055,
+   "keep": 11,
+   "drop": 12,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_syn_night_000000076417.txt",
+   "iou": 0.959162,
+   "keep": 1,
+   "drop": 3,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_syn_night_000000153011.txt",
+   "iou": 0.860388,
+   "keep": 2,
+   "drop": 5,
+   "cls": 2
+  },
+  {
+   "file": "labels/train/zz_drive_syn_night_000000215723.txt",
+   "iou": 0.970047,
+   "keep": 3,
+   "drop": 0,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_syn_night_000000221754.txt",
+   "iou": 0.928006,
+   "keep": 3,
+   "drop": 2,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_syn_night_000000222094.txt",
+   "iou": 0.775064,
+   "keep": 8,
+   "drop": 2,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_syn_night_000000222094.txt",
+   "iou": 0.682504,
+   "keep": 5,
+   "drop": 7,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_syn_rain_000000144706.txt",
+   "iou": 0.833627,
+   "keep": 0,
+   "drop": 1,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_syn_rain_000000184324.txt",
+   "iou": 0.854883,
+   "keep": 9,
+   "drop": 8,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_syn_rain_000000521259.txt",
+   "iou": 0.875316,
+   "keep": 3,
+   "drop": 4,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_drive_syn_rain_000000567640.txt",
+   "iou": 0.806803,
+   "keep": 5,
+   "drop": 6,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_new_co154.txt",
+   "iou": 0.950058,
+   "keep": 3,
+   "drop": 6,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_new_co313.txt",
+   "iou": 0.783286,
+   "keep": 0,
+   "drop": 2,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_plus_cc000000093232.txt",
+   "iou": 0.914819,
+   "keep": 0,
+   "drop": 9,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_plus_cc000000203304.txt",
+   "iou": 0.753954,
+   "keep": 1,
+   "drop": 8,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_plus_cc000000284510.txt",
+   "iou": 0.854518,
+   "keep": 3,
+   "drop": 1,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_plus_cc000000293647.txt",
+   "iou": 0.803367,
+   "keep": 9,
+   "drop": 1,
+   "cls": 0
+  },
+  {
+   "file": "labels/train/zz_plus_cc000000344307.txt",
+   "iou": 0.740163,
+   "keep": 3,
+   "drop": 0,
+   "cls": 1
+  }
+ ],
+ "truck_polygons_inspected": 493,
+ "overlap_threshold": 0.68,
+ "pairs_inspected": 58,
+ "pairs_deferred": [
+  8,
+  15,
+  22,
+  33,
+  51,
+  57
+ ]
+}

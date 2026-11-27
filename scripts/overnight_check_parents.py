@@ -20,6 +20,8 @@ def main():
     p.add_argument("root",type=Path)
     p.add_argument("out",type=Path)
     p.add_argument("candidates",type=Path,nargs="+")
+    p.add_argument("--base-version",default="e2-v1")
+    p.add_argument("--previous-extension", action="append", type=Path, default=[])
     a=p.parse_args()
     cv2.setNumThreads(2)
     cv2.setRNGSeed(26)
@@ -36,7 +38,7 @@ def main():
         groups[name]=group
         retained[name]=dhash(Image.open(BytesIO(content)))
     for file in ("dataset","holdout"):
-        with ZipFile(a.root/"e2-v1"/(file+".zip")) as z:
+        with ZipFile(a.root/(a.base_version if file=="dataset" else "e2-v1")/(file+".zip")) as z:
             for name in z.namelist():
                 if name.startswith("images/") and Path(name).suffix.lower() in (".jpg",".png",".jpeg"):
                     add(file+"/"+name,"base",z.read(name))
@@ -44,6 +46,11 @@ def main():
     for r in previous:
         key=r["key"]
         add("e2-parent/"+key,"base",(a.root/r["source"]/"images"/(key+".jpg")).read_bytes())
+    for previous_manifest in a.previous_extension:
+        for r in json.loads(previous_manifest.read_text())["records"]:
+            data=(a.root/r["parent"]).read_bytes()
+            assert sha(data)==r["parent_sha256"]
+            add("prior-parent/"+r["key"],"base",data)
     for candidate in a.candidates:
         for r in json.loads((candidate/"manifest.json").read_text()):
             key=r["key"]
@@ -83,7 +90,7 @@ def main():
             inliers=mask.ravel().astype(bool)
             if sum(inliers)>=10 and min(cv2.contourArea(cv2.convexHull(v[inliers])) for v in (x,y))>=520:
                 results.append(dict(a=groups[name],b=groups[other],left=name,right=other,inliers=int(sum(inliers))))
-    report=dict(base_dataset_sha256=sha((a.root/"e2-v1/dataset.zip").read_bytes()),holdout_sha256=sha((a.root/"e2-v1/holdout.zip").read_bytes()),
+    report=dict(base_dataset_sha256=sha((a.root/a.base_version/"dataset.zip").read_bytes()),holdout_sha256=sha((a.root/"e2-v1/holdout.zip").read_bytes()),
                 candidate_manifest_sha256={folder.name:sha((folder/"manifest.json").read_bytes()) for folder in a.candidates},
                 descriptor_images=len(names),checked=len(checked),close_hash=exact,same_scene=results)
     a.out.write_text(json.dumps(report,indent=1))

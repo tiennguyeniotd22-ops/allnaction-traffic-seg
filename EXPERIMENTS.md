@@ -1,5 +1,19 @@
 # Nhật Ký Thí Nghiệm — AllnAction RoboTaxi (YOLO26n-seg, 11 Lớp)
 
+## So sánh qua đêm trên validation cố định
+
+Các số dưới đây là điểm mask trên thang 100. 140 ảnh gồm 60 ảnh nhóm và 80 ảnh Drive. 15 ảnh Việt Nam nằm trong 60 ảnh nhóm. Mỗi lượt dùng seed 26, cùng weights khởi tạo và cùng notebook.
+
+| Lượt | Train | Epoch | mAP 140 | AP50 | AP75 | Việt Nam 15 | Nhóm 60 | Drive 80 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Vòng 4 | 640 | 100 | 22,01 | 38,72 | 22,50 | 18,79 | 23,96 | 18,19 |
+| E1 geometry100 | 640 | 100 | 22,10 | 39,24 | 21,38 | 15,96 | 22,35 | 19,04 |
+| E2 pilot | 802 | 20 | 21,14 | 37,89 | 20,61 | 15,29 | 19,59 | 19,64 |
+
+E1 vượt vòng 4 0,09 điểm, với khoảng bootstrap ghép cặp 95% từ −1,27 đến +1,23. E2 pilot vượt E1 cùng 20 epoch 0,35 điểm, với khoảng từ −1,08 đến +2,12. Val140 có 0 GT lớp 3. Trên holdout 6 ảnh, 7 GT, 3 nhóm cảnh, E2 pilot đạt AP lớp 3 41,00 và AP50 49,27. Hai checkpoint 100 epoch trước E2 có AP lớp 3 bằng 0. Toàn bộ AP theo lớp, điểm từng nguồn, checksum ZIP, tài nguyên GPU và kết quả đối chiếu ONNX có trong [bảng điểm máy đọc](experiments/overnight/verified-scores.json).
+
+**Bộ train sửa taxonomy.** Rà 493 polygon Truck và 58 cặp polygon chồng lấn trên train. Đã đổi 116 nhãn thành Car, 4 thành Bus, 8 thành Other vehicle, bỏ 52 annotation trùng và loại 4 ảnh mới có mask nhập hai vật thể hoặc che khuất sai. Sửa 26 polygon train tự cắt, IoU raster sau lưu đạt 1,00 cho cả 26. Còn 11 polygon tự cắt trong GT validation đã khóa. Bộ mới có 1.113 ảnh train, 10.036 instance train và 140 cặp validation khớp SHA. So sánh với E3 Việt Nam sẽ đo tác động gộp của bổ sung ảnh và sửa nhãn. [Quyết định theo dòng nguồn](experiments/overnight/taxonomy-decisions.json) · [Manifest kiểm chứng](experiments/overnight/taxonomy-manifest.json)
+
 ## Vòng 4 hoàn tất ngày 28/11/2026
 
 Train đủ 100 epoch trên L4 với 640 ảnh train. Hình ảnh và nhãn của 140 ảnh validation khớp checksum vòng 3. Thay đổi epoch từ 20 lên 100 và patience từ 20 lên 25, giữ seed 26, batch 8. Trên bộ chấm ONNX của notebook, mask mAP@[.50:.95] tăng từ 21,35 lên **22,01**, AP50 từ 36,82 lên **38,72**. Khoảng bootstrap 95% của chênh lệch mAP theo cảnh là −0,45 đến +2,20 điểm. Riêng 15 ảnh Việt Nam đạt 18,79 so với 18,85. Lớp Other vehicle có 0 GT. Điểm public của ZIP vòng 4 đang chờ đội nộp.

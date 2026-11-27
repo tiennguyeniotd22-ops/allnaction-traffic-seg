@@ -1,0 +1,19 @@
+{
+  "source_manifest_sha256": "eef4609887d4479136d87d30f4c80fecee1149730265bcee0ed21ffed9fc442c",
+  "keep": [
+    "c009p3", "c021p5", "c023p0", "c030p5", "c035p0", "c039p1", "c046p0",
+    "s000p0", "s005p4", "s008p3", "s009p0", "s011p1", "s014p0", "s016p2",
+    "s024p0", "s030p4", "s032p1", "s042p0", "s049p0", "s057p1",
+    "s063p1", "s077p0", "s115p1", "s118p3", "s119p4", "s121p1",
+    "s123p0", "s125p2", "s136p5", "s139p3", "s143p1", "s189p1"
+  ],
+  "review": "Second overlay pass. Retain one view per matched camera scene. Exclude every direct match to a prior image or holdout, and all camera frames from the 049/051/054 scene. Prefer clearly visible riders, visible sign faces and windows with all obvious objects annotated. A single reviewer's inspection of SAM drafts is not independent human ground truth.",
+  "examples_excluded": {
+    "c055p22": "Pickup category and partial foreground traffic are ambiguous.",
+    "c012p0,c028p1": "Rider silhouette or partly visible objects difficult to verify.",
+    "s041p0,s052p1,s101p1": "Secondary signs appear unlabeled.",
+    "s065p0": "Two sign faces may share a single outline.",
+    "s086p0,s087p3": "Watermark or low contrast makes boundary assessment uncertain.",
+    "s167p1": "Sign heavily truncated at frame edge."
+  }
+}

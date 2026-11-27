@@ -24,6 +24,7 @@ def main():
     parser.add_argument("reference",type=Path)
     parser.add_argument("output",type=Path)
     parser.add_argument("--count",type=int,default=480)
+    parser.add_argument("--previous",type=Path,help="Previously screened candidate ZIP to exclude by source image ID")
     a=parser.parse_args()
     cats={1:"person",2:"bicycle",3:"car",4:"motorcycle",6:"bus",8:"truck",10:"traffic light",13:"stop sign"}
     with ZipFile(a.annotations) as z:
@@ -63,6 +64,9 @@ def main():
     priority=["bicycle-unoccupied","motorcycle-unoccupied","bicycle-with-people","motorcycle-with-people","traffic light","stop sign","bus","truck","car"]
     selected=[]
     used=set()
+    if a.previous:
+        with ZipFile(a.previous) as previous:
+            used.update(row["coco_id"] for row in json.loads(previous.read("manifest.json")))
     while len(selected)<a.count+40:
         before=len(selected)
         for k in priority:

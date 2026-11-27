@@ -145,12 +145,21 @@ def main():
         canvas=Image.new("RGB",(640,640),(114,114,114))
         canvas.paste(im,((640-im.width)//2,(640-im.height)//2))
         x=np.asarray(canvas).transpose(2,0,1)[None].astype(np.float32)/255
+        # Use native CPU convolutions for the FP32 reference. Record oneDNN
+        # differences separately; kernel fusion changes the accumulation order.
+        tensor = torch.from_numpy(x.copy())
         with torch.inference_mode():
-            outputs=net(torch.from_numpy(x.copy()))
+            torch.backends.mkldnn.enabled = True
+            optimized = net(tensor)
+            torch.backends.mkldnn.enabled = False
+            outputs = net(tensor)
         reference=session.run(None,{session.get_inputs()[0].name:x})
-        for a,b in zip(outputs,reference,strict=True):
+        for a,b,fast in zip(outputs,reference,optimized,strict=True):
             np.testing.assert_allclose(a.numpy(),b,atol=.003,rtol=.0001)
-            parity.append(dict(file=img.name,shape=list(b.shape),max_abs=float(np.abs(a.numpy()-b).max())))
+            fast_delta = np.abs(fast.numpy() - b)
+            parity.append(dict(file=img.name,shape=list(b.shape),max_abs=float(np.abs(a.numpy()-b).max()),
+                               torch_reference="CPU native FP32", onednn_max_abs=float(fast_delta.max()),
+                               onednn_outside_tolerance=int((fast_delta > .003 + .0001*np.abs(b)).sum())))
     value=dict(scores=scores, paired_scene_bootstrap_95_points=np.percentile(diffs,[2.5,97.5]).tolist(),
                bootstrap_replicates=len(diffs), area_comparisons=n,tiny_by_split=tiny,
                validation_sha_verified=len(manifest),training_config_equal=not differences,

@@ -1,0 +1,511 @@
+{
+ "source_manifest_sha256": "e1ea08ce2aab8d4a26f2a0ae90a80b3a3de25e858ca63d404c75744c379411f5",
+ "source_order_sha256": "dbef64863dd513d8d2391e57fae752ecd807841d7626dc98f795d6cc51468ee8",
+ "reviewed": 328,
+ "visual_accepted": 238,
+ "visual_rejected_indices": [
+  3,
+  5,
+  6,
+  7,
+  8,
+  9,
+  13,
+  16,
+  17,
+  18,
+  20,
+  21,
+  23,
+  32,
+  36,
+  38,
+  39,
+  42,
+  46,
+  48,
+  53,
+  54,
+  55,
+  56,
+  58,
+  69,
+  71,
+  73,
+  77,
+  79,
+  81,
+  85,
+  94,
+  96,
+  104,
+  106,
+  107,
+  110,
+  112,
+  115,
+  117,
+  119,
+  120,
+  123,
+  125,
+  141,
+  144,
+  147,
+  148,
+  156,
+  161,
+  165,
+  166,
+  168,
+  169,
+  173,
+  174,
+  177,
+  180,
+  181,
+  185,
+  187,
+  192,
+  197,
+  199,
+  201,
+  209,
+  211,
+  212,
+  228,
+  232,
+  233,
+  243,
+  244,
+  247,
+  251,
+  253,
+  257,
+  272,
+  274,
+  279,
+  281,
+  285,
+  286,
+  295,
+  304,
+  309,
+  311,
+  320,
+  326
+ ],
+ "examples": {
+  "5": "Only head of cyclist visible",
+  "8": "Riding person separate from motorcycle",
+  "20": "Box truck labeled car",
+  "21": "Tram dominates scene without competition label",
+  "23": "Background rider annotated as empty motorcycle",
+  "192": "Rider and motorcycle labeled together as empty motorcycle",
+  "197": "Walking person guiding bicycle merged as cyclist",
+  "201": "Mounted rider and motorcycle separately marked"
+ },
+ "scene_exclusions": [
+  {
+   "i": 35,
+   "key": "vista_IhZqedHbsCWQSIbKqcx_TA",
+   "conflicts": [
+    "base"
+   ]
+  },
+  {
+   "i": 41,
+   "key": "vista_gbHoru4bJu7AKDZsHlMhRQ",
+   "conflicts": [
+    "base"
+   ]
+  },
+  {
+   "i": 45,
+   "key": "vista_2nK_i1wHGjie-ZnI0GrktQ",
+   "conflicts": [
+    "base"
+   ]
+  },
+  {
+   "i": 83,
+   "key": "vista_EcJf4RZ250ywafJKHmCJnA",
+   "conflicts": [
+    "base"
+   ]
+  },
+  {
+   "i": 102,
+   "key": "vista_JR28Nx0Gsq4cXTnmSgLPtA",
+   "conflicts": [
+    "vista_gTui-h6_zxuMo5AglguOGA"
+   ]
+  },
+  {
+   "i": 105,
+   "key": "vista_IV4HAyWfdnIOBu9cSlNocg",
+   "conflicts": [
+    "base"
+   ]
+  },
+  {
+   "i": 109,
+   "key": "vista_JdHYs5ixqXpnBQU4ILON2A",
+   "conflicts": [
+    "base"
+   ]
+  },
+  {
+   "i": 113,
+   "key": "vista_JqXQuU6lJ7hUJoch-HmhUQ",
+   "conflicts": [
+    "base"
+   ]
+  },
+  {
+   "i": 129,
+   "key": "vista_hF-9n1yPyBOswWVsX3HeQw",
+   "conflicts": [
+    "base",
+    "vista_23KkRFsnHIuI-oIZgH0qHw"
+   ]
+  },
+  {
+   "i": 132,
+   "key": "vista_25133qqcDN39InBk1KdTmQ",
+   "conflicts": [
+    "base"
+   ]
+  },
+  {
+   "i": 134,
+   "key": "vista_2nou_pzpJlPPTnEFuGptlg",
+   "conflicts": [
+    "base"
+   ]
+  },
+  {
+   "i": 145,
+   "key": "vista_i2QDy32FDCPgV8a6yPLh7A",
+   "conflicts": [
+    "base"
+   ]
+  },
+  {
+   "i": 153,
+   "key": "vista_HIJb677V3suM4njJlXqldw",
+   "conflicts": [
+    "base"
+   ]
+  },
+  {
+   "i": 158,
+   "key": "vista_j552osDMCJb-rsbxxstnVw",
+   "conflicts": [
+    "vista_GhXgxOqZrD1sqMrT1tvUvw",
+    "vista_fdlMX5KWyXAYRhLoSbSydw"
+   ]
+  },
+  {
+   "i": 188,
+   "key": "vista_eGd3bxhugmDv0Yw3Rl5nhg",
+   "conflicts": [
+    "base"
+   ]
+  },
+  {
+   "i": 217,
+   "key": "vista_KBBQ1xY8JgIeUN8SUpu8Yg",
+   "conflicts": [
+    "base",
+    "vista_fdlMX5KWyXAYRhLoSbSydw"
+   ]
+  },
+  {
+   "i": 229,
+   "key": "vista_kdthMSVDvzQkaHYln729xA",
+   "conflicts": [
+    "base"
+   ]
+  },
+  {
+   "i": 235,
+   "key": "vista_enGK25CtXb-vUMAIoUAbUA",
+   "conflicts": [
+    "vista_3UkqtJg7y8itou1zpJs1ZQ"
+   ]
+  },
+  {
+   "i": 254,
+   "key": "vista_F-c9KNmxw0PaC1qbpzVkpQ",
+   "conflicts": [
+    "base"
+   ]
+  },
+  {
+   "i": 266,
+   "key": "vista_egXi-QQIaYxq6sf4Azdh8A",
+   "conflicts": [
+    "base",
+    "vista_gTui-h6_zxuMo5AglguOGA"
+   ]
+  },
+  {
+   "i": 277,
+   "key": "vista_kEbkcUgc2HOha0vtw__yyA",
+   "conflicts": [
+    "base"
+   ]
+  },
+  {
+   "i": 308,
+   "key": "vista_IZ3mj5IcxoWgCq63Iyfn5A",
+   "conflicts": [
+    "base"
+   ]
+  },
+  {
+   "i": 313,
+   "key": "vista_2-CkLq8O-FDPSzxodmBCiQ",
+   "conflicts": [
+    "base",
+    "vista_2N7qGdE7VKR4nCdB1bfjAA"
+   ]
+  },
+  {
+   "i": 316,
+   "key": "vista_41q0zAOiXoAjmxgBLRQK5w",
+   "conflicts": [
+    "base"
+   ]
+  },
+  {
+   "i": 318,
+   "key": "vista_2pGl210yU11AQofpaokrBg",
+   "conflicts": [
+    "base"
+   ]
+  },
+  {
+   "i": 324,
+   "key": "vista_27vIp8l4Z0R_9wah5ccieQ",
+   "conflicts": [
+    "vista_0Yx-EqG0Edv2xInd-Tpz1w"
+   ]
+  }
+ ],
+ "keep": [
+  "vista_0Yx-EqG0Edv2xInd-Tpz1w",
+  "vista_1xFYAWWL1RVJoAGUOwFHbg",
+  "vista_2-y16x3UxCb_lLiaInnF5w",
+  "vista_20qL6JwA5me2PnjmkO4AyQ",
+  "vista_23KkRFsnHIuI-oIZgH0qHw",
+  "vista_243GxeDcKLwDAs65X4EMqg",
+  "vista_2BPT64PaqzXqV0BCPbJNlA",
+  "vista_2CSsnU7bZBgpwfvVc0xpNg",
+  "vista_2ELdGHsj7plRZEdkTH-dtQ",
+  "vista_2HIgWImJ7NbfGCbpPc5p-g",
+  "vista_2HoDIGydEeVC4d_8SOZw_Q",
+  "vista_2K8S0ZRvSHjfm1PwtXl01Q",
+  "vista_2KMFcpPcGm18m4K8r4UTHQ",
+  "vista_2N7qGdE7VKR4nCdB1bfjAA",
+  "vista_2OWWW6-gfAuHXQnbjF2ibg",
+  "vista_2ULLTLA3-1_pOTELRgbNmw",
+  "vista_2XiTnudcI6UyedUs4dwEDQ",
+  "vista_2b3Z0b0MJ2asv3THhHp_bA",
+  "vista_2g6hVFDKFYpuGbK-QDmeew",
+  "vista_2gLRdpU0HWZRxMywQMopjw",
+  "vista_2mV1XwuPgGM2XnndYaRx7A",
+  "vista_2v8L6lQEtRJx8wS0OJBsgA",
+  "vista_2vIHR6tgu8XobZV0UMjMZA",
+  "vista_2x2HRtU-3IHEbeCOF6Zccw",
+  "vista_2z4tSV3V3DKSIuc2P9ueXA",
+  "vista_30uYs1pnMpNILXecHLmeQA",
+  "vista_36iNN_5lKC_CrOiFjmcF9w",
+  "vista_3HSNacmSxWTFq3GwTuhhew",
+  "vista_3N3i0Gl1dUPGX64rTi0LQw",
+  "vista_3P4LEb8iy0EF-QWD6DDtiQ",
+  "vista_3QeZrnYpMqXofZPZPAji6A",
+  "vista_3RClcfxHI27-nboPlHFuyA",
+  "vista_3UkqtJg7y8itou1zpJs1ZQ",
+  "vista_3Yr7sYFO6Lx6DVDamgt1sg",
+  "vista_3i39JRv2KbXWNscgwxrGxQ",
+  "vista_3rmyf6PCGxW_Th64v8Q7Jg",
+  "vista_3ulpkm1Q-Mqi8lSSLLEWUQ",
+  "vista_42FZy0HQfk3Rcs-wvMBqAw",
+  "vista_4JxG_CWP-TwqsJvlhwiD6Q",
+  "vista_4LoKYdyYvZfdr45ZWctchg",
+  "vista_4MOAAW-MwmBVcoJbBcF4oA",
+  "vista_4PlRIX5ITtHod7cCW_eJug",
+  "vista_4QzLuxE4sDjZpYeqKbEscw",
+  "vista_4XF6jWKX7MOfqda5WMP3ww",
+  "vista_4XTrwjGESCFzhgx22TOT9g",
+  "vista_4XwNJtG8OyveUKn0kLz83g",
+  "vista_4r7tp4Tu4nucS-JUj3I1dQ",
+  "vista_4sm4Z2YcFLmfsyXdPqOJfQ",
+  "vista_4uPKJ6435QDk9gwdo11g1A",
+  "vista_5EZp4B59m4LuUEhkkA82Ow",
+  "vista_5ExMWBrBZqUn39gTpDGBuw",
+  "vista_5HovZm4iE0uuWAIo3MpcPQ",
+  "vista_6dPUgcSYEhwNe4aGAHxFlg",
+  "vista_AFHGPu-vfjKXe9M4GY8K7w",
+  "vista_CAqU5F3bPHrVJx7uqnPo-g",
+  "vista_CBQOdBNuErJTpa-bEMWKPQ",
+  "vista_CBdU-F236guDcS7UBn2Jpw",
+  "vista_CBjnGENfjfaM4O5Y5kj4RQ",
+  "vista_CbUjQJNQwQEC66hphEJh3A",
+  "vista_DHoFQ1_CNe8Pch8lBN2YaA",
+  "vista_DklapLJph6WMMoglu4uzKA",
+  "vista_ECkR7zIGZL1vWOUQhyc7rQ",
+  "vista_EEUtaYHSvg0ELD8ZUeG53g",
+  "vista_ESKPFe5aCrXj8bJ_GIQgmw",
+  "vista_EU9z9jPQf31PNNdh2uYs4A",
+  "vista_E_nRHLbvmxt7uHbEg6OMCg",
+  "vista_EjI7xRTuqrTKRUt1QUbGnQ",
+  "vista_EmM3WmG0cWHq2QLFT7Y7LQ",
+  "vista_EyvCGSN0gdu8n1EcugRv6A",
+  "vista_F7Lw-OZHcELEO0feGA8ppw",
+  "vista_F7MiQXQjXlO4CHrv0OcmEA",
+  "vista_FG62nkTs2BXMUot017076w",
+  "vista_FfV59vJ1rdC5sGtMcr372g",
+  "vista_Fjw9pMQNPQ0FhOKDKQyjvQ",
+  "vista_Fpaa9T91jnhIk00MpTsrgw",
+  "vista_FtMtDpNdU-l9nZEsQcE2Cw",
+  "vista_FtWZLZlMTmVi79JHRIuBvQ",
+  "vista_FwNTRivgaiuBoNfqBvPFYg",
+  "vista_G3WBP1pGkfk7VEhhx5Cyyw",
+  "vista_G6x0EYiPvv3E8wCVOY0uNA",
+  "vista_G7oQ2PpRVlt-eU3SVVlRag",
+  "vista_GD0AWkvU1x1wRJ9Km4PXYw",
+  "vista_GFgVOtrlzGahFRAwE-2mog",
+  "vista_GWyr-zc0q6lqQZGHnoWxLQ",
+  "vista_GXobFj6V68eopp4l86PNNw",
+  "vista_GXzaeFe27VMHkPQKaWCq2Q",
+  "vista_GhXgxOqZrD1sqMrT1tvUvw",
+  "vista_GwLJTU12DrS57qUexGEoNw",
+  "vista_GyPzK53Z7-UypsxI_3IXLA",
+  "vista_HAwWzuplmqomRQRNKreJzA",
+  "vista_HImDqq40HOwhcpyII5bBGg",
+  "vista_HLiqhxJh-ULcFC3EaIYt6A",
+  "vista_HONLMYGmGC8TE7570bQZEw",
+  "vista_HRgmfhUnqr1A0KA0iyUMLg",
+  "vista_HT135WA2VLXoSLvlzo-2nA",
+  "vista_HW_6eFX11NC18V0DCXzL6g",
+  "vista_HnAjSr1QTI6bHB85NvGyJg",
+  "vista_Hqo7YAWIURz7FdTwrPpNVg",
+  "vista_HsDRQKomAtE-WBhbbg9Xww",
+  "vista_HuSNG2TYet6zib7_ZxDIrQ",
+  "vista_I8Mm6d69K4vPmTzDvIReUA",
+  "vista_ILvFy4WzjW1UiaQ-RByezA",
+  "vista_INKJ9V73xtltGqNayvPx3Q",
+  "vista_IOVf1_Y5gmjhFnfD9GK_Dg",
+  "vista_IQUesBPsdNU-jCywLm2-_Q",
+  "vista_IYLSqTZiAieM0xzcWa_ykw",
+  "vista_IZQ6qjivdvLz7OcwQvBVyg",
+  "vista_Igle9El6ELlALm4cEqFJkw",
+  "vista_IiREsKNmcYbRCEMqrcEtZw",
+  "vista_IooYWb1AuDzwEqCnqOQY3g",
+  "vista_Iqp00yj9dyQqFChQU4zc8Q",
+  "vista_IrVBku2zsrcovngZgUjZ3A",
+  "vista_IswJ_E4DTK076CPU8Re4_A",
+  "vista_IxdOzTLmPvxTj4o-9zWfSw",
+  "vista_J24lOkSYo8YgIV94ZqY8NA",
+  "vista_J7gGTwoIoBo3bjHfG0uCBg",
+  "vista_JK_Yw2uhYxuhlfAsfeSuAg",
+  "vista_JKsA45LJJrEV9mwraoCOFw",
+  "vista_JcmoDS5qcbHhMllvm7TEzg",
+  "vista_JdvNjeKpFlUj79iXX5kNig",
+  "vista_Jfe8VQvhdF2AqS3DBIJiuQ",
+  "vista_Jg4Te3Wr8lS91k0H6Zjn4g",
+  "vista_K62arBObRO0lxAExDtpCuQ",
+  "vista_K7K6YSS_50VgfoD88N6AaA",
+  "vista_KGMochVRz6TOiEgILN5Iww",
+  "vista_KZihzY2qwJFuIr0K4fXtBQ",
+  "vista_Kd2XgTRnaesGVgLt6y-jJA",
+  "vista_Kh-4ipdR0caZvdk-Dy02uA",
+  "vista_KqAPlxRzLmkV-O025cL-qw",
+  "vista_KqIFEbzQp4leBvC_DoMLFw",
+  "vista_L07xzWmEaGp1rkV7GpbYXg",
+  "vista_L0WbB3wWAavbFWBdBBouVw",
+  "vista_L8DZnCd9nSa5IRfnRfjscA",
+  "vista_L8E8O0SPqgW60-yz-pWwvQ",
+  "vista_LAA_gHmg8LPIbpzp07YVPQ",
+  "vista_LCkoeWidb6U7oyp9zXq-Pg",
+  "vista_LaUjZk6QWAzPlSK19GgIng",
+  "vista_bRHIFKFYbRVlLfaohvtXpg",
+  "vista_cAgQhxYSBVLsNatzbVzaVw",
+  "vista_cAk4th8YS9wnPPO_t8YzHg",
+  "vista_dHVXa4Dfj4XSjBruzTq9xQ",
+  "vista_e64vMGE_O5_Ai422gYso4Q",
+  "vista_e6zSMtEJEhnQEgJa5O0cCw",
+  "vista_eCk8zvhCqW_D_mps-Dc1tw",
+  "vista_eClHIqN06ODpBZLPwZ-brA",
+  "vista_eFzSCi9T4kBJm1rja7fbgw",
+  "vista_eKX0EGxYq29PgosErnVJ_g",
+  "vista_eNgfzOkIMrTaEKua3p61bA",
+  "vista_eYuFrCPd-Qn24iHjuqnoXg",
+  "vista_ebFKbFC9eci21GBVwmMHZA",
+  "vista_efWR31vM8_uFR_OZ2s3qqw",
+  "vista_ej67DCOzMATKbvyRTkB3qw",
+  "vista_esaM00cWnOAgYC1NqY29dQ",
+  "vista_ewN1PkrickJK6UA9pGBCQw",
+  "vista_ewTL2X0QmViwImWuZUsJXA",
+  "vista_exzAEvyU1_mId8fjCEEpRA",
+  "vista_ezbK43ubWpgxadtO66SUEw",
+  "vista_f1pMr0dwtr_ChDFNC5iKsA",
+  "vista_fKsPE6p8GvwUYecIGGhsjg",
+  "vista_fNlFltjhh7-AxxIV5ehOxQ",
+  "vista_fPtj7nE1d6Pgp3X5a1sOWA",
+  "vista_fXN52FdVWkyAZkrhHKHNmw",
+  "vista_fbt19BhqhQITnH9ewnceZg",
+  "vista_fdlMX5KWyXAYRhLoSbSydw",
+  "vista_fe-gkA9bVpqIBXAlgW4VKw",
+  "vista_fgeT1fcn3EloDwKB8HdOwg",
+  "vista_frc8CdwQgZU1Lsiud2KLpQ",
+  "vista_fy_tdBAnoXAx9d4J68EDjA",
+  "vista_fzrfzeleZGt2sEdoWTjLvQ",
+  "vista_gDR3j-ISy4EcRKDLPTLLHA",
+  "vista_gQkucb-D-1Ylx1RX-xDx8g",
+  "vista_gTui-h6_zxuMo5AglguOGA",
+  "vista_gfH0don1Ojvjn6OHjwK7vA",
+  "vista_gipZFoYCTQnxkzDsacEJXQ",
+  "vista_givoRGjiBbn4rBVL6eyryg",
+  "vista_gm12GBFPm-YSITahMtfVQg",
+  "vista_gmRrDHCSY0Gqp5XQ8PVi0Q",
+  "vista_h9KDXgHDXyRHwLsP5dvNXg",
+  "vista_hLz2D4elMkb8utw52b-ZJw",
+  "vista_hMyj9gUEudMBJR6NrI1ugA",
+  "vista_hjhnpjkP47ZmPLzbR1y1cw",
+  "vista_i0yatoWnHAuHWo-4QlBs9Q",
+  "vista_iBuPaynd4d90QGn8NN6yqw",
+  "vista_iK_t6uGho4o4PViCuiGqxA",
+  "vista_iMs9YiQgpWOBIDSHkgzRWA",
+  "vista_iUU2zKZm89AY1Fzt8q0Ifg",
+  "vista_icUQ0DRsu0eqFuyP8tXHGw",
+  "vista_ilWo1R8VvUSMC0Oz9MCdDQ",
+  "vista_isXX4igNdVPP5qOQXNcQKA",
+  "vista_j4SS38fZspy4kJit0Fu2NQ",
+  "vista_jCEPY1x2R4gwnfImjYwkQA",
+  "vista_jEgdRfPn6TGW28jZY9ocPw",
+  "vista_jGvChZD-i2u1K2jWTj6whQ",
+  "vista_jNNl3EEkMZ5X7Kus3zWqCQ",
+  "vista_jPK1eR3SR7x_z9R4OXhOjw",
+  "vista_jPf4K7hZUN8l3_JZgb08cA",
+  "vista_jRuj1GDfUjFhxEDQHUojYQ",
+  "vista_jSCNMUvQevp2Nc0Mw2kqAg",
+  "vista_jSFZE4hD1ou6RIu5xysOfQ",
+  "vista_jggB8JCGNyg3smYM_P8JAA",
+  "vista_jhUkd1Guxq-6OtgU7uh1tA",
+  "vista_jiR0Fo_COmG55PSEddwQow",
+  "vista_jkcRlIQr3qWF1_m_UHDB5Q",
+  "vista_k5rshwxr4OsIBYROLfX4Tw",
+  "vista_kJzUrnJuKJJI4R3OOO9XPg",
+  "vista_kMbgXp_q-9KxPQCuP0dg0w",
+  "vista_kP9IhUWSoqc6K0R2aZgkww",
+  "vista_kdbqeR8gwZlS-gEXQMWo_g",
+  "vista_koo9dSrmr1B9j06qdLiUgA",
+  "vista_l7k3FjpluVp6bRFHBlD7zQ",
+  "vista_lGO0o4LxTgUwwYLzwaH5Cw",
+  "vista_mJMf1obhLzexfaOd2R1Xtw"
+ ]
+}

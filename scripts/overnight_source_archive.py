@@ -47,10 +47,17 @@ class SourceArchive(io.RawIOBase):
         self.position = end
         return data
 
-    def member(self, name):
+    def member(self, name, *, block=None):
         info = self.archive.getinfo(name)
         start = info.header_offset
-        data = self.fetch(start, min(self.size, start + 1024 + info.compress_size))
+        if block is None:
+            data = self.fetch(start, min(self.size, start + 1024 + info.compress_size))
+        else:
+            offset, content = block
+            relative = start - offset
+            if not 0 <= relative < len(content):
+                raise ValueError("Member is outside the prefetched range")
+            data = content[relative:relative + 1024 + info.compress_size]
         if data[:4] != b"PK\x03\x04":
             raise IOError("ZIP member offset mismatch")
         name_size, extra_size = struct.unpack_from("<HH", data, 26)

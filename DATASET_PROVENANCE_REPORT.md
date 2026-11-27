@@ -23,6 +23,15 @@ Bản `e3-weather-v1` thêm 43 ảnh/crop và 367 instance vào E3 taxonomy. B�
 | MUSES, ETH Zurich | 35 / 351 | Dùng split train và mask panoptic gốc của 27 chuyến quay. Gồm 14 ảnh trời quang ban ngày, 9 ban đêm, 7 mưa ban ngày, 2 mưa ban đêm và 3 sương mù ban ngày. Ánh xạ người, xe và các thành phần biển/đèn. Ghép người ngồi lên xe tương ứng. Đã xem hình có đường biên, đối chiếu raster và kiểm trùng cả ảnh cha. Ảnh, mask và crop lưu trong kho làm việc hạn chế theo EULA nghiên cứu của ETH. [Trang tác giả và giấy phép](https://muses.ethz.ch/) |
 | Vietnam Traffic Vehicle Detectio v1 | 8 / 16 | Nguồn CC BY 4.0, dùng phần train của bản chọn tại revision `de7f424`. Kiểm Git blob ảnh/nhãn. SHA ảnh trong CSV của tác giả bản chọn khác cả 74 file khảo sát, vì vậy ghi lại SHA của chính dữ liệu sử dụng. Sửa polygon nguồn với đề xuất YOLO26x-seg và kiểm trực quan. Đã loại crop có người đi xe bị cắt quá nhiều và ảnh cảnh trùng nghi vấn. [Nguồn gốc](https://universe.roboflow.com/phan-ky-dat/vietnam-traffic-vehicle-detectio/dataset/1) · [Revision bản chọn](https://github.com/levienbang/yolo11/tree/de7f424f4ea205f5de6bb5243e06dd2d21a585ff/datasets/vietnam-seg-review-100) |
 
+### BDD100K semantic và Mapillary Vistas
+
+Hai bộ mở rộng kế tiếp chỉ bổ sung ảnh train. Đã kiểm SHA-256 của toàn bộ 140 cặp validation trước khi chuyển các ZIP lên L4.
+
+| Bộ | Quy trình duyệt | Dữ liệu giữ lại |
+|---|---|---|
+| BDD100K semantic train | Quét 7.000 mask, tải 385 cặp và xem 354 cửa sổ với ảnh gốc và đường biên. Loại cụm dính nhiều xe, nhầm người và xe, hoặc nhầm biển và đèn. Trong 49 cửa sổ đạt duyệt trực quan, loại thêm 6 sau kiểm trùng cảnh. Điều khoản Berkeley áp dụng cho ảnh và mask. [Giấy phép dữ liệu](https://github.com/bdd100k/bdd100k/blob/master/doc/source/license.rst) | 43 crop, 139 instance. Cộng vào bộ thời tiết được 1.199 ảnh train. SHA của ZIP là `5e056fb7fead9c24f78db2f7057d77ea57743fa5a4c15aad01b6857b31f5199e`. |
+| Mapillary Vistas v2.0, split train | Từ 373 cặp ảnh và mask panoptic đã xác minh, xem lần lượt 328 crop với đường biên. 238 crop qua kiểm trực quan. Loại tiếp 26 crop có dấu hiệu trùng cảnh. Dùng segment ID, ánh xạ theo tên lớp và ghép rider với xe. Ghi ROI, SHA nguồn, SHA nhãn và IoU chuyển polygon theo instance. Nguồn do Neuhold và cộng sự, Mapillary Research, phát hành theo CC BY-NC-SA 4.0. [Trang tác giả](https://www.mapillary.com/dataset/vistas) · [Bản dữ liệu dùng](https://huggingface.co/datasets/ali-sh07/Mapillary-dataset/tree/16ce879b802c3873a1a9e0da4113de0db1b522bf) · [Quyết định QC](experiments/overnight/vistas-qc.json) | 212 crop, 3.885 instance, có đủ 11 lớp. Cộng vào bộ BDD được 1.411 ảnh train. SHA của ZIP là `3cf51625f61792c51914e5f3a661f25abe4d5380f69c1f8f4c3cc3d2329afc0d`. |
+
 ## Dữ liệu vòng 4 ngày 28/11/2026
 
 Vòng 4 dùng lại trọn bộ 780 ảnh của vòng 3, gồm 225 ảnh BDD100K, 75 ảnh Vietnam Traffic Sign Detection v5 và 480 ảnh COCO hoặc biến thể. ZIP dữ liệu có SHA-256 `91268bb2a4b520de7cb9eb1f2f9d59b740671a539ab73d1d3bba300e9d51e7a6`. 640 ảnh dùng để train, 140 ảnh để so checkpoint. Các bộ Poribohon-BD, LVIS và các ảnh biển báo bổ sung vẫn nằm ngoài lần train này. [Số ảnh, instance và bộ tham số vòng 4](experiments/round4/run_report.json)
@@ -48,7 +57,7 @@ Tổng 640 / 140. SHA-256 bộ ZIP lần 3 bắt đầu `91268bb2`. E1 dùng cù
 | **2** | **Dữ liệu Tổng hợp Cảnh Khó (Đêm / Mưa)** | Sinh từ tập Train COCO qua `scripts/validate_and_augment.py` | Tự tạo từ tập Train (CC BY 4.0) | **v1:** `80 / 0`<br>**v2:** `200 / 0` | Chỉ đưa vào `train`, tuyệt đối không đưa vào `val`. |
 | **3** | **Dashcam / Video Đường Phố VN (Tự thu thập)** | *(Điền link YouTube / nguồn tự quay khi bổ sung ở v3)* | Tự thu thập & gán nhãn | `0 / 0` *(dự kiến v3)* | Prelabel bằng `yolo26x-seg.pt` + sửa tay trên CVAT cho `Other vehicle`, `Sign`. |
 | **4** | **IDD (Indian Driving Dataset)** *(nếu dùng thêm)* | `https://idd.insaan.iiit.ac.in/` | Non-Commercial / Research (IDD License) | `0 / 0` | Lấy thêm xe máy, `autorickshaw` (`Other vehicle`), `rider`. |
-| **5** | **BDD100K (Instance Seg)** *(nếu dùng thêm)* | `https://bdd-data.berkeley.edu/` | BSD 3-Clause | `0 / 0` | Lấy thêm cảnh đêm, trời mưa. |
+| **5** | **BDD100K (Instance Seg)** *(nếu dùng thêm)* | `https://bdd-data.berkeley.edu/` | Berkeley DeepDrive dataset license; BSD 3-Clause áp dụng cho mã nguồn | `0 / 0` | Lấy thêm cảnh đêm, trời mưa. |
 | **6** | **Roboflow Universe (VN Traffic)** *(nếu dùng thêm)* | `https://universe.roboflow.com/` *(điền link repo cụ thể)* | CC BY 4.0 / MIT | `0 / 0` | Bổ sung biển báo VN & xe ba gác/xích lô. |
 
 ---

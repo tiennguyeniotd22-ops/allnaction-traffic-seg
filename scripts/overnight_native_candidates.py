@@ -66,13 +66,17 @@ def native(root, kind, selection, folder=None, index_path=None):
         key = row["key"]
         if "roi" not in row or selection is not None and key not in selection:
             continue
-        parent = root / kind / "images" / (key + ".png")
+        parent = root / kind / "images" / (key + Path(row["source_image"]).suffix)
         body = (folder / "images" / (key + ".jpg")).read_bytes()
         label = (folder / "labels" / (key + ".txt")).read_bytes()
         assert sha(body) == row["image_sha256"] and sha(label) == row["label_sha256"]
+        assert sha(parent.read_bytes()) == row["source_sha256"]
         item = dict(row, source=index["source"], url=index.get("source_page") or index.get("homepage"),
                     license=index["license"], parent=parent.relative_to(root).as_posix(),
                     parent_sha256=row["source_sha256"], bucket=kind)
+        if kind == "vistas":
+            item.update(credit=index["credit"], revision=index["revision"], license_url=index["license_url"],
+                        source_url=index["mirror"] + row["source_image"], mask_url=index["mirror"] + row["source_mask"])
         yield item, body, label, folder / "views" / (key + ".jpg")
 
 
@@ -86,6 +90,9 @@ def main():
     p.add_argument("--muses-index", type=Path)
     p.add_argument("--muses-curated", type=Path)
     p.add_argument("--muses-qc", type=Path)
+    p.add_argument("--bdd-qc", type=Path)
+    p.add_argument("--bdd-curated", type=Path)
+    p.add_argument("--vistas-curated", type=Path)
     a = p.parse_args()
     sources = []
     if a.coco_per_bucket:
@@ -95,6 +102,10 @@ def main():
     if a.muses:
         keep = set(read(a.muses_qc)["keep"]) if a.muses_qc else None
         sources.append(native(a.root, "muses", keep, a.muses_curated, a.muses_index))
+    if a.bdd_qc:
+        sources.append(native(a.root, "bdd-sem", set(read(a.bdd_qc)["keep"]), a.bdd_curated))
+    if a.vistas_curated:
+        sources.append(native(a.root, "vistas", None, a.vistas_curated))
     for sub in ("images", "labels", "views"):
         (a.out / sub).mkdir(exist_ok=True, parents=True)
     records = []

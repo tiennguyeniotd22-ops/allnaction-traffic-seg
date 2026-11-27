@@ -11,6 +11,13 @@ Các số dưới đây là điểm mask trên thang 100. 140 ảnh gồm 60 ả
 | E2 pilot | 802 | 20 | 21,14 | 37,89 | 20,61 | 15,29 | 19,59 | 19,64 |
 | E2 full | 802 | 88/100 | 21,73 | 38,97 | 21,21 | 14,83 | 21,07 | 19,97 |
 | E3 Việt Nam | 834 | 20 | 21,25 | 37,06 | 20,59 | 16,54 | 19,83 | 19,36 |
+| E3 sửa taxonomy | 1.113 | 20 | 22,81 | 39,68 | 22,79 | 17,76 | 21,25 | 21,30 |
+| E4 lặp ảnh lớp hiếm | 1.113 | 20 | 22,02 | 38,58 | 22,54 | 18,16 | 21,89 | 20,95 |
+| E4 tắt Copy-Paste | 1.113 | 20 | 22,43 | 39,09 | 22,90 | 18,38 | 21,53 | 21,16 |
+
+E3 sửa taxonomy tăng 1,56 điểm so với E3 Việt Nam cùng 20 epoch. Khoảng bootstrap ghép cặp 95% từ +0,17 đến +2,59 điểm. Thay đổi gồm cả ảnh mới và sửa nhãn nên chưa tách được đóng góp riêng. Holdout lớp 3 đạt 62,28 AP. E4 dùng cùng dữ liệu, lấy mẫu 1.166 lượt từ 1.113 ảnh mỗi epoch. Chênh lệch so với E3 sửa taxonomy là −0,79 điểm, khoảng 95% từ −2,46 đến +0,54. Holdout lớp 3 đạt 57,64 AP.
+
+Khi kiểm E4, một tọa độ hộp trong 394.800 giá trị của tensor đầu tiên trên một ảnh lệch 0,01459 pixel giữa oneDNN và ONNX Runtime. Giữ nguyên ngưỡng so sánh FP32 và kiểm lại cả hai tensor trên ba ảnh bằng PyTorch CPU native với ONNX Runtime tối ưu mặc định. Cả sáu phép so đều đạt. Log đối chiếu lưu cả độ lệch oneDNN. Phép chấm mask ONNX dùng cùng evaluator của BTC cho mọi lượt.
 
 E2 full chọn trọng số ở epoch 63 rồi dừng sớm ở epoch 88. So với vòng 4, chênh lệch trên 140 ảnh là −0,28 điểm, khoảng bootstrap ghép cặp 95% từ −1,92 đến +1,81. Trên holdout độc lập có 7 đối tượng thuộc 3 nhóm cảnh, E2 full đạt 65,52 AP và 76,49 AP50 cho lớp Other vehicle. Tập Việt Nam 15 ảnh giảm 3,96 điểm so với vòng 4. ZIP E2 full có SHA-256 `f30726d608fb6a829fd4d8b79f511c8e18ff5a2ef556760ac7e8c96fd3fdd5c9`.
 

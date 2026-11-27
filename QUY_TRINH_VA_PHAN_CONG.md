@@ -56,8 +56,10 @@ Các ZIP ban đầu lưu tên ảnh, nguồn, SHA-256 và giấy phép. Khi thê
 
 ### Bước 3 — Sửa từng ảnh trên CVAT
 
+Mỗi thành viên dùng quy ước của BTC để quyết định ngưỡng kích thước, phần nhìn thấy, lớp và số instance. Thực hiện các bước duyệt và nghiệm thu bản xuất trong checklist của đội. [Guideline BTC](labeling_guideline.md) · [Quy trình QC](HUONG_DAN_QC.md)
+
 1. Mở Job ở bảng phân công. Quét cả khung hình để tìm vật thể bị sót, sau đó phóng to vùng đông xe, biển báo, đèn giao thông và vùng che khuất.
-2. Kiểm tra **mỗi đối tượng có một instance riêng**. Khi người đang lái xe máy hoặc đạp xe, vẽ một polygon cho cả người và xe, lần lượt chọn `Motorcyclist` hoặc `Cyclist`. Xe trống dùng `Motorcycle` hoặc `Bicycle`. Người đi bộ cạnh xe được gán riêng nếu nhìn thấy rõ.
+2. Gộp xe máy hoặc xe đạp và người ngồi trên xe thành một instance `Motorcyclist` hoặc `Cyclist`. Khi vật mảnh che khuất tạo nhiều mảnh nhìn thấy, giữ các mảnh cùng instance. Xe trống dùng `Motorcycle` hoặc `Bicycle`. Người dắt xe là `Pedestrian` riêng nếu đủ ngưỡng gán.
 3. Chỉnh đường biên theo phần vật thể nhìn thấy. Tách hai xe đi sát nhau, xóa nhãn trùng và bổ sung đối tượng thiếu. Cả nhóm tìm `Other vehicle` vì lớp này có **0 polygon trong bản nháp**. Khi gặp trường hợp khó, ghi số frame và câu hỏi vào issue của Job.
 4. Lưu trước khi rời Job. Sau khi rà đủ 60 ảnh, báo cho Đăng số frame còn vướng và ví dụ trước/sau. Chuyển Job sang `Completed` khi đã lưu đủ và xử lý các điểm cần sửa.
 

@@ -1,0 +1,42 @@
+name: Nộp dữ liệu
+description: Gửi gói ảnh và nhãn để kiểm tra và gộp vào tập train.
+title: "[Dữ liệu] "
+body:
+  - type: dropdown
+    id: shard
+    attributes:
+      label: Shard
+      options:
+        - A — Cao tốc / ban ngày
+        - B — Đô thị / giao lộ
+        - C — Đêm / mưa
+    validations:
+      required: true
+  - type: input
+    id: archive
+    attributes:
+      label: Tên gói và phiên bản
+      placeholder: shardA_v1.zip
+    validations:
+      required: true
+  - type: input
+    id: drive
+    attributes:
+      label: Link Google Drive của file ZIP
+      description: Cấp quyền mở file cho nhóm QC và train.
+    validations:
+      required: true
+  - type: input
+    id: counts
+    attributes:
+      label: Số ảnh và số file nhãn
+      placeholder: 92 ảnh, 92 file nhãn
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Nguồn ảnh và ghi chú cho người kiểm tra
+      description: Ghi nguồn thu thập, lớp hiếm hoặc ảnh cần kiểm tra kỹ.
+    validations:
+      required: true

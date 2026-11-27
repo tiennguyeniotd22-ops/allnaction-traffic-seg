@@ -1,0 +1,26 @@
+{
+  "source": "Poribohon-BD mixed sample",
+  "criterion": "Visual grouping of related scenes before student inference. These scene families are excluded from all training variants and source-derived copy-paste.",
+  "holdout_scene_groups": {
+    "road_with_yellow_truck": [
+      26,
+      27,
+      28,
+      45
+    ],
+    "cycle_rickshaw_stand": [
+      33,
+      34,
+      37
+    ],
+    "motor_rickshaw_street": [
+      48,
+      49
+    ]
+  },
+  "exclude_source_marks": [
+    84,
+    97
+  ],
+  "other_frame_policy": "Mixed street images remain candidates until full-frame annotation. Student predictions do not define evaluation labels."
+}

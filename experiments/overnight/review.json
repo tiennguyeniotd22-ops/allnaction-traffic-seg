@@ -1,0 +1,681 @@
+{
+  "scope": "One reviewer. COCO native polygon overlays screened for missing road users and rider associations. BD native-image windows use SAM masks from source boxes plus reviewed teacher objects. Crop coordinates are fractions of the original frame. Only enumerated additions may enter training. Held-out labels measure only class 3.",
+  "coco_train": [
+    1,
+    8,
+    11,
+    24,
+    26,
+    28,
+    29,
+    37,
+    41,
+    44,
+    48,
+    52,
+    55,
+    59,
+    73,
+    82,
+    85,
+    87,
+    89,
+    93,
+    94,
+    95,
+    97,
+    100,
+    104,
+    108,
+    109,
+    115,
+    117,
+    119,
+    120,
+    124,
+    126,
+    129,
+    145,
+    149,
+    154,
+    156,
+    167,
+    168,
+    171,
+    175,
+    176,
+    179,
+    180,
+    184,
+    190,
+    197,
+    199,
+    201,
+    217,
+    219,
+    226,
+    227,
+    231,
+    234,
+    235,
+    237,
+    243,
+    244,
+    252,
+    253,
+    256,
+    259,
+    262,
+    264,
+    265,
+    266,
+    273,
+    276,
+    279,
+    280,
+    281,
+    288,
+    289,
+    293,
+    294,
+    298,
+    301,
+    306,
+    308,
+    313,
+    316,
+    318,
+    324,
+    325,
+    329,
+    333,
+    334,
+    335,
+    339,
+    340,
+    347,
+    352,
+    356,
+    358,
+    361,
+    363,
+    367,
+    369,
+    378,
+    380,
+    381,
+    383,
+    384,
+    389,
+    397,
+    398,
+    401,
+    405,
+    411,
+    417,
+    420,
+    421,
+    423,
+    424,
+    426,
+    434,
+    435,
+    438,
+    440,
+    441,
+    442,
+    449,
+    453,
+    456,
+    465,
+    468,
+    471,
+    473,
+    475,
+    478
+  ],
+  "bd_train_windows": {
+    "bd002": [
+      0,
+      0.12,
+      0.35,
+      0.88
+    ],
+    "bd003": [
+      0,
+      0.43,
+      0.38,
+      0.91
+    ],
+    "bd007": [
+      0.382,
+      0.32,
+      0.67,
+      0.99
+    ],
+    "bd008": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "bd009": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "bd012": [
+      0.07,
+      0.13,
+      0.98,
+      0.93
+    ],
+    "bd016": [
+      0.12,
+      0.16,
+      1,
+      0.99
+    ],
+    "bd017": [
+      0,
+      0.03,
+      1,
+      1
+    ],
+    "bd019": [
+      0.62,
+      0.14,
+      1,
+      0.98
+    ],
+    "bd020": [
+      0.67,
+      0.15,
+      1,
+      0.85
+    ],
+    "bd021": [
+      0.02,
+      0.17,
+      1,
+      0.65
+    ],
+    "bd038": [
+      0.06,
+      0.25,
+      0.53,
+      0.87
+    ],
+    "bd050": [
+      0.04,
+      0.45,
+      0.96,
+      0.97
+    ],
+    "bd051": [
+      0.4,
+      0.35,
+      1,
+      0.82
+    ],
+    "bd058": [
+      0,
+      0.22,
+      0.94,
+      0.99
+    ],
+    "bd059": [
+      0.12,
+      0.29,
+      0.89,
+      0.98
+    ],
+    "bd060": [
+      0,
+      0.2,
+      0.67,
+      0.96
+    ],
+    "bd061": [
+      0.27,
+      0.14,
+      1,
+      0.94
+    ],
+    "bd062": [
+      0.06,
+      0.22,
+      0.9,
+      0.97
+    ],
+    "bd063": [
+      0,
+      0.2,
+      1,
+      0.91
+    ],
+    "bd064": [
+      0,
+      0.16,
+      1,
+      1
+    ],
+    "bd065": [
+      0,
+      0.13,
+      0.4,
+      0.94
+    ],
+    "bd066": [
+      0,
+      0.44,
+      0.89,
+      0.96
+    ],
+    "bd068": [
+      0.05,
+      0.25,
+      0.84,
+      0.99
+    ],
+    "bd069": [
+      0,
+      0.23,
+      1,
+      1
+    ],
+    "bd070": [
+      0.06,
+      0.3,
+      0.96,
+      0.95
+    ],
+    "bd071": [
+      0.06,
+      0.32,
+      0.98,
+      0.96
+    ],
+    "bd072": [
+      0.06,
+      0.27,
+      0.96,
+      0.97
+    ],
+    "bd074": [
+      0.14,
+      0.18,
+      1,
+      0.94
+    ],
+    "bd075": [
+      0.18,
+      0.52,
+      0.92,
+      1
+    ],
+    "bd076": [
+      0.08,
+      0.35,
+      0.92,
+      0.99
+    ],
+    "bd080": [
+      0.61,
+      0.1,
+      1,
+      1
+    ],
+    "bd082": [
+      0.01,
+      0.51,
+      0.435,
+      1
+    ],
+    "bd100": [
+      0.04,
+      0.18,
+      1,
+      0.99
+    ]
+  },
+  "holdout_windows": {
+    "bd026": [
+      0.02,
+      0.29,
+      0.198,
+      0.75
+    ],
+    "bd027": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "bd028": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "bd048": [
+      0.32,
+      0,
+      1,
+      1
+    ],
+    "bd049": [
+      0,
+      0.13,
+      0.677,
+      0.84
+    ],
+    "bd033": [
+      0.605,
+      0.13,
+      0.995,
+      0.91
+    ]
+  },
+  "exclude_from_train": [
+    26,
+    27,
+    28,
+    33,
+    34,
+    37,
+    45,
+    48,
+    49,
+    84,
+    97
+  ],
+  "drop": {
+    "bd003": [
+      "t6"
+    ],
+    "bd007": [
+      "t0",
+      "t1",
+      "t6",
+      "t8"
+    ],
+    "bd009": [
+      "t4"
+    ],
+    "bd012": [
+      "t3"
+    ],
+    "bd016": [
+      "t0",
+      "t2",
+      "t5"
+    ],
+    "bd017": [
+      "t1",
+      "t2"
+    ],
+    "bd038": [
+      "t5",
+      "t7"
+    ],
+    "bd051": [
+      "t28"
+    ],
+    "bd060": [
+      "t16"
+    ],
+    "bd065": [
+      "t13",
+      "t15",
+      "t7",
+      "t11"
+    ],
+    "bd068": [
+      "t3",
+      "t4"
+    ],
+    "bd072": [
+      "t23",
+      "t26"
+    ],
+    "bd074": [
+      "t10",
+      "t11",
+      "t12",
+      "t15",
+      "t16"
+    ],
+    "bd033": [
+      "s4"
+    ],
+    "bd048": [
+      "s4"
+    ],
+    "co426": [
+      "s2"
+    ],
+    "bd021": [
+      "t13"
+    ],
+    "bd062": [
+      "t29"
+    ],
+    "vn029": [
+      "s0",
+      "s1"
+    ],
+    "vn030": [
+      "s0"
+    ],
+    "vn034": [
+      "s0"
+    ]
+  },
+  "reclass": {
+    "bd064": {
+      "s12": 0,
+      "s13": 0
+    },
+    "bd016": {
+      "s1": 0
+    },
+    "bd063": {
+      "s1": 3
+    }
+  },
+  "add": {
+    "co085": {
+      "street_name": {
+        "cls": 9,
+        "poly": [
+          [
+            193,
+            174
+          ],
+          [
+            499,
+            166
+          ],
+          [
+            505,
+            206
+          ],
+          [
+            195,
+            219
+          ]
+        ]
+      }
+    },
+    "vn029": {
+      "zone_plate": {
+        "cls": 9,
+        "poly": [
+          [
+            221,
+            75
+          ],
+          [
+            376,
+            111
+          ],
+          [
+            374,
+            382
+          ],
+          [
+            214,
+            357
+          ]
+        ]
+      }
+    },
+    "vn030": {
+      "bus_stop": {
+        "cls": 9,
+        "poly": [
+          [
+            90,
+            353
+          ],
+          [
+            178,
+            357
+          ],
+          [
+            177,
+            561
+          ],
+          [
+            88,
+            560
+          ]
+        ]
+      }
+    },
+    "vn034": {
+      "ped_crossing": {
+        "cls": 9,
+        "poly": [
+          [
+            231,
+            265
+          ],
+          [
+            234,
+            266
+          ],
+          [
+            262,
+            350
+          ],
+          [
+            262,
+            362
+          ],
+          [
+            207,
+            359
+          ],
+          [
+            209,
+            347
+          ]
+        ]
+      },
+      "observe_warning": {
+        "cls": 9,
+        "poly": [
+          [
+            91,
+            394
+          ],
+          [
+            137,
+            394
+          ],
+          [
+            138,
+            429
+          ],
+          [
+            90,
+            431
+          ]
+        ]
+      }
+    }
+  },
+  "split": [
+    "co029/s0+s1"
+  ],
+  "merge": {
+    "bd100": [
+      [
+        "s2+t3",
+        "t1",
+        5
+      ]
+    ],
+    "bd062": [
+      [
+        "s2",
+        "t11",
+        5
+      ]
+    ]
+  },
+  "notes": {
+    "co029": "Both feet on the pavement; separate pedestrian and empty bicycle.",
+    "co085": "Add the green street-name plate by tracing its outer face.",
+    "co426": "Remove the shop mannequin behind the occupied motorcycle.",
+    "bd064": "Two silver passenger cars in the queue were tagged as CNG.",
+    "bd033/s4": "Human fragment inside rickshaw annotation.",
+    "bd048/s4": "Pedestrian fragment proposed as rickshaw.",
+    "bd100": "Rear passenger must be part of the occupied motorcycle.",
+    "team292/293": "Two adjacent views of the same road, mirror and overhead signs with differing ground truth, both already in val. Preserve both.",
+    "team191": "Printed model on salon poster falsely annotated as pedestrian.",
+    "team239": "Rear of roundabout plate incorporates rectangular metal backing in the scene; front face is sign.",
+    "co127": "Pickup and trailer joined in native annotation; excluded.",
+    "bd074": "t6 is walking outside the bus. t10, t11, t12, t15 and t16 are visible through bus windows. Only passengers inside the buses removed from pedestrian labels.",
+    "bd023": "Excluded: passenger/cargo minitruck taxonomy and occluded rickshaw driver mask remain uncertain.",
+    "bd026/027/028": "Same held-out camera group. Crop 026 isolates the unambiguous foreground three-wheeler.",
+    "bd049": "Holdout crop isolates the nearest three-wheeler and removes uncertain distant traffic.",
+    "bd033/037": "Reserved scene, omitted from evaluation due to partly visible cargo cycle and poorly delimited overlapping rickshaws.",
+    "cross_split": "Reviewed 12 existing train/val feature-match pairs. No visible duplicate frame confirmed. Exclude VN012/014/035 from expansion due to repeated road corridor; CO024 and CO250 show clearly different scenes from validation.",
+    "bd062": "Right-side rider t11 belongs to the motorcycle s2. Exclude t29 which duplicates the motorcycle under the foreground rider.",
+    "bd021": "t13 is a passenger seen inside the silver car.",
+    "bd072": "t23 and t26 are passengers visible inside vehicle bodies.",
+    "vn029": "Trace the single shared zone plate, including its text and border.",
+    "vn034": "Use upper scene window, kept above the crowded row of riders.",
+    "vn020/022/031": "Visible pasted patch around sign in public source JPEG; excluded."
+  },
+  "vn_train_windows": {
+    "vn023": [
+      0.05,
+      0.07,
+      0.96,
+      0.82
+    ],
+    "vn029": [
+      0.04,
+      0.02,
+      0.98,
+      0.86
+    ],
+    "vn030": [
+      0,
+      0.09,
+      1,
+      1
+    ],
+    "vn034": [
+      0.01,
+      0.04,
+      0.98,
+      0.751
+    ]
+  }
+}

@@ -8,6 +8,7 @@ import time
 
 import torch
 
+from notebook_identity import NOTEBOOK_TEAMS, TEAM_ID
 from train_ablation import CHANGES, configure_train_args
 
 
@@ -35,8 +36,8 @@ def main():
     notebook_sha = digest(args.notebook)
     weights_sha = digest(Path("yolo26n-seg.pt"))
     cells = json.loads(args.notebook.read_text(encoding="utf-8"))["cells"]
-    if notebook_sha != "83e498336ed0a6081753ae49dc1dc2b93ca4066e28515a3204c799a9904876fd":
-        raise ValueError("Notebook differs from the frozen round-3 notebook")
+    if NOTEBOOK_TEAMS.get(notebook_sha) != TEAM_ID:
+        raise ValueError(f"Use the verified team-{TEAM_ID} training notebook")
     if weights_sha != "361fbfabab285c3237700b6bb91d7ecfa602cd945fffda8dbe1242829b71e73f":
         raise ValueError("Initial weights differ from round 3")
     ns = {"__name__": "__main__"}
@@ -66,6 +67,7 @@ def main():
 
     for i in (1, 2, 3, 4, 5, 7):
         cell(i)
+    assert ns["TEAM_ID"] == ns["PARAMS"]["TEAM_ID"] == TEAM_ID
     run.mkdir(parents=True, exist_ok=False)
     settings = dict(EPOCHS=args.epochs, BATCH=8, PATIENCE=args.patience or ns["PATIENCE"])
     ns.update(DATASET_PATH=str(dataset), WORK_DIR=str(run), DRIVE_OUTPUT_DIR="",
@@ -73,10 +75,12 @@ def main():
     ns["PARAMS"].update(settings)
     for i in (9, 11, 13):
         cell(i)
+    assert ns["SEED"] == TEAM_ID
     torch.cuda.reset_peak_memory_stats()
     start = time.monotonic()
     cell(15)
-    resources = dict(revision=args.revision, experiment=args.experiment, dataset_sha256=digest(dataset),
+    assert ns["TRAIN_INFO"]["train_args"]["seed"] == TEAM_ID
+    resources = dict(revision=args.revision, experiment=args.experiment, team_id=TEAM_ID, dataset_sha256=digest(dataset),
                      initial_weights_sha256=weights_sha, notebook_sha256=notebook_sha,
                      gpu=torch.cuda.get_device_name(), fit_and_native_val_seconds=time.monotonic()-start,
                      peak_allocated_mib=torch.cuda.max_memory_allocated()/2**20,

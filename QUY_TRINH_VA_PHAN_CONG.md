@@ -32,7 +32,7 @@ Phân công phối hợp dưới đây là đề xuất cho các khâu sau gán 
 
 ### Bước 1 — Chuẩn bị công cụ và chốt quy ước
 
-Tiến kiểm tra đường dẫn project và quyền truy cập. Máy CVAT của nhóm dùng một NVIDIA L4. Nuclio phục vụ SAM ViT-H và YOLOv7 cho việc tạo nhãn. Sang chuẩn bị môi trường train bằng notebook của đội, với mô hình dự thi **`yolo26n-seg`, ảnh đầu vào 640, `TEAM_ID = 26`**. [Notebook huấn luyện và xuất mô hình](notebooks/train_and_export.ipynb)
+Tiến kiểm tra đường dẫn project và quyền truy cập. Máy CVAT của nhóm dùng một NVIDIA L4. Nuclio phục vụ SAM ViT-H và YOLOv7 cho việc tạo nhãn. Sang chuẩn bị môi trường train bằng notebook của đội, với mô hình dự thi **`yolo26n-seg`, ảnh đầu vào 640, `TEAM_ID = 21`**. [Notebook huấn luyện và xuất mô hình](notebooks/train_and_export.ipynb)
 
 | ID | Lớp | ID | Lớp |
 |---:|---|---:|---|

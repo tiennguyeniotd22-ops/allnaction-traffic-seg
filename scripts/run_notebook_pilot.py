@@ -1,4 +1,4 @@
-"""Execute the team's 20-epoch notebook recipe on a prepared ZIP from the VM workdir."""
+"""Run the team's frozen notebook on a prepared ZIP from the VM workdir."""
 import argparse
 import hashlib
 import json
@@ -19,8 +19,12 @@ def main():
     parser.add_argument("--dataset", required=True, type=Path)
     parser.add_argument("--run", required=True, type=Path)
     parser.add_argument("--revision", required=True)
+    parser.add_argument("--epochs", type=int, default=20)
+    parser.add_argument("--patience", type=int)
     parser.add_argument("--notebook", type=Path, default=Path("train_and_export.ipynb"))
     args = parser.parse_args()
+    if args.epochs < 1 or (args.patience is not None and args.patience < 1):
+        parser.error("epochs and patience must be positive")
     run = args.run.resolve()
     dataset = args.dataset.resolve()
     notebook_sha = digest(args.notebook)
@@ -38,9 +42,10 @@ def main():
     for i in (1, 2, 3, 4, 5, 7):
         cell(i)
     run.mkdir(parents=True, exist_ok=False)
+    settings = dict(EPOCHS=args.epochs, BATCH=8, PATIENCE=args.patience or ns["PATIENCE"])
     ns.update(DATASET_PATH=str(dataset), WORK_DIR=str(run), DRIVE_OUTPUT_DIR="",
-              INSTALL_PACKAGES=False, EPOCHS=20, BATCH=8)
-    ns["PARAMS"].update(EPOCHS=20, BATCH=8)
+              INSTALL_PACKAGES=False, **settings)
+    ns["PARAMS"].update(settings)
     for i in (9, 11, 13):
         cell(i)
     torch.cuda.reset_peak_memory_stats()

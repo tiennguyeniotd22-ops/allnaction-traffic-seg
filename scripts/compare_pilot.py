@@ -31,6 +31,7 @@ def main():
     p = argparse.ArgumentParser()
     for k in ("baseline","pilot","manifest","out","notebook"):
         p.add_argument("--"+k, required=True, type=Path)
+    p.add_argument("--allow-schedule-change", action="store_true")
     args = p.parse_args()
     ns = {"__name__":"__main__"}
     for i in (1,2,3,4):
@@ -75,7 +76,11 @@ def main():
         for k in ("data","project","save_dir"):
             cfg.pop(k,None)
         configs.append(cfg)
-    assert configs[0] == configs[1]
+    differences = {k: [configs[0].get(k), configs[1].get(k)] for k in configs[0].keys() | configs[1].keys()
+                   if configs[0].get(k) != configs[1].get(k)}
+    allowed = {"epochs", "patience"} if args.allow_schedule_change else set()
+    if differences.keys() - allowed:
+        raise ValueError(f"Unexpected training changes: {differences}")
     rng = np.random.default_rng(26)
     diffs = []
     for _ in range(300):
@@ -93,7 +98,7 @@ def main():
     n = 0
     tiny = defaultdict(int)
     for split in ("train","val"):
-        for key,raw in files.items():
+        for key,raw in read(args.baseline/"dataset/source_map.json")["files"].items():
             if not key.startswith(split+"/"):
                 continue
             img = args.baseline/"raw"/raw
@@ -137,7 +142,8 @@ def main():
             parity.append(dict(file=img.name,shape=list(b.shape),max_abs=float(np.abs(a.numpy()-b).max())))
     value=dict(scores=scores, paired_scene_bootstrap_95_points=np.percentile(diffs,[2.5,97.5]).tolist(),
                bootstrap_replicates=len(diffs), area_comparisons=n,tiny_by_split=tiny,
-               validation_sha_verified=len(manifest),training_config_equal=True, onnx_parity=parity,
+               validation_sha_verified=len(manifest),training_config_equal=not differences,
+               training_config_differences=differences, onnx_parity=parity,
                opsets={i.domain:i.version for i in graph.opset_import},onnx_sha256=sha(data),
                best_sha256=sha(pt.read_bytes()),zip_sha256=sha(path.read_bytes()),zip_bytes=path.stat().st_size)
     args.out.write_text(json.dumps(value,indent=1))

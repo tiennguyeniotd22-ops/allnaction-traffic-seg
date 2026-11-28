@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AllnAction RoboTaxi Data-Centric — Đội 21 (10 Slides)</title>
+  <style>
+    :root {
+      --bg: #0b1120;
+      --card: #111827;
+      --card-2: #1e293b;
+      --border: #334155;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --green: #34d399;
+      --amber: #fbbf24;
+      --red: #f87171;
+      --purple: #a78bfa;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #020617;
+      color: var(--text);
+      line-height: 1.45;
+    }
+    @page { size: 1280px 720px; margin: 0; }
+    .slide {
+      width: 1280px;
+      height: 720px;
+      margin: 24px auto;
+      padding: 40px 52px;
+      background: radial-gradient(circle at top right, #172554 0%, var(--bg) 55%);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      page-break-after: always;
+      overflow: hidden;
+      position: relative;
+    }
+    @media print {
+      body { background: none; }
+      .slide { margin: 0; border: none; border-radius: 0; }
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+    .tag {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    h1 { font-size: 46px; font-weight: 800; line-height: 1.15; }
+    h2 { font-size: 30px; font-weight: 700; color: var(--text); }
+    h3 { font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+    p, li { font-size: 16px; color: #e2e8f0; }
+    .muted { color: var(--muted); font-size: 14px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; flex: 1; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .card {
+      background: rgba(17, 24, 39, 0.88);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .kpi {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .kpi .val { font-size: 32px; font-weight: 800; color: var(--green); }
+    .kpi .lbl { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+    table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+    th, td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+    th { color: var(--accent); font-weight: 700; background: rgba(30, 41, 59, 0.7); }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .badge {
+      display: inline-block; padding: 2px 8px; border-radius: 999px;
+      font-size: 12px; font-weight: 700;
+    }
+    .b-green { background: rgba(52, 211, 153, 0.18); color: var(--green); }
+    .b-red { background: rgba(248, 113, 113, 0.18); color: var(--red); }
+    .b-amber { background: rgba(251, 191, 36, 0.18); color: var(--amber); }
+    .b-blue { background: rgba(56, 189, 248, 0.18); color: var(--accent); }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 6px; }
+    code {
+      background: #1e293b; color: #7dd3fc; padding: 2px 6px;
+      border-radius: 4px; font-family: Consolas, monospace; font-size: 13.5px;
+    }
+    .footer {
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid var(--border); padding-top: 10px; margin-top: 14px;
+      font-size: 13px; color: var(--muted);
+    }
+    .class-pill {
+      background: #1e293b; border: 1px solid var(--border); border-radius: 8px;
+      padding: 8px 11px; font-size: 13.5px;
+    }
+    .class-pill strong { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<!-- SLIDE 1 -->
+<section class="slide">
+  <div class="header">
+    <span class="tag">AIInAction RoboTaxi Data-Centric Competition · Khóa 5</span>
+    <span class="muted">28/11/2026</span>
+  </div>
+  <div style="my: auto; display: flex; flex-direction: column; justify-content: center; gap: 22px; flex: 1;">
+    <span class="badge b-blue" style="width: fit-content; font-size: 14px;">Đội 21 · AllnAction Traffic Segmentation</span>
+    <h1>Xây Dựng Dữ Liệu Giao Thông Việt Nam<br/>Cho Robotaxi Với <span style="color: var(--accent);">YOLO26n-seg</span></h1>
+    <p style="font-size: 20px; color: var(--muted); max-width: 920px;">
+      Chiến lược Data-Centric: Prelabel đa nguồn → Kiểm soát ranh giới 11 lớp trên CVAT → Tinh chỉnh vòng lặp có đối chứng trên tập validation khóa cứng.
+    </p>
+    <div class="grid-4" style="margin-top: 10px;">
+      <div class="kpi"><div class="lbl">Kiến Trúc Cố Định</div><div class="val" style="font-size:24px; color:var(--accent);">YOLO26n-seg</div><div class="muted">640×640 · ONNX FP32</div></div>
+      <div class="kpi"><div class="lbl">Thước Đo Chấm</div><div class="val" style="font-size:24px;">100 × mAP</div><div class="muted">Mask mAP@[.50:.95]</div></div>
+      <div class="kpi"><div class="lbl">Val140 Tốt Nhất</div><div class="val">25,64</div><div class="muted">Tăng +4,29 so với Round 3</div></div>
+      <div class="kpi"><div class="lbl">Nhóm 5 Thành Viên</div><div class="val" style="font-size:22px; color:var(--amber);">Tiến · Trân · Đăng · Sang · Trinh</div><div class="muted">Repo: allnaction-traffic-seg</div></div>
+    </div>
+  </div>
+  <div class="footer"><span>AllnAction RoboTaxi · Slide 1/10</span><span>GitHub: tiennguyeniotd22-ops/allnaction-traffic-seg</span></div>
+</section>
+
+<!-- SLIDE 2 -->
+<section class="slide">
+  <div class="header"><h2>1. Bài Toán & Đặc Thù Giao Thông Việt Nam</h2><span class="tag">Slide 02</span></div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Thách Thức Thực Tế Trên Đường Phố Việt Nam</h3>
+      <ul>
+        <li><strong>Dòng xe máy ken đặc:</strong> Xe máy len lỏi sát hông ô tô, dễ bị gộp nhầm hoặc che khuất.</li>
+        <li><strong>Phương tiện đặc thù:</strong> Xích lô, xe ba gác máy, xe lam, rơ-moóc, người chở hàng cồng kềnh.</li>
+        <li><strong>Phân biệt người – xe:</strong> Tách rạch ròi xe đỗ/người dắt (<code>Motorcycle</code>/<code>Bicycle</code>) vs người đang ngồi lái (<code>Motorcyclist</code>/<code>Cyclist</code>).</li>
+        <li><strong>Tín hiệu nhỏ & điều kiện khắc nghiệt:</strong> Biển báo, hộp đèn giao thông nhỏ/xa, nắng gắt ngược sáng, mưa và đêm tối.</li>
+        <li><strong>Ràng buộc Data-Centric:</strong> Khóa cứng <code>yolo26n-seg</code> (`2,7M` params, `640×640`), chỉ cải thiện <strong>dữ liệu & quy trình gán nhãn</strong>.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Quy Ước Cố Định 11 Lớp Instance Segmentation</h3>
+      <div class="grid-2" style="gap: 8px; flex: unset;">
+        <div class="class-pill"><strong>0 · Car:</strong> Sedan, SUV, bán tải, 7–15 chỗ</div>
+        <div class="class-pill"><strong>1 · Bus:</strong> Xe buýt, xe khách ≥ 16 chỗ</div>
+        <div class="class-pill"><strong>2 · Truck:</strong> Xe tải, ben, đầu kéo (cabin)</div>
+        <div class="class-pill"><strong>3 · Other vehicle:</strong> Ba gác, xích lô, rơ-moóc</div>
+        <div class="class-pill"><strong>4 · Motorcycle:</strong> Xe máy trống / đang dắt</div>
+        <div class="class-pill"><strong>5 · Motorcyclist:</strong> 1 mask phủ xe + người</div>
+        <div class="class-pill"><strong>6 · Bicycle:</strong> Xe đạp trống / đang dắt</div>
+        <div class="class-pill"><strong>7 · Cyclist:</strong> 1 mask phủ xe đạp + người</div>
+        <div class="class-pill"><strong>8 · Pedestrian:</strong> Người đi bộ / dắt xe</div>
+        <div class="class-pill"><strong>9 · Sign:</strong> Mặt biển báo (bỏ cột)</div>
+        <div class="class-pill" style="grid-column: span 2;"><strong>10 · Traffic light:</strong> Cả hộp đèn tín hiệu (bỏ cột & tay đỡ)</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>Bài toán & Quy ước 11 lớp BTC</span><span>Slide 2/10</span></div>
+</section>
+
+<!-- SLIDE 3 -->
+<section class="slide">
+  <div class="header"><h2>2. Mô Hình Cố Định & Mốc Baseline v1</h2><span class="tag">Slide 03</span></div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Thông Số Mô Hình Nộp Bài (<code>yolo26n-seg</code>)</h3>
+      <table>
+        <tr><th>Thuộc Tính</th><th>Giá Trị Thực Tế</th></tr>
+        <tr><td>Kiến trúc</td><td><code>YOLO26n-seg</code> (Ultralytics 8.4.214)</td></tr>
+        <tr><td>Độ phức tạp</td><td>137 layers · 2.706.213 params · 9,2 GFLOPs</td></tr>
+        <tr><td>Input / Output</td><td><code>[1, 3, 640, 640]</code> → Mask <code>[1, 32, 160, 160]</code></td></tr>
+        <tr><td>Định dạng xuất</td><td>ONNX FP32, opset 17, 10,6 MB (ZIP 9,2 MB &lt; 42 MB)</td></tr>
+        <tr><td>Tốc độ suy luận CPU</td><td>p50 = 246 ms/ảnh (model) + 146 ms (decode)</td></tr>
+      </table>
+      <p class="muted" style="margin-top: 10px;">Kiểm tra parity PyTorch–ONNX và định dạng 1 file <code>model.onnx</code> ở gốc ZIP.</p>
+    </div>
+    <div class="card">
+      <h3>Kết Quả Baseline v1 (480 ảnh COCO + Aug Đêm/Mưa)</h3>
+      <div class="grid-3" style="margin-bottom: 12px;">
+        <div class="kpi"><div class="lbl">Mask mAP@[.5:.95]</div><div class="val" style="font-size:26px;">21,92</div></div>
+        <div class="kpi"><div class="lbl">AP50</div><div class="val" style="font-size:26px; color:var(--accent);">40,68</div></div>
+        <div class="kpi"><div class="lbl">AP75</div><div class="val" style="font-size:26px; color:var(--amber);">20,87</div></div>
+      </div>
+      <ul>
+        <li><strong>Lỗ hổng 1 — Thiếu lớp 3:</strong> <code>Other vehicle = 0</code> mẫu (mất 1/11 điểm trên test thật).</li>
+        <li><strong>Lỗ hổng 2 — Nhiễu nhãn 2 bánh:</strong> <code>Motorcycle = 3,5</code> điểm (`0,035`) do rule gộp COCO thô.</li>
+        <li><strong>Lỗ hổng 3 — Lỗi hình học:</strong> 5 đa giác tự cắt nhau và 156 nhãn &lt; 64 px².</li>
+        <li><strong>Lỗ hổng 4 — Lệch domain:</strong> Tập val80 từ COCO chưa phản ánh đường phố Việt Nam.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer"><span>Báo cáo Baseline v1 · Tag v1-baseline-21.92</span><span>Slide 3/10</span></div>
+</section>
+
+<!-- SLIDE 4 -->
+<section class="slide">
+  <div class="header"><h2>3. Chiến Lược Thu Thập & Khai Báo Nguồn Dữ Liệu</h2><span class="tag">Slide 04</span></div>
+  <div class="card" style="flex: 1;">
+    <h3>Tổng Hợp Các Bộ Dữ Liệu Công Khai & Tự Xây Dựng (Tuân Thủ Giấy Phép)</h3>
+    <table>
+      <thead>
+        <tr><th>Nguồn Dữ Liệu</th><th>Giấy Phép</th><th>Quy Mô Sử Dụng</th><th>Vai Trò Trong Pipeline</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>BDD100K</strong> (<code>dronefreak/BDD100K</code>)</td><td>BSD 3-Clause (Nghiên cứu/GD)</td><td>225 ảnh CVAT (75 ngày, 75 đêm, 75 mưa) + 45 val</td><td>Xây nền cảnh ngày/đêm/mưa; box gốc đưa qua SAM tạo mask.</td></tr>
+        <tr><td><strong>Vietnam Traffic Sign v5</strong> (Roboflow)</td><td>Public Domain</td><td>75 ảnh biển báo VN (YOLOv7 + SAM)</td><td>Bổ sung biển báo đặc thù Việt Nam (lớp <code>9: Sign</code>).</td></tr>
+        <tr><td><strong>Mapillary Vistas</strong></td><td>CC BY-NC-SA 4.0</td><td>182 cảnh đã review + 46 ảnh chẩn đoán</td><td>Tăng độ phủ góc dashcam, tách chuẩn <code>Motorcyclist</code>/<code>Cyclist</code>.</td></tr>
+        <tr><td><strong>COCO 2017</strong> (<code>val2017</code> + <code>train2017</code>)</td><td>CC BY 4.0</td><td>400 ảnh v1 + 400 ảnh bổ sung lớp hiếm v4</td><td>Bơm mạnh <code>Motorcycle</code> (+1.262), <code>Bicycle</code> (+1.106), <code>Cyclist</code> (+438).</td></tr>
+        <tr><td><strong>Poribohon + Wikimedia VN</strong></td><td>CC BY / Public Domain</td><td>58 cảnh ba gác + 24 đèn VN + 4 ảnh synth</td><td>Giải quyết lớp <code>3: Other vehicle</code> & đèn giao thông ngược sáng/đêm mưa.</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top: 14px;"><strong>Tổng hợp quy mô:</strong> Từ <code>300</code> ảnh CVAT ban đầu (4.281 polygon) → mở rộng lên <code>780</code> ảnh Round 3 → <code>1.156+</code> ảnh đã review & chuẩn hóa 11 lớp.</p>
+  </div>
+  <div class="footer"><span>Chi tiết ánh xạ lưu trong DATASET_PROVENANCE_REPORT.md</span><span>Slide 4/10</span></div>
+</section>
+
+<!-- SLIDE 5 -->
+<section class="slide">
+  <div class="header"><h2>4. Quy Trình Prelabel (SAM) & Sửa Nhãn Trên CVAT</h2><span class="tag">Slide 05</span></div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Kiến Trúc Auto-Prelabel Đa Tầng</h3>
+      <ul>
+        <li><strong>CVAT + Nuclio (GPU L4):</strong> Dùng box gốc BDD100K / YOLOv7 làm prompt cho <strong>SAM ViT-H</strong> sinh polygon nháp (300 ảnh / 4.281 polygon).</li>
+        <li><strong>Colab SAM 3 &amp; YOLO-World + SAM 2.1:</strong> Dùng text prompt mở rộng (<code>"auto rickshaw"</code>, <code>"tricycle"</code>, <code>"cyclo"</code>, <code>"traffic light"</code>) khoanh nhanh các lớp thiếu.</li>
+        <li><strong>Thuật toán tự gộp người – xe:</strong> Kiểm tra chồng lấn polygon/mask giữa <code>person</code> và xe 2 bánh → tự gộp thành <code>Motorcyclist (5)</code> / <code>Cyclist (7)</code>.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Chuẩn Hóa &amp; Duyệt Chéo 5 Thành Viên</h3>
+      <ul>
+        <li><strong>Chia 5 Job CVAT song song (60 ảnh/người):</strong> Mỗi Job đủ 15 ngày, 15 đêm, 15 mưa, 15 ảnh VN; mỗi người rà cả 11 lớp + 1 trọng tâm riêng.</li>
+        <li><strong>Sửa lỗi biên thực tế:</strong>
+          <ul>
+            <li>Tách 2 xe máy áp sát nhau thành 2 instance riêng.</li>
+            <li>Người đi bộ dắt xe → tách <code>Pedestrian</code> + <code>Motorcycle</code>/<code>Bicycle</code>.</li>
+            <li>Đèn giao thông → ôm đủ vỏ hộp, bỏ cột và nền.</li>
+          </ul>
+        </li>
+        <li><strong>Duyệt chéo (Cross-QC):</strong> Soi issue giữa 5 thành viên trước khi xuất YOLO-Seg.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer"><span>docs/QUY_TRINH_VA_PHAN_CONG.md · docs/HUONG_DAN_QC.md</span><span>Slide 5/10</span></div>
+</section>
+
+<!-- SLIDE 6 -->
+<section class="slide">
+  <div class="header"><h2>5. Tổ Chức GitHub, Kiểm Soát Chất Lượng &amp; Chống Leak</h2><span class="tag">Slide 06</span></div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Cấu Trúc Repo <code>allnaction-traffic-seg</code></h3>
+      <ul>
+        <li><code>configs/traffic_11_classes.yaml</code>: Khóa cứng thứ tự ID <code>0..10</code>.</li>
+        <li><code>notebooks/train_round4.ipynb</code> &amp; <code>archive/</code>: Tách biệt bản train mới nhất và bản lịch sử (<code>v2</code>, <code>round3</code>).</li>
+        <li><code>notebooks/prelabel/</code>: Chứa notebook SAM 3 &amp; SAM 2.1.</li>
+        <li><code>scripts/</code>: Bộ script tự động validate, sửa đa giác tự cắt (<code>findContours</code>), lọc mask &lt; 64 px², copy-paste lớp hiếm &amp; sinh ảnh đêm/mưa.</li>
+        <li><code>docs/</code> &amp; <code>reports/</code>: Lưu toàn bộ quy trình, QC và log JSON tái lập.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Khóa Tập Validation <code>val140</code> Chống Rò Rỉ</h3>
+      <ul>
+        <li><strong>Chia theo cảnh/video:</strong> Toàn bộ khung hình cùng đoạn video hoặc bản tăng cường đều nằm chung một split.</li>
+        <li><strong>Thành phần <code>val140</code> cố định:</strong> <code>45</code> ảnh BDD + <code>15</code> ảnh Việt Nam + <code>80</code> ảnh Drive (1.588+ GT hợp lệ).</li>
+        <li><strong>Holdout riêng cho lớp 3:</strong> <code>6</code> ảnh / <code>7</code> GT <code>Other vehicle</code> do <code>val140</code> thiếu GT lớp 3.</li>
+        <li><strong>Kiểm tra tự động:</strong> Đối chiếu SHA-256 ảnh/nhãn validation giữa mọi vòng chạy để đảm bảo công bằng 100%.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer"><span>Kiểm tra tự động qua scripts/validate_and_augment.py</span><span>Slide 6/10</span></div>
+</section>
+
+<!-- SLIDE 7 -->
+<section class="slide">
+  <div class="header"><h2>6. Phân Tích Lỗi Định Lượng Trên <code>val140</code> (Mốc Pilot 24,13)</h2><span class="tag">Slide 07</span></div>
+  <div class="card" style="flex: 1;">
+    <h3>Chẩn Đoán Từng Lớp Yếu Bằng Mask IoU &amp; Ma Trận Nhầm Lớp</h3>
+    <table>
+      <thead>
+        <tr><th>Lớp Yếu Trên <code>val140</code></th><th>AP[.50:.95]</th><th>Đo Lường Chi Tiết (Conf ≥ 0,25)</th><th>Nguyên Nhân &amp; Hành Động Sửa Train</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>4 · Motorcycle</strong></td><td class="num"><span class="badge b-red">7,45</span></td><td>Chỉ <strong>9/54</strong> khớp đúng (IoU ≥ 0,50)</td><td>Bỏ sót xe đỗ sát nhau hoặc gộp nhầm người đứng cạnh xe → rà 20 cảnh 2 bánh.</td></tr>
+        <tr><td><strong>7 · Cyclist</strong></td><td class="num"><span class="badge b-red">15,66</span></td><td><strong>12/33</strong> bị dự đoán nhầm thành <code>Pedestrian</code></td><td>Mask người–xe bị tách khi convert nguồn → gộp lại đúng 1 instance.</td></tr>
+        <tr><td><strong>10 · Traffic light</strong></td><td class="num"><span class="badge b-amber">15,58</span></td><td><strong>62/154</strong> ở IoU 0,50, chỉ <strong>24/154</strong> ở IoU 0,75</td><td>Biên mask chưa ôm sát hộp đèn xa/ngược sáng → bỏ cột, khoanh sát vỏ đèn.</td></tr>
+        <tr><td><strong>2 · Truck</strong></td><td class="num"><span class="badge b-amber">19,91</span></td><td><strong>14/82</strong> bị nhận nhầm thành <code>Car</code></td><td>Rà lại ranh giới bán tải (<code>Car</code>), đầu kéo (<code>Truck</code>) và rơ-moóc (<code>Other vehicle</code>).</td></tr>
+        <tr><td><strong>3 · Other vehicle</strong></td><td class="num"><span class="badge b-red">Thiếu GT</span></td><td>0 GT trên <code>val140</code></td><td>Tạo holdout riêng (6 ảnh / 7 GT) + gán 58 cảnh Poribohon &amp; 50 ảnh Wikimedia.</td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="margin-top: 14px;">Phân tích chi tiết lưu tại <code>reports/team21-qc20/error-profile.json</code> và <code>reports/DE_XUAT_TANG_DIEM_MASK.md</code>.</p>
+  </div>
+  <div class="footer"><span>Error-driven Data-Centric Loop</span><span>Slide 7/10</span></div>
+</section>
+
+<!-- SLIDE 8 -->
+<section class="slide">
+  <div class="header"><h2>7. Tiến Triển Điểm Số Qua Các Version</h2><span class="tag">Slide 08</span></div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Lộ Trình Tăng Trưởng Qua Các Vòng Chạy</h3>
+      <table>
+        <thead><tr><th>Phiên Bản</th><th>Tập Val</th><th class="num">Mask mAP</th><th class="num">AP50</th><th class="num">AP75</th></tr></thead>
+        <tbody>
+          <tr><td><code>v1-baseline</code></td><td>80 ảnh COCO</td><td class="num">21,92</td><td class="num">40,68</td><td class="num">20,87</td></tr>
+          <tr><td><code>Round 3 (team780)</code></td><td>140 ảnh khóa</td><td class="num">21,35</td><td class="num">36,82</td><td class="num">21,29</td></tr>
+          <tr><td><code>team21-qc20 (Pilot)</code></td><td>140 ảnh khóa</td><td class="num">24,13</td><td class="num">41,55</td><td class="num">24,49</td></tr>
+          <tr><td><code>team21-polish12</code></td><td>140 ảnh khóa</td><td class="num">25,25</td><td class="num">43,81</td><td class="num">25,39</td></tr>
+          <tr style="background: rgba(52, 211, 153, 0.12);"><td><strong><code>team21-mean-wide-bn</code></strong></td><td><strong>140 ảnh khóa</strong></td><td class="num"><strong style="color:var(--green);">25,64</strong></td><td class="num"><strong>43,87</strong></td><td class="num"><strong>25,42</strong></td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top: 12px;">Tăng <strong>+4,29 điểm</strong> so với Round 3 (<code>21,35 → 25,64</code>) và <strong>+1,51 điểm</strong> so với Pilot (khoảng bootstrap 95%: <code>[0,42; 2,64]</code>).</p>
+    </div>
+    <div class="card">
+      <h3>Cải Thiện AP Từng Lớp (Pilot → Bản Chọn 25,64)</h3>
+      <table>
+        <thead><tr><th>Lớp</th><th class="num">GT Val140</th><th class="num">Pilot</th><th class="num">Bản Chọn</th><th class="num">Chênh</th></tr></thead>
+        <tbody>
+          <tr><td><code>Car</code></td><td class="num">546</td><td class="num">40,27</td><td class="num">41,96</td><td class="num" style="color:var(--green);">+1,69</td></tr>
+          <tr><td><code>Bus</code></td><td class="num">35</td><td class="num">39,52</td><td class="num">42,17</td><td class="num" style="color:var(--green);">+2,65</td></tr>
+          <tr><td><code>Truck</code></td><td class="num">82</td><td class="num">19,91</td><td class="num">23,85</td><td class="num" style="color:var(--green);">+3,94</td></tr>
+          <tr><td><code>Motorcycle</code></td><td class="num">54</td><td class="num">7,45</td><td class="num">9,52</td><td class="num" style="color:var(--green);">+2,07</td></tr>
+          <tr><td><code>Pedestrian</code></td><td class="num">418</td><td class="num">27,10</td><td class="num">29,04</td><td class="num" style="color:var(--green);">+1,94</td></tr>
+          <tr><td><code>Sign</code></td><td class="num">152</td><td class="num">27,26</td><td class="num">28,74</td><td class="num" style="color:var(--green);">+1,48</td></tr>
+          <tr><td><code>Traffic light</code></td><td class="num">154</td><td class="num">15,58</td><td class="num">18,28</td><td class="num" style="color:var(--green);">+2,70</td></tr>
+          <tr><td><code>Other vehicle (holdout)</code></td><td class="num">7</td><td class="num">50,98</td><td class="num"><strong>61,61</strong></td><td class="num" style="color:var(--green);">+10,63</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="footer"><span>Số liệu chấm lại từ ONNX ZIP trên CPU · Nguồn: TEAM21_KET_QUA.md</span><span>Slide 8/10</span></div>
+</section>
+
+<!-- SLIDE 9 -->
+<section class="slide">
+  <div class="header"><h2>8. Kỹ Thuật Tối Ưu Hóa Đã Áp Dụng</h2><span class="tag">Slide 09</span></div>
+  <div class="grid-3" style="flex: 1;">
+    <div class="card">
+      <h3>1. Data-Centric Cleaning</h3>
+      <ul>
+        <li>Rà &amp; sửa lại 50 cảnh ưu tiên trên CVAT theo đúng quy ước 11 lớp.</li>
+        <li>Sửa đa giác tự cắt bằng rasterize + <code>findContours</code>.</li>
+        <li>Lọc bỏ nhãn nhiễu &lt; 64 px² ở khung 640 theo đúng hàm diện tích máy chấm.</li>
+        <li>Bổ sung 182 cảnh Mapillary đã review &amp; 58 cảnh ba gác Poribohon.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>2. Tăng Cường &amp; Simulation</h3>
+      <ul>
+        <li><strong>Offline Copy-Paste:</strong> Cắt mask lớp hiếm (<code>Other vehicle</code>, <code>Cyclist</code>) cân bằng sáng &amp; dán lên vùng mặt đường.</li>
+        <li><strong>Hard-Scene Synth:</strong> Tạo ảnh đêm (Gamma + noise) &amp; mưa (rain streaks) cho tập train; gen 4 cảnh ngã tư VN ngược sáng/đêm mưa.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>3. Chiến Lược Fine-Tuning</h3>
+      <ul>
+        <li><code>overlap_mask=False</code>: Chống đè mất mask xe máy đi sát ô tô.</li>
+        <li><code>close_mosaic=20</code> &amp; <code>erasing=0.1</code>: Giữ biên mask nét ở IoU 0,75, không xóa mất đèn đỏ nhỏ.</li>
+        <li>Tinh chỉnh <code>BatchNorm</code>, <code>o2m</code>, <code>mean</code> checkpoints giúp giữ ổn định điểm trên cả <code>val140</code> và holdout.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer"><span>Tất cả thử nghiệm tuân thủ 1 file model.onnx (yolo26n-seg, 640, opset 17)</span><span>Slide 9/10</span></div>
+</section>
+
+<!-- SLIDE 10 -->
+<section class="slide">
+  <div class="header"><h2>9. Kết Quả Cuối, Hạn Chế &amp; Khả Năng Tái Lập</h2><span class="tag">Slide 10</span></div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Kết Quả Hệ Thống Cuộc Thi &amp; Hạn Chế</h3>
+      <div class="grid-2" style="gap: 12px; margin-bottom: 14px; flex: unset;">
+        <div class="kpi"><div class="lbl">Điểm Public (Hệ Thống)</div><div class="val" style="color:var(--accent);">[Cập nhật]</div></div>
+        <div class="kpi"><div class="lbl">Điểm Private (11:00)</div><div class="val">[Cập nhật]</div></div>
+      </div>
+      <ul>
+        <li><strong>Hạn chế 1:</strong> Lớp <code>Motorcycle</code> (<code>9,52</code>) vẫn khó khi hàng chục xe máy đỗ san sát hoặc bị che khuất một phần sau ô tô.</li>
+        <li><strong>Hạn chế 2:</strong> <code>val140</code> thiếu GT lớp <code>Other vehicle</code> nên phải đánh giá chéo trên holdout riêng (6 ảnh / 7 GT).</li>
+        <li><strong>Hướng phát triển:</strong> Bổ sung thêm video dashcam Việt Nam giờ cao điểm và mở rộng active learning cho <code>Motorcycle</code> &amp; <code>Traffic light</code>.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Gói Bàn Giao Tái Lập 100%</h3>
+      <ul>
+        <li><strong>Repository sạch:</strong> <code>github.com/tiennguyeniotd22-ops/allnaction-traffic-seg</code></li>
+        <li><strong>Notebook tái lập:</strong> <code>notebooks/train_round4.ipynb</code> (và <code>archive/</code>).</li>
+        <li><strong>Báo cáo &amp; Log:</strong> <code>DATASET_PROVENANCE_REPORT.md</code>, <code>EXPERIMENTS.md</code>, <code>run_report.json</code>, <code>replay.json</code>.</li>
+        <li><strong>Gói nộp hợp lệ:</strong> <code>submission.zip</code> chứa duy nhất <code>model.onnx</code> FP32 (`&lt; 42 MB`), đã qua kiểm tra parity PyTorch–ONNX.</li>
+      </ul>
+      <p style="margin-top: 14px; color: var(--green); font-weight: 700;">Cảm ơn Ban Tổ Chức &amp; Hội Đồng Giám Khảo!</p>
+    </div>
+  </div>
+  <div class="footer"><span>AllnAction RoboTaxi Data-Centric Competition · Đội 21</span><span>Slide 10/10</span></div>
+</section>
+
+</body>
+</html>

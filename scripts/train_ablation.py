@@ -16,10 +16,31 @@ CHANGES = {
     "no-copy-paste": {"copy_paste": (0.35, 0.0)},
     "mask-ratio-4": {"mask_ratio": (2, 4)},
     "lower-lr": {"lr0": (0.002, 0.0007)},
+    "o2m-constant": {"lr0": (0.002, 0.0007)},
     "head-transfer": {"lr0": (0.002, 0.0007)},
     "sgd": {"optimizer": ("AdamW", "SGD")},
     "linear-lr": {"cos_lr": (True, False)},
 }
+
+
+def hold_export_branch_weight(trainer):
+    """Keep the native initial loss mix for every epoch of this matched trial."""
+    from ultralytics.utils.loss import E2ELoss, SegmentLoss26
+    from ultralytics.utils.torch_utils import unwrap_model
+
+    model = unwrap_model(trainer.model)
+    if getattr(model, "criterion", None) is None:
+        model.criterion = model.init_criterion()
+    criterion = model.criterion
+    assert type(criterion) is E2ELoss
+    assert type(criterion.one2many) is type(criterion.one2one) is SegmentLoss26
+    assert criterion.total == 1 and criterion.o2m_copy == .8 and criterion.o2m == .8
+    assert math.isclose(criterion.o2o, .2)
+    if trainer.epoch == 0:
+        assert criterion.final_o2m == .1 and criterion.updates == 0
+        criterion.final_o2m = criterion.o2m_copy
+    assert criterion.final_o2m == .8
+    print(f"Epoch {trainer.epoch + 1} train loss weights: one2many={criterion.o2m:.2f} one2one={criterion.o2o:.2f}", flush=True)
 
 
 def repeat_rare(data_yaml, seed, run):

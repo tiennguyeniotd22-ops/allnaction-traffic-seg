@@ -9,7 +9,9 @@ import torch
 
 
 @torch.no_grad()
-def refresh(ckpt_path, run):
+def refresh(ckpt_path, run, momentum=.025):
+    if not 0 < momentum <= 1:
+        raise ValueError("BatchNorm momentum must be between zero (exclusive) and one")
     source = json.loads((run / "dataset/source_map.json").read_bytes())["files"]
     groups = {"Vietnam": [], "BDD": [], "COCO": []}
     for key, value in source.items():
@@ -33,7 +35,7 @@ def refresh(ckpt_path, run):
     before = {k: tensor.clone() for k, tensor in net.state_dict().items()}
     for layer in norm:
         layer.train()
-        layer.momentum = .025
+        layer.momentum = momentum
     records = []
     batch = []
     for _, key, value in chosen:
@@ -67,4 +69,4 @@ def refresh(ckpt_path, run):
         torch.save(ckpt, stream)
     tmp.replace(ckpt_path)
     return dict(seed=21, images=records, images_per_domain=count, domains=list(groups),
-                batch=8, momentum=.025, updated_buffers=len(changed))
+                batch=8, momentum=momentum, updated_buffers=len(changed))

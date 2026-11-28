@@ -33,7 +33,10 @@ def main():
     source.add_argument("--epoch", type=int, help="Use the saved end-of-epoch snapshot (one-based)")
     source.add_argument("--mean-with", type=Path, nargs="+", help="Average best weights of these runs and the parent")
     p.add_argument("--refresh-bn", action="store_true", help="Update normalization buffers with train images after averaging")
+    p.add_argument("--bn-momentum", type=float, help="EMA momentum for train-only BatchNorm refresh (default 0.025)")
     a = p.parse_args()
+    if a.bn_momentum is not None and not a.refresh_bn:
+        p.error("--bn-momentum requires --refresh-bn")
     if a.refresh_bn and not a.mean_with:
         p.error("--refresh-bn requires --mean-with")
     parent = a.parent.resolve()
@@ -48,7 +51,7 @@ def main():
         averaged = mean_checkpoint([parent, *(p.resolve() for p in a.mean_with)], last)
         if a.refresh_bn:
             from team21_bn_refresh import refresh
-            calibration = refresh(last, parent)
+            calibration = refresh(last, parent, .025 if a.bn_momentum is None else a.bn_momentum)
     assert sha(weights / "best.pt") == report["train"]["best_sha256"]
     resources = read(parent / "resources.json")
     assert sha(a.notebook) == resources["notebook_sha256"]

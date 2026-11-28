@@ -3,7 +3,7 @@
 set -euo pipefail
 cd ~/baseline-cvat300
 export CUDA_VISIBLE_DEVICES="" OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1
-code=overnight/team21-transfer-code
+code=${TEAM21_CODE:-overnight/team21-transfer-code}
 py=.venv/bin/python
 run=$1
 reference=$2
@@ -18,6 +18,7 @@ manifest=audit_phase12/validation-manifest.json
 notebook=train_team21.ipynb
 options=()
 if [[ ${TEAM21_REFRESH_BN:-0} == 1 ]]; then options+=(--refresh-bn); fi
+if [[ -n ${TEAM21_BN_MOMENTUM:-} ]]; then options+=(--bn-momentum "$TEAM21_BN_MOMENTUM"); fi
 "$py" "$code/overnight_last_checkpoint.py" "$base" "$dest" "$notebook" "$manifest" --mean-with "${sources[@]}" "${options[@]}"
 mkdir -p "$scores"
 if [[ ! -s "$scores/held/score.json" ]]; then

@@ -203,6 +203,7 @@ def main():
         refresh = " --refresh-bn" if decision.get("bn_refresh") else ""
         if refresh:
             applied = decision["bn_refresh"]
+            refresh += f" --bn-momentum {applied['momentum']}"
             reproduction.extend(["", f"Hiệu chỉnh BatchNorm trên {len(applied['images'])} ảnh train, "
                                  f"gồm {applied['images_per_domain']} ảnh mỗi nguồn Việt Nam, BDD và COCO."])
         reproduction.extend(["", "Từ thư mục làm việc của VM, dùng các lệnh sau để chạy lại từng fit rồi lấy trung bình.",

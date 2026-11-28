@@ -63,6 +63,12 @@ def main():
             assert source.count(marker) == 1
             ns["retain_snapshot"] = retain_snapshot
             source = source.replace(marker, 'model.add_callback("on_model_save", retain_snapshot)\n' + marker)
+        if i == 15 and args.experiment == "o2m-constant":
+            from train_ablation import hold_export_branch_weight
+            marker = "model.train(**TRAIN_ARGS)"
+            assert source.count(marker) == 1
+            ns["hold_export_branch_weight"] = hold_export_branch_weight
+            source = source.replace(marker, 'model.add_callback("on_train_epoch_start", hold_export_branch_weight)\n' + marker)
         if i == 15 and args.experiment == "head-transfer":
             from team21_head_transfer import TrafficTransferTrainer
             marker = "model.train(**TRAIN_ARGS)"

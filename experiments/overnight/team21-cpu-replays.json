@@ -662,6 +662,313 @@
         "run": "team21-sgd20",
         "weights_sha256": "ca980a8a4dd24dec1b18f9a7239dcae12826f593c22d9da487a6d798df443ec3"
       }
+    ],
+    "paired_vs_prior_leader": {
+      "reference": "team21-mean-sgd-bn",
+      "reference_zip_sha256": "bbfd87b97d822dca4407517226428f93f96b6cef41aa52e1535e9ddc936b344d",
+      "difference_points": 0.08306500841058773,
+      "interval_95_points": [
+        -0.040897876045407136,
+        0.19140662263139163
+      ],
+      "replicates": 300
+    }
+  },
+  "team21-mean-wide-bn": {
+    "zip_sha256": "242718239bafd291118deab4a330f64c370f78bbee91e2855287d960d0808ddb",
+    "val_manifest_sha256": "23c92420f1742f9d6091c09930bb43e055558064b604a2b61291b62eaeeb2013",
+    "dataset_sha256": "33362fd1aee1760da38f0f67e41a97c61dcc6aed6c10561bfbf9ef058755c2ef",
+    "prepared_sha256": "7e8e27dd018b71d8b1c9a9835680ec6088b0d707950883e6cd73276700936b10",
+    "notebook_sha256": "9cf720e6cad44b8dec33e9a6fafc8425ce74e61d1fb37da65584b2ac9d4a73c5",
+    "predictions_sha256": "454dff1b9929de6d712b68fb08073dce64bfc3f2b0464f9319403de922be63d5",
+    "images": 140,
+    "per_class_ap": {
+      "Car": 0.41964716290175347,
+      "Bus": 0.4217366488037534,
+      "Truck": 0.2385238573691721,
+      "Motorcycle": 0.09522063676321474,
+      "Motorcyclist": 0.34153345714204797,
+      "Bicycle": 0.1376207738451976,
+      "Cyclist": 0.149172441786213,
+      "Pedestrian": 0.2904117428128926,
+      "Sign": 0.2874032372591441,
+      "Traffic light": 0.1827814745570851
+    },
+    "map50_95": 0.2564051433240474,
+    "probe46": 0.24988569553246154,
+    "source_weights": [
+      {
+        "dataset_sha256": "33362fd1aee1760da38f0f67e41a97c61dcc6aed6c10561bfbf9ef058755c2ef",
+        "epochs": 20,
+        "experiment": "lower-lr",
+        "patience": 20,
+        "revision": "c80203c7b395dc7695b1fd94742e667c8562094e",
+        "run": "team21-qc20",
+        "weights_sha256": "fb6e63dad21324fe3c36505e8e6281d902c864855f156142c9340078ed4694db"
+      },
+      {
+        "dataset_sha256": "7141c5527ec6bb2a86bb897f336435bcfd2a0be705efb6909e9dd92cfc527010",
+        "epochs": 20,
+        "experiment": "lower-lr",
+        "patience": 20,
+        "revision": "c80203c7b395dc7695b1fd94742e667c8562094e",
+        "run": "team21-btc20",
+        "weights_sha256": "fcc3abdc7e8318dc316513eb31eccdbcf16458e7f1b9fa0502523e1b87182e88"
+      },
+      {
+        "dataset_sha256": "155b1d3cc81ea8b87c6123795a02702eb847b3807c85b76d4d21e496225e3252",
+        "epochs": 20,
+        "experiment": "lower-lr",
+        "patience": 20,
+        "revision": "c80203c7b395dc7695b1fd94742e667c8562094e",
+        "run": "team21-road20",
+        "weights_sha256": "4b888f8437aeced76d1407746ff1f48f2d4300c462dcdd50f7750bb5cd9bdf9a"
+      },
+      {
+        "dataset_sha256": "935c2e808540529595eb21fc175a79df35f7f2050615b7cc480ef047a3935ba0",
+        "epochs": 55,
+        "experiment": "lower-lr",
+        "patience": 25,
+        "revision": "c80203c7b395dc7695b1fd94742e667c8562094e",
+        "run": "team21-full",
+        "weights_sha256": "4396bc0cf2c0080656d9d5b878f0cd2aa006aa1f7a847aff160a8f54c1fb0f0a"
+      },
+      {
+        "dataset_sha256": "33362fd1aee1760da38f0f67e41a97c61dcc6aed6c10561bfbf9ef058755c2ef",
+        "epochs": 20,
+        "experiment": "sgd",
+        "patience": 20,
+        "revision": "c80203c7b395dc7695b1fd94742e667c8562094e",
+        "run": "team21-sgd20",
+        "weights_sha256": "ca980a8a4dd24dec1b18f9a7239dcae12826f593c22d9da487a6d798df443ec3"
+      },
+      {
+        "dataset_sha256": "03b99ac7680044dfb2ae2b1e22839d78fcfc20cf853e6c33c39b2b4d5e52daa2",
+        "epochs": 20,
+        "experiment": "lower-lr",
+        "patience": 20,
+        "revision": "f7dc4891f77c095a3347ad352ed94d9375fb3a56",
+        "run": "team21-vnwide20",
+        "weights_sha256": "31f993b53a4df00acbeddf1f6222269c555f071f23ea93aea48b91509347284f"
+      }
+    ],
+    "paired_vs_prior_leader": {
+      "reference": "team21-mean-sgd-bn",
+      "reference_zip_sha256": "bbfd87b97d822dca4407517226428f93f96b6cef41aa52e1535e9ddc936b344d",
+      "difference_points": 0.12671627801982277,
+      "interval_95_points": [
+        -0.28504934596040726,
+        0.4476354553566654
+      ],
+      "replicates": 300
+    }
+  },
+  "team21-vnwide20": {
+    "zip_sha256": "fd9ce0dffb72a446c7ed2c31fcd5ddf37861ed5bdf9a867393921bd9a45272dc",
+    "val_manifest_sha256": "23c92420f1742f9d6091c09930bb43e055558064b604a2b61291b62eaeeb2013",
+    "dataset_sha256": "03b99ac7680044dfb2ae2b1e22839d78fcfc20cf853e6c33c39b2b4d5e52daa2",
+    "prepared_sha256": "30f6f5354e9ca999f8d9a608d58531ab669b537b9465588dd9b48b6f460811f4",
+    "notebook_sha256": "9cf720e6cad44b8dec33e9a6fafc8425ce74e61d1fb37da65584b2ac9d4a73c5",
+    "predictions_sha256": "f1578c0bb00af73299f55d39941c432968bb191be84c1da3885b3f7c35d4b277",
+    "images": 140,
+    "per_class_ap": {
+      "Car": 0.3952497436728833,
+      "Bus": 0.4117485969647248,
+      "Truck": 0.22835205782304552,
+      "Motorcycle": 0.0876003407684895,
+      "Motorcyclist": 0.3414116827633305,
+      "Bicycle": 0.12254313928846532,
+      "Cyclist": 0.1397514848610397,
+      "Pedestrian": 0.2577423433330301,
+      "Sign": 0.27113101883228935,
+      "Traffic light": 0.1612164013814108
+    },
+    "map50_95": 0.24167468096887088,
+    "probe46": 0.2467893560973635,
+    "source_weights": []
+  },
+  "last-team21-vnwide20": {
+    "zip_sha256": "fe34ffd1ae59467d160838b2f252bba486cea7c4b53e737506a04b6b86825fbd",
+    "val_manifest_sha256": "23c92420f1742f9d6091c09930bb43e055558064b604a2b61291b62eaeeb2013",
+    "dataset_sha256": "03b99ac7680044dfb2ae2b1e22839d78fcfc20cf853e6c33c39b2b4d5e52daa2",
+    "prepared_sha256": "30f6f5354e9ca999f8d9a608d58531ab669b537b9465588dd9b48b6f460811f4",
+    "notebook_sha256": "9cf720e6cad44b8dec33e9a6fafc8425ce74e61d1fb37da65584b2ac9d4a73c5",
+    "predictions_sha256": "b2db6b480995aecba51c9a675ea4b46414f6aa30869fc7dc45a520f8bb732ed6",
+    "images": 140,
+    "per_class_ap": {
+      "Car": 0.39664492092998044,
+      "Bus": 0.41115903244634844,
+      "Truck": 0.2351583628541781,
+      "Motorcycle": 0.08904661879090911,
+      "Motorcyclist": 0.34482989774446027,
+      "Bicycle": 0.11692771060331775,
+      "Cyclist": 0.1460129286361557,
+      "Pedestrian": 0.2606906053933193,
+      "Sign": 0.26890630373555013,
+      "Traffic light": 0.16537927808640823
+    },
+    "map50_95": 0.24347556592206274,
+    "probe46": 0.24780113465824272,
+    "source_weights": []
+  },
+  "team21-prior25": {
+    "zip_sha256": "8b0878284b931dd42f9abd9bc41ad07da005892a9e27cd66d3110be45856eeb7",
+    "val_manifest_sha256": "23c92420f1742f9d6091c09930bb43e055558064b604a2b61291b62eaeeb2013",
+    "dataset_sha256": "33362fd1aee1760da38f0f67e41a97c61dcc6aed6c10561bfbf9ef058755c2ef",
+    "prepared_sha256": "7e8e27dd018b71d8b1c9a9835680ec6088b0d707950883e6cd73276700936b10",
+    "notebook_sha256": "9cf720e6cad44b8dec33e9a6fafc8425ce74e61d1fb37da65584b2ac9d4a73c5",
+    "predictions_sha256": "efd961b48a4226b52e1a56d831415d6e4dfb37dd93413bd7de952e3c5c3e6bbb",
+    "images": 140,
+    "per_class_ap": {
+      "Car": 0.4172309918908699,
+      "Bus": 0.4321327747511635,
+      "Truck": 0.24607410670891752,
+      "Motorcycle": 0.09251598931671687,
+      "Motorcyclist": 0.3570012058013743,
+      "Bicycle": 0.14195910366647532,
+      "Cyclist": 0.12345188311331656,
+      "Pedestrian": 0.2840481442145245,
+      "Sign": 0.24682792326848563,
+      "Traffic light": 0.1778781488954786
+    },
+    "map50_95": 0.25191202716273225,
+    "probe46": 0.24682007008239346,
+    "source_weights": []
+  },
+  "team21-o2m20": {
+    "zip_sha256": "71c696d1e8a234cdd777eb32efe838fe6377e0d2bce21bfa4cd9b61dd0d15070",
+    "val_manifest_sha256": "23c92420f1742f9d6091c09930bb43e055558064b604a2b61291b62eaeeb2013",
+    "dataset_sha256": "33362fd1aee1760da38f0f67e41a97c61dcc6aed6c10561bfbf9ef058755c2ef",
+    "prepared_sha256": "7e8e27dd018b71d8b1c9a9835680ec6088b0d707950883e6cd73276700936b10",
+    "notebook_sha256": "9cf720e6cad44b8dec33e9a6fafc8425ce74e61d1fb37da65584b2ac9d4a73c5",
+    "predictions_sha256": "798f4c1ef8c555db4f609faef55bf07f5c8c828859d34a4b58c98abd2c6905c1",
+    "images": 140,
+    "per_class_ap": {
+      "Car": 0.40774382770645123,
+      "Bus": 0.3898256558187183,
+      "Truck": 0.2026458073431623,
+      "Motorcycle": 0.06500875450897606,
+      "Motorcyclist": 0.32584686415036546,
+      "Bicycle": 0.13435362369169393,
+      "Cyclist": 0.13151792196054357,
+      "Pedestrian": 0.27142899288768474,
+      "Sign": 0.2601986881559442,
+      "Traffic light": 0.15973378350008924
+    },
+    "map50_95": 0.23483039197236288,
+    "probe46": 0.2417198573237214,
+    "source_weights": []
+  },
+  "team21-mean-wide-o2m": {
+    "zip_sha256": "34ee3b9b6aa482a536e9f8100285b7885e7613128c03ba1277b01eace0f3a167",
+    "val_manifest_sha256": "23c92420f1742f9d6091c09930bb43e055558064b604a2b61291b62eaeeb2013",
+    "dataset_sha256": "33362fd1aee1760da38f0f67e41a97c61dcc6aed6c10561bfbf9ef058755c2ef",
+    "prepared_sha256": "7e8e27dd018b71d8b1c9a9835680ec6088b0d707950883e6cd73276700936b10",
+    "notebook_sha256": "9cf720e6cad44b8dec33e9a6fafc8425ce74e61d1fb37da65584b2ac9d4a73c5",
+    "predictions_sha256": "3c4f2678c44f59e54a64127c6b032edc13c264e4981ca78118412515660a7740",
+    "images": 140,
+    "per_class_ap": {
+      "Car": 0.4194681479239241,
+      "Bus": 0.42378001439062907,
+      "Truck": 0.2344364756469607,
+      "Motorcycle": 0.08113070105608505,
+      "Motorcyclist": 0.34516834165572885,
+      "Bicycle": 0.13959646552672228,
+      "Cyclist": 0.14863151172588687,
+      "Pedestrian": 0.2902042905437458,
+      "Sign": 0.2872351117643005,
+      "Traffic light": 0.18384789361026063
+    },
+    "map50_95": 0.2553498953844244,
+    "probe46": 0.2506762596857446,
+    "source_weights": [
+      {
+        "dataset_sha256": "33362fd1aee1760da38f0f67e41a97c61dcc6aed6c10561bfbf9ef058755c2ef",
+        "epochs": 20,
+        "experiment": "lower-lr",
+        "patience": 20,
+        "revision": "c80203c7b395dc7695b1fd94742e667c8562094e",
+        "run": "team21-qc20",
+        "weights_sha256": "fb6e63dad21324fe3c36505e8e6281d902c864855f156142c9340078ed4694db"
+      },
+      {
+        "dataset_sha256": "7141c5527ec6bb2a86bb897f336435bcfd2a0be705efb6909e9dd92cfc527010",
+        "epochs": 20,
+        "experiment": "lower-lr",
+        "patience": 20,
+        "revision": "c80203c7b395dc7695b1fd94742e667c8562094e",
+        "run": "team21-btc20",
+        "weights_sha256": "fcc3abdc7e8318dc316513eb31eccdbcf16458e7f1b9fa0502523e1b87182e88"
+      },
+      {
+        "dataset_sha256": "155b1d3cc81ea8b87c6123795a02702eb847b3807c85b76d4d21e496225e3252",
+        "epochs": 20,
+        "experiment": "lower-lr",
+        "patience": 20,
+        "revision": "c80203c7b395dc7695b1fd94742e667c8562094e",
+        "run": "team21-road20",
+        "weights_sha256": "4b888f8437aeced76d1407746ff1f48f2d4300c462dcdd50f7750bb5cd9bdf9a"
+      },
+      {
+        "dataset_sha256": "935c2e808540529595eb21fc175a79df35f7f2050615b7cc480ef047a3935ba0",
+        "epochs": 55,
+        "experiment": "lower-lr",
+        "patience": 25,
+        "revision": "c80203c7b395dc7695b1fd94742e667c8562094e",
+        "run": "team21-full",
+        "weights_sha256": "4396bc0cf2c0080656d9d5b878f0cd2aa006aa1f7a847aff160a8f54c1fb0f0a"
+      },
+      {
+        "dataset_sha256": "33362fd1aee1760da38f0f67e41a97c61dcc6aed6c10561bfbf9ef058755c2ef",
+        "epochs": 20,
+        "experiment": "sgd",
+        "patience": 20,
+        "revision": "c80203c7b395dc7695b1fd94742e667c8562094e",
+        "run": "team21-sgd20",
+        "weights_sha256": "ca980a8a4dd24dec1b18f9a7239dcae12826f593c22d9da487a6d798df443ec3"
+      },
+      {
+        "dataset_sha256": "03b99ac7680044dfb2ae2b1e22839d78fcfc20cf853e6c33c39b2b4d5e52daa2",
+        "epochs": 20,
+        "experiment": "lower-lr",
+        "patience": 20,
+        "revision": "f7dc4891f77c095a3347ad352ed94d9375fb3a56",
+        "run": "team21-vnwide20",
+        "weights_sha256": "31f993b53a4df00acbeddf1f6222269c555f071f23ea93aea48b91509347284f"
+      },
+      {
+        "dataset_sha256": "33362fd1aee1760da38f0f67e41a97c61dcc6aed6c10561bfbf9ef058755c2ef",
+        "epochs": 20,
+        "experiment": "o2m-constant",
+        "patience": 20,
+        "revision": "53055d86b398c30b22b8686693401a8e7b21a5c3",
+        "run": "team21-o2m20",
+        "weights_sha256": "8d68c4aa145f8e2baf5da3d5ed20b07e047279e4cdda849d531fc654304a3d70"
+      }
     ]
+  },
+  "team21-prior50": {
+    "zip_sha256": "8b98a151776b6b5636b3704a2ccd5c7b0883cb85da8b6eee9012b6cf822e2779",
+    "val_manifest_sha256": "23c92420f1742f9d6091c09930bb43e055558064b604a2b61291b62eaeeb2013",
+    "dataset_sha256": "33362fd1aee1760da38f0f67e41a97c61dcc6aed6c10561bfbf9ef058755c2ef",
+    "prepared_sha256": "7e8e27dd018b71d8b1c9a9835680ec6088b0d707950883e6cd73276700936b10",
+    "notebook_sha256": "9cf720e6cad44b8dec33e9a6fafc8425ce74e61d1fb37da65584b2ac9d4a73c5",
+    "predictions_sha256": "8787b0fdd06ad4288f8d02e6febfac75ddde874dd8d2358fdb2b81f2f0e7baad",
+    "images": 140,
+    "per_class_ap": {
+      "Car": 0.4102847403866381,
+      "Bus": 0.4422017594282897,
+      "Truck": 0.24551491325754787,
+      "Motorcycle": 0.07519605914196045,
+      "Motorcyclist": 0.28378065125276203,
+      "Bicycle": 0.14563356739392236,
+      "Cyclist": 0.08356435643564356,
+      "Pedestrian": 0.27499602705782344,
+      "Sign": 0.13214440540644692,
+      "Traffic light": 0.17707285045615684
+    },
+    "map50_95": 0.2270389330217191,
+    "probe46": 0.22148500479259706,
+    "source_weights": []
   }
 }

@@ -20,7 +20,13 @@ options=()
 if [[ ${TEAM21_REFRESH_BN:-0} == 1 ]]; then options+=(--refresh-bn); fi
 if [[ -n ${TEAM21_BN_MOMENTUM:-} ]]; then options+=(--bn-momentum "$TEAM21_BN_MOMENTUM"); fi
 if [[ ${TEAM21_BN_NOTEBOOK_INPUT:-0} == 1 ]]; then options+=(--bn-use-notebook-input); fi
-"$py" "$code/overnight_last_checkpoint.py" "$base" "$dest" "$notebook" "$manifest" --mean-with "${sources[@]}" "${options[@]}"
+if [[ -n ${TEAM21_PRETRAINED_PRIOR:-} ]]; then
+    [[ ${#sources[@]} == 0 ]]
+    options+=(--pretrained-prior "$TEAM21_PRETRAINED_PRIOR")
+else
+    options+=(--mean-with "${sources[@]}")
+fi
+"$py" "$code/overnight_last_checkpoint.py" "$base" "$dest" "$notebook" "$manifest" "${options[@]}"
 mkdir -p "$scores"
 if [[ ! -s "$scores/held/score.json" ]]; then
     "$py" "$code/overnight_holdout.py" --run "$dest" --holdout overnight/e2-v1/holdout.zip \

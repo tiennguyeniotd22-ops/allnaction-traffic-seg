@@ -32,14 +32,15 @@ def main():
     source = p.add_mutually_exclusive_group()
     source.add_argument("--epoch", type=int, help="Use the saved end-of-epoch snapshot (one-based)")
     source.add_argument("--mean-with", type=Path, nargs="+", help="Average best weights of these runs and the parent")
+    source.add_argument("--pretrained-prior", type=float, help="Fraction of aligned official COCO initialization")
     p.add_argument("--refresh-bn", action="store_true", help="Update normalization buffers with train images after averaging")
     p.add_argument("--bn-momentum", type=float, help="EMA momentum for train-only BatchNorm refresh (default 0.025)")
     p.add_argument("--bn-use-notebook-input", action="store_true", help="Preprocess train calibration frames with the frozen notebook")
     a = p.parse_args()
     if (a.bn_momentum is not None or a.bn_use_notebook_input) and not a.refresh_bn:
         p.error("BatchNorm options require --refresh-bn")
-    if a.refresh_bn and not a.mean_with:
-        p.error("--refresh-bn requires --mean-with")
+    if a.refresh_bn and not (a.mean_with or a.pretrained_prior is not None):
+        p.error("BatchNorm refresh requires a derived checkpoint")
     parent = a.parent.resolve()
     out = a.out.resolve()
     report = read(parent / "run_report.json")
@@ -55,30 +56,36 @@ def main():
     ns = {"__name__": "__main__"}
     for i in (1, 2, 3, 4, 5):
         exec(compile("".join(cells[i]["source"]), f"notebook-{i}", "exec"), ns)
+    prior_record = None
+    if a.pretrained_prior is not None:
+        from team21_pretrained_prior import interpolate
+        last = out.parent / "weight-means" / out.name / "prior.pt"
+        prior_record = interpolate(parent, Path("yolo26n-seg.pt"), a.pretrained_prior, last)
     if a.mean_with:
         from team21_weight_mean import mean_checkpoint
         last = out.parent / "weight-means" / out.name / "mean.pt"
         averaged = mean_checkpoint([parent, *(p.resolve() for p in a.mean_with)], last)
-        if a.refresh_bn:
-            from team21_bn_refresh import refresh
-            momentum = .025 if a.bn_momentum is None else a.bn_momentum
-            if a.bn_use_notebook_input:
-                with TemporaryDirectory() as tmp:
-                    checker = ns["load_selfcheck"](ns["SELFCHECK_BUNDLE"], Path(tmp))
-                    calibration = refresh(last, parent, momentum, checker.infer.preprocess)
-            else:
-                calibration = refresh(last, parent, momentum)
+    if a.refresh_bn:
+        from team21_bn_refresh import refresh
+        momentum = .025 if a.bn_momentum is None else a.bn_momentum
+        if a.bn_use_notebook_input:
+            with TemporaryDirectory() as tmp:
+                checker = ns["load_selfcheck"](ns["SELFCHECK_BUNDLE"], Path(tmp))
+                calibration = refresh(last, parent, momentum, checker.infer.preprocess)
+        else:
+            calibration = refresh(last, parent, momentum)
     assert sha(weights / "best.pt") == report["train"]["best_sha256"]
     if out.exists():
         prior = read(out / "checkpoint-selection.json")
         assert prior.get("mean_sources") == averaged
         assert prior.get("bn_refresh") == calibration
-        if averaged is None:
+        assert prior.get("pretrained_prior") == prior_record
+        if averaged is None and prior_record is None:
             assert prior["last_sha256"] == sha(last)
         assert prior["parent_submission_sha256"] == report["submission"]["zip_sha256"]
         if prior["identical_tensors"] is False:
             assert sha(out / "submission/submission.zip") == read(out / "run_report.json")["submission"]["zip_sha256"]
-        if averaged is not None:
+        if averaged is not None or prior_record is not None:
             stored = read(out / "run_report.json")
             assert sha(out / "runs/train/weights/best.pt") == stored["train"]["best_sha256"]
             assert ns["weights_fingerprint"](last) == stored["train"]["best_tensors_sha256"]
@@ -94,6 +101,8 @@ def main():
         choice["snapshot_epoch"] = a.epoch
     if averaged is not None:
         choice["mean_sources"] = averaged
+    if prior_record is not None:
+        choice["pretrained_prior"] = prior_record
     if calibration is not None:
         choice["bn_refresh"] = calibration
     # The original fit is immutable. Work in a new, atomically published directory.

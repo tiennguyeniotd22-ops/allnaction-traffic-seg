@@ -43,9 +43,18 @@ def main():
     compare=json.loads(bodies["comparison.json"])
     held=json.loads(bodies["held-score.json"])
     resources=json.loads(bodies["resources.json"])
-    fit_name = Path(resources.get("reuses_fit_from", args.run)).name
-    if not re.fullmatch("[a-z0-9-]+", fit_name):
-        raise ValueError(f"Unexpected source run name: {fit_name}")
+    fit_name = args.run
+    origin = resources
+    visited = {fit_name}
+    while origin.get("reuses_fit_from"):
+        fit_name = Path(origin["reuses_fit_from"]).name
+        if not re.fullmatch("[a-z0-9-]+", fit_name) or fit_name in visited:
+            raise ValueError(f"Invalid fit ancestry for {args.run}: {fit_name}")
+        visited.add(fit_name)
+        origin = json.loads(subprocess.check_output(["ssh", "-o", "BatchMode=yes", args.ssh,
+                            f"cd ~/baseline-cvat300 && cat overnight/{fit_name}/resources.json"]))
+        for field in ("dataset_sha256", "notebook_sha256", "initial_weights_sha256"):
+            assert origin[field] == resources[field]
     log = subprocess.check_output(["ssh", "-o", "BatchMode=yes", args.ssh,
                                    f"cd ~/baseline-cvat300 && cat overnight/{fit_name}.log"])
     if b"PILOT_COMPLETE" not in log:

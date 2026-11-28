@@ -38,6 +38,11 @@ def main():
     dataset = args.dataset.resolve()
     notebook_sha = digest(args.notebook)
     weights_sha = digest(Path("yolo26n-seg.pt"))
+    teacher_sha = None
+    if args.experiment == "distill-x":
+        teacher_sha = digest(Path(CHANGES["distill-x"]["distill_model"][1]))
+        if teacher_sha != "92b3de0065766a17180d6219858717dc9d03cdce8a3ca9576c97fd75aabb64f3":
+            raise ValueError("Unexpected teacher checkpoint")
     cells = json.loads(args.notebook.read_text(encoding="utf-8"))["cells"]
     if NOTEBOOK_TEAMS.get(notebook_sha) != TEAM_ID:
         raise ValueError(f"Use the verified team-{TEAM_ID} training notebook")
@@ -119,6 +124,8 @@ def main():
                      peak_reserved_mib=torch.cuda.max_memory_reserved()/2**20)
     if warm:
         resources["warm_start"] = warm
+    if teacher_sha:
+        resources["distillation_teacher_sha256"] = teacher_sha
     (run/"resources.json").write_text(json.dumps(resources, indent=2))
     (run/"train_info.json").write_text(json.dumps(ns["TRAIN_INFO"], default=str, indent=2))
     for i in (17, 19, 21):

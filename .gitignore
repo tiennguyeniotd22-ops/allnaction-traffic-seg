@@ -29,3 +29,6 @@ __pycache__/
 .DS_Store
 
 raw_cache/
+
+# Giữ ZIP nộp điểm cao nhất để replay ONNX.
+!artifacts/team21-mask-roi/submission.zip

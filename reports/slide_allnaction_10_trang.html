@@ -266,46 +266,45 @@
 
 <!-- SLIDE 5 -->
 <section class="slide">
-  <div class="header"><h2>4. Quy Trình Prelabel (SAM) & Sửa Nhãn Trên CVAT</h2><span class="tag">Slide 05</span></div>
+  <div class="header"><h2>4. Thu Thập, Gán Nhãn &amp; Duyệt Nhãn</h2><span class="tag">Slide 05</span></div>
   <div class="grid-2">
     <div class="card">
-      <h3>Kiến Trúc Auto-Prelabel Đa Tầng</h3>
+      <h3>1 · Thu thập và sàng lọc nguồn</h3>
       <ul>
-        <li><strong>CVAT + Nuclio (GPU L4):</strong> Dùng box gốc BDD100K / YOLOv7 làm prompt cho <strong>SAM ViT-H</strong> sinh polygon nháp (300 ảnh / 4.281 polygon).</li>
-        <li><strong>Colab SAM 3 &amp; YOLO-World + SAM 2.1:</strong> Dùng text prompt mở rộng (<code>"auto rickshaw"</code>, <code>"tricycle"</code>, <code>"cyclo"</code>, <code>"traffic light"</code>) khoanh nhanh các lớp thiếu.</li>
-        <li><strong>Thuật toán tự gộp người – xe:</strong> Kiểm tra chồng lấn polygon/mask giữa <code>person</code> và xe 2 bánh → tự gộp thành <code>Motorcyclist (5)</code> / <code>Cyclist (7)</code>.</li>
+        <li>300 ảnh đưa vào CVAT: <strong>BDD100K 225</strong> (ngày/đêm/mưa) và <strong>Vietnam Traffic Sign Detection v5 75</strong>.</li>
+        <li>Chọn theo cảnh, thời tiết và khung hình; lưu nguồn, giấy phép, split và SHA-256 trong manifest. Cảnh/video gần trùng được gom cùng split.</li>
+        <li><strong>Nguồn công khai trong lineage của bản chọn:</strong> BDD100K · COCO 2017 · Vietnam Traffic Sign Detection v5 · Mapillary Vistas v2.</li>
       </ul>
+      <p class="source-note">COCO giữ giấy phép ảnh theo từng nguồn; Mapillary Vistas v2 dùng CC BY-NC-SA 4.0. Chi tiết số ảnh, license và ánh xạ lớp nằm trong DATASET_PROVENANCE_REPORT.md.</p>
     </div>
     <div class="card">
-      <h3>Chuẩn Hóa &amp; Duyệt Chéo 5 Thành Viên</h3>
+      <h3>2 · Gán nhãn, sửa và duyệt chéo</h3>
+      <div class="pipeline" aria-label="Quy trình nhãn">
+        <div class="pipeline-step"><strong>Prelabel</strong>Box → SAM; mask gốc → ánh xạ lớp</div>
+        <div class="pipeline-step"><strong>CVAT</strong>5 Job × 60 ảnh · sửa theo 11 lớp</div>
+        <div class="pipeline-step"><strong>Cross-QC</strong>Người thứ hai xem issue và mẫu ngẫu nhiên</div>
+      </div>
       <ul>
-        <li><strong>Chia 5 Job CVAT song song (60 ảnh/người):</strong> Mỗi Job đủ 15 ngày, 15 đêm, 15 mưa, 15 ảnh VN; mỗi người rà cả 11 lớp + 1 trọng tâm riêng.</li>
-        <li><strong>Sửa lỗi biên thực tế:</strong>
-          <ul>
-            <li>Tách 2 xe máy áp sát nhau thành 2 instance riêng.</li>
-            <li>Người đi bộ dắt xe → tách <code>Pedestrian</code> + <code>Motorcycle</code>/<code>Bicycle</code>.</li>
-            <li>Đèn giao thông → ôm đủ vỏ hộp, bỏ cột và nền.</li>
-          </ul>
-        </li>
-        <li><strong>Duyệt chéo (Cross-QC):</strong> Soi issue giữa 5 thành viên trước khi xuất YOLO-Seg.</li>
+        <li>4.281 polygon nháp trong 300 ảnh được đưa vào CVAT; mỗi thành viên rà đủ 11 lớp trong Job của mình.</li>
+        <li>So ảnh gốc với mask, sửa thiếu/thừa, nhầm lớp và biên; người đi bộ dắt xe tách instance, người ngồi xe gộp theo taxonomy.</li>
+        <li>Kiểm polygon, trùng cảnh và SHA nhãn sau xuất; khóa nguyên 140 ảnh validation giữa các lượt.</li>
       </ul>
     </div>
   </div>
-  <div class="footer"><span>docs/QUY_TRINH_VA_PHAN_CONG.md · docs/HUONG_DAN_QC.md</span><span>Slide 5/10</span></div>
+  <div class="footer"><span>QUY_TRINH_VA_PHAN_CONG.md · HUONG_DAN_QC.md · DATASET_PROVENANCE_REPORT.md</span><span>Slide 5/10</span></div>
 </section>
 
 <!-- SLIDE 6 -->
 <section class="slide">
-  <div class="header"><h2>5. Kiểm Soát Dữ Liệu, Split Validation &amp; Tái Lập</h2><span class="tag">Slide 06</span></div>
+  <div class="header"><h2>5. Hồ Sơ Chạy Lại &amp; Validation Khóa Cứng</h2><span class="tag">Slide 06</span></div>
   <div class="grid-2">
-    <div class="card"><h3>Repo lưu bằng chứng và mã tái lập</h3><ul>
-      <li><code>configs/traffic_11_classes.yaml</code>: thứ tự ID cố định cho 11 lớp.</li>
-      <li><code>notebooks/train_and_export.ipynb</code>: pipeline train và xuất ONNX.</li>
-      <li><code>scripts/</code>: kiểm tra nhãn, tạo split, chấm lại ZIP và tổng hợp báo cáo.</li>
-      <li><code>experiments/overnight/</code>: manifest, CPU replay, SHA-256 và metric theo lượt.</li>
-      <li><code>.gitignore</code> loại ảnh gốc, dataset ZIP và weights khỏi Git; repo giữ code, manifest và số liệu cần kiểm chứng.</li>
+    <div class="card"><h3>Notebook, dữ liệu và báo cáo được lưu theo mốc</h3><ul>
+      <li><code>notebooks/train_and_export.ipynb</code>: notebook đã dùng, SHA-256 khớp hồ sơ chạy.</li>
+      <li><code>experiments/overnight/team21-mask-roi/run_report.json</code>: cấu hình, dữ liệu, lineage, hash và metric của bản 27,54.</li>
+      <li><code>artifacts/team21-mask-roi/submission.zip</code>: ZIP ONNX điểm cao nhất, SHA-256 <code>2717f063…</code>, sẵn để replay.</li>
+      <li>8 gói dữ liệu train của 9 checkpoint (2,57 GiB) được giữ ở kho đội ngoài Git; chỉ mục ghi đường dẫn và SHA từng ZIP để yêu cầu chạy lại.</li>
     </ul>
-    <div class="pipeline" aria-label="Luồng tái lập"><div class="pipeline-step"><strong>Manifest</strong>ảnh, nhãn, nguồn</div><div class="pipeline-step"><strong>Train-only</strong>QC và fit</div><div class="pipeline-step"><strong>Replay</strong>đọc ZIP trên CPU</div></div></div>
+    <div class="pipeline" aria-label="Luồng tái lập"><div class="pipeline-step"><strong>Dataset</strong>8 ZIP · 2,57 GiB</div><div class="pipeline-step"><strong>Notebook</strong>seed 21 · YOLO26n-seg</div><div class="pipeline-step"><strong>Report + ZIP</strong>SHA và replay CPU</div></div></div>
     <div class="card"><h3>Validation khóa cứng để so sánh công bằng</h3>
       <div class="kpi-row"><div class="kpi"><div class="lbl">Ảnh val</div><div class="val">140</div></div><div class="kpi"><div class="lbl">GT hợp lệ</div><div class="val">1.588</div></div><div class="kpi"><div class="lbl">GT lớp 3 trong val</div><div class="val">0</div></div></div>
       <ul><li>45 BDD100K + 15 ảnh Việt Nam + 80 ảnh Drive.</li><li>Đối chiếu SHA-256 ảnh và nhãn để giữ nguyên val qua các lượt chạy.</li><li>Other vehicle chấm riêng: 6 ảnh, 7 GT; kết quả không gộp vào val140.</li><li>Điểm public/private của cuộc thi là chỉ số riêng, không suy ra từ replay nội bộ.</li></ul>

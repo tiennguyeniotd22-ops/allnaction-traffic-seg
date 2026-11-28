@@ -98,12 +98,15 @@ def main():
               f"là [{fmt(ci[0])}, {fmt(ci[1])}] điểm (300 lần lấy mẫu). "
               "Nhiều bản được so trên cùng validation. Khoảng này chưa điều chỉnh theo số lần chọn mô hình.",
               "", "| Lớp | GT hợp lệ | AP pilot | AP bản chọn |", "|---|---:|---:|---:|"]
-    prior_name = "team21-mean-sgd-bn"
     for name in runs:
         paired = a.root / name / "vs-incumbent.json"
         if not paired.is_file():
             continue
         direct = read(paired)
+        controls = [k for k, (row, _, _) in runs.items() if k != name and row["scores"] == direct["scores"]["round3"]]
+        if len(controls) != 1:
+            raise ValueError(f"Ambiguous paired control for {name}: {controls}")
+        prior_name = controls[0]
         prior = runs[prior_name][0]
         assert direct["scores"]["round3"] == prior["scores"]
         assert direct["scores"]["pilot"] == runs[name][0]["scores"]

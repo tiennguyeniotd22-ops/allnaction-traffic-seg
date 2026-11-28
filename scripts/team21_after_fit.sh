@@ -14,6 +14,13 @@ while ! grep -qs PILOT_COMPLETE "overnight/$previous.log"; do
     tmux has-session -t "=$session" || { echo "Previous fit exited before export"; exit 1; }
     sleep 5
 done
+if .venv/bin/python "$code/team21_reached_target.py"; then
+    echo "Verified target reached. Skipping $run."
+    exit 0
+else
+    status=$?
+    [[ $status == 3 ]] || exit "$status"
+fi
 test ! -e "overnight/$run"
 options=()
 epochs=${TEAM21_EPOCHS:-20}

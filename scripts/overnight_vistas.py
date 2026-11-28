@@ -63,7 +63,8 @@ def main():
     parser.add_argument("out", type=Path)
     parser.add_argument("--per-bucket", type=int, default=36)
     parser.add_argument("--seed", type=int, default=26)
-    parser.add_argument("--exclude-index", type=Path, help="Exclude every parent ID in a prior collection")
+    parser.add_argument("--exclude-index", action="append", type=Path, default=[], help="Exclude every parent ID in a prior collection")
+    parser.add_argument("--trucks", action="store_true", help="Also collect trucks to review against buses and pickups")
     args = parser.parse_args()
     folder = args.out
     for d in ("images", "native"):
@@ -91,6 +92,8 @@ def main():
         usable = {categories[s["category_id"]].split("--")[-1] for s in a["segments_info"]
                   if not s["iscrowd"] and s["area"] * (640 / max(i["width"], i["height"]))**2 >= 120}
         buckets = usable & {"bicyclist", "motorcyclist", "trailer", "bus", "general-single", "direction-front"}
+        if args.trucks and "truck" in usable:
+            buckets.add("truck")
         for vehicle, rider in [("motorcycle", "motorcyclist"), ("bicycle", "bicyclist")]:
             if vehicle in usable and rider not in usable:
                 buckets.add(vehicle)
@@ -99,10 +102,13 @@ def main():
         records[key] = dict(key="vista_" + key, width=i["width"], height=i["height"], source_split="training",
                             image=image, annotation=mask, segments=a["segments_info"])
     excluded = set()
-    if args.exclude_index:
-        prior = json.loads(args.exclude_index.read_bytes())
+    prior_hashes = []
+    for index in args.exclude_index:
+        content = index.read_bytes()
+        prior = json.loads(content)
         assert prior["revision"] == REV
-        excluded = {r["key"].removeprefix("vista_") for r in prior["records"]}
+        excluded.update(r["key"].removeprefix("vista_") for r in prior["records"])
+        prior_hashes.append(sha256(content).hexdigest())
     rng = random.Random(args.seed)
     chosen = {}
     for bucket in sorted(pools, key=lambda b: (len(pools[b]), b)):
@@ -125,7 +131,9 @@ def main():
                   revision=REV, mirror=BASE, source_index_sha256=INDEX_SHA, categories=categories,
                   candidate_pool={k: len(v) for k, v in pools.items()}, records=picked,
                   seed=args.seed, excluded_parents=len(excluded),
-                  excluded_index_sha256=sha256(args.exclude_index.read_bytes()).hexdigest() if args.exclude_index else None)
+                  excluded_index_sha256=prior_hashes[0] if len(prior_hashes)==1 else None)
+    if len(prior_hashes)>1:
+        report["excluded_indices_sha256"] = prior_hashes
     (folder / "index.json").write_text(json.dumps(report, indent=1))
     print(len(picked), Counter(r["selection"] for r in picked), flush=True)
 

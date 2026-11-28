@@ -16,14 +16,16 @@ from overnight_extend import check_labels
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("root", type=Path)
+    parser.add_argument("--collection", default="team21-mapillary-extra")
+    parser.add_argument("--out-name", default="team21-vistas-review")
     args = parser.parse_args()
-    raw = args.root / "team21-mapillary-extra"
-    converted = args.root / "team21-mapillary-extra-curated"
-    out = args.root / "team21-vistas-review"
+    raw = args.root / args.collection
+    converted = args.root / (args.collection + "-curated")
+    out = args.root / args.out_name
     for sub in ("images", "labels", "views", "sheets"):
         (out / sub).mkdir(parents=True, exist_ok=True)
     index = json.loads((raw / "index.json").read_bytes())
-    assert index["seed"] == 21 and index["excluded_parents"] == 482
+    assert index["seed"] == 21 and index["excluded_parents"] >= 482
     originals = {r["key"]: r for r in index["records"]}
     accepted = []
     for row in json.loads((converted / "manifest.json").read_bytes()):

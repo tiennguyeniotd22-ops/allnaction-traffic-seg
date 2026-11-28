@@ -259,7 +259,7 @@ def process(row,kind,root,out,categories=None):
         score=2.15*len(rare)+1.8*np.sqrt(cw*ch/(w*h))+min(9,len(relevant))*.18
         if kind=="vistas":
             focus = {"bicycle":6, "bicyclist":7, "motorcycle":4, "motorcyclist":5,
-                     "bus":1, "direction-front":9, "general-single":10, "trailer":3}[row["selection"]]
+                     "bus":1, "truck":2, "direction-front":9, "general-single":10, "trailer":3}[row["selection"]]
             if not any(c == focus and area >= 140 for c,area in relevant) or len(relevant) > 19:
                 continue
             score += 2.5*np.sqrt(cw*ch/(w*h)) - .13*len(relevant)

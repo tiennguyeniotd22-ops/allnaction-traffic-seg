@@ -33,6 +33,7 @@ def main():
     source.add_argument("--epoch", type=int, help="Use the saved end-of-epoch snapshot (one-based)")
     source.add_argument("--mean-with", type=Path, nargs="+", help="Average best weights of these runs and the parent")
     source.add_argument("--pretrained-prior", type=float, help="Fraction of aligned official COCO initialization")
+    source.add_argument("--one2one-weights", action="store_true", help="Copy the parent model's trained heads into its dense branch")
     p.add_argument("--refresh-bn", action="store_true", help="Update normalization buffers with train images after averaging")
     p.add_argument("--bn-momentum", type=float, help="EMA momentum for train-only BatchNorm refresh (default 0.025)")
     p.add_argument("--bn-use-notebook-input", action="store_true", help="Preprocess train calibration frames with the frozen notebook")
@@ -57,6 +58,11 @@ def main():
     for i in (1, 2, 3, 4, 5):
         exec(compile("".join(cells[i]["source"]), f"notebook-{i}", "exec"), ns)
     prior_record = None
+    branch_record = None
+    if a.one2one_weights:
+        from team21_branch_transfer import transfer
+        last = out.parent / "weight-means" / out.name / "branch.pt"
+        branch_record = transfer(parent, last)
     if a.pretrained_prior is not None:
         from team21_pretrained_prior import interpolate
         last = out.parent / "weight-means" / out.name / "prior.pt"
@@ -80,12 +86,13 @@ def main():
         assert prior.get("mean_sources") == averaged
         assert prior.get("bn_refresh") == calibration
         assert prior.get("pretrained_prior") == prior_record
-        if averaged is None and prior_record is None:
+        assert prior.get("branch_transfer") == branch_record
+        if averaged is None and prior_record is None and branch_record is None:
             assert prior["last_sha256"] == sha(last)
         assert prior["parent_submission_sha256"] == report["submission"]["zip_sha256"]
         if prior["identical_tensors"] is False:
             assert sha(out / "submission/submission.zip") == read(out / "run_report.json")["submission"]["zip_sha256"]
-        if averaged is not None or prior_record is not None:
+        if averaged is not None or prior_record is not None or branch_record is not None:
             stored = read(out / "run_report.json")
             assert sha(out / "runs/train/weights/best.pt") == stored["train"]["best_sha256"]
             assert ns["weights_fingerprint"](last) == stored["train"]["best_tensors_sha256"]
@@ -103,6 +110,8 @@ def main():
         choice["mean_sources"] = averaged
     if prior_record is not None:
         choice["pretrained_prior"] = prior_record
+    if branch_record is not None:
+        choice["branch_transfer"] = branch_record
     if calibration is not None:
         choice["bn_refresh"] = calibration
     # The original fit is immutable. Work in a new, atomically published directory.

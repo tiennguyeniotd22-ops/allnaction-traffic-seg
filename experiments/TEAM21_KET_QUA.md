@@ -6,14 +6,19 @@
 |---|---:|---:|---:|---:|---:|---:|
 | `team21-mean-wide-bn` | 25,64 | 43,87 | 25,42 | 18,78 | 24,99 | 61,61 |
 | `team21-mean-bn-input` | 25,60 | 43,94 | 26,20 | 19,00 | 24,98 | 62,74 |
+| `team21-mean-qc-o2m` | 25,58 | 44,22 | 25,37 | 19,53 | 25,52 | 59,10 |
 | `team21-mean-wide-o2m` | 25,53 | 43,91 | 25,27 | 19,01 | 25,07 | 62,31 |
 | `team21-mean-sgd-bn` | 25,51 | 43,84 | 26,10 | 18,96 | 24,94 | 62,74 |
+| `last-team21-polish12` | 25,28 | 43,94 | 25,61 | 18,30 | 26,14 | 52,77 |
+| `team21-polish12` | 25,25 | 43,81 | 25,39 | 17,98 | 25,27 | 66,62 |
 | `team21-prior25` | 25,19 | 43,24 | 25,71 | 19,82 | 24,68 | 60,33 |
 | `team21-mean-bn` | 25,15 | 43,71 | 25,47 | 18,65 | 24,42 | 51,74 |
 | `team21-mean-sgd` | 25,15 | 43,42 | 25,83 | 18,70 | 24,75 | 60,76 |
 | `team21-mean-four` | 24,93 | 43,35 | 25,37 | 17,85 | 24,38 | 51,29 |
 | `team21-mean-road` | 24,67 | 42,42 | 24,74 | 17,90 | 24,53 | 58,73 |
 | `team21-mean-bn075` | 24,64 | 42,32 | 25,22 | 18,63 | 24,46 | 56,16 |
+| `last-team21-wideqc20` | 24,43 | 42,27 | 24,66 | 20,63 | 26,47 | 65,45 |
+| `team21-wideqc20` | 24,39 | 42,26 | 24,31 | 20,84 | 25,85 | 65,45 |
 | `last-team21-vnwide20` | 24,35 | 42,70 | 24,35 | 18,01 | 24,78 | 63,23 |
 | `last-team21-sgd20` | 24,22 | 40,97 | 25,06 | 17,70 | 24,47 | 43,48 |
 | `team21-mean-a` | 24,18 | 41,76 | 24,15 | 18,70 | 24,65 | 54,76 |
@@ -71,6 +76,8 @@ Bản chọn có hiệu chỉnh BatchNorm từ 168 ảnh train thuộc ba nguồ
 Lượt `team21-vnwide20` dùng 1.411 ảnh train, gồm 212 crop Mapillary và 43 crop BDD. Có 24 tệp nhãn Việt Nam đã sửa. So với pilot, điểm val140 chênh 0,04 và điểm Việt Nam chênh -1,05. Hai tập train khác nhau cả về nguồn ảnh và nhãn.
 
 Trên cùng bộ train của pilot, `team21-o2m20` giữ trọng số loss của nhánh one-to-many ở 0,8 trong 20 epoch. Pilot giảm dần từ 0,8 xuống 0,1. Chênh lệch trên val140 là -0,64 điểm, khoảng bootstrap 95% [-1,71, 0,51]. Hai lượt cùng dùng bước xuất ONNX của BTC.
+
+Bộ 1.442 ảnh giữ các nhãn đã QC trên 48 tệp chung có khác biệt giữa hai bộ, cùng 31 ảnh COCO đã duyệt và 255 crop BDD/Mapillary. So cùng công thức train với bộ 1.411 ảnh, chênh lệch là 0,23 điểm val140, khoảng bootstrap 95% [-1,11, 1,24].
 
 Trên máy đã có quyền đọc thư mục dự án trên VM, lấy ZIP bằng Google Cloud CLI. Thực hiện lệnh dữ liệu cho từng phiên bản cần chạy notebook.
 

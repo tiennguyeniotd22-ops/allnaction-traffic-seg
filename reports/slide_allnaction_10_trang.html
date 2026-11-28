@@ -209,22 +209,23 @@
 <section class="slide">
   <div class="header"><h2>3. Chiến Lược Thu Thập & Khai Báo Nguồn Dữ Liệu</h2><span class="tag">Slide 04</span></div>
   <div class="card" style="flex: 1;">
-    <h3>Tổng Hợp Các Bộ Dữ Liệu Công Khai & Tự Xây Dựng (Tuân Thủ Giấy Phép)</h3>
-    <table>
+    <h3>Tổng Hợp Các Bộ Dữ Liệu Công Khai &amp; Nhóm Đã Chạy (Tuân Thủ Giấy Phép)</h3>
+    <table style="font-size: 13.5px;">
       <thead>
-        <tr><th>Nguồn Dữ Liệu</th><th>Giấy Phép</th><th>Quy Mô Sử Dụng</th><th>Vai Trò Trong Pipeline</th></tr>
+        <tr><th>Nguồn Dữ Liệu</th><th>Giấy Phép</th><th>Số Ảnh (Train / Val)</th><th>Cách Xử Lý &amp; Vai Trò</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>BDD100K</strong> (<code>dronefreak/BDD100K</code>)</td><td>BSD 3-Clause (Nghiên cứu/GD)</td><td>225 ảnh CVAT (75 ngày, 75 đêm, 75 mưa) + 45 val</td><td>Xây nền cảnh ngày/đêm/mưa; box gốc đưa qua SAM tạo mask.</td></tr>
-        <tr><td><strong>Vietnam Traffic Sign v5</strong> (Roboflow)</td><td>Public Domain</td><td>75 ảnh biển báo VN (YOLOv7 + SAM)</td><td>Bổ sung biển báo đặc thù Việt Nam (lớp <code>9: Sign</code>).</td></tr>
-        <tr><td><strong>Mapillary Vistas</strong></td><td>CC BY-NC-SA 4.0</td><td>182 cảnh đã review + 46 ảnh chẩn đoán</td><td>Tăng độ phủ góc dashcam, tách chuẩn <code>Motorcyclist</code>/<code>Cyclist</code>.</td></tr>
-        <tr><td><strong>COCO 2017</strong> (<code>val2017</code> + <code>train2017</code>)</td><td>CC BY 4.0</td><td>400 ảnh v1 + 400 ảnh bổ sung lớp hiếm v4</td><td>Bơm mạnh <code>Motorcycle</code> (+1.262), <code>Bicycle</code> (+1.106), <code>Cyclist</code> (+438).</td></tr>
-        <tr><td><strong>Poribohon + Wikimedia VN</strong></td><td>CC BY / Public Domain</td><td>58 cảnh ba gác + 24 đèn VN + 4 ảnh synth</td><td>Giải quyết lớp <code>3: Other vehicle</code> & đèn giao thông ngược sáng/đêm mưa.</td></tr>
+        <tr><td><strong>BDD100K</strong> (Berkeley)</td><td>BSD 3-Clause</td><td><code>180 / 45</code> (225)</td><td>Chia đều 3 nhóm ngày/đêm/mưa (<code>60/15</code>); box gốc → SAM → sửa CVAT.</td></tr>
+        <tr><td><strong>VN Traffic Sign v5</strong> (Roboflow)</td><td>Public Domain</td><td><code>60 / 15</code> (75)</td><td>YOLOv7 + box biển → SAM → sửa CVAT cho lớp <code>9: Sign</code> &amp; xe VN.</td></tr>
+        <tr><td><strong>COCO val2017 + Synth Đêm/Mưa</strong></td><td>CC BY 4.0 (Ann.)</td><td><code>320 / 80</code> + <code>80 / 0</code></td><td>37 đêm + 43 mưa tổng hợp; ghép thành bộ <strong>780 ảnh (640/140)</strong> Round 3 &amp; 4.</td></tr>
+        <tr><td><strong>Poribohon-BD</strong> (Bangladeshi Vehicles)</td><td>CC BY 4.0</td><td>58 cảnh (174 mask)</td><td>129 box CNG + 45 box rickshaw → SAM ViT-H cho lớp <code>3: Other vehicle</code>.</td></tr>
+        <tr><td><strong>Mapillary Vistas</strong></td><td>CC BY-NC-SA 4.0</td><td>182 cảnh + 46 chẩn đoán</td><td>Đội 21 review bổ sung trong <code>exp/overnight-qc</code>, đẩy <code>val140</code> lên <strong>25,64</strong>.</td></tr>
+        <tr><td><strong>COCO train2017 + Wikimedia VN</strong></td><td>CC BY / Public</td><td>400 + 74 ảnh + 4 synth</td><td>Bơm lớp hiếm (<code>Motorcycle</code>, <code>Bicycle</code>, <code>Cyclist</code>) &amp; đèn giao thông VN.</td></tr>
       </tbody>
     </table>
-    <p style="margin-top: 14px;"><strong>Tổng hợp quy mô:</strong> Từ <code>300</code> ảnh CVAT ban đầu (4.281 polygon) → mở rộng lên <code>780</code> ảnh Round 3 → <code>1.156+</code> ảnh đã review & chuẩn hóa 11 lớp.</p>
+    <p style="margin-top: 12px;"><strong>Tính minh bạch &amp; tái lập:</strong> Toàn bộ SHA-256 manifest (<code>91268bb2</code>, <code>d53ff10a</code>), URL gốc và cách ánh xạ 11 lớp được ghi đủ trong <code>DATASET_PROVENANCE_REPORT.md</code>.</p>
   </div>
-  <div class="footer"><span>Chi tiết ánh xạ lưu trong DATASET_PROVENANCE_REPORT.md</span><span>Slide 4/10</span></div>
+  <div class="footer"><span>Đầy đủ nguồn của Tiến, Trân, Đăng, Sang, Trinh &amp; các bản pilot</span><span>Slide 4/10</span></div>
 </section>
 
 <!-- SLIDE 5 -->

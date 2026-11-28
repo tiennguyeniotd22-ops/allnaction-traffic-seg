@@ -136,6 +136,34 @@ def main():
     if bn := report.get("checkpoint_selection", {}).get("bn_refresh"):
         lines.extend(["", f"Bản chọn có hiệu chỉnh BatchNorm từ {len(bn['images'])} ảnh train thuộc ba nguồn, "
                       f"batch {bn['batch']} và momentum {bn['momentum']}."])
+        if bn.get("preprocessing") == "notebook":
+            lines.append("Các ảnh hiệu chỉnh được đọc và resize bằng chính hàm tiền xử lý trong notebook BTC.")
+    if "team21-vnwide20" in runs:
+        wide = runs["team21-vnwide20"][0]
+        assert runs["team21-vnwide20"][1]["dataset"]["counts"]["train"]["images"] == 1411
+        lines.extend(["", f"Lượt `team21-vnwide20` dùng 1.411 ảnh train, gồm 212 crop Mapillary và 43 crop BDD. "
+                      f"Có 24 tệp nhãn Việt Nam đã sửa. So với pilot, điểm val140 chênh "
+                      f"{fmt(100*(scores['team21-vnwide20']-scores['team21-qc20']))} và điểm Việt Nam chênh "
+                      f"{fmt(100*(wide['scores']['Vietnam-v5']['map50_95']-reference['Vietnam-v5']['map50_95']))}. "
+                      "Hai tập train khác nhau cả về nguồn ảnh và nhãn."])
+    if "team21-o2m20" in runs:
+        r = runs["team21-o2m20"][0]
+        assert r["resources"]["dataset_sha256"] == runs["team21-qc20"][0]["resources"]["dataset_sha256"]
+        assert r["resources"]["experiment"] == "o2m-constant"
+        interval = r["paired_scene_bootstrap_95_points"]
+        lines.extend(["", f"Trên cùng bộ train của pilot, `team21-o2m20` giữ trọng số loss của nhánh one-to-many "
+                      f"ở 0,8 trong 20 epoch. Pilot giảm dần từ 0,8 xuống 0,1. Chênh lệch trên val140 là "
+                      f"{fmt(100*(scores['team21-o2m20']-scores['team21-qc20']))} điểm, khoảng bootstrap 95% "
+                      f"[{fmt(interval[0])}, {fmt(interval[1])}]. Hai lượt cùng dùng bước xuất ONNX của BTC."])
+    if "team21-wideqc20" in runs:
+        joined = runs["team21-wideqc20"][0]
+        assert runs["team21-wideqc20"][1]["dataset"]["counts"]["train"]["images"] == 1442
+        ci_joined = joined["paired_scene_bootstrap_95_points"]
+        lines.extend(["", "Bộ 1.442 ảnh giữ các nhãn đã QC trên 48 tệp chung có khác biệt giữa hai bộ, "
+                      "cùng 31 ảnh COCO đã duyệt và 255 crop BDD/Mapillary. "
+                      f"So cùng công thức train với bộ 1.411 ảnh, chênh lệch là "
+                      f"{fmt(100*(scores['team21-wideqc20']-scores['team21-vnwide20']))} điểm val140, "
+                      f"khoảng bootstrap 95% [{fmt(ci_joined[0])}, {fmt(ci_joined[1])}]."])
     lines += ["", "Trên máy đã có quyền đọc thư mục dự án trên VM, lấy ZIP bằng Google Cloud CLI. "
               "Thực hiện lệnh dữ liệu cho từng phiên bản cần chạy notebook.",
               "", "```powershell",

@@ -29,7 +29,7 @@ def mean_checkpoint(folders, output):
         assert verified_team(report, res["notebook_sha256"]) == 21
         assert digest(file) == report["train"]["best_sha256"]
         assert report["model"]["architecture"] == "yolo26n-seg"
-        assert res["experiment"] in {"lower-lr", "sgd"}, "Only combine runs sharing the standard COCO initialization"
+        assert res["experiment"] in {"lower-lr", "sgd", "o2m-constant"}, "Only combine runs sharing the standard COCO initialization"
         identity = (res["initial_weights_sha256"], res["notebook_sha256"], report["environment"]["packages"]["ultralytics"],
                     report["classes"], report["model"]["nc"])
         if shared is None:

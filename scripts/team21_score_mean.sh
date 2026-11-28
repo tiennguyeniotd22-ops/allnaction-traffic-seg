@@ -20,7 +20,13 @@ options=()
 if [[ ${TEAM21_REFRESH_BN:-0} == 1 ]]; then options+=(--refresh-bn); fi
 if [[ -n ${TEAM21_BN_MOMENTUM:-} ]]; then options+=(--bn-momentum "$TEAM21_BN_MOMENTUM"); fi
 if [[ ${TEAM21_BN_NOTEBOOK_INPUT:-0} == 1 ]]; then options+=(--bn-use-notebook-input); fi
-if [[ ${TEAM21_MASK_POLISH:-0} == 1 ]]; then
+if [[ -n ${TEAM21_WHEEL_CONTOURS:-} ]]; then
+    [[ ${#sources[@]} == 0 ]]
+    options+=(--wheel-contours "$TEAM21_WHEEL_CONTOURS")
+elif [[ -n ${TEAM21_WHEEL_SOURCE:-} ]]; then
+    [[ ${#sources[@]} == 0 ]]
+    options+=(--wheel-source "overnight/$TEAM21_WHEEL_SOURCE")
+elif [[ ${TEAM21_MASK_POLISH:-0} == 1 ]]; then
     [[ ${#sources[@]} == 0 && -z ${TEAM21_PRETRAINED_PRIOR:-} && ${TEAM21_MASK_QUALITY:-0} == 0 ]]
     options+=(--mask-polish)
 elif [[ ${TEAM21_MASK_QUALITY:-0} == 1 ]]; then

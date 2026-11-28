@@ -131,9 +131,15 @@ def main():
               "Các bản có tên mean dùng trung bình trọng số FP32 của các checkpoint trước khi xuất một model ONNX FP32.",
               "", "| Checkpoint đầu vào của bản chọn | Bộ dữ liệu | Epoch | Công thức |",
               "|---|---|---:|---|"]
-    sources = report.get("checkpoint_selection", {}).get("mean_sources") or [
-        dict(run=best, dataset_sha256=entry["resources"]["dataset_sha256"], epochs=report["params"]["EPOCHS"],
-             experiment=entry["resources"]["experiment"])]
+    ancestry = best
+    while fit := runs[ancestry][1].get("checkpoint_selection", {}).get("quality_fit"):
+        previous = fit["parent"]
+        assert runs[previous][0]["best_sha256"] == fit["parent_weights_sha256"]
+        ancestry = previous
+    source_entry, source_report, _ = runs[ancestry]
+    sources = source_report.get("checkpoint_selection", {}).get("mean_sources") or [
+        dict(run=ancestry, dataset_sha256=source_entry["resources"]["dataset_sha256"], epochs=source_report["params"]["EPOCHS"],
+             experiment=source_entry["resources"]["experiment"])]
     versions = {}
     for m in a.root.glob("*/manifest.json"):
         if (m.parent / "dataset.zip").is_file() and isinstance((item := read(m)), dict):
@@ -147,13 +153,16 @@ def main():
     with ZipFile(original) as z:
         old_train, old_val = image_hashes(z, "train"), image_hashes(z, "val")
     assert (len(old_train), len(old_val)) == (640, 140)
+    retained = []
     for version in {s["dataset_sha256"] for s in sources}:
         with ZipFile(versions[version] / "dataset.zip") as z:
             train = image_hashes(z, "train")
-            assert old_train <= train and image_hashes(z, "val") == old_val and old_val.isdisjoint(train)
-    lines.extend(["", "Kiểm SHA ảnh trên từng bộ dữ liệu đầu vào của bản chọn xác nhận đủ 780 ảnh gốc vòng 4. "
-                  "Toàn bộ 640 ảnh train vẫn ở train và 140 ảnh val vẫn ở val."])
-    if bn := report.get("checkpoint_selection", {}).get("bn_refresh"):
+            assert image_hashes(z, "val") == old_val and old_val.isdisjoint(train)
+            retained.append(len(old_train & train))
+    lines.extend(["", f"Kiểm SHA xác nhận 140 ảnh val gốc trên từng bộ. Mỗi bộ train nguồn chứa từ {min(retained)} đến {max(retained)} trong 640 ảnh train vòng 4."])
+    if ancestry != best:
+        lines.extend(["", f"Bản chọn tinh chỉnh từ `{ancestry}` trên nhãn train. Sổ checkpoint lưu các bước và SHA trọng số cha."])
+    if bn := source_report.get("checkpoint_selection", {}).get("bn_refresh"):
         lines.extend(["", f"Bản chọn có hiệu chỉnh BatchNorm từ {len(bn['images'])} ảnh train thuộc ba nguồn, "
                       f"batch {bn['batch']} và momentum {bn['momentum']}."])
         if bn.get("preprocessing") == "notebook":

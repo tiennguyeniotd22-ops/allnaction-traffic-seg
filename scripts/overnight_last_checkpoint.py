@@ -36,6 +36,8 @@ def main():
     source.add_argument("--one2one-weights", action="store_true", help="Copy the parent model's trained heads into its dense branch")
     source.add_argument("--mask-quality", action="store_true", help="Fit dense class projections to train-instance mask quality")
     source.add_argument("--mask-polish", action="store_true", help="Fit the existing mask coefficients on train-instance regions")
+    source.add_argument("--wheel-source", type=Path, help="Fit only the four two-wheeler classifier rows on this run's training images")
+    source.add_argument("--wheel-contours", type=Path, help="Export a supervised wheel-contour fit from the verified parent")
     p.add_argument("--refresh-bn", action="store_true", help="Update normalization buffers with train images after averaging")
     p.add_argument("--bn-momentum", type=float, help="EMA momentum for train-only BatchNorm refresh (default 0.025)")
     p.add_argument("--bn-use-notebook-input", action="store_true", help="Preprocess train calibration frames with the frozen notebook")
@@ -62,6 +64,17 @@ def main():
     prior_record = None
     branch_record = None
     quality_record = None
+    if a.wheel_contours:
+        quality_record = read(a.wheel_contours / "fit.json")
+        last = a.wheel_contours / "best.pt"
+        assert quality_record["parent"] == parent.name and quality_record["parent_weights_sha256"] == sha(weights/"best.pt")
+        assert quality_record["weights_sha256"] == sha(last) and quality_record["notebook_sha256"] == sha(a.notebook)
+    if a.wheel_source:
+        from team21_wheel_head import fit
+        last = out.parent / "weight-means" / out.name / "wheel.pt"
+        with TemporaryDirectory() as tmp:
+            checker = ns["load_selfcheck"](ns["SELFCHECK_BUNDLE"], Path(tmp))
+            quality_record = fit(parent, a.wheel_source, last, checker.infer.preprocess)
     if a.mask_quality or a.mask_polish:
         if a.mask_polish:
             from team21_mask_polish import fit

@@ -1,0 +1,1629 @@
+[
+ {
+  "key": "cc000000158869",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000158869.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000158869.jpg",
+  "original_url": "http://farm6.staticflickr.com/5148/5790427097_3235ed92f8_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+   "id": 5,
+   "name": "Attribution-ShareAlike License"
+  },
+  "parent": "coco-extra/images/co504.jpg",
+  "parent_sha256": "e16eeb88371092e8834f40fe1ff68117de8175b470492b86d0c4dd159c46975d",
+  "image_sha256": "e16eeb88371092e8834f40fe1ff68117de8175b470492b86d0c4dd159c46975d",
+  "label_sha256": "f0a29894771248d252b1aeaf5bacb5fe7f60859b8d532d7cf11fea0f2cdf376d",
+  "size": [
+   480,
+   640
+  ],
+  "objects": [
+   {
+    "cls": 6,
+    "native_ids": [
+     "127522"
+    ],
+    "area640": 145987.0,
+    "iou": 1.0
+   }
+  ],
+  "bucket": "bicycle-unoccupied",
+  "source_label_sha256": "f0a29894771248d252b1aeaf5bacb5fe7f60859b8d532d7cf11fea0f2cdf376d",
+  "prior_label_sha256": "f0a29894771248d252b1aeaf5bacb5fe7f60859b8d532d7cf11fea0f2cdf376d",
+  "review": {}
+ },
+ {
+  "key": "cc000000104588",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000104588.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000104588.jpg",
+  "original_url": "http://farm4.staticflickr.com/3075/2927188293_8648e971ce_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+   "id": 5,
+   "name": "Attribution-ShareAlike License"
+  },
+  "parent": "coco-extra/images/co1256.jpg",
+  "parent_sha256": "48db7ccf02a3f25c83937a311d0135c924809deff141d4efccdb8eec5595b4f6",
+  "image_sha256": "48db7ccf02a3f25c83937a311d0135c924809deff141d4efccdb8eec5595b4f6",
+  "label_sha256": "fd521c1daf78c5bd89e334b4b5aa2282f03d436edc9b4dbff1669345f60e40e2",
+  "size": [
+   619,
+   640
+  ],
+  "objects": [
+   {
+    "cls": 7,
+    "native_ids": [
+     "343944",
+     "446553"
+    ],
+    "area640": 71285.0,
+    "iou": 0.99844
+   }
+  ],
+  "bucket": "bicycle-with-people",
+  "source_label_sha256": "fd521c1daf78c5bd89e334b4b5aa2282f03d436edc9b4dbff1669345f60e40e2",
+  "prior_label_sha256": "fd521c1daf78c5bd89e334b4b5aa2282f03d436edc9b4dbff1669345f60e40e2",
+  "review": {}
+ },
+ {
+  "key": "cc000000157020",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000157020.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000157020.jpg",
+  "original_url": "http://farm4.staticflickr.com/3102/3139489806_c1379e5ac5_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+   "id": 5,
+   "name": "Attribution-ShareAlike License"
+  },
+  "parent": "coco-extra/images/co569.jpg",
+  "parent_sha256": "c4c6413e4b36657cb0c9d76360c6c103c13721ddc318063e056035965c638297",
+  "image_sha256": "c4c6413e4b36657cb0c9d76360c6c103c13721ddc318063e056035965c638297",
+  "label_sha256": "db06e8035ebcac1103a95d924a2be8a9c5e2cdf2e9d1e223406b7c59e2c10cbe",
+  "size": [
+   640,
+   480
+  ],
+  "objects": [
+   {
+    "cls": 6,
+    "native_ids": [
+     "128152"
+    ],
+    "area640": 16329.0,
+    "iou": 0.99871
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "207153"
+    ],
+    "area640": 25754.0,
+    "iou": 0.99996
+   },
+   {
+    "cls": 6,
+    "native_ids": [
+     "128821"
+    ],
+    "iou": 0.9989860431826315,
+    "area640": 16755.0
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "206427"
+    ],
+    "iou": 0.9994300518134716,
+    "area640": 38592.0
+   }
+  ],
+  "bucket": "bicycle-with-people",
+  "source_label_sha256": "8d8a70d0b9ab07b211cb23659dbe9bc8d6e64e4a7ec628c4499465769bc1b515",
+  "prior_label_sha256": "8d8a70d0b9ab07b211cb23659dbe9bc8d6e64e4a7ec628c4499465769bc1b515",
+  "review": {
+   "7": [
+    6,
+    8
+   ]
+  }
+ },
+ {
+  "key": "cc000000164659",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000164659.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000164659.jpg",
+  "original_url": "http://farm5.staticflickr.com/4024/5155140587_c3e47cbc20_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by/2.0/",
+   "id": 4,
+   "name": "Attribution License"
+  },
+  "parent": "coco-extra/images/co1095.jpg",
+  "parent_sha256": "28d7ee2e146c849c1b13accd5b1a11eca3638c846f1ebeb30d2de38cd6fa909d",
+  "image_sha256": "28d7ee2e146c849c1b13accd5b1a11eca3638c846f1ebeb30d2de38cd6fa909d",
+  "label_sha256": "3a1ff3711abededdc6640995453c5affc47b869c5a6fcd88356c15bcf3ac7850",
+  "size": [
+   465,
+   640
+  ],
+  "objects": [
+   {
+    "cls": 6,
+    "native_ids": [
+     "129507"
+    ],
+    "iou": 0.9988533591731266,
+    "area640": 61912.0
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "210495"
+    ],
+    "iou": 0.9986869681589778,
+    "area640": 39567.0
+   }
+  ],
+  "bucket": "bicycle-with-people",
+  "source_label_sha256": "b0a7c28f66e76a88349a2e05c2f0eef3a45de489f2f437a7aeb7e5b101a11f33",
+  "prior_label_sha256": "b0a7c28f66e76a88349a2e05c2f0eef3a45de489f2f437a7aeb7e5b101a11f33",
+  "review": {
+   "7": [
+    6,
+    8
+   ]
+  }
+ },
+ {
+  "key": "cc000000174304",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000174304.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000174304.jpg",
+  "original_url": "http://farm5.staticflickr.com/4033/4367364835_cfa9a75557_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by/2.0/",
+   "id": 4,
+   "name": "Attribution License"
+  },
+  "parent": "coco-extra/images/co002.jpg",
+  "parent_sha256": "10ead29fb404d88db71efb6ff1213db91546f128ed419643adb89fbc4fa36f8c",
+  "image_sha256": "10ead29fb404d88db71efb6ff1213db91546f128ed419643adb89fbc4fa36f8c",
+  "label_sha256": "9b61a5e98db98ba36d7117fa75f54d00082a00ace9af026dd1496f53183b1603",
+  "size": [
+   500,
+   338
+  ],
+  "objects": [
+   {
+    "cls": 6,
+    "native_ids": [
+     "131040"
+    ],
+    "iou": 0.9986553115194979,
+    "area640": 7300.7
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "186796"
+    ],
+    "iou": 0.9988913525498891,
+    "area640": 4428.6
+   }
+  ],
+  "bucket": "bicycle-with-people",
+  "source_label_sha256": "50c5eff3a1919b22580882d3e57dc26e8edae179921c2554aeb61cf74d1ac212",
+  "prior_label_sha256": "50c5eff3a1919b22580882d3e57dc26e8edae179921c2554aeb61cf74d1ac212",
+  "review": {
+   "7": [
+    6,
+    8
+   ]
+  }
+ },
+ {
+  "key": "cc000000234755",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000234755.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000234755.jpg",
+  "original_url": "http://farm7.staticflickr.com/6019/6261397165_f3a90ab47a_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by/2.0/",
+   "id": 4,
+   "name": "Attribution License"
+  },
+  "parent": "coco-extra/images/co1004.jpg",
+  "parent_sha256": "ed7c7a97497bcaa01eb3b321cc48c43e2865f9e969955cd69a12e3003e99f236",
+  "image_sha256": "ed7c7a97497bcaa01eb3b321cc48c43e2865f9e969955cd69a12e3003e99f236",
+  "label_sha256": "e730c00acc54f51d0f674ce10fb41a9a61a6e7f87e18160e9d43e1046b1b9327",
+  "size": [
+   390,
+   640
+  ],
+  "objects": [
+   {
+    "cls": 6,
+    "native_ids": [
+     "129240"
+    ],
+    "area640": 209.0,
+    "iou": 0.98068
+   },
+   {
+    "cls": 6,
+    "native_ids": [
+     "241068"
+    ],
+    "area640": 154.0,
+    "iou": 0.96226
+   },
+   {
+    "cls": 10,
+    "native_ids": [
+     "404457"
+    ],
+    "area640": 1054.0,
+    "iou": 1.0
+   },
+   {
+    "cls": 10,
+    "native_ids": [
+     "405907"
+    ],
+    "area640": 271.0,
+    "iou": 1.0
+   },
+   {
+    "cls": 6,
+    "native_ids": [
+     "1333494"
+    ],
+    "area640": 119.0,
+    "iou": 0.95122
+   },
+   {
+    "cls": 10,
+    "native_ids": [
+     "1804617"
+    ],
+    "area640": 1450.0,
+    "iou": 0.99862
+   },
+   {
+    "cls": 7,
+    "native_ids": [
+     "128129",
+     "196130"
+    ],
+    "area640": 10949.0,
+    "iou": 0.99471
+   }
+  ],
+  "bucket": "bicycle-with-people",
+  "source_label_sha256": "e730c00acc54f51d0f674ce10fb41a9a61a6e7f87e18160e9d43e1046b1b9327",
+  "prior_label_sha256": "e730c00acc54f51d0f674ce10fb41a9a61a6e7f87e18160e9d43e1046b1b9327",
+  "review": {}
+ },
+ {
+  "key": "cc000000291717",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000291717.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000291717.jpg",
+  "original_url": "http://farm8.staticflickr.com/7238/7373579456_038e18d2d9_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+   "id": 5,
+   "name": "Attribution-ShareAlike License"
+  },
+  "parent": "coco-extra/images/co1452.jpg",
+  "parent_sha256": "dd15abf78e7f5583de48b7bf186c333f3e311fbcf96c6e277b3d1aa07b79db70",
+  "image_sha256": "dd15abf78e7f5583de48b7bf186c333f3e311fbcf96c6e277b3d1aa07b79db70",
+  "label_sha256": "84f1b82fa848022666915a093aab73cfaed49809ad188f073d9a7aa097a3be01",
+  "size": [
+   640,
+   412
+  ],
+  "objects": [
+   {
+    "cls": 4,
+    "native_ids": [
+     "154484"
+    ],
+    "area640": 6485.0,
+    "iou": 1.0
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "183594"
+    ],
+    "area640": 2044.0,
+    "iou": 0.98785
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "198449"
+    ],
+    "area640": 2030.0,
+    "iou": 0.99656
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "221239"
+    ],
+    "area640": 2369.0,
+    "iou": 0.99789
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "228910"
+    ],
+    "area640": 441.0,
+    "iou": 0.98874
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "1209451"
+    ],
+    "area640": 89.0,
+    "iou": 0.97802
+   },
+   {
+    "cls": 7,
+    "native_ids": [
+     "125792",
+     "223203"
+    ],
+    "area640": 9456.0,
+    "iou": 0.99589
+   }
+  ],
+  "bucket": "bicycle-with-people",
+  "source_label_sha256": "84f1b82fa848022666915a093aab73cfaed49809ad188f073d9a7aa097a3be01",
+  "prior_label_sha256": "84f1b82fa848022666915a093aab73cfaed49809ad188f073d9a7aa097a3be01",
+  "review": {}
+ },
+ {
+  "key": "cc000000291889",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000291889.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000291889.jpg",
+  "original_url": "http://farm4.staticflickr.com/3022/2393836101_9f0c3eaf38_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+   "id": 5,
+   "name": "Attribution-ShareAlike License"
+  },
+  "parent": "coco-extra/images/co506.jpg",
+  "parent_sha256": "a27a3f05c1671b2f5dd3bdae3336b3e112a3efc450d9d3839864933558b5a740",
+  "image_sha256": "a27a3f05c1671b2f5dd3bdae3336b3e112a3efc450d9d3839864933558b5a740",
+  "label_sha256": "640421312d30d9814653634846da5dea90dd7e2fff1ada139f046f32a619a3fe",
+  "size": [
+   640,
+   427
+  ],
+  "objects": [
+   {
+    "cls": 6,
+    "native_ids": [
+     "126242"
+    ],
+    "area640": 15159.0,
+    "iou": 0.99894
+   },
+   {
+    "cls": 6,
+    "native_ids": [
+     "127096"
+    ],
+    "iou": 0.9994739610731194,
+    "area640": 7600.0
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "188697"
+    ],
+    "iou": 0.9995708707033429,
+    "area640": 23303.0
+   },
+   {
+    "cls": 6,
+    "native_ids": [
+     "128816"
+    ],
+    "iou": 0.9932957488953222,
+    "area640": 6528.0
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "195989"
+    ],
+    "iou": 0.999099369558691,
+    "area640": 23321.0
+   }
+  ],
+  "bucket": "bicycle-with-people",
+  "source_label_sha256": "43b3795270a0dc1110a1431d9daf4e16749b97401abfb8251b8f34cc1b786bf2",
+  "prior_label_sha256": "43b3795270a0dc1110a1431d9daf4e16749b97401abfb8251b8f34cc1b786bf2",
+  "review": {
+   "7": [
+    6,
+    8
+   ]
+  }
+ },
+ {
+  "key": "cc000000390334",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000390334.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000390334.jpg",
+  "original_url": "http://farm9.staticflickr.com/8145/7624961728_56289205a8_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+   "id": 5,
+   "name": "Attribution-ShareAlike License"
+  },
+  "parent": "coco-extra/images/co245.jpg",
+  "parent_sha256": "b0310bb5d5bbe9767571cd36d3839f5e8118558150309651e956a665fc969196",
+  "image_sha256": "b0310bb5d5bbe9767571cd36d3839f5e8118558150309651e956a665fc969196",
+  "label_sha256": "e62f83b37fdc562ba720db226b9caa78dc352c9a4b3eefcd876ce48f6921ea64",
+  "size": [
+   640,
+   480
+  ],
+  "objects": [
+   {
+    "cls": 8,
+    "native_ids": [
+     "204717"
+    ],
+    "area640": 228.0,
+    "iou": 0.99563
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "254528"
+    ],
+    "area640": 289.0,
+    "iou": 0.98969
+   },
+   {
+    "cls": 10,
+    "native_ids": [
+     "405038"
+    ],
+    "area640": 44264.0,
+    "iou": 1.0
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "1681255"
+    ],
+    "area640": 163.0,
+    "iou": 1.0
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "2156045"
+    ],
+    "area640": 441.0,
+    "iou": 0.98202
+   },
+   {
+    "cls": 7,
+    "native_ids": [
+     "127105",
+     "188454"
+    ],
+    "area640": 4638.0,
+    "iou": 0.99677
+   }
+  ],
+  "bucket": "bicycle-with-people",
+  "source_label_sha256": "e62f83b37fdc562ba720db226b9caa78dc352c9a4b3eefcd876ce48f6921ea64",
+  "prior_label_sha256": "e62f83b37fdc562ba720db226b9caa78dc352c9a4b3eefcd876ce48f6921ea64",
+  "review": {}
+ },
+ {
+  "key": "cc000000420859",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000420859.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000420859.jpg",
+  "original_url": "http://farm6.staticflickr.com/5072/5910802081_e53d82fd81_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by/2.0/",
+   "id": 4,
+   "name": "Attribution License"
+  },
+  "parent": "coco-extra/images/co1536.jpg",
+  "parent_sha256": "36d8171fe703f6f78f721e8b09c9f093e157ab8d492a70faa749c883c8e2c4a2",
+  "image_sha256": "36d8171fe703f6f78f721e8b09c9f093e157ab8d492a70faa749c883c8e2c4a2",
+  "label_sha256": "449a68de9b775f9ea11a26509f6187716b5377b6d568f6aa73c246ecf2328536",
+  "size": [
+   640,
+   425
+  ],
+  "objects": [
+   {
+    "cls": 8,
+    "native_ids": [
+     "1283133"
+    ],
+    "area640": 92.0,
+    "iou": 0.95604
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "2006561"
+    ],
+    "area640": 88.0,
+    "iou": 0.96629
+   },
+   {
+    "cls": 7,
+    "native_ids": [
+     "128799",
+     "192103"
+    ],
+    "area640": 54910.0,
+    "iou": 0.99732
+   }
+  ],
+  "bucket": "bicycle-with-people",
+  "source_label_sha256": "ee4ddd38d60c6bc8f0cf1d249a526cb8420c5720cbd19058ff0bb0f793f78d42",
+  "prior_label_sha256": "449a68de9b775f9ea11a26509f6187716b5377b6d568f6aa73c246ecf2328536",
+  "review": {}
+ },
+ {
+  "key": "cc000000439865",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000439865.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000439865.jpg",
+  "original_url": "http://farm1.staticflickr.com/23/26222913_4fe3013d59_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+   "id": 5,
+   "name": "Attribution-ShareAlike License"
+  },
+  "parent": "coco-extra/images/co1627.jpg",
+  "parent_sha256": "1227263a1d08afbc38365063a8695410226c4c507560faf98fc5a0b795e8c9ff",
+  "image_sha256": "1227263a1d08afbc38365063a8695410226c4c507560faf98fc5a0b795e8c9ff",
+  "label_sha256": "6ef557a318585c1739e59b3db35c607078e8d511150fd9544ca452eb10e35929",
+  "size": [
+   640,
+   480
+  ],
+  "objects": [
+   {
+    "cls": 6,
+    "native_ids": [
+     "128266"
+    ],
+    "iou": 0.9993650132722636,
+    "area640": 96037.0
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "220858"
+    ],
+    "iou": 0.9964043148222134,
+    "area640": 2497.0
+   }
+  ],
+  "bucket": "bicycle-with-people",
+  "source_label_sha256": "46d91c119b919f3c1a048694cbb3cf9956ef72e8e127c41312fe67e8980b1f95",
+  "prior_label_sha256": "46d91c119b919f3c1a048694cbb3cf9956ef72e8e127c41312fe67e8980b1f95",
+  "review": {
+   "7": [
+    6,
+    8
+   ]
+  }
+ },
+ {
+  "key": "cc000000450308",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000450308.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000450308.jpg",
+  "original_url": "http://farm3.staticflickr.com/2630/3773920110_cc92bf29e9_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+   "id": 5,
+   "name": "Attribution-ShareAlike License"
+  },
+  "parent": "coco-extra/images/co1060.jpg",
+  "parent_sha256": "68cb19784a6128c9488d6e7e9b8cd5715bbfea5aa99a6297a90e0a4a7bd13bb2",
+  "image_sha256": "68cb19784a6128c9488d6e7e9b8cd5715bbfea5aa99a6297a90e0a4a7bd13bb2",
+  "label_sha256": "9d9ddce232c06c0b09a5eda89484eb189b9d4d89d2871c0810731427a71dfcf8",
+  "size": [
+   640,
+   480
+  ],
+  "objects": [
+   {
+    "cls": 8,
+    "native_ids": [
+     "213381"
+    ],
+    "area640": 789.0,
+    "iou": 1.0
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "253404"
+    ],
+    "area640": 3286.0,
+    "iou": 1.0
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "256320"
+    ],
+    "area640": 2400.0,
+    "iou": 0.99626
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "265033"
+    ],
+    "area640": 213.0,
+    "iou": 0.96364
+   },
+   {
+    "cls": 6,
+    "native_ids": [
+     "128405"
+    ],
+    "iou": 0.9972104144527099,
+    "area640": 22559.0
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "198780"
+    ],
+    "iou": 0.9991076583906356,
+    "area640": 19050.0
+   }
+  ],
+  "bucket": "bicycle-with-people",
+  "source_label_sha256": "104704156a60c58d66da24bdfaf0573e4fddc65cc3dbbbbf720c41d94526f6d9",
+  "prior_label_sha256": "104704156a60c58d66da24bdfaf0573e4fddc65cc3dbbbbf720c41d94526f6d9",
+  "review": {
+   "7": [
+    6,
+    8
+   ]
+  }
+ },
+ {
+  "key": "cc000000541486",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000541486.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000541486.jpg",
+  "original_url": "http://farm1.staticflickr.com/94/264817803_7aff83207d_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by/2.0/",
+   "id": 4,
+   "name": "Attribution License"
+  },
+  "parent": "coco-extra/images/co461.jpg",
+  "parent_sha256": "8568fda425bf089bb2a9f71bc5fb4f80661fefc4d40762fff6596ada25e8f468",
+  "image_sha256": "8568fda425bf089bb2a9f71bc5fb4f80661fefc4d40762fff6596ada25e8f468",
+  "label_sha256": "8000f15e6baab98a5be03b8afede0bd6352031cc956dbba9d42e4a5c50193736",
+  "size": [
+   640,
+   427
+  ],
+  "objects": [
+   {
+    "cls": 6,
+    "native_ids": [
+     "129717"
+    ],
+    "iou": 0.9997849970974608,
+    "area640": 46508.0
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "187419"
+    ],
+    "iou": 0.9983955789286033,
+    "area640": 22431.0
+   }
+  ],
+  "bucket": "bicycle-with-people",
+  "source_label_sha256": "0b2a403622dd3ea41018234823b846605a4b0f2f302c80726aa19015bb9de971",
+  "prior_label_sha256": "0b2a403622dd3ea41018234823b846605a4b0f2f302c80726aa19015bb9de971",
+  "review": {
+   "7": [
+    6,
+    8
+   ]
+  }
+ },
+ {
+  "key": "cc000000541897",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000541897.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000541897.jpg",
+  "original_url": "http://farm4.staticflickr.com/3187/2492488047_196fd6721c_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by/2.0/",
+   "id": 4,
+   "name": "Attribution License"
+  },
+  "parent": "coco-extra/images/co864.jpg",
+  "parent_sha256": "78120d23a825870acec30ff0d1a2d83ece9ceb032cef63902122805b39d871c4",
+  "image_sha256": "78120d23a825870acec30ff0d1a2d83ece9ceb032cef63902122805b39d871c4",
+  "label_sha256": "fb4cf6d93cbea1275e3f7da63fa21817ac321036b75d8bdff920475bf2892715",
+  "size": [
+   375,
+   500
+  ],
+  "objects": [
+   {
+    "cls": 6,
+    "native_ids": [
+     "125878"
+    ],
+    "iou": 0.9995676610462603,
+    "area640": 90942.7
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "188888"
+    ],
+    "iou": 0.9991457858769932,
+    "area640": 51778.4
+   }
+  ],
+  "bucket": "bicycle-with-people",
+  "source_label_sha256": "bbdd95f746c0deb20b0fbd17bbfaf9257dbd9cb2583fb52fe497c8a968d07e32",
+  "prior_label_sha256": "bbdd95f746c0deb20b0fbd17bbfaf9257dbd9cb2583fb52fe497c8a968d07e32",
+  "review": {
+   "7": [
+    6,
+    8
+   ]
+  }
+ },
+ {
+  "key": "cc000000019443",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000019443.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000019443.jpg",
+  "original_url": "http://farm6.staticflickr.com/5319/7183828734_67deb6bccf_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by/2.0/",
+   "id": 4,
+   "name": "Attribution License"
+  },
+  "parent": "coco-extra/images/co604.jpg",
+  "parent_sha256": "a7570075ef57b0d4fcd17be59af9084a82cc190792a3d399e95d2bbd9266daa9",
+  "image_sha256": "a7570075ef57b0d4fcd17be59af9084a82cc190792a3d399e95d2bbd9266daa9",
+  "label_sha256": "2f86fe2ff7fad935561a278db1ec05ca1a1325df8d2418bc3acd48850fc040b2",
+  "size": [
+   640,
+   359
+  ],
+  "objects": [
+   {
+    "cls": 4,
+    "native_ids": [
+     "153796"
+    ],
+    "area640": 51298.0,
+    "iou": 0.99973
+   }
+  ],
+  "bucket": "motorcycle-unoccupied",
+  "source_label_sha256": "2f86fe2ff7fad935561a278db1ec05ca1a1325df8d2418bc3acd48850fc040b2",
+  "prior_label_sha256": "2f86fe2ff7fad935561a278db1ec05ca1a1325df8d2418bc3acd48850fc040b2",
+  "review": {}
+ },
+ {
+  "key": "cc000000239395",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000239395.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000239395.jpg",
+  "original_url": "http://farm9.staticflickr.com/8437/8002898957_9623f67ce5_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by/2.0/",
+   "id": 4,
+   "name": "Attribution License"
+  },
+  "parent": "coco-extra/images/co019.jpg",
+  "parent_sha256": "07fda03a05b9a442c342aaeef12de153647adddf3cb11b3fc762b54107028321",
+  "image_sha256": "07fda03a05b9a442c342aaeef12de153647adddf3cb11b3fc762b54107028321",
+  "label_sha256": "4deecfaa22fb90707daa144f62fc9dfc44f52d42dc3b2edfc0edb880952ad5c9",
+  "size": [
+   640,
+   480
+  ],
+  "objects": [
+   {
+    "cls": 4,
+    "native_ids": [
+     "150946"
+    ],
+    "area640": 38842.0,
+    "iou": 0.99985
+   },
+   {
+    "cls": 2,
+    "native_ids": [
+     "395031"
+    ],
+    "area640": 44332.0,
+    "iou": 0.99919
+   }
+  ],
+  "bucket": "motorcycle-unoccupied",
+  "source_label_sha256": "4deecfaa22fb90707daa144f62fc9dfc44f52d42dc3b2edfc0edb880952ad5c9",
+  "prior_label_sha256": "4deecfaa22fb90707daa144f62fc9dfc44f52d42dc3b2edfc0edb880952ad5c9",
+  "review": {}
+ },
+ {
+  "key": "cc000000406414",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000406414.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000406414.jpg",
+  "original_url": "http://farm4.staticflickr.com/3228/2958810257_5f4a1286a1_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+   "id": 5,
+   "name": "Attribution-ShareAlike License"
+  },
+  "parent": "coco-extra/images/co235.jpg",
+  "parent_sha256": "14c0661edc14d90766a6b9f9110b133958d1e38b4361d1ca4312bf4830a726e5",
+  "image_sha256": "14c0661edc14d90766a6b9f9110b133958d1e38b4361d1ca4312bf4830a726e5",
+  "label_sha256": "73141345af1874e8f7fe8cc53b5433d6b8e85ba3e8074967755c3223a1d76a08",
+  "size": [
+   640,
+   480
+  ],
+  "objects": [
+   {
+    "cls": 4,
+    "native_ids": [
+     "153497"
+    ],
+    "area640": 7313.0,
+    "iou": 0.99713
+   },
+   {
+    "cls": 4,
+    "native_ids": [
+     "154754"
+    ],
+    "area640": 4351.0,
+    "iou": 0.99771
+   }
+  ],
+  "bucket": "motorcycle-unoccupied",
+  "source_label_sha256": "73141345af1874e8f7fe8cc53b5433d6b8e85ba3e8074967755c3223a1d76a08",
+  "prior_label_sha256": "73141345af1874e8f7fe8cc53b5433d6b8e85ba3e8074967755c3223a1d76a08",
+  "review": {}
+ },
+ {
+  "key": "cc000000115314",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000115314.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000115314.jpg",
+  "original_url": "http://farm9.staticflickr.com/8300/7969868798_6cf7f7c42a_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+   "id": 5,
+   "name": "Attribution-ShareAlike License"
+  },
+  "parent": "coco-extra/images/co1467.jpg",
+  "parent_sha256": "c49192921a44aec389f2e545f7302ee5fdfcb46126779aa91becf5090858888d",
+  "image_sha256": "c49192921a44aec389f2e545f7302ee5fdfcb46126779aa91becf5090858888d",
+  "label_sha256": "713b51b3f67d1c3865995e568624f353eb765199f8fb174b4fb00e446992e8ff",
+  "size": [
+   640,
+   480
+  ],
+  "objects": [
+   {
+    "cls": 5,
+    "native_ids": [
+     "152478",
+     "198441"
+    ],
+    "area640": 62020.0,
+    "iou": 0.99737
+   }
+  ],
+  "bucket": "motorcycle-with-people",
+  "source_label_sha256": "713b51b3f67d1c3865995e568624f353eb765199f8fb174b4fb00e446992e8ff",
+  "prior_label_sha256": "713b51b3f67d1c3865995e568624f353eb765199f8fb174b4fb00e446992e8ff",
+  "review": {}
+ },
+ {
+  "key": "cc000000150939",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000150939.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000150939.jpg",
+  "original_url": "http://farm7.staticflickr.com/6026/6203811525_0845ddc07c_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by/2.0/",
+   "id": 4,
+   "name": "Attribution License"
+  },
+  "parent": "coco-extra/images/co1586.jpg",
+  "parent_sha256": "348fbf81eeb40734a7a01e2ac5be2ad131724347e3165c9cb2f21acffd1fcbf4",
+  "image_sha256": "348fbf81eeb40734a7a01e2ac5be2ad131724347e3165c9cb2f21acffd1fcbf4",
+  "label_sha256": "e1af1438f808e34e0e00607311f7efdb1a3adb6752008a142ebc294a4e38b562",
+  "size": [
+   640,
+   413
+  ],
+  "objects": [
+   {
+    "cls": 5,
+    "native_ids": [
+     "148761",
+     "192647"
+    ],
+    "area640": 10554.0,
+    "iou": 0.99282
+   }
+  ],
+  "bucket": "motorcycle-with-people",
+  "source_label_sha256": "e1af1438f808e34e0e00607311f7efdb1a3adb6752008a142ebc294a4e38b562",
+  "prior_label_sha256": "e1af1438f808e34e0e00607311f7efdb1a3adb6752008a142ebc294a4e38b562",
+  "review": {}
+ },
+ {
+  "key": "cc000000179932",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000179932.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000179932.jpg",
+  "original_url": "http://farm3.staticflickr.com/2658/3861739471_89b9f683a3_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by/2.0/",
+   "id": 4,
+   "name": "Attribution License"
+  },
+  "parent": "coco-extra/images/co1236.jpg",
+  "parent_sha256": "2d3479c0b98d91d27b12a80b0d54b4f75a6f75d9b2d8c41060029d5befff7908",
+  "image_sha256": "2d3479c0b98d91d27b12a80b0d54b4f75a6f75d9b2d8c41060029d5befff7908",
+  "label_sha256": "f570ae615e50ca8e8f4f8fba12ba35fa31cae3327a240dc97fc9fb96a217ffa1",
+  "size": [
+   640,
+   480
+  ],
+  "objects": [
+   {
+    "cls": 4,
+    "native_ids": [
+     "245504"
+    ],
+    "iou": 0.999478392996859,
+    "area640": 88158.0
+   }
+  ],
+  "bucket": "motorcycle-with-people",
+  "source_label_sha256": "89c218d283c9c24c9b56e101bb58cbb465c0e522eb70712c748855b522c3adfa",
+  "prior_label_sha256": "89c218d283c9c24c9b56e101bb58cbb465c0e522eb70712c748855b522c3adfa",
+  "review": {
+   "5": [
+    4
+   ]
+  }
+ },
+ {
+  "key": "cc000000205300",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000205300.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000205300.jpg",
+  "original_url": "http://farm9.staticflickr.com/8340/8179749243_3ba839623e_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+   "id": 5,
+   "name": "Attribution-ShareAlike License"
+  },
+  "parent": "coco-extra/images/co1355.jpg",
+  "parent_sha256": "0089869ba390d2c8e7f174634d63d5f5f116e4a9ee0cf04a1c2f6530993c4423",
+  "image_sha256": "0089869ba390d2c8e7f174634d63d5f5f116e4a9ee0cf04a1c2f6530993c4423",
+  "label_sha256": "9e4edff48e6f320facf218009ca5f142ba65848ff0e397d49615c6cff7ac55b8",
+  "size": [
+   640,
+   480
+  ],
+  "objects": [
+   {
+    "cls": 5,
+    "native_ids": [
+     "150516",
+     "198234"
+    ],
+    "area640": 95139.0,
+    "iou": 0.99821
+   }
+  ],
+  "bucket": "motorcycle-with-people",
+  "source_label_sha256": "9e4edff48e6f320facf218009ca5f142ba65848ff0e397d49615c6cff7ac55b8",
+  "prior_label_sha256": "9e4edff48e6f320facf218009ca5f142ba65848ff0e397d49615c6cff7ac55b8",
+  "review": {}
+ },
+ {
+  "key": "cc000000263759",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000263759.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000263759.jpg",
+  "original_url": "http://farm8.staticflickr.com/7107/6931642136_75bfa52f30_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by/2.0/",
+   "id": 4,
+   "name": "Attribution License"
+  },
+  "parent": "coco-extra/images/co1243.jpg",
+  "parent_sha256": "accabcac01015a2a8466a921b15d2bbdb0c3563873b553183d9f8572a6315814",
+  "image_sha256": "accabcac01015a2a8466a921b15d2bbdb0c3563873b553183d9f8572a6315814",
+  "label_sha256": "7c41728d5c47bbfa6abf9ecb078bba2b0e93cac298f520bd3e4eb637f12f0e98",
+  "size": [
+   640,
+   480
+  ],
+  "objects": [
+   {
+    "cls": 5,
+    "native_ids": [
+     "150645",
+     "218972"
+    ],
+    "area640": 4990.0,
+    "iou": 0.996
+   }
+  ],
+  "bucket": "motorcycle-with-people",
+  "source_label_sha256": "7c41728d5c47bbfa6abf9ecb078bba2b0e93cac298f520bd3e4eb637f12f0e98",
+  "prior_label_sha256": "7c41728d5c47bbfa6abf9ecb078bba2b0e93cac298f520bd3e4eb637f12f0e98",
+  "review": {}
+ },
+ {
+  "key": "cc000000281302",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000281302.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000281302.jpg",
+  "original_url": "http://farm9.staticflickr.com/8482/8205592592_ea9cf68127_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+   "id": 5,
+   "name": "Attribution-ShareAlike License"
+  },
+  "parent": "coco-extra/images/co1264.jpg",
+  "parent_sha256": "25c72fd9cb34d029ac77a335be7888b9d0e3a04921f66320a9c2d207415b5f4c",
+  "image_sha256": "25c72fd9cb34d029ac77a335be7888b9d0e3a04921f66320a9c2d207415b5f4c",
+  "label_sha256": "708eb9b6167676c93bb6d8f5c05a841ef2b59f14c6c6352c09d70c0940f62439",
+  "size": [
+   640,
+   426
+  ],
+  "objects": [
+   {
+    "cls": 4,
+    "native_ids": [
+     "153039"
+    ],
+    "area640": 2953.0,
+    "iou": 0.99696
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "1243081"
+    ],
+    "area640": 3862.0,
+    "iou": 0.99896
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "1247134"
+    ],
+    "area640": 1529.0,
+    "iou": 0.99282
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "1749615"
+    ],
+    "area640": 1645.0,
+    "iou": 0.99939
+   },
+   {
+    "cls": 4,
+    "native_ids": [
+     "149922"
+    ],
+    "iou": 1.0,
+    "area640": 84299.0
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "2156783"
+    ],
+    "iou": 0.9973801414723605,
+    "area640": 3812.0
+   }
+  ],
+  "bucket": "motorcycle-with-people",
+  "source_label_sha256": "46ba532d53cd38d70d6e744b045266cc362ba991a4330585ea19abcb67c9614c",
+  "prior_label_sha256": "46ba532d53cd38d70d6e744b045266cc362ba991a4330585ea19abcb67c9614c",
+  "review": {
+   "5": [
+    4,
+    8
+   ]
+  }
+ },
+ {
+  "key": "cc000000345020",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000345020.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000345020.jpg",
+  "original_url": "http://farm9.staticflickr.com/8528/8570120324_260a3481ba_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+   "id": 5,
+   "name": "Attribution-ShareAlike License"
+  },
+  "parent": "coco-extra/images/co1579.jpg",
+  "parent_sha256": "3d8ae55fadbb8dbe35b60815bde0382056a8770d0186e3774fb4b5a58ba05777",
+  "image_sha256": "3d8ae55fadbb8dbe35b60815bde0382056a8770d0186e3774fb4b5a58ba05777",
+  "label_sha256": "b05c1c9240c0d8bfc8903efd7fdb485b5f0030722856d9402ff7a0771ee6891c",
+  "size": [
+   640,
+   427
+  ],
+  "objects": [
+   {
+    "cls": 8,
+    "native_ids": [
+     "254285"
+    ],
+    "area640": 981.0,
+    "iou": 0.99796
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "1203459"
+    ],
+    "area640": 420.0,
+    "iou": 0.98582
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "2006286"
+    ],
+    "area640": 140.0,
+    "iou": 0.99291
+   },
+   {
+    "cls": 5,
+    "native_ids": [
+     "153659",
+     "224719"
+    ],
+    "area640": 153207.0,
+    "iou": 0.99233
+   },
+   {
+    "cls": 5,
+    "native_ids": [
+     "2048566",
+     "258882"
+    ],
+    "area640": 23612.0,
+    "iou": 0.99678
+   }
+  ],
+  "bucket": "motorcycle-with-people",
+  "source_label_sha256": "b05c1c9240c0d8bfc8903efd7fdb485b5f0030722856d9402ff7a0771ee6891c",
+  "prior_label_sha256": "b05c1c9240c0d8bfc8903efd7fdb485b5f0030722856d9402ff7a0771ee6891c",
+  "review": {}
+ },
+ {
+  "key": "cc000000350435",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000350435.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000350435.jpg",
+  "original_url": "http://farm7.staticflickr.com/6031/6390329477_bcd21aa30c_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by/2.0/",
+   "id": 4,
+   "name": "Attribution License"
+  },
+  "parent": "coco-extra/images/co219.jpg",
+  "parent_sha256": "45ff59786fc832a8c9c897f4566ac82e521ba7d2d5a9b54d1c9860d3bfe393ee",
+  "image_sha256": "45ff59786fc832a8c9c897f4566ac82e521ba7d2d5a9b54d1c9860d3bfe393ee",
+  "label_sha256": "aa19690927e70214acf0c9c1c28f7984f4a8e62b691c0aa8e2919b027b1f0a8f",
+  "size": [
+   527,
+   640
+  ],
+  "objects": [
+   {
+    "cls": 5,
+    "native_ids": [
+     "1791489",
+     "186745"
+    ],
+    "area640": 11832.0,
+    "iou": 0.99663
+   },
+   {
+    "cls": 5,
+    "native_ids": [
+     "149582",
+     "220450"
+    ],
+    "area640": 11708.0,
+    "iou": 0.99727
+   }
+  ],
+  "bucket": "motorcycle-with-people",
+  "source_label_sha256": "aa19690927e70214acf0c9c1c28f7984f4a8e62b691c0aa8e2919b027b1f0a8f",
+  "prior_label_sha256": "aa19690927e70214acf0c9c1c28f7984f4a8e62b691c0aa8e2919b027b1f0a8f",
+  "review": {}
+ },
+ {
+  "key": "cc000000380998",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000380998.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000380998.jpg",
+  "original_url": "http://farm6.staticflickr.com/5252/5460802746_deb332f0fb_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by/2.0/",
+   "id": 4,
+   "name": "Attribution License"
+  },
+  "parent": "coco-extra/images/co998.jpg",
+  "parent_sha256": "dd9c2d541201a0d1b5038fd8d7113508074439df490fca08436bbd155f346b94",
+  "image_sha256": "dd9c2d541201a0d1b5038fd8d7113508074439df490fca08436bbd155f346b94",
+  "label_sha256": "b16fef4fe4a9739b6d5a6cab91355d40c834326f6fc38cfa79028e6be78254fc",
+  "size": [
+   640,
+   193
+  ],
+  "objects": [
+   {
+    "cls": 8,
+    "native_ids": [
+     "208836"
+    ],
+    "area640": 2301.0,
+    "iou": 0.99308
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "225395"
+    ],
+    "area640": 1078.0,
+    "iou": 0.98268
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "233487"
+    ],
+    "area640": 926.0,
+    "iou": 0.98503
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "236708"
+    ],
+    "area640": 1666.0,
+    "iou": 0.99105
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "238238"
+    ],
+    "area640": 1120.0,
+    "iou": 0.99377
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "257014"
+    ],
+    "area640": 447.0,
+    "iou": 0.99113
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "258217"
+    ],
+    "area640": 1810.0,
+    "iou": 0.99067
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "259855"
+    ],
+    "area640": 886.0,
+    "iou": 0.99213
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "263932"
+    ],
+    "area640": 1647.0,
+    "iou": 0.98917
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "1722195"
+    ],
+    "area640": 281.0,
+    "iou": 0.98252
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "1736426"
+    ],
+    "area640": 1086.0,
+    "iou": 0.99358
+   },
+   {
+    "cls": 5,
+    "native_ids": [
+     "148211",
+     "1718041"
+    ],
+    "area640": 14245.0,
+    "iou": 0.99272
+   }
+  ],
+  "bucket": "motorcycle-with-people",
+  "source_label_sha256": "b16fef4fe4a9739b6d5a6cab91355d40c834326f6fc38cfa79028e6be78254fc",
+  "prior_label_sha256": "b16fef4fe4a9739b6d5a6cab91355d40c834326f6fc38cfa79028e6be78254fc",
+  "review": {}
+ },
+ {
+  "key": "cc000000423223",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000423223.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000423223.jpg",
+  "original_url": "http://farm8.staticflickr.com/7104/7230463492_1b6d7eb150_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+   "id": 5,
+   "name": "Attribution-ShareAlike License"
+  },
+  "parent": "coco-extra/images/co1376.jpg",
+  "parent_sha256": "e161f23ed9b60ae85cb0ceab9ef90ffb0b8392efca5eae003812415f708d036f",
+  "image_sha256": "e161f23ed9b60ae85cb0ceab9ef90ffb0b8392efca5eae003812415f708d036f",
+  "label_sha256": "65756f12a555074674f72538a0769a73286e077ebdc0151c122e4fa2ae5cd31c",
+  "size": [
+   640,
+   424
+  ],
+  "objects": [
+   {
+    "cls": 8,
+    "native_ids": [
+     "263734"
+    ],
+    "area640": 7706.0,
+    "iou": 0.99806
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "263999"
+    ],
+    "area640": 2825.0,
+    "iou": 0.99188
+   },
+   {
+    "cls": 5,
+    "native_ids": [
+     "154869",
+     "188699"
+    ],
+    "area640": 52509.0,
+    "iou": 0.99583
+   }
+  ],
+  "bucket": "motorcycle-with-people",
+  "source_label_sha256": "65756f12a555074674f72538a0769a73286e077ebdc0151c122e4fa2ae5cd31c",
+  "prior_label_sha256": "65756f12a555074674f72538a0769a73286e077ebdc0151c122e4fa2ae5cd31c",
+  "review": {}
+ },
+ {
+  "key": "cc000000473326",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000473326.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000473326.jpg",
+  "original_url": "http://farm9.staticflickr.com/8036/7912877634_d2f39921d5_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+   "id": 5,
+   "name": "Attribution-ShareAlike License"
+  },
+  "parent": "coco-extra/images/co1194.jpg",
+  "parent_sha256": "ea3203ec73f287d53719ecd5de94364591d1cec7ab0849f15aeb2f1c92269a08",
+  "image_sha256": "ea3203ec73f287d53719ecd5de94364591d1cec7ab0849f15aeb2f1c92269a08",
+  "label_sha256": "935098f6919dbfcd191ddf5d544178d2be00444d707aaad8a24214a317584a96",
+  "size": [
+   640,
+   480
+  ],
+  "objects": [
+   {
+    "cls": 8,
+    "native_ids": [
+     "220145"
+    ],
+    "area640": 174.0,
+    "iou": 0.96629
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "236996"
+    ],
+    "area640": 153.0,
+    "iou": 1.0
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "237195"
+    ],
+    "area640": 272.0,
+    "iou": 0.98909
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "237410"
+    ],
+    "area640": 145.0,
+    "iou": 0.95946
+   },
+   {
+    "cls": 5,
+    "native_ids": [
+     "149006",
+     "208422"
+    ],
+    "area640": 27660.0,
+    "iou": 0.99603
+   }
+  ],
+  "bucket": "motorcycle-with-people",
+  "source_label_sha256": "935098f6919dbfcd191ddf5d544178d2be00444d707aaad8a24214a317584a96",
+  "prior_label_sha256": "935098f6919dbfcd191ddf5d544178d2be00444d707aaad8a24214a317584a96",
+  "review": {}
+ },
+ {
+  "key": "cc000000484279",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000484279.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000484279.jpg",
+  "original_url": "http://farm8.staticflickr.com/7430/10115254473_e8d1c62ca1_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by/2.0/",
+   "id": 4,
+   "name": "Attribution License"
+  },
+  "parent": "coco-extra/images/co795.jpg",
+  "parent_sha256": "e613c9e486092002d243da7d29d7e5c1613ba7ab629878c7268787c9b75829b4",
+  "image_sha256": "e613c9e486092002d243da7d29d7e5c1613ba7ab629878c7268787c9b75829b4",
+  "label_sha256": "465ef9a618cbac5317fdf23bc27f7136c74146beb85f21ec7a4878e1d1e71100",
+  "size": [
+   640,
+   430
+  ],
+  "objects": [
+   {
+    "cls": 8,
+    "native_ids": [
+     "188631"
+    ],
+    "area640": 5556.0,
+    "iou": 0.99982
+   },
+   {
+    "cls": 4,
+    "native_ids": [
+     "151719"
+    ],
+    "iou": 0.9998752689513237,
+    "area640": 64136.0
+   },
+   {
+    "cls": 8,
+    "native_ids": [
+     "186960"
+    ],
+    "iou": 0.9993487698986976,
+    "area640": 13820.0
+   }
+  ],
+  "bucket": "motorcycle-with-people",
+  "source_label_sha256": "6a1cbbda6bc376b9c6ae53d4f1250af53d9e7e2e74fc1909c65d2f045037dc18",
+  "prior_label_sha256": "6a1cbbda6bc376b9c6ae53d4f1250af53d9e7e2e74fc1909c65d2f045037dc18",
+  "review": {
+   "5": [
+    4,
+    8
+   ]
+  }
+ },
+ {
+  "key": "cc000000555686",
+  "source": "COCO train2017",
+  "source_image": "coco5_000000555686.jpg",
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/train2017/000000555686.jpg",
+  "original_url": "http://farm9.staticflickr.com/8215/8297799548_b460f57fc0_z.jpg",
+  "license": {
+   "url": "http://creativecommons.org/licenses/by-sa/2.0/",
+   "id": 5,
+   "name": "Attribution-ShareAlike License"
+  },
+  "parent": "coco-extra/images/co462.jpg",
+  "parent_sha256": "a16f48260e7797d07fa28523802299a279eba87b5f0164752dcfc69b64d26100",
+  "image_sha256": "a16f48260e7797d07fa28523802299a279eba87b5f0164752dcfc69b64d26100",
+  "label_sha256": "394fe04bc10d54a5d66a74d8eb33d9563401f7c78949c8a9277fe5f7ed4dd297",
+  "size": [
+   640,
+   480
+  ],
+  "objects": [
+   {
+    "cls": 5,
+    "native_ids": [
+     "152598",
+     "213477"
+    ],
+    "area640": 135906.0,
+    "iou": 0.99943
+   }
+  ],
+  "bucket": "motorcycle-with-people",
+  "source_label_sha256": "394fe04bc10d54a5d66a74d8eb33d9563401f7c78949c8a9277fe5f7ed4dd297",
+  "prior_label_sha256": "394fe04bc10d54a5d66a74d8eb33d9563401f7c78949c8a9277fe5f7ed4dd297",
+  "review": {}
+ }
+]

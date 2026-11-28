@@ -175,6 +175,14 @@ def main():
         lines[start_line] += f" --warm-start overnight/{source_run}"
         lines.insert(lines.index("## Tái lập") + 2,
                      f"Fine-tune từ checkpoint đã kiểm của `{source_run}`, SHA-256 `{warm['weights_sha256']}`.\n")
+    stages = []
+    ancestor = best
+    while fit := decision.get("quality_fit"):
+        parent = fit["parent"]
+        assert digest(root / parent / "best.pt") == fit["parent_weights_sha256"]
+        stages.append((ancestor, parent, fit))
+        ancestor = parent
+        decision = read(root / parent / "run_report.json").get("checkpoint_selection", {})
     if decision.get("mean_sources"):
         sources = decision["mean_sources"]
         start = lines.index("## Tái lập") + 2
@@ -220,8 +228,22 @@ def main():
             f'git -C "{checkout}" checkout --detach {tools_revision}',
             f'SCRIPTS="$PWD/{checkout}/scripts"', f'NOTEBOOK="$PWD/{checkout}/notebooks/train_and_export.ipynb"',
             *commands, f'CUDA_VISIBLE_DEVICES="" .venv/bin/python "$SCRIPTS/overnight_last_checkpoint.py" '
-            f'overnight/replay-{sources[0]["run"]} overnight/replay-{best} "$NOTEBOOK" '
-            f'audit_phase12/validation-manifest.json --mean-with {others}{refresh}', "```"])
+            f'overnight/replay-{sources[0]["run"]} overnight/replay-{ancestor} "$NOTEBOOK" '
+            f'audit_phase12/validation-manifest.json --mean-with {others}{refresh}'])
+        for stage, parent, fit in reversed(stages):
+            option = "--mask-polish"
+            if fit.get("method") == "wheel-classifier":
+                option = "--wheel-source overnight/"+fit["data_run"]
+            elif fit.get("method") == "wheel-contours":
+                weights = "overnight/weight-means/replay-"+stage
+                reproduction.append(f'.venv/bin/python "$SCRIPTS/team21_wheel_masks.py" overnight/replay-{parent} '
+                    f'overnight/{fit["source"]} overnight/team21-wheel-reviewed {weights} "$NOTEBOOK"')
+                option = "--wheel-contours "+weights
+            elif "fit_instances" not in fit:
+                option = "--mask-quality"
+            reproduction.append(f'CUDA_VISIBLE_DEVICES="" .venv/bin/python "$SCRIPTS/overnight_last_checkpoint.py" '
+                f'overnight/replay-{parent} overnight/replay-{stage} "$NOTEBOOK" audit_phase12/validation-manifest.json {option}')
+        reproduction.append("```")
         lines[start:end+1] = reproduction
     elif "reuses_fit_from" in resource:
         extraction = (

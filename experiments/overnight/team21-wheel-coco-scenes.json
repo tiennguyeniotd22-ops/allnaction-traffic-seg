@@ -1,0 +1,372 @@
+{
+ "base_dataset_sha256": "c3e187b748144a6f9afb06af82e6693ed2a56c719f705f10410d2b2517233284",
+ "holdout_sha256": "9e518defa9f4567814bd7f7d9a472130c3a0c7f05e0f54b6488e5bc6b2d4c0b0",
+ "candidate_manifest_sha256": {
+  "team21-coco-frames-review": "9fca6b1892b5967d13a0142bb3e482ab5c8a67529f94ee0dda9fa9d973869cf3"
+ },
+ "descriptor_images": 3288,
+ "checked": 570,
+ "close_hash": [],
+ "same_scene": [
+  {
+   "a": "cc000000046059",
+   "b": "base",
+   "left": "cc000000046059/parent",
+   "right": "dataset/images/train/zz_drive_000000283038.jpg",
+   "inliers": 13
+  },
+  {
+   "a": "cc000000046059",
+   "b": "base",
+   "left": "cc000000046059/parent",
+   "right": "dataset/images/train/zz_drive_000000213593.jpg",
+   "inliers": 14
+  },
+  {
+   "a": "cc000000046059",
+   "b": "base",
+   "left": "cc000000046059/parent",
+   "right": "dataset/images/train/zz_new_co266.jpg",
+   "inliers": 13
+  },
+  {
+   "a": "cc000000046059",
+   "b": "base",
+   "left": "cc000000046059/parent",
+   "right": "dataset/images/train/zz_drive_000000460229.jpg",
+   "inliers": 14
+  },
+  {
+   "a": "cc000000046059",
+   "b": "base",
+   "left": "cc000000046059/parent",
+   "right": "dataset/images/train/zz_drive_000000126592.jpg",
+   "inliers": 14
+  },
+  {
+   "a": "cc000000046059",
+   "b": "base",
+   "left": "cc000000046059/parent",
+   "right": "dataset/images/train/zz_drive_000000336587.jpg",
+   "inliers": 13
+  },
+  {
+   "a": "cc000000046059",
+   "b": "base",
+   "left": "cc000000046059/parent",
+   "right": "dataset/images/train/zz_new_co059.jpg",
+   "inliers": 13
+  },
+  {
+   "a": "cc000000046059",
+   "b": "base",
+   "left": "cc000000046059/parent",
+   "right": "dataset/images/train/zz_new_co167.jpg",
+   "inliers": 14
+  },
+  {
+   "a": "cc000000046059",
+   "b": "base",
+   "left": "cc000000046059/parent",
+   "right": "dataset/images/train/zz_new_co041.jpg",
+   "inliers": 10
+  },
+  {
+   "a": "cc000000171753",
+   "b": "cc000000171809",
+   "left": "cc000000171753/parent",
+   "right": "cc000000171809/parent",
+   "inliers": 36
+  },
+  {
+   "a": "cc000000171753",
+   "b": "cc000000558137",
+   "left": "cc000000171753/parent",
+   "right": "cc000000558137/parent",
+   "inliers": 15
+  },
+  {
+   "a": "cc000000203564",
+   "b": "base",
+   "left": "cc000000203564/parent",
+   "right": "dataset/images/train/zz_new_bd082.jpg",
+   "inliers": 12
+  },
+  {
+   "a": "cc000000246156",
+   "b": "base",
+   "left": "cc000000246156/parent",
+   "right": "dataset/images/train/zz_plus_cc000000079498.jpg",
+   "inliers": 20
+  },
+  {
+   "a": "cc000000246156",
+   "b": "base",
+   "left": "cc000000246156/parent",
+   "right": "dataset/images/train/bdd_night_000114.jpg",
+   "inliers": 61
+  },
+  {
+   "a": "cc000000246156",
+   "b": "base",
+   "left": "cc000000246156/parent",
+   "right": "dataset/images/train/bdd_night_000092.jpg",
+   "inliers": 29
+  },
+  {
+   "a": "cc000000246156",
+   "b": "base",
+   "left": "cc000000246156/parent",
+   "right": "dataset/images/train/zz_plus_bdsem_16df5285-89f204f6.jpg",
+   "inliers": 20
+  },
+  {
+   "a": "cc000000246156",
+   "b": "base",
+   "left": "cc000000246156/parent",
+   "right": "prior-parent/vista_ljX1AC2sR76tBDgLbP1j3g",
+   "inliers": 27
+  },
+  {
+   "a": "cc000000264923",
+   "b": "base",
+   "left": "cc000000264923/parent",
+   "right": "dataset/images/train/zz_plus_cc000000236920.jpg",
+   "inliers": 69
+  },
+  {
+   "a": "cc000000316694",
+   "b": "base",
+   "left": "cc000000316694/parent",
+   "right": "dataset/images/val/vn_sign_8c9d51b15b61ed3d87.jpg",
+   "inliers": 11
+  },
+  {
+   "a": "cc000000435124",
+   "b": "base",
+   "left": "cc000000435124/parent",
+   "right": "dataset/images/train/vn_sign_cf28c8d9535c83bed2.jpg",
+   "inliers": 11
+  },
+  {
+   "a": "cc000000435124",
+   "b": "base",
+   "left": "cc000000435124/parent",
+   "right": "dataset/images/val/zz_drive_000000259640.jpg",
+   "inliers": 17
+  },
+  {
+   "a": "cc000000497455",
+   "b": "base",
+   "left": "cc000000497455/parent",
+   "right": "dataset/images/train/zz_plus_cc000000102096.jpg",
+   "inliers": 76
+  },
+  {
+   "a": "cc000000021183",
+   "b": "base",
+   "left": "cc000000021183/parent",
+   "right": "dataset/images/train/zz_drive_000000501023.jpg",
+   "inliers": 12
+  },
+  {
+   "a": "cc000000090359",
+   "b": "base",
+   "left": "cc000000090359/parent",
+   "right": "dataset/images/val/zz_drive_000000206487.jpg",
+   "inliers": 10
+  },
+  {
+   "a": "cc000000191913",
+   "b": "base",
+   "left": "cc000000191913/parent",
+   "right": "dataset/images/train/zz_plus_cc000000116848.jpg",
+   "inliers": 14
+  },
+  {
+   "a": "cc000000511777",
+   "b": "base",
+   "left": "cc000000511777/parent",
+   "right": "prior-parent/bdsem_2ad8324d-3993b628",
+   "inliers": 16
+  },
+  {
+   "a": "cc000000511777",
+   "b": "base",
+   "left": "cc000000511777/parent",
+   "right": "dataset/images/train/bdd_rainy_000145.jpg",
+   "inliers": 15
+  },
+  {
+   "a": "cc000000426261",
+   "b": "base",
+   "left": "cc000000426261/parent",
+   "right": "dataset/images/train/zz_drive_000000126592.jpg",
+   "inliers": 12
+  },
+  {
+   "a": "cc000000508191",
+   "b": "base",
+   "left": "cc000000508191/parent",
+   "right": "dataset/images/train/zz_drive_000000453841.jpg",
+   "inliers": 12
+  },
+  {
+   "a": "cc000000550007",
+   "b": "base",
+   "left": "cc000000550007/parent",
+   "right": "dataset/images/train/zz_new_co156.jpg",
+   "inliers": 17
+  },
+  {
+   "a": "cc000000133995",
+   "b": "base",
+   "left": "cc000000133995/parent",
+   "right": "prior-parent/vista_5Hoi6KHdtFkzPA6dQ6ocgA",
+   "inliers": 11
+  },
+  {
+   "a": "cc000000133995",
+   "b": "cc000000397664",
+   "left": "cc000000133995/parent",
+   "right": "cc000000397664/parent",
+   "inliers": 16
+  },
+  {
+   "a": "cc000000158873",
+   "b": "base",
+   "left": "cc000000158873/parent",
+   "right": "dataset/images/val/zz_drive_000000463849.jpg",
+   "inliers": 11
+  },
+  {
+   "a": "cc000000158873",
+   "b": "base",
+   "left": "cc000000158873/parent",
+   "right": "prior-parent/vista_KQGaQaJDIMIWz9JpI_57Ig",
+   "inliers": 15
+  },
+  {
+   "a": "cc000000513891",
+   "b": "base",
+   "left": "cc000000513891/parent",
+   "right": "dataset/images/train/zz_drive_000000136715.jpg",
+   "inliers": 10
+  },
+  {
+   "a": "cc000000013944",
+   "b": "base",
+   "left": "cc000000013944/parent",
+   "right": "dataset/images/train/bdd_daytime_000173.jpg",
+   "inliers": 10
+  },
+  {
+   "a": "cc000000028333",
+   "b": "base",
+   "left": "cc000000028333/parent",
+   "right": "dataset/images/train/zz_new_co358.jpg",
+   "inliers": 10
+  },
+  {
+   "a": "cc000000270799",
+   "b": "base",
+   "left": "cc000000270799/parent",
+   "right": "prior-parent/vista_3i39JRv2KbXWNscgwxrGxQ",
+   "inliers": 11
+  },
+  {
+   "a": "cc000000270799",
+   "b": "base",
+   "left": "cc000000270799/parent",
+   "right": "prior-parent/vista_jEgdRfPn6TGW28jZY9ocPw",
+   "inliers": 22
+  },
+  {
+   "a": "cc000000270799",
+   "b": "base",
+   "left": "cc000000270799/parent",
+   "right": "dataset/images/train/zz_plus_vista_iyZelm5IuUiS95ecufA_BA.jpg",
+   "inliers": 16
+  },
+  {
+   "a": "cc000000270799",
+   "b": "base",
+   "left": "cc000000270799/parent",
+   "right": "dataset/images/train/zz_drive_000000166391.jpg",
+   "inliers": 12
+  },
+  {
+   "a": "cc000000270799",
+   "b": "base",
+   "left": "cc000000270799/parent",
+   "right": "dataset/images/train/paste21_vista_iyZelm5IuUiS95ecufA_BA_2.jpg",
+   "inliers": 16
+  },
+  {
+   "a": "cc000000270799",
+   "b": "base",
+   "left": "cc000000270799/parent",
+   "right": "dataset/images/train/zz_drive_000000021839.jpg",
+   "inliers": 22
+  },
+  {
+   "a": "cc000000270799",
+   "b": "cc000000501286",
+   "left": "cc000000270799/parent",
+   "right": "cc000000501286/parent",
+   "inliers": 20
+  },
+  {
+   "a": "cc000000270799",
+   "b": "base",
+   "left": "cc000000270799/parent",
+   "right": "prior-parent/vista_iyM3pXjvGXue4RTpW5-ypA",
+   "inliers": 19
+  },
+  {
+   "a": "cc000000270799",
+   "b": "base",
+   "left": "cc000000270799/parent",
+   "right": "dataset/images/train/vn_sign_c95522a8e376c491dc.jpg",
+   "inliers": 18
+  },
+  {
+   "a": "cc000000499835",
+   "b": "base",
+   "left": "cc000000499835/parent",
+   "right": "dataset/images/train/zz_plus_vista_fNlFltjhh7-AxxIV5ehOxQ.jpg",
+   "inliers": 11
+  },
+  {
+   "a": "cc000000499835",
+   "b": "base",
+   "left": "cc000000499835/parent",
+   "right": "dataset/images/train/zz_drive_000000338625.jpg",
+   "inliers": 13
+  },
+  {
+   "a": "cc000000499835",
+   "b": "base",
+   "left": "cc000000499835/parent",
+   "right": "prior-parent/bdsem_6a03307e-2110f9e2",
+   "inliers": 13
+  },
+  {
+   "a": "cc000000499835",
+   "b": "base",
+   "left": "cc000000499835/parent",
+   "right": "dataset/images/train/zz_drive_000000326627.jpg",
+   "inliers": 12
+  },
+  {
+   "a": "cc000000522173",
+   "b": "base",
+   "left": "cc000000522173/parent",
+   "right": "dataset/images/train/zz_plus_cc000000242771.jpg",
+   "inliers": 11
+  }
+ ],
+ "reference_sha256": {
+  "probe-frozen.zip": "cf990065d5f00c2cbc364d9f273c3adc3214cfd74b8ab7a2f2d19242bac835ca"
+ }
+}

@@ -16,6 +16,7 @@ CHANGES = {
     "no-copy-paste": {"copy_paste": (0.35, 0.0)},
     "mask-ratio-4": {"mask_ratio": (2, 4)},
     "lower-lr": {"lr0": (0.002, 0.0007)},
+    "class-balanced": {"lr0": (0.002, 0.0007), "cls_pw": (0.0, 0.5)},
     "distill-x": {"lr0": (0.002, 0.0007), "distill_model": (None, "round4/yolo26x-seg.pt")},
     "o2m-constant": {"lr0": (0.002, 0.0007)},
     "warm-polish": {"lr0": (0.002, 0.0002), "warmup_bias_lr": (0.1, 0.0002),

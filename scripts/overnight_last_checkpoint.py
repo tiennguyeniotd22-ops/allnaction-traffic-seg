@@ -67,7 +67,7 @@ def main():
         if averaged is not None:
             stored = read(out / "run_report.json")
             assert sha(out / "runs/train/weights/best.pt") == stored["train"]["best_sha256"]
-            fields = {}
+            fields = {"__name__": "__main__"}
             for i in (1, 2, 3, 4, 5):
                 exec("".join(read(a.notebook)["cells"][i]["source"]), fields)
             assert fields["weights_fingerprint"](last) == stored["train"]["best_tensors_sha256"]

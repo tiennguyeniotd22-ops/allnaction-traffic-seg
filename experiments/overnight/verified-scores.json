@@ -10844,5 +10844,429 @@
    "gt_instances": 7,
    "run": "overnight/team21-mean-four"
   }
+ },
+ "team21-mean-bn": {
+  "paired_scene_bootstrap_95_points": [
+   0.0740070569477916,
+   2.0653449557770966
+  ],
+  "onnx_parity": [
+   {
+    "file": "00000_bdd_daytime_000029.jpg",
+    "shape": [
+     1,
+     47,
+     8400
+    ],
+    "max_abs": 0.00341796875,
+    "native_outside_strict": 0,
+    "torch_reference": "CPU native FP32",
+    "onednn_max_abs": 0.00408935546875,
+    "onednn_outside_tolerance": 0
+   },
+   {
+    "file": "00000_bdd_daytime_000029.jpg",
+    "shape": [
+     1,
+     32,
+     160,
+     160
+    ],
+    "max_abs": 1.1682510375976562e-05,
+    "native_outside_strict": 0,
+    "torch_reference": "CPU native FP32",
+    "onednn_max_abs": 2.2292137145996094e-05,
+    "onednn_outside_tolerance": 0
+   },
+   {
+    "file": "00045_vn_sign_2f0cc0964e524f0b96.jpg",
+    "shape": [
+     1,
+     47,
+     8400
+    ],
+    "max_abs": 0.0074920654296875,
+    "native_outside_strict": 0,
+    "torch_reference": "CPU native FP32",
+    "onednn_max_abs": 0.003917694091796875,
+    "onednn_outside_tolerance": 0
+   },
+   {
+    "file": "00045_vn_sign_2f0cc0964e524f0b96.jpg",
+    "shape": [
+     1,
+     32,
+     160,
+     160
+    ],
+    "max_abs": 4.5299530029296875e-05,
+    "native_outside_strict": 0,
+    "torch_reference": "CPU native FP32",
+    "onednn_max_abs": 3.838539123535156e-05,
+    "onednn_outside_tolerance": 0
+   },
+   {
+    "file": "00100_zz_drive_000000334006.jpg",
+    "shape": [
+     1,
+     47,
+     8400
+    ],
+    "max_abs": 0.0050048828125,
+    "native_outside_strict": 0,
+    "torch_reference": "CPU native FP32",
+    "onednn_max_abs": 0.01177978515625,
+    "onednn_outside_tolerance": 0
+   },
+   {
+    "file": "00100_zz_drive_000000334006.jpg",
+    "shape": [
+     1,
+     32,
+     160,
+     160
+    ],
+    "max_abs": 1.5497207641601562e-05,
+    "native_outside_strict": 0,
+    "torch_reference": "CPU native FP32",
+    "onednn_max_abs": 3.337860107421875e-05,
+    "onednn_outside_tolerance": 0
+   }
+  ],
+  "zip_sha256": "1e9bce2852eec67a977bf0215979a3094ccb9a3e94c7c1f154188f2a0f29f4e3",
+  "onnx_sha256": "2ff5670aca371f84e2b9da34c66394ec11c5a022de2ef8918dc4e5aaeb48bf7f",
+  "best_sha256": "42cf410d0ba4db71766c64696a683f8612b22eb2e598c651cc4ae8dea0fc92cb",
+  "zip_bytes": 9661534,
+  "opsets": {
+   "": 17
+  },
+  "scores": {
+   "team": {
+    "map50_95": 0.2313247609525079,
+    "map50": 0.3925777792598441,
+    "map75": 0.24267717295655794,
+    "per_class_ap": {
+     "Car": 0.47020966869511127,
+     "Bus": 0.2334060314667262,
+     "Truck": 0.3302991742745676,
+     "Motorcycle": 0.1598141071947871,
+     "Motorcyclist": 0.3674488736418654,
+     "Bicycle": 0.012995049504950493,
+     "Cyclist": 0.14274914333538616,
+     "Pedestrian": 0.1834530625219178,
+     "Sign": 0.2791043005372969,
+     "Traffic light": 0.1337681983524701
+    },
+    "per_class_ap50": {
+     "Car": 0.7394708337466678,
+     "Bus": 0.2766394107674669,
+     "Truck": 0.547368023691743,
+     "Motorcycle": 0.3041503096207512,
+     "Motorcyclist": 0.5875584268454839,
+     "Bicycle": 0.02984048404840484,
+     "Cyclist": 0.258560724493502,
+     "Pedestrian": 0.37103844568224165,
+     "Sign": 0.45891511887271386,
+     "Traffic light": 0.352236014829466
+    },
+    "n_gt_per_class": {
+     "Car": 335,
+     "Bus": 10,
+     "Truck": 21,
+     "Other vehicle": 0,
+     "Motorcycle": 14,
+     "Motorcyclist": 41,
+     "Bicycle": 4,
+     "Cyclist": 10,
+     "Pedestrian": 30,
+     "Sign": 145,
+     "Traffic light": 50
+    },
+    "n_gt_ignored": 210,
+    "n_detections": 5912,
+    "classes_without_gt": [
+     "Other vehicle"
+    ],
+    "n_images": 60
+   },
+   "BDD100K": {
+    "map50_95": 0.25527577762236453,
+    "map50": 0.42329630636199717,
+    "map75": 0.25231892148994456,
+    "per_class_ap": {
+     "Car": 0.47608768123473294,
+     "Bus": 0.30297029702970296,
+     "Truck": 0.34816124469589815,
+     "Motorcycle": 0.0,
+     "Pedestrian": 0.25762649368385115,
+     "Sign": 0.2620519453887791,
+     "Traffic light": 0.14003278132358743
+    },
+    "per_class_ap50": {
+     "Car": 0.7496788410227896,
+     "Bus": 0.3608360836083609,
+     "Truck": 0.47595473833097596,
+     "Motorcycle": 0.0,
+     "Pedestrian": 0.5471780281476424,
+     "Sign": 0.4580087651331047,
+     "Traffic light": 0.37141768829110655
+    },
+    "n_gt_per_class": {
+     "Car": 324,
+     "Bus": 9,
+     "Truck": 7,
+     "Other vehicle": 0,
+     "Motorcycle": 1,
+     "Motorcyclist": 0,
+     "Bicycle": 0,
+     "Cyclist": 0,
+     "Pedestrian": 13,
+     "Sign": 87,
+     "Traffic light": 49
+    },
+    "n_gt_ignored": 209,
+    "n_detections": 4465,
+    "classes_without_gt": [
+     "Other vehicle",
+     "Motorcyclist",
+     "Bicycle",
+     "Cyclist"
+    ],
+    "n_images": 45
+   },
+   "Vietnam-v5": {
+    "map50_95": 0.1865100556632465,
+    "map50": 0.3215813414561596,
+    "map75": 0.20565612308241105,
+    "per_class_ap": {
+     "Car": 0.29076688196151457,
+     "Bus": 0.04375,
+     "Truck": 0.3416033155039642,
+     "Motorcycle": 0.17040595403737538,
+     "Motorcyclist": 0.36748257733982387,
+     "Bicycle": 0.013075939946935868,
+     "Cyclist": 0.14462665016501652,
+     "Pedestrian": 0.15656938446183027,
+     "Sign": 0.3368198532160044,
+     "Traffic light": 0.0
+    },
+    "per_class_ap50": {
+     "Car": 0.504993356478505,
+     "Bus": 0.0625,
+     "Truck": 0.6336349152156594,
+     "Motorcycle": 0.3248934748694579,
+     "Motorcyclist": 0.5876049633322047,
+     "Bicycle": 0.03064938846825859,
+     "Cyclist": 0.262944875568638,
+     "Pedestrian": 0.2748004875346645,
+     "Sign": 0.5337919530942077,
+     "Traffic light": 0.0
+    },
+    "n_gt_per_class": {
+     "Car": 11,
+     "Bus": 1,
+     "Truck": 14,
+     "Other vehicle": 0,
+     "Motorcycle": 13,
+     "Motorcyclist": 41,
+     "Bicycle": 4,
+     "Cyclist": 10,
+     "Pedestrian": 17,
+     "Sign": 58,
+     "Traffic light": 1
+    },
+    "n_gt_ignored": 1,
+    "n_detections": 1447,
+    "classes_without_gt": [
+     "Other vehicle"
+    ],
+    "n_images": 15
+   },
+   "drive": {
+    "map50_95": 0.24761417002514044,
+    "map50": 0.43294817049053924,
+    "map75": 0.240875187174799,
+    "per_class_ap": {
+     "Car": 0.3360865978988345,
+     "Bus": 0.5141536565445548,
+     "Truck": 0.21160606525448547,
+     "Motorcycle": 0.09345788184742232,
+     "Motorcyclist": 0.3110361346029752,
+     "Bicycle": 0.169932620845242,
+     "Cyclist": 0.1343967684796211,
+     "Pedestrian": 0.2919506939315371,
+     "Sign": 0.2208090039773208,
+     "Traffic light": 0.1927122768694105
+    },
+    "per_class_ap50": {
+     "Car": 0.5741286516294872,
+     "Bus": 0.6678587528880419,
+     "Truck": 0.3353920284088179,
+     "Motorcycle": 0.1698795445675243,
+     "Motorcyclist": 0.5768474818938958,
+     "Bicycle": 0.3360854475674538,
+     "Cyclist": 0.2555105309293373,
+     "Pedestrian": 0.5928914585645914,
+     "Sign": 0.34475755267834474,
+     "Traffic light": 0.47613025577789714
+    },
+    "n_gt_per_class": {
+     "Car": 211,
+     "Bus": 25,
+     "Truck": 61,
+     "Other vehicle": 0,
+     "Motorcycle": 40,
+     "Motorcyclist": 29,
+     "Bicycle": 40,
+     "Cyclist": 23,
+     "Pedestrian": 388,
+     "Sign": 7,
+     "Traffic light": 104
+    },
+    "n_gt_ignored": 23,
+    "n_detections": 8000,
+    "classes_without_gt": [
+     "Other vehicle"
+    ],
+    "n_images": 80
+   },
+   "COCO-val2017": {
+    "map50_95": 0.24761417002514044,
+    "map50": 0.43294817049053924,
+    "map75": 0.240875187174799,
+    "per_class_ap": {
+     "Car": 0.3360865978988345,
+     "Bus": 0.5141536565445548,
+     "Truck": 0.21160606525448547,
+     "Motorcycle": 0.09345788184742232,
+     "Motorcyclist": 0.3110361346029752,
+     "Bicycle": 0.169932620845242,
+     "Cyclist": 0.1343967684796211,
+     "Pedestrian": 0.2919506939315371,
+     "Sign": 0.2208090039773208,
+     "Traffic light": 0.1927122768694105
+    },
+    "per_class_ap50": {
+     "Car": 0.5741286516294872,
+     "Bus": 0.6678587528880419,
+     "Truck": 0.3353920284088179,
+     "Motorcycle": 0.1698795445675243,
+     "Motorcyclist": 0.5768474818938958,
+     "Bicycle": 0.3360854475674538,
+     "Cyclist": 0.2555105309293373,
+     "Pedestrian": 0.5928914585645914,
+     "Sign": 0.34475755267834474,
+     "Traffic light": 0.47613025577789714
+    },
+    "n_gt_per_class": {
+     "Car": 211,
+     "Bus": 25,
+     "Truck": 61,
+     "Other vehicle": 0,
+     "Motorcycle": 40,
+     "Motorcyclist": 29,
+     "Bicycle": 40,
+     "Cyclist": 23,
+     "Pedestrian": 388,
+     "Sign": 7,
+     "Traffic light": 104
+    },
+    "n_gt_ignored": 23,
+    "n_detections": 8000,
+    "classes_without_gt": [
+     "Other vehicle"
+    ],
+    "n_images": 80
+   },
+   "all140": {
+    "map50_95": 0.2514937160438436,
+    "map50": 0.4371084902912645,
+    "map75": 0.2547446106971998,
+    "per_class_ap": {
+     "Car": 0.4197756954830812,
+     "Bus": 0.4166817448602145,
+     "Truck": 0.23324115224603137,
+     "Motorcycle": 0.09282781803256066,
+     "Motorcyclist": 0.3388439688574531,
+     "Bicycle": 0.15461071657280226,
+     "Cyclist": 0.13233419569945573,
+     "Pedestrian": 0.2842966702832513,
+     "Sign": 0.27346567250703796,
+     "Traffic light": 0.16885952589654724
+    },
+    "per_class_ap50": {
+     "Car": 0.6777049349113501,
+     "Bus": 0.5402015402654607,
+     "Truck": 0.3835975563509998,
+     "Motorcycle": 0.1741119515388028,
+     "Motorcyclist": 0.5819046815853088,
+     "Bicycle": 0.30599446085902576,
+     "Cyclist": 0.250615900132878,
+     "Pedestrian": 0.578323498889617,
+     "Sign": 0.45003860753702807,
+     "Traffic light": 0.4285917708421738
+    },
+    "n_gt_per_class": {
+     "Car": 546,
+     "Bus": 35,
+     "Truck": 82,
+     "Other vehicle": 0,
+     "Motorcycle": 54,
+     "Motorcyclist": 70,
+     "Bicycle": 44,
+     "Cyclist": 33,
+     "Pedestrian": 418,
+     "Sign": 152,
+     "Traffic light": 154
+    },
+    "n_gt_ignored": 233,
+    "n_detections": 13912,
+    "classes_without_gt": [
+     "Other vehicle"
+    ],
+    "n_images": 140
+   }
+  },
+  "resources": {
+   "revision": "c80203c7b395dc7695b1fd94742e667c8562094e",
+   "experiment": "lower-lr",
+   "team_id": 21,
+   "dataset_sha256": "33362fd1aee1760da38f0f67e41a97c61dcc6aed6c10561bfbf9ef058755c2ef",
+   "initial_weights_sha256": "361fbfabab285c3237700b6bb91d7ecfa602cd945fffda8dbe1242829b71e73f",
+   "notebook_sha256": "9cf720e6cad44b8dec33e9a6fafc8425ce74e61d1fb37da65584b2ac9d4a73c5",
+   "gpu": "NVIDIA L4",
+   "fit_and_native_val_seconds": 699.0014973700017,
+   "peak_allocated_mib": 4722.60302734375,
+   "peak_reserved_mib": 8468.0,
+   "reuses_fit_from": "/home/pc/baseline-cvat300/overnight/team21-qc20",
+   "additional_fit_seconds": 0
+  },
+  "holdout": {
+   "score": 51.742102781706734,
+   "map50": 0.7906647807637907,
+   "map50_95": 0.5174210278170673,
+   "per_class_ap": {
+    "Other vehicle": 0.5174210278170673
+   },
+   "n_images": 6,
+   "n_gt_per_class": {
+    "Car": 0,
+    "Bus": 0,
+    "Truck": 0,
+    "Other vehicle": 7,
+    "Motorcycle": 0,
+    "Motorcyclist": 0,
+    "Bicycle": 0,
+    "Cyclist": 0,
+    "Pedestrian": 0,
+    "Sign": 0,
+    "Traffic light": 0
+   },
+   "n_gt_ignored": 0,
+   "zip_sha256": "1e9bce2852eec67a977bf0215979a3094ccb9a3e94c7c1f154188f2a0f29f4e3",
+   "holdout_sha256": "9e518defa9f4567814bd7f7d9a472130c3a0c7f05e0f54b6488e5bc6b2d4c0b0",
+   "gt_instances": 7,
+   "run": "overnight/team21-mean-bn"
+  }
  }
 }

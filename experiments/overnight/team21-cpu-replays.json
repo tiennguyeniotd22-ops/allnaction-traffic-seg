@@ -274,5 +274,66 @@
         "weights_sha256": "4396bc0cf2c0080656d9d5b878f0cd2aa006aa1f7a847aff160a8f54c1fb0f0a"
       }
     ]
+  },
+  "team21-mean-bn": {
+    "zip_sha256": "1e9bce2852eec67a977bf0215979a3094ccb9a3e94c7c1f154188f2a0f29f4e3",
+    "val_manifest_sha256": "23c92420f1742f9d6091c09930bb43e055558064b604a2b61291b62eaeeb2013",
+    "dataset_sha256": "33362fd1aee1760da38f0f67e41a97c61dcc6aed6c10561bfbf9ef058755c2ef",
+    "prepared_sha256": "7e8e27dd018b71d8b1c9a9835680ec6088b0d707950883e6cd73276700936b10",
+    "notebook_sha256": "9cf720e6cad44b8dec33e9a6fafc8425ce74e61d1fb37da65584b2ac9d4a73c5",
+    "predictions_sha256": "cf82237f15b821a034dacbd762d150412785f0bd814ff94efb4b1d8581d8c371",
+    "images": 140,
+    "per_class_ap": {
+      "Car": 0.4197756954830812,
+      "Bus": 0.4166817448602145,
+      "Truck": 0.23324115224603137,
+      "Motorcycle": 0.09282781803256066,
+      "Motorcyclist": 0.3388439688574531,
+      "Bicycle": 0.15461071657280226,
+      "Cyclist": 0.13233419569945573,
+      "Pedestrian": 0.2842966702832513,
+      "Sign": 0.27346567250703796,
+      "Traffic light": 0.16885952589654724
+    },
+    "map50_95": 0.2514937160438436,
+    "probe46": 0.2442269695563542,
+    "source_weights": [
+      {
+        "dataset_sha256": "33362fd1aee1760da38f0f67e41a97c61dcc6aed6c10561bfbf9ef058755c2ef",
+        "epochs": 20,
+        "experiment": "lower-lr",
+        "patience": 20,
+        "revision": "c80203c7b395dc7695b1fd94742e667c8562094e",
+        "run": "team21-qc20",
+        "weights_sha256": "fb6e63dad21324fe3c36505e8e6281d902c864855f156142c9340078ed4694db"
+      },
+      {
+        "dataset_sha256": "7141c5527ec6bb2a86bb897f336435bcfd2a0be705efb6909e9dd92cfc527010",
+        "epochs": 20,
+        "experiment": "lower-lr",
+        "patience": 20,
+        "revision": "c80203c7b395dc7695b1fd94742e667c8562094e",
+        "run": "team21-btc20",
+        "weights_sha256": "fcc3abdc7e8318dc316513eb31eccdbcf16458e7f1b9fa0502523e1b87182e88"
+      },
+      {
+        "dataset_sha256": "155b1d3cc81ea8b87c6123795a02702eb847b3807c85b76d4d21e496225e3252",
+        "epochs": 20,
+        "experiment": "lower-lr",
+        "patience": 20,
+        "revision": "c80203c7b395dc7695b1fd94742e667c8562094e",
+        "run": "team21-road20",
+        "weights_sha256": "4b888f8437aeced76d1407746ff1f48f2d4300c462dcdd50f7750bb5cd9bdf9a"
+      },
+      {
+        "dataset_sha256": "935c2e808540529595eb21fc175a79df35f7f2050615b7cc480ef047a3935ba0",
+        "epochs": 55,
+        "experiment": "lower-lr",
+        "patience": 25,
+        "revision": "c80203c7b395dc7695b1fd94742e667c8562094e",
+        "run": "team21-full",
+        "weights_sha256": "4396bc0cf2c0080656d9d5b878f0cd2aa006aa1f7a847aff160a8f54c1fb0f0a"
+      }
+    ]
   }
 }

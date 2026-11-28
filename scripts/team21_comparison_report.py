@@ -21,6 +21,12 @@ def fmt(value):
     return f"{value:.2f}".replace(".", ",")
 
 
+def image_hashes(archive, split):
+    prefix = f"images/{split}/"
+    return {hashlib.sha256(archive.read(k)).digest() for k in archive.namelist()
+            if k.startswith(prefix) and k.lower().endswith((".jpg", ".png", ".jpeg"))}
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("root", type=Path)
@@ -116,6 +122,17 @@ def main():
         folder = versions[source["dataset_sha256"]]
         assert sha(folder/"dataset.zip") == source["dataset_sha256"]
         lines.append(f"| {source['run']} | {folder.name} | {source['epochs']} | {source['experiment']} |")
+    original = a.root.parent / "round3/team780.zip"
+    assert sha(original) == read(a.root.parent / "round4/resources.json")["dataset_sha256"]
+    with ZipFile(original) as z:
+        old_train, old_val = image_hashes(z, "train"), image_hashes(z, "val")
+    assert (len(old_train), len(old_val)) == (640, 140)
+    for version in {s["dataset_sha256"] for s in sources}:
+        with ZipFile(versions[version] / "dataset.zip") as z:
+            train = image_hashes(z, "train")
+            assert old_train <= train and image_hashes(z, "val") == old_val and old_val.isdisjoint(train)
+    lines.extend(["", "Kiểm SHA ảnh trên từng bộ dữ liệu đầu vào của bản chọn xác nhận đủ 780 ảnh gốc vòng 4. "
+                  "Toàn bộ 640 ảnh train vẫn ở train và 140 ảnh val vẫn ở val."])
     if bn := report.get("checkpoint_selection", {}).get("bn_refresh"):
         lines.extend(["", f"Bản chọn có hiệu chỉnh BatchNorm từ {len(bn['images'])} ảnh train thuộc ba nguồn, "
                       f"batch {bn['batch']} và momentum {bn['momentum']}."])

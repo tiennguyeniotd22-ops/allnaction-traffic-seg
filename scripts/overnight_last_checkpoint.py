@@ -34,9 +34,10 @@ def main():
     source.add_argument("--mean-with", type=Path, nargs="+", help="Average best weights of these runs and the parent")
     p.add_argument("--refresh-bn", action="store_true", help="Update normalization buffers with train images after averaging")
     p.add_argument("--bn-momentum", type=float, help="EMA momentum for train-only BatchNorm refresh (default 0.025)")
+    p.add_argument("--bn-use-notebook-input", action="store_true", help="Preprocess train calibration frames with the frozen notebook")
     a = p.parse_args()
-    if a.bn_momentum is not None and not a.refresh_bn:
-        p.error("--bn-momentum requires --refresh-bn")
+    if (a.bn_momentum is not None or a.bn_use_notebook_input) and not a.refresh_bn:
+        p.error("BatchNorm options require --refresh-bn")
     if a.refresh_bn and not a.mean_with:
         p.error("--refresh-bn requires --mean-with")
     parent = a.parent.resolve()
@@ -45,19 +46,29 @@ def main():
     weights = parent / "runs/train/weights"
     last = weights / "last.pt" if a.epoch is None else parent / "snapshots" / f"epoch-{a.epoch:03}.pt"
     averaged, calibration = None, None
+    resources = read(parent / "resources.json")
+    assert sha(a.notebook) == resources["notebook_sha256"]
+    team = verified_team(report, resources["notebook_sha256"])
+    assert version("ultralytics") == report["environment"]["packages"]["ultralytics"] == "8.4.214"
+    assert report["model"]["architecture"] == "yolo26n-seg"
+    cells = read(a.notebook)["cells"]
+    ns = {"__name__": "__main__"}
+    for i in (1, 2, 3, 4, 5):
+        exec(compile("".join(cells[i]["source"]), f"notebook-{i}", "exec"), ns)
     if a.mean_with:
         from team21_weight_mean import mean_checkpoint
         last = out.parent / "weight-means" / out.name / "mean.pt"
         averaged = mean_checkpoint([parent, *(p.resolve() for p in a.mean_with)], last)
         if a.refresh_bn:
             from team21_bn_refresh import refresh
-            calibration = refresh(last, parent, .025 if a.bn_momentum is None else a.bn_momentum)
+            momentum = .025 if a.bn_momentum is None else a.bn_momentum
+            if a.bn_use_notebook_input:
+                with TemporaryDirectory() as tmp:
+                    checker = ns["load_selfcheck"](ns["SELFCHECK_BUNDLE"], Path(tmp))
+                    calibration = refresh(last, parent, momentum, checker.infer.preprocess)
+            else:
+                calibration = refresh(last, parent, momentum)
     assert sha(weights / "best.pt") == report["train"]["best_sha256"]
-    resources = read(parent / "resources.json")
-    assert sha(a.notebook) == resources["notebook_sha256"]
-    team = verified_team(report, resources["notebook_sha256"])
-    assert version("ultralytics") == report["environment"]["packages"]["ultralytics"] == "8.4.214"
-    assert report["model"]["architecture"] == "yolo26n-seg"
     if out.exists():
         prior = read(out / "checkpoint-selection.json")
         assert prior.get("mean_sources") == averaged
@@ -70,16 +81,9 @@ def main():
         if averaged is not None:
             stored = read(out / "run_report.json")
             assert sha(out / "runs/train/weights/best.pt") == stored["train"]["best_sha256"]
-            fields = {"__name__": "__main__"}
-            for i in (1, 2, 3, 4, 5):
-                exec("".join(read(a.notebook)["cells"][i]["source"]), fields)
-            assert fields["weights_fingerprint"](last) == stored["train"]["best_tensors_sha256"]
+            assert ns["weights_fingerprint"](last) == stored["train"]["best_tensors_sha256"]
         print("Already evaluated", out.name, flush=True)
         return
-    cells = read(a.notebook)["cells"]
-    ns = {"__name__": "__main__"}
-    for i in (1, 2, 3, 4, 5):
-        exec(compile("".join(cells[i]["source"]), f"notebook-{i}", "exec"), ns)
     before = ns["weights_fingerprint"](weights / "best.pt")
     assert before == report["train"]["best_tensors_sha256"]
     after = ns["weights_fingerprint"](last)

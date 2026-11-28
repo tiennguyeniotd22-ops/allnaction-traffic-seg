@@ -20,6 +20,7 @@ def main():
     p.add_argument("out", type=Path)
     p.add_argument("scoreboard", type=Path)
     p.add_argument("--ssh", default="plantcare-cvat")
+    p.add_argument("--replay", action="store_true", help="Fetch and cross-check the independent CPU, probe and error reports")
     args = p.parse_args()
     if not re.fullmatch("[a-z0-9-]+", args.run):
         p.error("Invalid run directory name")
@@ -28,6 +29,10 @@ def main():
     files = {base+s:Path(s).name for s in ("submission/submission.zip", "runs/train/weights/best.pt",
         "runs/train/args.yaml", "runs/train/results.csv", "run_report.json", "resources.json", "train_info.json")}
     files.update({scores+"comparison.json":"comparison.json", scores+"held/score.json":"held-score.json"})
+    if args.replay:
+        files[f"overnight/replay-cpu-{args.run}/replay.json"] = "replay.json"
+        files[f"overnight/probe-scores/{args.run}/score.json"] = "probe.json"
+        files[scores+"error-profile.json"] = "error-profile.json"
     if "repeat" in args.run:
         files[base+"sampling.json"]="sampling.json"
     cmd = "cd ~/baseline-cvat300 && tar -czf - " + " ".join(files)
@@ -47,6 +52,16 @@ def main():
         raise ValueError(f"Incomplete training log for {fit_name}")
     bodies["training.log"] = log
     pack=bodies["submission.zip"]
+    if args.replay:
+        replay, probe, errors = (json.loads(bodies[key]) for key in ("replay.json", "probe.json", "error-profile.json"))
+        report = json.loads(bodies["run_report.json"])
+        assert replay["zip_sha256"] == probe["zip_sha256"] == errors["zip_sha256"] == digest(pack)
+        assert replay["score"]["map50_95"] == errors["official_score"] == compare["scores"]["pilot"]["all140"]["map50_95"]
+        assert replay["score"]["n_images"] == 140 and probe["n_images"] == 46
+        assert replay["validation_sha256"] == errors["val_manifest_sha256"]
+        assert replay["dataset_sha256"] == resources["dataset_sha256"]
+        assert replay["prepared_sha256"] == report["dataset"]["sha256"]
+        assert replay["notebook_sha256"] == resources["notebook_sha256"] == probe["notebook_sha256"]
     assert len(pack)==compare["zip_bytes"]<=42*2**20
     assert digest(pack)==compare["zip_sha256"]==held["zip_sha256"]
     assert digest(bodies["best.pt"])==compare["best_sha256"]

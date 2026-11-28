@@ -9,7 +9,7 @@ import torch
 
 
 @torch.no_grad()
-def refresh(ckpt_path, run, momentum=.025):
+def refresh(ckpt_path, run, momentum=.025, platform_input=None):
     if not 0 < momentum <= 1:
         raise ValueError("BatchNorm momentum must be between zero (exclusive) and one")
     source = json.loads((run / "dataset/source_map.json").read_bytes())["files"]
@@ -43,16 +43,24 @@ def refresh(ckpt_path, run, momentum=.025):
         body = file.read_bytes()
         digest = hashlib.sha256(body)
         assert digest.digest() not in excluded and Path(value).parent.as_posix() == "images/train"
-        with Image.open(file) as original:
-            image = original.convert("RGB")
-        scale = min(640 / image.width, 640 / image.height)
-        resized = image.resize(tuple(max(1, round(n * scale)) for n in image.size), Image.Resampling.BILINEAR)
-        canvas = Image.new("RGB", (640, 640), (114, 114, 114))
-        canvas.paste(resized, ((640 - resized.width) // 2, (640 - resized.height) // 2))
-        batch.append(np.asarray(canvas))
+        if platform_input is None:
+            with Image.open(file) as original:
+                image = original.convert("RGB")
+            scale = min(640 / image.width, 640 / image.height)
+            resized = image.resize(tuple(max(1, round(n * scale)) for n in image.size), Image.Resampling.BILINEAR)
+            canvas = Image.new("RGB", (640, 640), (114, 114, 114))
+            canvas.paste(resized, ((640 - resized.width) // 2, (640 - resized.height) // 2))
+            batch.append(np.asarray(canvas))
+        else:
+            tensor, _ = platform_input(file)
+            assert tensor.shape == (1, 3, 640, 640) and tensor.dtype == np.float32
+            batch.append(tensor)
         records.append(dict(file=value, sha256=digest.hexdigest()))
         if len(batch) == 8:
-            inputs = torch.from_numpy(np.stack(batch)).permute(0, 3, 1, 2).float().div_(255)
+            if platform_input is None:
+                inputs = torch.from_numpy(np.stack(batch)).permute(0, 3, 1, 2).float().div_(255)
+            else:
+                inputs = torch.from_numpy(np.concatenate(batch)).contiguous(memory_format=torch.channels_last)
             net(inputs)
             batch.clear()
     assert not batch
@@ -68,5 +76,8 @@ def refresh(ckpt_path, run, momentum=.025):
     with tmp.open("wb") as stream:
         torch.save(ckpt, stream)
     tmp.replace(ckpt_path)
-    return dict(seed=21, images=records, images_per_domain=count, domains=list(groups),
-                batch=8, momentum=momentum, updated_buffers=len(changed))
+    record = dict(seed=21, images=records, images_per_domain=count, domains=list(groups),
+                  batch=8, momentum=momentum, updated_buffers=len(changed))
+    if platform_input is not None:
+        record["preprocessing"] = "notebook"
+    return record

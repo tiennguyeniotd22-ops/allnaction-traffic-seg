@@ -19,6 +19,7 @@ notebook=train_team21.ipynb
 options=()
 if [[ ${TEAM21_REFRESH_BN:-0} == 1 ]]; then options+=(--refresh-bn); fi
 if [[ -n ${TEAM21_BN_MOMENTUM:-} ]]; then options+=(--bn-momentum "$TEAM21_BN_MOMENTUM"); fi
+if [[ ${TEAM21_BN_NOTEBOOK_INPUT:-0} == 1 ]]; then options+=(--bn-use-notebook-input); fi
 "$py" "$code/overnight_last_checkpoint.py" "$base" "$dest" "$notebook" "$manifest" --mean-with "${sources[@]}" "${options[@]}"
 mkdir -p "$scores"
 if [[ ! -s "$scores/held/score.json" ]]; then

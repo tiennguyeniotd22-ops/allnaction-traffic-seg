@@ -239,21 +239,40 @@
 
 <!-- SLIDE 4 -->
 <section class="slide">
-  <div class="header"><h2>3. Thống Kê Các Version &amp; Nhóm Dữ Liệu Bổ Sung</h2><span class="tag">Slide 04</span></div>
-  <div class="card" style="flex:1;">
-    <h3>Tiến Trình Dữ Liệu Qua Từng Phiên Bản (Bổ Sung Đúng Nhóm Thiếu / Yếu)</h3>
-    <table class="table-compact">
-      <thead><tr><th>Version</th><th>Thành Phần Data Train</th><th>Nhóm Dữ Liệu Được Bổ Sung / Sửa</th><th>Val</th><th class="num">Mask mAP</th></tr></thead>
-      <tbody>
-        <tr><td><strong>v1 baseline</strong></td><td>400 ảnh (320 COCO + 80 synth)</td><td>Tạo nền 8 lớp cơ bản + cảnh đêm/mưa tổng hợp</td><td>80 COCO</td><td class="num">21,92</td></tr>
-        <tr><td><strong>Round 3 → 4</strong></td><td>640 ảnh (BDD + VN Sign + COCO)</td><td>Bổ sung <strong>cảnh ngày/đêm/mưa (BDD)</strong> &amp; <strong>biển báo VN (Sign)</strong></td><td>Val140</td><td class="num">21,35 → 22,01</td></tr>
-        <tr><td><strong>team21-qc20</strong></td><td>1.156 ảnh (CVAT QC + COCO)</td><td>Sửa <strong>xe 2 bánh, xe tải, đèn</strong> + thêm <strong>31 ảnh COCO</strong> kiểm trùng</td><td>Val140</td><td class="num">24,13</td></tr>
-        <tr><td><strong>mean-wide-bn</strong></td><td>1.411–1.442 ảnh</td><td>Bổ sung <strong>212 crop Mapillary Vistas</strong>, <strong>43 BDD</strong> &amp; <strong>24 tệp VN</strong></td><td>Val140</td><td class="num">25,64</td></tr>
-        <tr><td><strong>mean-paste-bn</strong></td><td>Mở rộng + Copy-Paste</td><td>Nhân bản <strong>nhóm lớp hiếm &amp; Other vehicle</strong> (holdout 60,71)</td><td>Val140</td><td class="num">25,80</td></tr>
-        <tr style="background:rgba(52,211,153,.10);"><td><strong>team21-mask-roi</strong></td><td>Lineage từ mean-paste-bn</td><td><strong>BN refresh 168 ảnh (3 nguồn)</strong> + tinh chỉnh <strong>ROI mask</strong></td><td><strong>Val140</strong></td><td class="num"><strong style="color:var(--green);">27,54</strong></td></tr>
-      </tbody>
-    </table>
-    <div class="split-wrap" style="margin-top:10px;">
+  <div class="header"><h2>3. Flow Tiến Hóa Dữ Liệu Qua Các Version</h2><span class="tag">Slide 04</span></div>
+  <div class="card" style="flex:1;display:flex;flex-direction:column;justify-content:space-between;">
+    <div>
+      <h3>Chuỗi Nâng Cấp Dữ Liệu &amp; Nhóm Đối Tượng Bổ Sung (val140 cố định)</h3>
+      <div class="pipeline" style="gap:10px;margin-top:10px;">
+        <div class="pipeline-step">
+          <strong>v1 · 21,92 <span class="muted">(val80)</span></strong>
+          400 ảnh: 320 COCO + 80 synth.<br/><span style="color:var(--accent);">+ Nền 8 lớp &amp; đêm/mưa</span>
+        </div>
+        <div class="pipeline-step">
+          <strong>Round 3→4 · 21,35→22,01</strong>
+          640 ảnh (BDD + VN Sign + COCO).<br/><span style="color:var(--accent);">+ Ngày/đêm/mưa BDD &amp; Sign VN</span>
+        </div>
+        <div class="pipeline-step">
+          <strong>QC20 Pilot · 24,13</strong>
+          1.156 ảnh CVAT QC + 31 COCO.<br/><span style="color:var(--accent);">+ Sửa 2 bánh, Truck &amp; đèn</span>
+        </div>
+      </div>
+      <div class="pipeline" style="gap:10px;margin-top:10px;">
+        <div class="pipeline-step">
+          <strong>Mean-wide-bn · 25,64</strong>
+          1.411–1.442 ảnh train.<br/><span style="color:var(--accent);">+ 212 Mapillary, 43 BDD, 24 VN</span>
+        </div>
+        <div class="pipeline-step">
+          <strong>Mean-paste-bn · 25,80</strong>
+          Mở rộng + Copy-Paste.<br/><span style="color:var(--accent);">+ Lớp hiếm &amp; Other vehicle (60,71)</span>
+        </div>
+        <div class="pipeline-step" style="border-color:var(--green);background:rgba(52,211,153,.10);">
+          <strong style="color:var(--green);">Mask-ROI · 27,54 (Best)</strong>
+          BN refresh 168 ảnh (3 nguồn) + ROI mask fit.<br/><span style="color:var(--green);">+3,41 điểm vs Pilot · Holdout 61,62</span>
+        </div>
+      </div>
+    </div>
+    <div class="split-wrap" style="margin-top:12px;">
       <div>
         <div class="mini-title">Val140 · 1.588 GT hợp lệ · khóa cố định SHA-256 giữa mọi version</div>
         <div class="split-track" role="img" aria-label="Val140: BDD 45 ảnh, Việt Nam 15 ảnh, Drive 80 ảnh"><span style="width:32.14%;background:#38bdf8;" title="BDD100K: 45 ảnh"></span><span style="width:10.72%;background:#a78bfa;" title="Việt Nam: 15 ảnh"></span><span style="width:57.14%;background:#34d399;" title="Drive: 80 ảnh"></span></div>
@@ -410,25 +429,31 @@
 
 <!-- SLIDE 10 -->
 <section class="slide">
-  <div class="header"><h2>9. Kết Quả Cuối, Giới Hạn &amp; Gói Tái Lập</h2><span class="tag">Slide 10</span></div>
+  <div class="header"><h2>9. Kết Quả Chấm Của Ban Giám Khảo (Đầu → Cao Nhất) &amp; Tái Lập</h2><span class="tag">Slide 10</span></div>
   <div class="grid-2">
-    <div class="card"><h3>Kết quả đã kiểm chứng</h3>
-      <div class="kpi-row"><div class="kpi"><div class="lbl">Val140 best</div><div class="val">27,54</div></div><div class="kpi"><div class="lbl">Pilot → best</div><div class="val">+3,41</div></div><div class="kpi"><div class="lbl">Holdout · 7 GT</div><div class="val">61,62</div></div></div>
+    <div class="card"><h3>Điểm Hệ Thống BTC: Lúc Đầu vs. Cao Nhất (Đã Chọn)</h3>
+      <table class="table-compact" style="margin-bottom:10px;">
+        <thead><tr><th>Chỉ Số Hệ Thống BTC</th><th class="num">Lúc Đầu (15:03 27/11)</th><th class="num">Cao Nhất (09:58 28/11)</th><th class="num">Mức Tăng</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Điểm Public · Private (hệ thống)</strong></td><td class="num">31,59 · 34,16</td><td class="num"><strong style="color:var(--green);">54,93 · 53,36</strong></td><td class="num" style="color:var(--green);">+23,34 · +19,20</td></tr>
+          <tr><td><strong>Public mask mAP@[.5:.95] (mAP50)</strong></td><td class="num">5,31 (9,98)</td><td class="num"><strong style="color:var(--green);">16,84 (30,17)</strong></td><td class="num" style="color:var(--green);"><strong>×3,17</strong></td></tr>
+          <tr><td><strong>Private mask mAP@[.5:.95] (mAP50)</strong></td><td class="num">6,42 (11,67)</td><td class="num"><strong style="color:var(--green);">17,69 (28,47)</strong></td><td class="num" style="color:var(--green);"><strong>×2,75</strong></td></tr>
+        </tbody>
+      </table>
       <ul>
-        <li>Bản chọn: <code>team21-mask-roi</code>; mask AP@[.50:.95] replay từ submission ZIP trên CPU.</li>
-        <li>ZIP 9.674.663 byte, chỉ chứa <code>model.onnx</code> FP32; SHA-256 bắt đầu bằng <code>2717f063</code>.</li>
-        <li>Điểm public/private chưa được ghi trong repo; không thay bằng điểm replay nội bộ.</li>
+        <li><strong>Bứt phá AP@50 trên Private:</strong> <code>Cyclist</code> 7,55 → <strong>45,76</strong>; <code>Traffic light</code> 25,34 → <strong>44,94</strong>; <code>Pedestrian</code> 11,96 → <strong>37,26</strong>; <code>Motorcycle</code> 0,94 → <strong>15,94</strong>.</li>
+        <li><strong>Bứt phá AP@50 trên Public:</strong> <code>Bus</code> 1,52 → <strong>37,74</strong>; <code>Motorcyclist</code> 12,46 → <strong>40,42</strong>; <code>Car</code> 35,75 → <strong>55,06</strong>.</li>
       </ul>
-      <div class="holdout-box" style="margin-top:12px;">Giới hạn: Motorcycle đạt 9,68 AP; val140 không có GT Other vehicle. Holdout lớp này chỉ có 7 GT trên 6 ảnh.</div>
+      <div class="holdout-box" style="margin-top:8px;">Giới hạn còn lại: <code>Other vehicle</code> trên test BTC đạt 0,00 (Public) / 0,23 (Private) → cần bổ sung thêm cảnh ba gác/xích lô thật.</div>
     </div>
     <div class="card"><h3>Hồ sơ để tái lập và kiểm tra</h3>
       <ul>
-        <li><code>experiments/TEAM21_KET_QUA.md</code>: bảng kết quả, AP theo lớp và lineage.</li>
+        <li><code>reports/TEAM21_KET_QUA.md</code>: bảng kết quả 27 vòng, AP theo lớp &amp; lineage.</li>
         <li><code>experiments/overnight/verified-scores.json</code>: metric, hash ZIP và parity ONNX.</li>
-        <li><code>experiments/overnight/team21-cpu-replays.json</code>: kết quả replay từ ZIP.</li>
         <li><code>DATASET_PROVENANCE_REPORT.md</code>: nguồn, giấy phép và manifest dữ liệu.</li>
+        <li><code>submission.zip</code>: FP32 <code>model.onnx</code> (<code>yolo26n-seg</code>, 640, opset 17).</li>
       </ul>
-      <p style="margin-top:16px;color:var(--green);font-weight:700;">Dữ liệu có nguồn gốc rõ ràng, split cố định, kết quả có thể kiểm chứng.</p>
+      <p style="margin-top:14px;color:var(--green);font-weight:700;">Cảm ơn Ban Tổ Chức &amp; Hội Đồng Giám Khảo!</p>
     </div>
   </div>
   <div class="footer"><span>AllnAction RoboTaxi Data-Centric Competition · Đội 21</span><span>Slide 10/10</span></div>

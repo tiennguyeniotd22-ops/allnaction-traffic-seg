@@ -456,31 +456,46 @@
 
 <!-- SLIDE 10 -->
 <section class="slide">
-  <div class="header"><h2>9. Kết Quả Chấm Của Ban Giám Khảo (Đầu → Cao Nhất) &amp; Tái Lập</h2><span class="tag">Slide 10</span></div>
-  <div class="grid-2">
-    <div class="card"><h3>Điểm Hệ Thống BTC: Lúc Đầu vs. Cao Nhất (Đã Chọn)</h3>
-      <table class="table-compact" style="margin-bottom:10px;">
-        <thead><tr><th>Chỉ Số Hệ Thống BTC</th><th class="num">Lúc Đầu (15:03 27/11)</th><th class="num">Cao Nhất (09:58 28/11)</th><th class="num">Mức Tăng</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Điểm Public · Private (hệ thống)</strong></td><td class="num">31,59 · 34,16</td><td class="num"><strong style="color:var(--green);">54,93 · 53,36</strong></td><td class="num" style="color:var(--green);">+23,34 · +19,20</td></tr>
-          <tr><td><strong>Public mask mAP@[.5:.95] (mAP50)</strong></td><td class="num">5,31 (9,98)</td><td class="num"><strong style="color:var(--green);">16,84 (30,17)</strong></td><td class="num" style="color:var(--green);"><strong>×3,17</strong></td></tr>
-          <tr><td><strong>Private mask mAP@[.5:.95] (mAP50)</strong></td><td class="num">6,42 (11,67)</td><td class="num"><strong style="color:var(--green);">17,69 (28,47)</strong></td><td class="num" style="color:var(--green);"><strong>×2,75</strong></td></tr>
-        </tbody>
-      </table>
-      <ul>
-        <li><strong>Bứt phá AP@50 trên Private:</strong> <code>Cyclist</code> 7,55 → <strong>45,76</strong>; <code>Traffic light</code> 25,34 → <strong>44,94</strong>; <code>Pedestrian</code> 11,96 → <strong>37,26</strong>; <code>Motorcycle</code> 0,94 → <strong>15,94</strong>.</li>
-        <li><strong>Bứt phá AP@50 trên Public:</strong> <code>Bus</code> 1,52 → <strong>37,74</strong>; <code>Motorcyclist</code> 12,46 → <strong>40,42</strong>; <code>Car</code> 35,75 → <strong>55,06</strong>.</li>
-      </ul>
-      <div class="holdout-box" style="margin-top:8px;">Giới hạn còn lại: <code>Other vehicle</code> trên test BTC đạt 0,00 (Public) / 0,23 (Private) → cần bổ sung thêm cảnh ba gác/xích lô thật.</div>
+  <div class="header"><h2>9. Kết Quả Chấm Của Ban Giám Khảo &amp; Gói Tái Lập</h2><span class="tag">Slide 10</span></div>
+  <div style="display:flex;flex-direction:column;justify-content:space-between;flex:1;gap:16px;">
+    <div class="grid-3">
+      <div class="kpi" style="border-left-color:var(--accent);">
+        <div class="lbl">Public Test (BTC) · Lúc Đầu → Chọn</div>
+        <div class="val" style="font-size:28px;color:var(--accent);">31,59 ➔ 54,93</div>
+        <div class="muted" style="margin-top:4px;">mAP@[.5:.95]: <strong>5,31 → 16,84</strong> (<strong style="color:var(--green);">×3,17</strong>) · AP50: 30,17</div>
+      </div>
+      <div class="kpi" style="border-left-color:var(--green);">
+        <div class="lbl">Private Test (BTC) · Lúc Đầu → Chọn</div>
+        <div class="val" style="font-size:28px;">34,16 ➔ 53,36</div>
+        <div class="muted" style="margin-top:4px;">mAP@[.5:.95]: <strong>6,42 → 17,69</strong> (<strong style="color:var(--green);">×2,75</strong>) · AP50: 28,47</div>
+      </div>
+      <div class="kpi" style="border-left-color:var(--amber);">
+        <div class="lbl">Val140 Khóa Cứng (CPU Replay)</div>
+        <div class="val" style="font-size:28px;color:var(--amber);">21,35 ➔ 27,54</div>
+        <div class="muted" style="margin-top:4px;">Bản chọn: <code>team21-mask-roi</code> · Holdout lớp 3: <strong>61,62</strong></div>
+      </div>
     </div>
-    <div class="card"><h3>Hồ sơ để tái lập và kiểm tra</h3>
-      <ul>
-        <li><code>reports/TEAM21_KET_QUA.md</code>: bảng kết quả 27 vòng, AP theo lớp &amp; lineage.</li>
-        <li><code>experiments/overnight/verified-scores.json</code>: metric, hash ZIP và parity ONNX.</li>
-        <li><code>DATASET_PROVENANCE_REPORT.md</code>: nguồn, giấy phép và manifest dữ liệu.</li>
-        <li><code>submission.zip</code>: FP32 <code>model.onnx</code> (<code>yolo26n-seg</code>, 640, opset 17).</li>
-      </ul>
-      <p style="margin-top:14px;color:var(--green);font-weight:700;">Cảm ơn Ban Tổ Chức &amp; Hội Đồng Giám Khảo!</p>
+    <div class="grid-2">
+      <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <h3>Các Lớp Bứt Phá &amp; Giới Hạn Cần Khắc Phục</h3>
+          <ul>
+            <li><strong>Bứt phá mạnh (AP@50):</strong> <code>Cyclist</code> (7,55 → <strong>45,76</strong>), <code>Traffic light</code> (25,34 → <strong>44,94</strong>), <code>Bus</code> (1,52 → <strong>37,74</strong>), <code>Motorcyclist</code> (12,46 → <strong>40,42</strong>), <code>Motorcycle</code> (0,94 → <strong>15,94</strong>).</li>
+          </ul>
+        </div>
+        <div class="holdout-box"><strong>Giới hạn &amp; hướng mở rộng:</strong> <code>Other vehicle</code> trên test BTC mới đạt 0,23 (Private) do thiếu ảnh ba gác/xích lô thật trong tập train đã chốt; cần gộp thêm gói Poribohon-BD (58 cảnh) &amp; Wikimedia VN đã prelabel.</div>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <h3>Gói Bàn Giao Tái Lập 100%</h3>
+          <ul>
+            <li><strong>Bài nộp chuẩn:</strong> <code>submission.zip</code> (<code>model.onnx</code> FP32, 640, opset 17).</li>
+            <li><strong>Báo cáo nguồn &amp; điểm:</strong> <code>DATASET_PROVENANCE_REPORT.md</code> · <code>reports/TEAM21_KET_QUA.md</code>.</li>
+            <li><strong>Bằng chứng kiểm chứng:</strong> <code>experiments/overnight/verified-scores.json</code> (SHA-256 &amp; parity PyTorch–ONNX).</li>
+          </ul>
+        </div>
+        <p style="color:var(--green);font-weight:700;font-size:17px;">Cảm ơn Ban Tổ Chức &amp; Hội Đồng Giám Khảo!</p>
+      </div>
     </div>
   </div>
   <div class="footer"><span>AllnAction RoboTaxi Data-Centric Competition · Đội 21</span><span>Slide 10/10</span></div>

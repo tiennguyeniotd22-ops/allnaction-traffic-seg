@@ -138,8 +138,10 @@
     .solution-grid .card { padding: 14px 16px; }
     .solution-grid p, .solution-grid li { font-size: 14px; }
     .pipeline { display: flex; gap: 8px; align-items: stretch; margin-top: 10px; }
-    .pipeline-step { flex: 1; padding: 9px 10px; border: 1px solid var(--border); border-radius: 8px; background: #0f172a; font-size: 12px; color: #cbd5e1; }
-    .pipeline-step strong { display: block; color: var(--accent); font-size: 13px; margin-bottom: 3px; }
+    .pipeline-step { flex: 1; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; background: #0f172a; font-size: 13.5px; color: #cbd5e1; line-height: 1.5; }
+    .pipeline-step strong { display: block; color: var(--accent); font-size: 15px; margin-bottom: 4px; }
+    .flow-arrow { display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 22px; font-weight: 800; padding: 0 2px; flex: 0 0 24px; }
+    .flow-down { text-align: center; color: var(--accent); font-size: 20px; font-weight: 800; line-height: 1; margin: 4px 0; }
     .source-note { margin-top: 9px; font-size: 12px; color: var(--muted); }
     .footnote { color: var(--muted); font-size: 12px; line-height: 1.4; margin-top: 10px; }
     .kpi-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 12px; }
@@ -240,39 +242,44 @@
 <!-- SLIDE 4 -->
 <section class="slide">
   <div class="header"><h2>3. Flow Tiến Hóa Dữ Liệu Qua Các Version</h2><span class="tag">Slide 04</span></div>
-  <div class="card" style="flex:1;display:flex;flex-direction:column;justify-content:space-between;">
-    <div>
-      <h3>Chuỗi Nâng Cấp Dữ Liệu &amp; Nhóm Đối Tượng Bổ Sung (val140 cố định)</h3>
-      <div class="pipeline" style="gap:10px;margin-top:10px;">
+  <div class="card" style="flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:22px 24px;">
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <h3 style="margin-bottom:2px;">Chuỗi Nâng Cấp Dữ Liệu &amp; Nhóm Đối Tượng Bổ Sung (val140 cố định)</h3>
+      <div class="pipeline" style="gap:6px;margin-top:4px;">
         <div class="pipeline-step">
-          <strong>v1 · 21,92 <span class="muted">(val80)</span></strong>
+          <strong>1. v1 · 21,92 <span class="muted">(val80)</span></strong>
           400 ảnh: 320 COCO + 80 synth.<br/><span style="color:var(--accent);">+ Nền 8 lớp &amp; đêm/mưa</span>
         </div>
+        <div class="flow-arrow">➔</div>
         <div class="pipeline-step">
-          <strong>Round 3→4 · 21,35→22,01</strong>
+          <strong>2. Round 3→4 · 21,35→22,01</strong>
           640 ảnh (BDD + VN Sign + COCO).<br/><span style="color:var(--accent);">+ Ngày/đêm/mưa BDD &amp; Sign VN</span>
         </div>
+        <div class="flow-arrow">➔</div>
         <div class="pipeline-step">
-          <strong>QC20 Pilot · 24,13</strong>
+          <strong>3. QC20 Pilot · 24,13</strong>
           1.156 ảnh CVAT QC + 31 COCO.<br/><span style="color:var(--accent);">+ Sửa 2 bánh, Truck &amp; đèn</span>
         </div>
       </div>
-      <div class="pipeline" style="gap:10px;margin-top:10px;">
+      <div class="flow-down">⬇ &nbsp;<span class="muted" style="font-size:12.5px;font-weight:600;">Mở rộng dữ liệu &amp; tinh chỉnh theo phân tích lỗi val140</span>&nbsp; ⬇</div>
+      <div class="pipeline" style="gap:6px;margin-top:0;">
         <div class="pipeline-step">
-          <strong>Mean-wide-bn · 25,64</strong>
+          <strong>4. Mean-wide-bn · 25,64</strong>
           1.411–1.442 ảnh train.<br/><span style="color:var(--accent);">+ 212 Mapillary, 43 BDD, 24 VN</span>
         </div>
+        <div class="flow-arrow">➔</div>
         <div class="pipeline-step">
-          <strong>Mean-paste-bn · 25,80</strong>
+          <strong>5. Mean-paste-bn · 25,80</strong>
           Mở rộng + Copy-Paste.<br/><span style="color:var(--accent);">+ Lớp hiếm &amp; Other vehicle (60,71)</span>
         </div>
-        <div class="pipeline-step" style="border-color:var(--green);background:rgba(52,211,153,.10);">
-          <strong style="color:var(--green);">Mask-ROI · 27,54 (Best)</strong>
+        <div class="flow-arrow" style="color:var(--green);">➔</div>
+        <div class="pipeline-step" style="border-color:var(--green);background:rgba(52,211,153,.12);">
+          <strong style="color:var(--green);">6. Mask-ROI · 27,54 (Best)</strong>
           BN refresh 168 ảnh (3 nguồn) + ROI mask fit.<br/><span style="color:var(--green);">+3,41 điểm vs Pilot · Holdout 61,62</span>
         </div>
       </div>
     </div>
-    <div class="split-wrap" style="margin-top:12px;">
+    <div class="split-wrap" style="margin-top:8px;padding-top:14px;border-top:1px solid var(--border);">
       <div>
         <div class="mini-title">Val140 · 1.588 GT hợp lệ · khóa cố định SHA-256 giữa mọi version</div>
         <div class="split-track" role="img" aria-label="Val140: BDD 45 ảnh, Việt Nam 15 ảnh, Drive 80 ảnh"><span style="width:32.14%;background:#38bdf8;" title="BDD100K: 45 ảnh"></span><span style="width:10.72%;background:#a78bfa;" title="Việt Nam: 15 ảnh"></span><span style="width:57.14%;background:#34d399;" title="Drive: 80 ảnh"></span></div>
@@ -404,14 +411,18 @@
 <!-- SLIDE 9 -->
 <section class="slide">
   <div class="header"><h2>8. Quy Trình Làm Việc Giữa Các Version &amp; Giải Pháp Áp Dụng</h2><span class="tag">Slide 09</span></div>
-  <div class="card" style="padding:12px 16px;margin-bottom:12px;">
-    <h3 style="margin-bottom:4px;">Vòng Lặp Cải Tiến Giữa Các Version (Data-Centric Loop)</h3>
-    <div class="pipeline" style="margin-top:6px;">
+  <div class="card" style="padding:16px 20px;margin-bottom:16px;">
+    <h3 style="margin-bottom:8px;">Vòng Lặp Cải Tiến Giữa Các Version (Data-Centric Loop)</h3>
+    <div class="pipeline" style="margin-top:6px;gap:4px;">
       <div class="pipeline-step"><strong>1. Khóa Val140</strong>Giữ nguyên SHA-256 140 ảnh để so sánh công bằng</div>
+      <div class="flow-arrow">➔</div>
       <div class="pipeline-step"><strong>2. Chẩn Đoán Lỗi</strong>Đo AP từng lớp, IoU 0.50 vs 0.75 &amp; ma trận nhầm</div>
+      <div class="flow-arrow">➔</div>
       <div class="pipeline-step"><strong>3. Bổ Sung Đúng Nhóm</strong>QC nhãn sai, thêm Mapillary/VN/Copy-Paste lớp yếu</div>
+      <div class="flow-arrow">➔</div>
       <div class="pipeline-step"><strong>4. Train &amp; Kiểm Lệch</strong>Train trên tập mới, kiểm tra độ phủ &amp; chống leak</div>
-      <div class="pipeline-step"><strong>5. CPU Replay &amp; Chốt</strong>Chấm ONNX ZIP, giữ bản tăng có bootstrap &gt; 0</div>
+      <div class="flow-arrow" style="color:var(--green);">➔</div>
+      <div class="pipeline-step" style="border-color:var(--green);"><strong>5. CPU Replay &amp; Chốt</strong>Chấm ONNX ZIP, giữ bản tăng có bootstrap &gt; 0</div>
     </div>
   </div>
   <div class="solution-grid">

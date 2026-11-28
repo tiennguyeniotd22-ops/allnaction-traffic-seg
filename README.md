@@ -1,5 +1,7 @@
 # AllnAction RoboTaxi Data-Centric Hackathon (11 Traffic Classes)
 
+Đội 21 dùng bảng nghiệm thu để chọn ZIP, xem AP từng lớp và lấy đúng bộ dữ liệu chạy notebook từ VM. [Kết quả đã chấm lại trên CPU và hướng dẫn lấy dữ liệu](https://github.com/tiennguyeniotd22-ops/allnaction-traffic-seg/blob/exp/overnight-qc/experiments/TEAM21_KET_QUA.md)
+
 - **Mô hình cố định:** `yolo26n-seg` (`ultralytics==8.4.214`, `imgsz=640`, xuất `ONNX` opset 17)
 - **Thước đo:** `100 × Mask mAP@[.5:.95]`
 - **Chiến lược:** Khai thác Open Prelabel (`IDD`/`BDD100K`/`Roboflow`) → Teacher `yolo26x-seg.pt` Pseudo-Label ảnh Dashcam VN → Sửa nhanh trên CVAT → Fine-tune & Data-Centric Loop.

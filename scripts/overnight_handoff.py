@@ -168,7 +168,52 @@ def main():
     ]
     if snap:
         lines.insert(lines.index("## Tái lập") + 2, f"Checkpoint được chọn ở cuối epoch {snap}.\n")
-    if "reuses_fit_from" in resource:
+    if decision.get("mean_sources"):
+        sources = decision["mean_sources"]
+        start = lines.index("## Tái lập") + 2
+        end = lines.index("```", lines.index("```bash", start))
+        versions_by_digest = {}
+        for path in root.glob("*/manifest.json"):
+            if (path.parent / "dataset.zip").is_file():
+                item = read(path)
+                if isinstance(item, dict):
+                    versions_by_digest[item.get("dataset_sha256")] = path.parent
+        reproduction = [
+            f"Mô hình là trung bình trọng số của {len(sources)} checkpoint đội {TEAM_ID}. "
+            "Cùng backbone và thứ tự lớp. Mỗi bản đóng góp trọng số bằng nhau. Các số liệu ảnh train ở bảng trên "
+            "mô tả bộ dữ liệu của lượt tham chiếu. Các bộ dữ liệu bên dưới có ảnh chung.",
+            "", "| Lượt nguồn | Bộ dữ liệu | Ảnh train | Epoch | SHA-256 best.pt |",
+            "|---|---|---:|---:|---|",
+        ]
+        commands = []
+        for item in sources:
+            name = item["run"]
+            source_folder = versions_by_digest[item["dataset_sha256"]]
+            assert digest(source_folder / "dataset.zip") == item["dataset_sha256"]
+            assert digest(root / name / "best.pt") == item["weights_sha256"]
+            rows = read(root / name / "run_report.json")["dataset"]["counts"]["train"]["images"]
+            reproduction.append(f"| {name} | [{source_folder.name}]({source_folder.name}/dataset.zip) | "
+                                f"{rows} | {item['epochs']} | `{item['weights_sha256']}` |")
+            commands.append(f'.venv/bin/python "$SCRIPTS/run_notebook_pilot.py" --notebook "$NOTEBOOK" '
+                            f'--dataset overnight/{source_folder.name}/dataset.zip --run overnight/replay-{name} '
+                            f'--revision {item["revision"]} --epochs {item["epochs"]} --patience {item["patience"]} '
+                            f'--experiment {item["experiment"]}')
+        checkout = f"replay-code-{best}"
+        others = " ".join("overnight/replay-" + item["run"] for item in sources[1:])
+        refresh = " --refresh-bn" if decision.get("bn_refresh") else ""
+        if refresh:
+            applied = decision["bn_refresh"]
+            reproduction.extend(["", f"Hiệu chỉnh BatchNorm trên {len(applied['images'])} ảnh train, "
+                                 f"gồm {applied['images_per_domain']} ảnh mỗi nguồn Việt Nam, BDD và COCO."])
+        reproduction.extend(["", "Từ thư mục làm việc của VM, dùng các lệnh sau để chạy lại từng fit rồi lấy trung bình.",
+            "", "```bash", f'git clone --no-checkout https://github.com/tiennguyeniotd22-ops/allnaction-traffic-seg.git "{checkout}"',
+            f'git -C "{checkout}" checkout --detach {tools_revision}',
+            f'SCRIPTS="$PWD/{checkout}/scripts"', f'NOTEBOOK="$PWD/{checkout}/notebooks/train_and_export.ipynb"',
+            *commands, f'CUDA_VISIBLE_DEVICES="" .venv/bin/python "$SCRIPTS/overnight_last_checkpoint.py" '
+            f'overnight/replay-{sources[0]["run"]} overnight/replay-{best} "$NOTEBOOK" '
+            f'audit_phase12/validation-manifest.json --mean-with {others}{refresh}', "```"])
+        lines[start:end+1] = reproduction
+    elif "reuses_fit_from" in resource:
         extraction = (
             f'.venv/bin/python "$SCRIPTS/overnight_last_checkpoint.py" overnight/replay-{best} '
             f'overnight/replay-{best}-selected "$NOTEBOOK" audit_phase12/validation-manifest.json'

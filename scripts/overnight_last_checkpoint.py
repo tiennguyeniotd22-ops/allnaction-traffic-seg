@@ -29,13 +29,26 @@ def main():
     p = argparse.ArgumentParser()
     for name in ("parent", "out", "notebook", "validation"):
         p.add_argument(name, type=Path)
-    p.add_argument("--epoch", type=int, help="Use the saved end-of-epoch snapshot (one-based)")
+    source = p.add_mutually_exclusive_group()
+    source.add_argument("--epoch", type=int, help="Use the saved end-of-epoch snapshot (one-based)")
+    source.add_argument("--mean-with", type=Path, nargs="+", help="Average best weights of these runs and the parent")
+    p.add_argument("--refresh-bn", action="store_true", help="Update normalization buffers with train images after averaging")
     a = p.parse_args()
+    if a.refresh_bn and not a.mean_with:
+        p.error("--refresh-bn requires --mean-with")
     parent = a.parent.resolve()
     out = a.out.resolve()
     report = read(parent / "run_report.json")
     weights = parent / "runs/train/weights"
     last = weights / "last.pt" if a.epoch is None else parent / "snapshots" / f"epoch-{a.epoch:03}.pt"
+    averaged, calibration = None, None
+    if a.mean_with:
+        from team21_weight_mean import mean_checkpoint
+        last = out.parent / "weight-means" / out.name / "mean.pt"
+        averaged = mean_checkpoint([parent, *(p.resolve() for p in a.mean_with)], last)
+        if a.refresh_bn:
+            from team21_bn_refresh import refresh
+            calibration = refresh(last, parent)
     assert sha(weights / "best.pt") == report["train"]["best_sha256"]
     resources = read(parent / "resources.json")
     assert sha(a.notebook) == resources["notebook_sha256"]
@@ -44,9 +57,20 @@ def main():
     assert report["model"]["architecture"] == "yolo26n-seg"
     if out.exists():
         prior = read(out / "checkpoint-selection.json")
-        assert prior["last_sha256"] == sha(last) and prior["parent_submission_sha256"] == report["submission"]["zip_sha256"]
+        assert prior.get("mean_sources") == averaged
+        assert prior.get("bn_refresh") == calibration
+        if averaged is None:
+            assert prior["last_sha256"] == sha(last)
+        assert prior["parent_submission_sha256"] == report["submission"]["zip_sha256"]
         if prior["identical_tensors"] is False:
             assert sha(out / "submission/submission.zip") == read(out / "run_report.json")["submission"]["zip_sha256"]
+        if averaged is not None:
+            stored = read(out / "run_report.json")
+            assert sha(out / "runs/train/weights/best.pt") == stored["train"]["best_sha256"]
+            fields = {}
+            for i in (1, 2, 3, 4, 5):
+                exec("".join(read(a.notebook)["cells"][i]["source"]), fields)
+            assert fields["weights_fingerprint"](last) == stored["train"]["best_tensors_sha256"]
         print("Already evaluated", out.name, flush=True)
         return
     cells = read(a.notebook)["cells"]
@@ -61,6 +85,10 @@ def main():
                   last_sha256=sha(last), last_tensors_sha256=after, identical_tensors=before == after)
     if a.epoch is not None:
         choice["snapshot_epoch"] = a.epoch
+    if averaged is not None:
+        choice["mean_sources"] = averaged
+    if calibration is not None:
+        choice["bn_refresh"] = calibration
     # The original fit is immutable. Work in a new, atomically published directory.
     out.parent.mkdir(parents=True, exist_ok=True)
     with TemporaryDirectory(dir=out.parent) as root:

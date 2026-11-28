@@ -1,0 +1,61 @@
+# Kết quả đội 21 trên 140 ảnh validation
+
+**Bản có mask mAP cao nhất là `team21-mean-four`, đạt 24,93/100.** So với pilot, chênh 0,81 điểm. Mỗi dòng dưới đây đã chấm lại từ ZIP trên CPU. Điểm public và private do hệ thống cuộc thi xác định.
+
+| Bản | Mask mAP | AP50 | AP75 | Việt Nam · 15 | Mapillary · 46 | Other vehicle · holdout |
+|---|---:|---:|---:|---:|---:|---:|
+| `team21-mean-four` | 24,93 | 43,35 | 25,37 | 17,85 | 24,38 | 51,29 |
+| `team21-mean-road` | 24,67 | 42,42 | 24,74 | 17,90 | 24,53 | 58,73 |
+| `team21-mean-a` | 24,18 | 41,76 | 24,15 | 18,70 | 24,65 | 54,76 |
+| `team21-qc20` | 24,13 | 41,55 | 24,49 | 19,09 | 23,59 | 50,98 |
+| `team21-head20` | 23,88 | 40,78 | 24,44 | 17,73 | 24,55 | 55,89 |
+| `team21-btc20` | 23,62 | 40,33 | 22,91 | 16,56 | 24,06 | 61,11 |
+| `team21-road20` | 23,44 | 40,71 | 23,86 | 17,45 | 23,40 | 61,57 |
+| `team21-full` | 23,22 | 40,66 | 23,42 | 17,12 | 22,92 | 58,10 |
+
+`team21-btc20` so với `team21-qc20` chênh -0,51 điểm. Khoảng bootstrap ghép cặp 95% từ -1,79 đến 0,79. Cấu hình train, trọng số khởi tạo và notebook trùng nhau.
+
+`team21-road20` so với `team21-btc20` chênh -0,18 điểm. Khoảng bootstrap ghép cặp 95% từ -1,16 đến 0,75. Cấu hình train, trọng số khởi tạo và notebook trùng nhau.
+
+Khoảng bootstrap 95% theo nhóm cảnh của bản được chọn so với `team21-qc20` là [0,13, 1,76] điểm (300 lần lấy mẫu). Nhiều bản được so trên cùng validation. Khoảng này chưa điều chỉnh theo số lần chọn mô hình.
+
+| Lớp | GT hợp lệ | AP pilot | AP bản chọn |
+|---|---:|---:|---:|
+| Car | 546 | 40,27 | 42,19 |
+| Bus | 35 | 39,52 | 40,42 |
+| Truck | 82 | 19,91 | 23,01 |
+| Other vehicle | 0 | Thiếu GT | Thiếu GT |
+| Motorcycle | 54 | 7,45 | 9,07 |
+| Motorcyclist | 70 | 35,07 | 34,78 |
+| Bicycle | 44 | 13,45 | 14,38 |
+| Cyclist | 33 | 15,66 | 12,65 |
+| Pedestrian | 418 | 27,10 | 28,54 |
+| Sign | 152 | 27,26 | 26,92 |
+| Traffic light | 154 | 15,58 | 17,37 |
+
+## Dữ liệu và trọng số
+
+Bộ val gồm 45 ảnh BDD, 15 ảnh Việt Nam và 80 ảnh Drive. Holdout riêng của Other vehicle có 7 instance trên 6 ảnh. Mỗi lượt dùng seed 21, YOLO26n-seg, cạnh 640 và bước đóng gói từ notebook.
+
+Đối chứng A sửa 22 tệp nhãn trên bộ 1.156 ảnh. A+B thêm 31 ảnh COCO với 59 instance. Bản head20 thử chuyển trọng số COCO sang bốn lớp đích bổ sung. Các bản có tên mean dùng trung bình trọng số FP32 của các checkpoint trước khi xuất một model ONNX FP32.
+
+| Checkpoint đầu vào của bản chọn | Bộ dữ liệu | Epoch | Công thức |
+|---|---|---:|---|
+| team21-qc20 | e3-triage-v1 | 20 | lower-lr |
+| team21-btc20 | team21-btc-v1 | 20 | lower-lr |
+| team21-road20 | team21-road-v1 | 20 | lower-lr |
+| team21-full | team21-signfaces-v1 | 55 | lower-lr |
+
+Trên máy đã có quyền đọc thư mục dự án trên VM, lấy ZIP bằng Google Cloud CLI. Thực hiện lệnh dữ liệu cho từng phiên bản cần chạy notebook.
+
+```powershell
+gcloud compute scp "cvat-ai-label-server:/home/pc/baseline-cvat300/overnight/team21-mean-four/submission/submission.zip" . --project=plantcare-ai-510902 --zone=us-central1-a
+gcloud compute scp "cvat-ai-label-server:/home/pc/baseline-cvat300/overnight/e3-triage-v1/dataset.zip" "./e3-triage-v1.zip" --project=plantcare-ai-510902 --zone=us-central1-a
+gcloud compute scp "cvat-ai-label-server:/home/pc/baseline-cvat300/overnight/team21-btc-v1/dataset.zip" "./team21-btc-v1.zip" --project=plantcare-ai-510902 --zone=us-central1-a
+gcloud compute scp "cvat-ai-label-server:/home/pc/baseline-cvat300/overnight/team21-road-v1/dataset.zip" "./team21-road-v1.zip" --project=plantcare-ai-510902 --zone=us-central1-a
+gcloud compute scp "cvat-ai-label-server:/home/pc/baseline-cvat300/overnight/team21-signfaces-v1/dataset.zip" "./team21-signfaces-v1.zip" --project=plantcare-ai-510902 --zone=us-central1-a
+```
+
+Tệp nộp có 9,660,600 byte, chỉ chứa `model.onnx`. SHA-256 là `d7bc0d2d046c9ab1ecaaf2759cab6f8f30baaa10d16a39583a63fd84f46ffcc7`.
+
+[Kết quả chấm lại từ ZIP trên CPU](overnight/team21-cpu-replays.json) · [Bảng điểm và đối chiếu PyTorch–ONNX](overnight/verified-scores.json) · [Nguồn dữ liệu và quyền sử dụng](../DATASET_PROVENANCE_REPORT.md) · [Notebook](../notebooks/train_and_export.ipynb)

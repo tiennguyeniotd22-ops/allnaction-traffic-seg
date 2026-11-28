@@ -2,6 +2,8 @@
 
 ## Đội 21 · Ca huấn luyện sáng 28/11
 
+Bảng nghiệm thu ghi mask mAP của từng ZIP đã chấm lại, AP từng lớp của bản chọn, kết quả riêng trên ảnh Việt Nam và lệnh lấy bộ dữ liệu từ VM của nhóm. [Kết quả đội 21 và tệp nộp](experiments/TEAM21_KET_QUA.md)
+
 Trưởng nhóm đã xác nhận **TEAM_ID = 21**. Cả notebook trên nhánh chính và lượt train trên L4 đều dùng seed 21. Các kết quả seed 26 bên dưới là lịch sử thí nghiệm. Lượt E7 seed 26 đã dừng khi nhóm xác nhận lại mã đội. Chỉ các ZIP có bằng chứng seed 21 trong tham số notebook, cấu hình trainer, báo cáo và kết quả chấm lại trên CPU mới được chọn để bàn giao.
 
 Bản seed 26 tốt nhất đã xác minh đạt 25,0682 trên val140, AP50 44,07 và AP75 25,61. Cùng fit riderQC, checkpoint cuối đạt cao hơn 0,73 điểm so với checkpoint trainer chọn, khoảng bootstrap 95% từ −0,09 đến +1,49. Lượt signQC SGD đạt 24,24 và epoch cuối của nó đạt 24,52 theo bộ chấm notebook. [Chấm lại từ ZIP](experiments/overnight/replay-last-e3-riderqc20.json) · [Bảng kết quả đã xác minh](experiments/overnight/verified-scores.json)

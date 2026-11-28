@@ -1,4 +1,5 @@
 labeling_guideline.md -text
+notebooks/train_and_export.ipynb text eol=crlf
 scripts/*.sh text eol=lf
 experiments/overnight/team21-btc-*.json -text whitespace=cr-at-eol
 experiments/overnight/team21-road-*.json -text whitespace=cr-at-eol

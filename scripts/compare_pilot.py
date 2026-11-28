@@ -36,6 +36,7 @@ def main():
     p.add_argument("--historical-team26", action="store_true",
                    help="Compare to the archived seed-26 experiment after the team confirmed seed 21")
     p.add_argument("--experiment", choices=CHANGES, default="control")
+    p.add_argument("--reference-experiment", choices=CHANGES, default="control")
     p.add_argument("--decoded-parity", type=Path,
                    help="Full validation replay from overnight_decode_parity.py, for subpixel box deltas")
     args = p.parse_args()
@@ -92,11 +93,19 @@ def main():
             assert report["train"]["train_args"]["seed"] == report["team_id"] == report["seed"] == team
         allowed.add("seed")
     training_changes = {k: v for k, v in differences.items() if k not in allowed}
-    if training_changes != {k: list(v) for k, v in CHANGES[args.experiment].items()}:
+    first, second = CHANGES[args.reference_experiment], CHANGES[args.experiment]
+    expected = {}
+    for k in first.keys() | second.keys():
+        original = (first.get(k) or second[k])[0]
+        left = first.get(k, (original, original))[1]
+        right = second.get(k, (original, original))[1]
+        if left != right:
+            expected[k] = [left, right]
+    if training_changes != expected:
         raise ValueError(f"Unexpected training changes: {differences}")
-    if args.experiment != "control":
+    if args.experiment != "control" or args.reference_experiment != "control":
         control, trial = (read(p / "resources.json") for p in (args.baseline, args.pilot))
-        assert control.get("experiment", "control") == "control" and trial["experiment"] == args.experiment
+        assert control.get("experiment", "control") == args.reference_experiment and trial["experiment"] == args.experiment
         for k in ("dataset_sha256", "initial_weights_sha256", "notebook_sha256"):
             assert control[k] == trial[k]
         if args.experiment == "repeat-rare":

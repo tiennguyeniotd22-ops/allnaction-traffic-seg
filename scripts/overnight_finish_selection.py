@@ -45,6 +45,11 @@ def main():
                    "--manifest", validation, "--out", scores / "comparison.json", "--allow-schedule-change"]
             if read(base / "run_report.json")["seed"] == 26:
                 cmd.append("--historical-team26")
+            else:
+                source_recipe = read(base / "resources.json")["experiment"]
+                target_recipe = read(dest / "resources.json")["experiment"]
+                if source_recipe != target_recipe:
+                    cmd.extend(["--reference-experiment", source_recipe, "--experiment", target_recipe])
             ret = subprocess.run(cmd)
             if ret.returncode == 65:
                 decoded = ROOT / "decoded" / name

@@ -35,6 +35,7 @@ def main():
     source.add_argument("--pretrained-prior", type=float, help="Fraction of aligned official COCO initialization")
     source.add_argument("--one2one-weights", action="store_true", help="Copy the parent model's trained heads into its dense branch")
     source.add_argument("--mask-quality", action="store_true", help="Fit dense class projections to train-instance mask quality")
+    source.add_argument("--mask-polish", action="store_true", help="Fit the existing mask coefficients on train-instance regions")
     p.add_argument("--refresh-bn", action="store_true", help="Update normalization buffers with train images after averaging")
     p.add_argument("--bn-momentum", type=float, help="EMA momentum for train-only BatchNorm refresh (default 0.025)")
     p.add_argument("--bn-use-notebook-input", action="store_true", help="Preprocess train calibration frames with the frozen notebook")
@@ -61,9 +62,12 @@ def main():
     prior_record = None
     branch_record = None
     quality_record = None
-    if a.mask_quality:
-        from team21_mask_quality import fit
-        last = out.parent / "weight-means" / out.name / "quality.pt"
+    if a.mask_quality or a.mask_polish:
+        if a.mask_polish:
+            from team21_mask_polish import fit
+        else:
+            from team21_mask_quality import fit
+        last = out.parent / "weight-means" / out.name / ("mask.pt" if a.mask_polish else "quality.pt")
         with TemporaryDirectory() as tmp:
             checker = ns["load_selfcheck"](ns["SELFCHECK_BUNDLE"], Path(tmp))
             quality_record = fit(parent, last, checker.infer.preprocess)

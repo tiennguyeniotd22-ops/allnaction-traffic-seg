@@ -20,7 +20,10 @@ options=()
 if [[ ${TEAM21_REFRESH_BN:-0} == 1 ]]; then options+=(--refresh-bn); fi
 if [[ -n ${TEAM21_BN_MOMENTUM:-} ]]; then options+=(--bn-momentum "$TEAM21_BN_MOMENTUM"); fi
 if [[ ${TEAM21_BN_NOTEBOOK_INPUT:-0} == 1 ]]; then options+=(--bn-use-notebook-input); fi
-if [[ ${TEAM21_MASK_QUALITY:-0} == 1 ]]; then
+if [[ ${TEAM21_MASK_POLISH:-0} == 1 ]]; then
+    [[ ${#sources[@]} == 0 && -z ${TEAM21_PRETRAINED_PRIOR:-} && ${TEAM21_MASK_QUALITY:-0} == 0 ]]
+    options+=(--mask-polish)
+elif [[ ${TEAM21_MASK_QUALITY:-0} == 1 ]]; then
     [[ ${#sources[@]} == 0 && -z ${TEAM21_PRETRAINED_PRIOR:-} && ${TEAM21_ONE2ONE_WEIGHTS:-0} == 0 ]]
     options+=(--mask-quality)
 elif [[ ${TEAM21_ONE2ONE_WEIGHTS:-0} == 1 ]]; then

@@ -33,6 +33,7 @@ def main():
     for k in ("baseline","pilot","manifest","out","notebook"):
         p.add_argument("--"+k, required=True, type=Path)
     p.add_argument("--allow-schedule-change", action="store_true")
+    p.add_argument("--allow-train-subset", action="store_true", help="Verify a train-only subset of the paired reference dataset")
     p.add_argument("--historical-team26", action="store_true",
                    help="Compare to the archived seed-26 experiment after the team confirmed seed 21")
     p.add_argument("--experiment", choices=CHANGES, default="control")
@@ -113,7 +114,16 @@ def main():
     if args.experiment != "control" or args.reference_experiment != "control":
         control, trial = (read(p / "resources.json") for p in (args.baseline, args.pilot))
         assert control.get("experiment", "control") == args.reference_experiment and trial["experiment"] == args.experiment
-        for k in (("dataset_sha256", "notebook_sha256") if warm else ("dataset_sha256", "initial_weights_sha256", "notebook_sha256")):
+        fields = ["dataset_sha256", "notebook_sha256"]
+        if not warm:
+            fields.append("initial_weights_sha256")
+        if args.allow_train_subset:
+            assert warm
+            reference = {sha(p.read_bytes()) for p in (args.baseline/"dataset/images/train").glob("*.jpg")}
+            subset = {sha(p.read_bytes()) for p in (args.pilot/"dataset/images/train").glob("*.jpg")}
+            assert subset < reference
+            fields.remove("dataset_sha256")
+        for k in fields:
             assert control[k] == trial[k]
         if args.experiment == "repeat-rare":
             sampling = read(args.pilot / "sampling.json")

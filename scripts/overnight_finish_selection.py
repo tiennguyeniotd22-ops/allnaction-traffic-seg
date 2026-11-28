@@ -14,6 +14,7 @@ def main():
     parser.add_argument("--fit", required=True)
     parser.add_argument("--reference", required=True)
     parser.add_argument("--version", default="e3-triage-v1")
+    parser.add_argument("--train-subset", action="store_true")
     parser.add_argument("--notebook", type=Path, default=Path("train_team21.ipynb"))
     args = parser.parse_args()
     if os.environ.get("CUDA_VISIBLE_DEVICES") != "":
@@ -48,6 +49,8 @@ def main():
             else:
                 source_recipe = read(base / "resources.json")["experiment"]
                 target_recipe = read(dest / "resources.json")["experiment"]
+                if args.train_subset and name == args.fit and reference == args.reference:
+                    cmd.append("--allow-train-subset")
                 if source_recipe != target_recipe:
                     cmd.extend(["--reference-experiment", source_recipe, "--experiment", target_recipe])
             ret = subprocess.run(cmd)

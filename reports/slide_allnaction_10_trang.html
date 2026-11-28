@@ -293,29 +293,45 @@
 
 <!-- SLIDE 5 -->
 <section class="slide">
-  <div class="header"><h2>4. Quy Trình Prelabel (SAM) & Sửa Nhãn Trên CVAT</h2><span class="tag">Slide 05</span></div>
-  <div class="grid-2">
-    <div class="card">
-      <h3>Kiến Trúc Auto-Prelabel Đa Tầng</h3>
-      <ul>
-        <li><strong>CVAT + Nuclio (GPU L4):</strong> Dùng box gốc BDD100K / YOLOv7 làm prompt cho <strong>SAM ViT-H</strong> sinh polygon nháp (300 ảnh / 4.281 polygon).</li>
-        <li><strong>Colab SAM 3 &amp; YOLO-World + SAM 2.1:</strong> Dùng text prompt mở rộng (<code>"auto rickshaw"</code>, <code>"tricycle"</code>, <code>"cyclo"</code>, <code>"traffic light"</code>) khoanh nhanh các lớp thiếu.</li>
-        <li><strong>Thuật toán tự gộp người – xe:</strong> Kiểm tra chồng lấn polygon/mask giữa <code>person</code> và xe 2 bánh → tự gộp thành <code>Motorcyclist (5)</code> / <code>Cyclist (7)</code>.</li>
-      </ul>
+  <div class="header"><h2>4. Quy Trình Prelabel (SAM) &amp; Sửa Nhãn Trên CVAT</h2><span class="tag">Slide 05</span></div>
+  <div style="display:flex;flex-direction:column;justify-content:space-between;flex:1;gap:16px;">
+    <div class="card" style="padding:16px 20px;">
+      <h3 style="margin-bottom:6px;">Luồng Tạo &amp; Duyệt Nhãn 4 Bước (Từ Nhãn Nháp Đến Dữ Liệu Sạch)</h3>
+      <div class="pipeline" style="margin-top:8px;gap:4px;">
+        <div class="pipeline-step"><strong>1. Gợi Ý Đầu Vào</strong>Box BDD100K, YOLOv7 hoặc Text Prompt (SAM 3)</div>
+        <div class="flow-arrow">➔</div>
+        <div class="pipeline-step"><strong>2. Sinh Mask Bằng SAM</strong>SAM ViT-H (L4) / SAM 2.1 tạo 4.281 polygon nháp</div>
+        <div class="flow-arrow">➔</div>
+        <div class="pipeline-step"><strong>3. Sửa Trên CVAT</strong>5 thành viên × 60 ảnh (ngày/đêm/mưa/VN)</div>
+        <div class="flow-arrow" style="color:var(--green);">➔</div>
+        <div class="pipeline-step" style="border-color:var(--green);"><strong>4. Duyệt Chéo &amp; Xuất</strong>Soi issue các ca khó → xuất YOLO-Seg 11 lớp</div>
+      </div>
     </div>
-    <div class="card">
-      <h3>Chuẩn Hóa &amp; Duyệt Chéo 5 Thành Viên</h3>
-      <ul>
-        <li><strong>Chia 5 Job CVAT song song (60 ảnh/người):</strong> Mỗi Job đủ 15 ngày, 15 đêm, 15 mưa, 15 ảnh VN; mỗi người rà cả 11 lớp + 1 trọng tâm riêng.</li>
-        <li><strong>Sửa lỗi biên thực tế:</strong>
-          <ul>
-            <li>Tách 2 xe máy áp sát nhau thành 2 instance riêng.</li>
-            <li>Người đi bộ dắt xe → tách <code>Pedestrian</code> + <code>Motorcycle</code>/<code>Bicycle</code>.</li>
-            <li>Đèn giao thông → ôm đủ vỏ hộp, bỏ cột và nền.</li>
-          </ul>
-        </li>
-        <li><strong>Duyệt chéo (Cross-QC):</strong> Soi issue giữa 5 thành viên trước khi xuất YOLO-Seg.</li>
-      </ul>
+    <div class="grid-3" style="flex:1;">
+      <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <h3>Ca 1 · Người &amp; Xe 2 Bánh</h3>
+          <p style="margin-top:8px;color:var(--red);"><strong>✗ Nháp hay sai:</strong> Tách rời người với xe đang chạy, hoặc gộp người đi bộ đứng cạnh xe.</p>
+          <p style="margin-top:10px;color:var(--green);"><strong>✓ Chuẩn sau sửa:</strong> Ngồi lái → <strong>1 mask</strong> <code>Motorcyclist</code>/<code>Cyclist</code>. Dắt bộ → tách <code>Pedestrian</code> + xe.</p>
+        </div>
+        <span class="badge b-blue" style="width:fit-content;">Trọng tâm: Trân &amp; Trinh</span>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <h3>Ca 2 · Xe Đông &amp; Lớp Hiếm</h3>
+          <p style="margin-top:8px;color:var(--red);"><strong>✗ Nháp hay sai:</strong> Trùm 1 polygon lên 2 xe sát nhau; bỏ sót ba gác, xích lô, rơ-moóc.</p>
+          <p style="margin-top:10px;color:var(--green);"><strong>✓ Chuẩn sau sửa:</strong> Tách từng instance độc lập; gán bổ sung <code>Other vehicle</code> &amp; phân biệt <code>Truck</code>.</p>
+        </div>
+        <span class="badge b-amber" style="width:fit-content;">Trọng tâm: Tiến &amp; Sang</span>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <h3>Ca 3 · Đèn &amp; Biển Báo Nhỏ</h3>
+          <p style="margin-top:8px;color:var(--red);"><strong>✗ Nháp hay sai:</strong> Khoanh dính cả cột sắt, nền trời hoặc thiếu hộp đèn ngược sáng.</p>
+          <p style="margin-top:10px;color:var(--green);"><strong>✓ Chuẩn sau sửa:</strong> Bám sát vỏ hộp đèn / mặt biển, bỏ cột và nền để kéo IoU 0,75.</p>
+        </div>
+        <span class="badge b-green" style="width:fit-content;">Trọng tâm: Đăng</span>
+      </div>
     </div>
   </div>
   <div class="footer"><span>docs/QUY_TRINH_VA_PHAN_CONG.md · docs/HUONG_DAN_QC.md</span><span>Slide 5/10</span></div>

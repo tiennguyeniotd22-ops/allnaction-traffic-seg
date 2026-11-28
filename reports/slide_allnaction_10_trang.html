@@ -111,28 +111,60 @@
       padding: 8px 11px; font-size: 13.5px;
     }
     .class-pill strong { color: var(--accent); }
+
+    .split-wrap { margin-top: 12px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 16px; align-items: center; }
+    .split-track { display: flex; height: 17px; overflow: hidden; border-radius: 999px; background: #0f172a; border: 1px solid var(--border); }
+    .split-track span { display: block; height: 100%; }
+    .split-legend { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+    .split-key { font-size: 12px; color: var(--muted); }
+    .split-key b { color: var(--text); }
+    .mini-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .chart-rows { display: grid; gap: 8px; margin-top: 10px; }
+    .chart-row { display: grid; grid-template-columns: 122px 1fr 48px; gap: 8px; align-items: center; }
+    .chart-label { font-size: 12.5px; color: #e2e8f0; }
+    .chart-value { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; font-size: 13px; color: var(--text); }
+    .bar-track { height: 12px; border-radius: 999px; background: #0b1220; overflow: hidden; border: 1px solid #273449; }
+    .bar { height: 100%; border-radius: inherit; background: var(--accent); }
+    .bar.best { background: var(--green); }
+    .bar.followup { background: var(--amber); }
+    .bar.pilot { background: var(--purple); }
+    .gain-track { height: 11px; border-radius: 999px; background: #0b1220; overflow: hidden; border: 1px solid #273449; }
+    .gain-bar { height: 100%; border-radius: inherit; background: linear-gradient(90deg, #0ea5e9, #34d399); }
+    .table-compact { font-size: 12.5px; }
+    .table-compact th, .table-compact td { padding: 5px 7px; }
+    .table-compact td { white-space: nowrap; }
+    .table-compact td:first-child { white-space: normal; }
+    .solution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; flex: 1; }
+    .solution-grid .card { padding: 14px 16px; }
+    .solution-grid p, .solution-grid li { font-size: 14px; }
+    .pipeline { display: flex; gap: 8px; align-items: stretch; margin-top: 10px; }
+    .pipeline-step { flex: 1; padding: 9px 10px; border: 1px solid var(--border); border-radius: 8px; background: #0f172a; font-size: 12px; color: #cbd5e1; }
+    .pipeline-step strong { display: block; color: var(--accent); font-size: 13px; margin-bottom: 3px; }
+    .source-note { margin-top: 9px; font-size: 12px; color: var(--muted); }
+    .footnote { color: var(--muted); font-size: 12px; line-height: 1.4; margin-top: 10px; }
+    .kpi-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 12px; }
+    .kpi-row .kpi { padding: 10px 12px; }
+    .kpi-row .val { font-size: 24px; }
+    .holdout-box { border: 1px solid rgba(251,191,36,.55); background: rgba(251,191,36,.09); border-radius: 9px; padding: 10px 12px; font-size: 13px; color: #fde68a; }
+
   </style>
 </head>
 <body>
 
 <!-- SLIDE 1 -->
 <section class="slide">
-  <div class="header">
-    <span class="tag">AIInAction RoboTaxi Data-Centric Competition · Khóa 5</span>
-    <span class="muted">28/11/2026</span>
-  </div>
-  <div style="my: auto; display: flex; flex-direction: column; justify-content: center; gap: 22px; flex: 1;">
-    <span class="badge b-blue" style="width: fit-content; font-size: 14px;">Đội 21 · AllnAction Traffic Segmentation</span>
-    <h1>Xây Dựng Dữ Liệu Giao Thông Việt Nam<br/>Cho Robotaxi Với <span style="color: var(--accent);">YOLO26n-seg</span></h1>
-    <p style="font-size: 20px; color: var(--muted); max-width: 920px;">
-      Chiến lược Data-Centric: Prelabel đa nguồn → Kiểm soát ranh giới 11 lớp trên CVAT → Tinh chỉnh vòng lặp có đối chứng trên tập validation khóa cứng.
-    </p>
-    <div class="grid-4" style="margin-top: 10px;">
-      <div class="kpi"><div class="lbl">Kiến Trúc Cố Định</div><div class="val" style="font-size:24px; color:var(--accent);">YOLO26n-seg</div><div class="muted">640×640 · ONNX FP32</div></div>
-      <div class="kpi"><div class="lbl">Thước Đo Chấm</div><div class="val" style="font-size:24px;">100 × mAP</div><div class="muted">Mask mAP@[.50:.95]</div></div>
-      <div class="kpi"><div class="lbl">Val140 Tốt Nhất</div><div class="val">25,64</div><div class="muted">Tăng +4,29 so với Round 3</div></div>
-      <div class="kpi"><div class="lbl">Nhóm 5 Thành Viên</div><div class="val" style="font-size:22px; color:var(--amber);">Tiến · Trân · Đăng · Sang · Trinh</div><div class="muted">Repo: allnaction-traffic-seg</div></div>
+  <div class="header"><span class="tag">AIInAction RoboTaxi Data-Centric Competition · Khóa 5</span><span class="muted">28/11/2026</span></div>
+  <div style="margin:auto 0;display:flex;flex-direction:column;justify-content:center;gap:18px;flex:1;">
+    <span class="badge b-blue" style="width:fit-content;font-size:14px;">Đội 21 · AllnAction Traffic Segmentation</span>
+    <h1>Xây Dựng Dữ Liệu Giao Thông Việt Nam<br/>Cho Robotaxi Với <span style="color:var(--accent);">YOLO26n-seg</span></h1>
+    <p style="font-size:20px;color:var(--muted);max-width:920px;">QC nhãn và mở rộng dữ liệu → đánh giá trên validation khóa cứng → chọn mô hình theo mask mAP.</p>
+    <div class="grid-4" style="margin-top:8px;">
+      <div class="kpi"><div class="lbl">Val140 tốt nhất</div><div class="val">27,54</div><div class="muted">mask mAP@[.50:.95] / 100</div></div>
+      <div class="kpi"><div class="lbl">Tăng so với pilot</div><div class="val">+3,41</div><div class="muted">24,13 → 27,54 điểm</div></div>
+      <div class="kpi"><div class="lbl">AP50 · AP75</div><div class="val" style="font-size:25px;color:var(--accent);">45,24 · 29,18</div><div class="muted">team21-mask-roi</div></div>
+      <div class="kpi"><div class="lbl">Mô hình chọn</div><div class="val" style="font-size:22px;color:var(--amber);">mask-roi</div><div class="muted">YOLO26n-seg · ONNX FP32</div></div>
     </div>
+    <p class="muted">Val140: 45 BDD + 15 ảnh Việt Nam + 80 Drive. Holdout Other vehicle được chấm riêng.</p>
   </div>
   <div class="footer"><span>AllnAction RoboTaxi · Slide 1/10</span><span>GitHub: tiennguyeniotd22-ops/allnaction-traffic-seg</span></div>
 </section>
@@ -207,43 +239,29 @@
 
 <!-- SLIDE 4 -->
 <section class="slide">
-  <div class="header"><h2>3. Dữ Liệu Dùng Để Train Qua Từng Lần (Xác Minh SHA-256)</h2><span class="tag">Slide 04</span></div>
-  <div class="card" style="flex: 1;">
-    <h3>Thành Phần Dữ Liệu Train &amp; Val Cho Từng Phiên Bản</h3>
-    <table style="font-size: 13px;">
-      <thead>
-        <tr><th>Lần Chạy</th><th>Tập Train (Số Ảnh &amp; Nguồn Chi Tiết)</th><th>Tập Val</th><th>Điểm mAP</th></tr>
-      </thead>
+  <div class="header"><h2>3. Dữ Liệu Qua Các Vòng &amp; Chia Tập Đánh Giá</h2><span class="tag">Slide 04</span></div>
+  <div class="card" style="flex:1;">
+    <h3>Train, validation và kết quả của các mốc chính</h3>
+    <table class="table-compact">
+      <thead><tr><th>Mốc</th><th>Dữ liệu train / cách chọn</th><th>Tập đánh giá</th><th class="num">Mask mAP</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>Lần 1 (`v1`)</strong></td>
-          <td><strong>400 ảnh:</strong> <code>320</code> COCO val2017 + <code>80</code> ảnh synth đêm/mưa.</td>
-          <td><code>80</code> COCO</td>
-          <td class="num"><strong>21,92</strong></td>
-        </tr>
-        <tr>
-          <td><strong>Lần 3 &amp; Lần 4</strong><br><span class="muted">(`team780`)</span></td>
-          <td><strong>640 ảnh:</strong> <code>180</code> BDD100K (60 ngày/60 đêm/60 mưa) + <code>60</code> VN Traffic Sign v5 + <code>320</code> COCO val2017 + <code>80</code> synth (37 đêm, 43 mưa).</td>
-          <td><strong>140 khóa</strong><br><span class="muted">(45 BDD, 15 VN, 80 COCO)</span></td>
-          <td class="num">21,35 → <strong>22,01</strong></td>
-        </tr>
-        <tr>
-          <td><strong>Pilot QC</strong><br><span class="muted">(`team21-qc20`)</span></td>
-          <td><strong>1.156 ảnh:</strong> Bộ nền CVAT đã rà sửa 50 cảnh ưu tiên + <code>31</code> ảnh COCO kiểm trùng.</td>
-          <td><strong>140 khóa</strong></td>
-          <td class="num"><strong>24,13</strong></td>
-        </tr>
-        <tr style="background: rgba(52, 211, 153, 0.10);">
-          <td><strong>Bản Chọn Cuối</strong><br><span class="muted">(`mean-wide-bn`)</span></td>
-          <td><strong>1.411–1.442 ảnh:</strong> Đủ <code>640</code> train gốc + <code>31</code> COCO + <code>212</code> crop Mapillary Vistas + <code>43</code> crop BDD100K + <code>24</code> tệp VN &amp; <code>48</code> tệp QC.</td>
-          <td><strong>140 khóa</strong><br><span class="muted">(+6 ảnh holdout lớp 3)</span></td>
-          <td class="num"><strong style="color:var(--green);">25,64</strong></td>
-        </tr>
+        <tr><td><strong>v1 baseline</strong></td><td>400 ảnh: 320 COCO + 80 ảnh tổng hợp đêm/mưa</td><td>80 ảnh COCO</td><td class="num">21,92</td></tr>
+        <tr><td><strong>Round 3 → Round 4</strong></td><td>640 ảnh từ BDD, Việt Nam, COCO và ảnh tổng hợp</td><td>Val140 khóa cứng</td><td class="num">21,35 → 22,01</td></tr>
+        <tr><td><strong>team21-qc20 · pilot</strong></td><td>Nhãn CVAT đã QC; nhánh kiểm tra bổ sung 31 ảnh COCO</td><td>Cùng val140</td><td class="num">24,13</td></tr>
+        <tr style="background:rgba(52,211,153,.10);"><td><strong>team21-mask-roi</strong></td><td>Lineage 9 checkpoint từ mean-paste-bn; ROI mask fit chỉ dùng nhãn train</td><td><strong>Cùng val140</strong></td><td class="num"><strong style="color:var(--green);">27,54</strong></td></tr>
       </tbody>
     </table>
-    <p style="margin-top: 12px; font-size: 13.5px;"><strong>Nguồn chuẩn bị thêm cho vòng kế tiếp (0 ảnh trong bản nộp):</strong> Poribohon-BD (<code>58</code> cảnh), COCO train2017 (<code>480</code> ảnh lớp hiếm), Wikimedia VN (<code>74+4</code> ảnh). Giấy phép &amp; URL ghi đủ trong <code>DATASET_PROVENANCE_REPORT.md</code>.</p>
+    <div class="split-wrap">
+      <div>
+        <div class="mini-title">Val140 · 1.588 GT hợp lệ · thành phần không đổi giữa các lượt</div>
+        <div class="split-track" role="img" aria-label="Val140: BDD 45 ảnh, Việt Nam 15 ảnh, Drive 80 ảnh"><span style="width:32.14%;background:#38bdf8;" title="BDD100K: 45 ảnh"></span><span style="width:10.72%;background:#a78bfa;" title="Việt Nam: 15 ảnh"></span><span style="width:57.14%;background:#34d399;" title="Drive: 80 ảnh"></span></div>
+        <div class="split-legend"><span class="split-key"><b style="color:#38bdf8;">BDD100K</b> · 45 ảnh</span><span class="split-key"><b style="color:#a78bfa;">Việt Nam</b> · 15 ảnh</span><span class="split-key"><b style="color:#34d399;">Drive</b> · 80 ảnh</span></div>
+      </div>
+      <div class="holdout-box"><strong>Holdout riêng</strong><br/>Other vehicle · 6 ảnh / 7 GT<br/>mAP 61,62 · không tính trong val140</div>
+    </div>
+    <p class="source-note">Bản chọn kế thừa mean-paste-bn, BN refresh trên 168 ảnh train từ 3 nguồn, sau đó tinh chỉnh ROI mask. Validation được khóa theo ảnh và SHA-256; các nhánh dữ liệu được liệt kê trong DATASET_PROVENANCE_REPORT.md.</p>
   </div>
-  <div class="footer"><span>Mỗi lần chạy đều đối chiếu SHA-256 ảnh train &amp; val</span><span>Slide 4/10</span></div>
+  <div class="footer"><span>Nguồn: experiments/TEAM21_KET_QUA.md · verified-scores.json</span><span>Slide 4/10</span></div>
 </section>
 
 <!-- SLIDE 5 -->
@@ -278,149 +296,140 @@
 
 <!-- SLIDE 6 -->
 <section class="slide">
-  <div class="header"><h2>5. Tổ Chức GitHub, Kiểm Soát Chất Lượng &amp; Chống Leak</h2><span class="tag">Slide 06</span></div>
+  <div class="header"><h2>5. Kiểm Soát Dữ Liệu, Split Validation &amp; Tái Lập</h2><span class="tag">Slide 06</span></div>
   <div class="grid-2">
-    <div class="card">
-      <h3>Cấu Trúc Repo <code>allnaction-traffic-seg</code></h3>
-      <ul>
-        <li><code>configs/traffic_11_classes.yaml</code>: Khóa cứng thứ tự ID <code>0..10</code>.</li>
-        <li><code>notebooks/train_round4.ipynb</code> &amp; <code>archive/</code>: Tách biệt bản train mới nhất và bản lịch sử (<code>v2</code>, <code>round3</code>).</li>
-        <li><code>notebooks/prelabel/</code>: Chứa notebook SAM 3 &amp; SAM 2.1.</li>
-        <li><code>scripts/</code>: Bộ script tự động validate, sửa đa giác tự cắt (<code>findContours</code>), lọc mask &lt; 64 px², copy-paste lớp hiếm &amp; sinh ảnh đêm/mưa.</li>
-        <li><code>docs/</code> &amp; <code>reports/</code>: Lưu toàn bộ quy trình, QC và log JSON tái lập.</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Khóa Tập Validation <code>val140</code> Chống Rò Rỉ</h3>
-      <ul>
-        <li><strong>Chia theo cảnh/video:</strong> Toàn bộ khung hình cùng đoạn video hoặc bản tăng cường đều nằm chung một split.</li>
-        <li><strong>Thành phần <code>val140</code> cố định:</strong> <code>45</code> ảnh BDD + <code>15</code> ảnh Việt Nam + <code>80</code> ảnh Drive (1.588+ GT hợp lệ).</li>
-        <li><strong>Holdout riêng cho lớp 3:</strong> <code>6</code> ảnh / <code>7</code> GT <code>Other vehicle</code> do <code>val140</code> thiếu GT lớp 3.</li>
-        <li><strong>Kiểm tra tự động:</strong> Đối chiếu SHA-256 ảnh/nhãn validation giữa mọi vòng chạy để đảm bảo công bằng 100%.</li>
-      </ul>
+    <div class="card"><h3>Repo lưu bằng chứng và mã tái lập</h3><ul>
+      <li><code>configs/traffic_11_classes.yaml</code>: thứ tự ID cố định cho 11 lớp.</li>
+      <li><code>notebooks/train_and_export.ipynb</code>: pipeline train và xuất ONNX.</li>
+      <li><code>scripts/</code>: kiểm tra nhãn, tạo split, chấm lại ZIP và tổng hợp báo cáo.</li>
+      <li><code>experiments/overnight/</code>: manifest, CPU replay, SHA-256 và metric theo lượt.</li>
+      <li><code>.gitignore</code> loại ảnh gốc, dataset ZIP và weights khỏi Git; repo giữ code, manifest và số liệu cần kiểm chứng.</li>
+    </ul>
+    <div class="pipeline" aria-label="Luồng tái lập"><div class="pipeline-step"><strong>Manifest</strong>ảnh, nhãn, nguồn</div><div class="pipeline-step"><strong>Train-only</strong>QC và fit</div><div class="pipeline-step"><strong>Replay</strong>đọc ZIP trên CPU</div></div></div>
+    <div class="card"><h3>Validation khóa cứng để so sánh công bằng</h3>
+      <div class="kpi-row"><div class="kpi"><div class="lbl">Ảnh val</div><div class="val">140</div></div><div class="kpi"><div class="lbl">GT hợp lệ</div><div class="val">1.588</div></div><div class="kpi"><div class="lbl">GT lớp 3 trong val</div><div class="val">0</div></div></div>
+      <ul><li>45 BDD100K + 15 ảnh Việt Nam + 80 ảnh Drive.</li><li>Đối chiếu SHA-256 ảnh và nhãn để giữ nguyên val qua các lượt chạy.</li><li>Other vehicle chấm riêng: 6 ảnh, 7 GT; kết quả không gộp vào val140.</li><li>Điểm public/private của cuộc thi là chỉ số riêng, không suy ra từ replay nội bộ.</li></ul>
     </div>
   </div>
-  <div class="footer"><span>Kiểm tra tự động qua scripts/validate_and_augment.py</span><span>Slide 6/10</span></div>
+  <div class="footer"><span>Manifest và metric lưu cùng mốc thực nghiệm</span><span>Slide 6/10</span></div>
 </section>
 
 <!-- SLIDE 7 -->
 <section class="slide">
-  <div class="header"><h2>6. Phân Tích Lỗi Định Lượng Trên <code>val140</code> (Mốc Pilot 24,13)</h2><span class="tag">Slide 07</span></div>
-  <div class="card" style="flex: 1;">
-    <h3>Chẩn Đoán Từng Lớp Yếu Bằng Mask IoU &amp; Ma Trận Nhầm Lớp</h3>
-    <table>
-      <thead>
-        <tr><th>Lớp Yếu Trên <code>val140</code></th><th>AP[.50:.95]</th><th>Đo Lường Chi Tiết (Conf ≥ 0,25)</th><th>Nguyên Nhân &amp; Hành Động Sửa Train</th></tr>
-      </thead>
+  <div class="header"><h2>6. Kết Quả Theo Lớp: Pilot QC20 So Với Bản Chọn</h2><span class="tag">Slide 07</span></div>
+  <div class="grid-2">
+    <div class="card"><h3>AP trên cùng val140</h3>
+      <table class="table-compact"><thead><tr><th>Lớp</th><th class="num">GT</th><th class="num">Pilot</th><th class="num">Mask-roi</th><th class="num">Δ điểm</th></tr></thead>
       <tbody>
-        <tr><td><strong>4 · Motorcycle</strong></td><td class="num"><span class="badge b-red">7,45</span></td><td>Chỉ <strong>9/54</strong> khớp đúng (IoU ≥ 0,50)</td><td>Bỏ sót xe đỗ sát nhau hoặc gộp nhầm người đứng cạnh xe → rà 20 cảnh 2 bánh.</td></tr>
-        <tr><td><strong>7 · Cyclist</strong></td><td class="num"><span class="badge b-red">15,66</span></td><td><strong>12/33</strong> bị dự đoán nhầm thành <code>Pedestrian</code></td><td>Mask người–xe bị tách khi convert nguồn → gộp lại đúng 1 instance.</td></tr>
-        <tr><td><strong>10 · Traffic light</strong></td><td class="num"><span class="badge b-amber">15,58</span></td><td><strong>62/154</strong> ở IoU 0,50, chỉ <strong>24/154</strong> ở IoU 0,75</td><td>Biên mask chưa ôm sát hộp đèn xa/ngược sáng → bỏ cột, khoanh sát vỏ đèn.</td></tr>
-        <tr><td><strong>2 · Truck</strong></td><td class="num"><span class="badge b-amber">19,91</span></td><td><strong>14/82</strong> bị nhận nhầm thành <code>Car</code></td><td>Rà lại ranh giới bán tải (<code>Car</code>), đầu kéo (<code>Truck</code>) và rơ-moóc (<code>Other vehicle</code>).</td></tr>
-        <tr><td><strong>3 · Other vehicle</strong></td><td class="num"><span class="badge b-red">Thiếu GT</span></td><td>0 GT trên <code>val140</code></td><td>Tạo holdout riêng (6 ảnh / 7 GT) + gán 58 cảnh Poribohon &amp; 50 ảnh Wikimedia.</td></tr>
-      </tbody>
-    </table>
-    <p class="muted" style="margin-top: 14px;">Phân tích chi tiết lưu tại <code>reports/team21-qc20/error-profile.json</code> và <code>reports/DE_XUAT_TANG_DIEM_MASK.md</code>.</p>
+        <tr><td>Car</td><td class="num">546</td><td class="num">40,27</td><td class="num">44,93</td><td class="num" style="color:var(--green);">+4,66</td></tr>
+        <tr><td>Bus</td><td class="num">35</td><td class="num">39,52</td><td class="num">43,42</td><td class="num" style="color:var(--green);">+3,90</td></tr>
+        <tr><td>Truck</td><td class="num">82</td><td class="num">19,91</td><td class="num">23,82</td><td class="num" style="color:var(--green);">+3,91</td></tr>
+        <tr><td>Motorcycle</td><td class="num">54</td><td class="num">7,45</td><td class="num">9,68</td><td class="num" style="color:var(--green);">+2,23</td></tr>
+        <tr><td>Motorcyclist</td><td class="num">70</td><td class="num">35,07</td><td class="num">36,24</td><td class="num" style="color:var(--green);">+1,17</td></tr>
+        <tr><td>Bicycle</td><td class="num">44</td><td class="num">13,45</td><td class="num">15,34</td><td class="num" style="color:var(--green);">+1,89</td></tr>
+        <tr><td>Cyclist</td><td class="num">33</td><td class="num">15,66</td><td class="num">16,58</td><td class="num" style="color:var(--green);">+0,92</td></tr>
+        <tr><td>Pedestrian</td><td class="num">418</td><td class="num">27,10</td><td class="num">31,05</td><td class="num" style="color:var(--green);">+3,95</td></tr>
+        <tr><td>Sign</td><td class="num">152</td><td class="num">27,26</td><td class="num">33,67</td><td class="num" style="color:var(--green);">+6,41</td></tr>
+        <tr><td>Traffic light</td><td class="num">154</td><td class="num">15,58</td><td class="num">20,63</td><td class="num" style="color:var(--green);">+5,05</td></tr>
+        <tr><td>Other vehicle</td><td class="num">0</td><td class="num">—</td><td class="num">—</td><td class="num">Holdout riêng</td></tr>
+      </tbody></table>
+      <p class="footnote">AP tính theo COCO mask AP@[.50:.95]. GT và AP lấy từ CPU replay đã ghi trong repo.</p>
+    </div>
+    <div class="card"><h3>Mức tăng AP lớn nhất · điểm</h3>
+      <div class="chart-rows" role="img" aria-label="Tăng AP: Sign 6.41, Traffic light 5.05, Car 4.66, Pedestrian 3.95, Truck 3.91 điểm">
+        <div class="chart-row"><span class="chart-label">Sign</span><div class="gain-track"><div class="gain-bar" style="width:91.6%;"></div></div><span class="chart-value">+6,41</span></div>
+        <div class="chart-row"><span class="chart-label">Traffic light</span><div class="gain-track"><div class="gain-bar" style="width:72.1%;"></div></div><span class="chart-value">+5,05</span></div>
+        <div class="chart-row"><span class="chart-label">Car</span><div class="gain-track"><div class="gain-bar" style="width:66.6%;"></div></div><span class="chart-value">+4,66</span></div>
+        <div class="chart-row"><span class="chart-label">Pedestrian</span><div class="gain-track"><div class="gain-bar"><span style="display:block;width:56.4%;height:100%;background:linear-gradient(90deg,#0ea5e9,#34d399);"></span></div></div><span class="chart-value">+3,95</span></div>
+        <div class="chart-row"><span class="chart-label">Truck</span><div class="gain-track"><div class="gain-bar" style="width:55.9%;"></div></div><span class="chart-value">+3,91</span></div>
+      </div>
+      <div class="holdout-box" style="margin-top:18px;"><strong>Other vehicle · holdout</strong><br/>61,62 mAP · 7 GT trên 6 ảnh. Val140 không có GT lớp này.</div>
+      <p style="margin-top:14px;"><strong>Ưu tiên vòng sau:</strong> Motorcycle còn 9,68 AP; Cyclist 16,58 AP. Bổ sung cảnh che khuất và xe hai bánh sát nhau, rồi đánh giá lại trên cùng val140.</p>
+    </div>
   </div>
-  <div class="footer"><span>Error-driven Data-Centric Loop</span><span>Slide 7/10</span></div>
+  <div class="footer"><span>Nguồn: experiments/TEAM21_KET_QUA.md · class AP replay</span><span>Slide 7/10</span></div>
 </section>
 
 <!-- SLIDE 8 -->
 <section class="slide">
-  <div class="header"><h2>7. Tiến Triển Điểm Số Qua Các Version</h2><span class="tag">Slide 08</span></div>
+  <div class="header"><h2>7. Điểm Số &amp; Kiểm Chứng Mô Hình</h2><span class="tag">Slide 08</span></div>
   <div class="grid-2">
-    <div class="card">
-      <h3>Lộ Trình Tăng Trưởng Qua Các Vòng Chạy</h3>
-      <table>
-        <thead><tr><th>Phiên Bản</th><th>Tập Val</th><th class="num">Mask mAP</th><th class="num">AP50</th><th class="num">AP75</th></tr></thead>
-        <tbody>
-          <tr><td><code>v1-baseline</code></td><td>80 ảnh COCO</td><td class="num">21,92</td><td class="num">40,68</td><td class="num">20,87</td></tr>
-          <tr><td><code>Round 3 (team780)</code></td><td>140 ảnh khóa</td><td class="num">21,35</td><td class="num">36,82</td><td class="num">21,29</td></tr>
-          <tr><td><code>Round 4 (100 ep)</code></td><td>140 ảnh khóa</td><td class="num">22,01</td><td class="num">38,72</td><td class="num">—</td></tr>
-          <tr><td><code>team21-qc20 (Pilot)</code></td><td>140 ảnh khóa</td><td class="num">24,13</td><td class="num">41,55</td><td class="num">24,49</td></tr>
-          <tr><td><code>team21-polish12</code></td><td>140 ảnh khóa</td><td class="num">25,25</td><td class="num">43,81</td><td class="num">25,39</td></tr>
-          <tr style="background: rgba(52, 211, 153, 0.12);"><td><strong><code>team21-mean-wide-bn</code></strong></td><td><strong>140 ảnh khóa</strong></td><td class="num"><strong style="color:var(--green);">25,64</strong></td><td class="num"><strong>43,87</strong></td><td class="num"><strong>25,42</strong></td></tr>
-        </tbody>
-      </table>
-      <p style="margin-top: 12px;">Tăng <strong>+4,29 điểm</strong> so với Round 3 (<code>21,35 → 25,64</code>) và <strong>+1,51 điểm</strong> so với Pilot (khoảng bootstrap 95%: <code>[0,42; 2,64]</code>).</p>
+    <div class="card"><h3>Mask mAP trên cùng val140</h3>
+      <div class="chart-rows" role="img" aria-label="Round4 22.01, pilot QC20 24.13, mean-paste-bn 25.80, wheel-contours 27.11, mask-roi 27.54">
+        <div class="chart-row"><span class="chart-label">Round 4</span><div class="bar-track"><div class="bar" style="width:73.4%;"></div></div><span class="chart-value">22,01</span></div>
+        <div class="chart-row"><span class="chart-label">Pilot QC20</span><div class="bar-track"><div class="bar pilot" style="width:80.4%;"></div></div><span class="chart-value">24,13</span></div>
+        <div class="chart-row"><span class="chart-label">Mean-paste-BN</span><div class="bar-track"><div class="bar" style="width:86.0%;"></div></div><span class="chart-value">25,80</span></div>
+        <div class="chart-row"><span class="chart-label">Wheel-contours</span><div class="bar-track"><div class="bar followup" style="width:90.4%;"></div></div><span class="chart-value">27,11</span></div>
+        <div class="chart-row"><span class="chart-label"><strong>Mask-ROI · best</strong></span><div class="bar-track"><div class="bar best" style="width:91.8%;"></div></div><span class="chart-value">27,54</span></div>
+      </div>
+      <p class="footnote">Thanh theo trục 0–30 điểm. Wheel-contours là thử nghiệm tiếp theo, thấp hơn bản chọn 0,43 điểm.</p>
+      <div class="kpi-row" style="margin-top:12px;"><div class="kpi"><div class="lbl">AP50</div><div class="val">45,24</div></div><div class="kpi"><div class="lbl">AP75</div><div class="val">29,18</div></div><div class="kpi"><div class="lbl">So với pilot</div><div class="val">+3,41</div></div></div>
     </div>
-    <div class="card">
-      <h3>Cải Thiện AP Từng Lớp (Pilot → Bản Chọn 25,64)</h3>
-      <table>
-        <thead><tr><th>Lớp</th><th class="num">GT Val140</th><th class="num">Pilot</th><th class="num">Bản Chọn</th><th class="num">Chênh</th></tr></thead>
+    <div class="card"><h3>So sánh tập con và holdout</h3>
+      <table class="table-compact"><thead><tr><th>Bản</th><th class="num">Val140</th><th class="num">VN · 15</th><th class="num">Mapillary · 46</th><th class="num">Holdout</th></tr></thead>
         <tbody>
-          <tr><td><code>Car</code></td><td class="num">546</td><td class="num">40,27</td><td class="num">41,96</td><td class="num" style="color:var(--green);">+1,69</td></tr>
-          <tr><td><code>Bus</code></td><td class="num">35</td><td class="num">39,52</td><td class="num">42,17</td><td class="num" style="color:var(--green);">+2,65</td></tr>
-          <tr><td><code>Truck</code></td><td class="num">82</td><td class="num">19,91</td><td class="num">23,85</td><td class="num" style="color:var(--green);">+3,94</td></tr>
-          <tr><td><code>Motorcycle</code></td><td class="num">54</td><td class="num">7,45</td><td class="num">9,52</td><td class="num" style="color:var(--green);">+2,07</td></tr>
-          <tr><td><code>Pedestrian</code></td><td class="num">418</td><td class="num">27,10</td><td class="num">29,04</td><td class="num" style="color:var(--green);">+1,94</td></tr>
-          <tr><td><code>Sign</code></td><td class="num">152</td><td class="num">27,26</td><td class="num">28,74</td><td class="num" style="color:var(--green);">+1,48</td></tr>
-          <tr><td><code>Traffic light</code></td><td class="num">154</td><td class="num">15,58</td><td class="num">18,28</td><td class="num" style="color:var(--green);">+2,70</td></tr>
-          <tr><td><code>Other vehicle (holdout)</code></td><td class="num">7</td><td class="num">50,98</td><td class="num"><strong>61,61</strong></td><td class="num" style="color:var(--green);">+10,63</td></tr>
+          <tr style="background:rgba(52,211,153,.10);"><td><strong>mask-roi</strong></td><td class="num"><strong>27,54</strong></td><td class="num">22,39</td><td class="num">26,78</td><td class="num">61,62</td></tr>
+          <tr><td>wheel-contours</td><td class="num">27,11</td><td class="num">21,99</td><td class="num">26,35</td><td class="num">59,10</td></tr>
+          <tr><td>mean-paste-bn</td><td class="num">25,80</td><td class="num">19,24</td><td class="num">26,54</td><td class="num">60,71</td></tr>
+          <tr><td>mean-wide-bn</td><td class="num">25,64</td><td class="num">18,78</td><td class="num">24,99</td><td class="num">61,61</td></tr>
         </tbody>
       </table>
+      <p style="margin-top:14px;"><strong>So với mean-paste-bn:</strong> +1,74 điểm. Bootstrap ghép cặp theo cảnh 95%: <strong>[+1,31; +2,20]</strong> (300 mẫu).</p>
+      <p class="footnote">Nhiều mô hình được so trên cùng validation; khoảng tin cậy chưa điều chỉnh theo số lần chọn mô hình. Public/private score của BTC không suy ra từ replay này.</p>
     </div>
   </div>
-  <div class="footer"><span>Số liệu chấm lại từ ONNX ZIP trên CPU · Nguồn: TEAM21_KET_QUA.md</span><span>Slide 8/10</span></div>
+  <div class="footer"><span>ZIP được chấm lại trên CPU · val140 giữ nguyên qua các lượt</span><span>Slide 8/10</span></div>
 </section>
 
 <!-- SLIDE 9 -->
 <section class="slide">
-  <div class="header"><h2>8. Kỹ Thuật Tối Ưu Hóa Đã Áp Dụng</h2><span class="tag">Slide 09</span></div>
-  <div class="grid-3" style="flex: 1;">
-    <div class="card">
-      <h3>1. Data-Centric Cleaning</h3>
-      <ul>
-        <li>Rà &amp; sửa lại 50 cảnh ưu tiên trên CVAT theo đúng quy ước 11 lớp.</li>
-        <li>Sửa đa giác tự cắt bằng rasterize + <code>findContours</code>.</li>
-        <li>Lọc bỏ nhãn nhiễu &lt; 64 px² ở khung 640 theo đúng hàm diện tích máy chấm.</li>
-        <li>Bổ sung 182 cảnh Mapillary đã review &amp; 58 cảnh ba gác Poribohon.</li>
-      </ul>
+  <div class="header"><h2>8. Giải Pháp Đã Áp Dụng &amp; Hướng Tiếp Theo</h2><span class="tag">Slide 09</span></div>
+  <div class="solution-grid">
+    <div class="card"><h3>1. Làm sạch dữ liệu có kiểm soát</h3><ul>
+      <li>QC cảnh ưu tiên và sửa nhãn train; tách instance xe hai bánh và người dắt xe đúng taxonomy.</li>
+      <li>Sửa polygon lỗi hình học; lọc mask quá nhỏ theo ngưỡng pipeline.</li>
+      <li>Giữ nguyên val140 và holdout riêng; so sánh ZIP có cùng split, seed và quy trình replay.</li>
+    </ul></div>
+    <div class="card"><h3>2. Mở rộng nguồn train có provenance</h3><ul>
+      <li>Lineage thực nghiệm có COCO đã duyệt, Mapillary Vistas, BDD/VN và bản copy-paste tạo từ ảnh train.</li>
+      <li>Manifest lưu nguồn, giấy phép, lựa chọn ảnh và SHA-256 để truy lại từng mẫu.</li>
+      <li>Dữ liệu review thêm cho nhánh xe hai bánh được theo dõi riêng, không gộp nhầm vào điểm bản chọn.</li>
+    </ul></div>
+    <div class="card"><h3>3. Tinh chỉnh trên train, giữ val độc lập</h3>
+      <div class="pipeline" aria-label="Mean-paste BN đến mask ROI"><div class="pipeline-step"><strong>Mean-paste-BN</strong>checkpoint nguồn</div><div class="pipeline-step"><strong>168 ảnh train</strong>BN refresh · 3 nguồn</div><div class="pipeline-step"><strong>Mask-ROI</strong>27,54 mAP</div></div>
+      <p style="margin-top:12px;">ROI mask fit tăng <strong>1,74 điểm</strong> so với mean-paste-bn; bootstrap 95%: <strong>[1,31; 2,20]</strong>.</p>
+      <p class="source-note">Fit dùng nhãn train; val140 không tham gia hiệu chỉnh.</p>
     </div>
-    <div class="card">
-      <h3>2. Tăng Cường &amp; Simulation</h3>
-      <ul>
-        <li><strong>Offline Copy-Paste:</strong> Cắt mask lớp hiếm (<code>Other vehicle</code>, <code>Cyclist</code>) cân bằng sáng &amp; dán lên vùng mặt đường.</li>
-        <li><strong>Hard-Scene Synth:</strong> Tạo ảnh đêm (Gamma + noise) &amp; mưa (rain streaks) cho tập train; gen 4 cảnh ngã tư VN ngược sáng/đêm mưa.</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>3. Chiến Lược Fine-Tuning</h3>
-      <ul>
-        <li><code>overlap_mask=False</code>: Chống đè mất mask xe máy đi sát ô tô.</li>
-        <li><code>close_mosaic=20</code> &amp; <code>erasing=0.1</code>: Giữ biên mask nét ở IoU 0,75, không xóa mất đèn đỏ nhỏ.</li>
-        <li>Tinh chỉnh <code>BatchNorm</code>, <code>o2m</code>, <code>mean</code> checkpoints giúp giữ ổn định điểm trên cả <code>val140</code> và holdout.</li>
-      </ul>
+    <div class="card"><h3>4. Chọn giải pháp theo bằng chứng</h3>
+      <p>Nhánh wheel-contours đạt 27,11, thấp hơn mask-roi 0,43 điểm. Giữ mask-roi làm bản tốt nhất đã replay.</p>
+      <p style="margin-top:10px;"><strong>Bước tiếp:</strong> thu thập cảnh xe máy bị che khuất, xe sát nhau và Cyclist; QC polygon theo instance.</p>
+      <p class="source-note">Chỉ thay bản chọn khi cùng val140 cải thiện và holdout không suy giảm.</p>
     </div>
   </div>
-  <div class="footer"><span>Tất cả thử nghiệm tuân thủ 1 file model.onnx (yolo26n-seg, 640, opset 17)</span><span>Slide 9/10</span></div>
+  <div class="footer"><span>Nguồn dữ liệu và quyết định QC: DATASET_PROVENANCE_REPORT.md</span><span>Slide 9/10</span></div>
 </section>
 
 <!-- SLIDE 10 -->
 <section class="slide">
-  <div class="header"><h2>9. Kết Quả Cuối, Hạn Chế &amp; Khả Năng Tái Lập</h2><span class="tag">Slide 10</span></div>
+  <div class="header"><h2>9. Kết Quả Cuối, Giới Hạn &amp; Gói Tái Lập</h2><span class="tag">Slide 10</span></div>
   <div class="grid-2">
-    <div class="card">
-      <h3>Kết Quả Hệ Thống Cuộc Thi &amp; Hạn Chế</h3>
-      <div class="grid-2" style="gap: 12px; margin-bottom: 14px; flex: unset;">
-        <div class="kpi"><div class="lbl">Điểm Public (Hệ Thống)</div><div class="val" style="color:var(--accent);">[Cập nhật]</div></div>
-        <div class="kpi"><div class="lbl">Điểm Private (11:00)</div><div class="val">[Cập nhật]</div></div>
-      </div>
+    <div class="card"><h3>Kết quả đã kiểm chứng</h3>
+      <div class="kpi-row"><div class="kpi"><div class="lbl">Val140 best</div><div class="val">27,54</div></div><div class="kpi"><div class="lbl">Pilot → best</div><div class="val">+3,41</div></div><div class="kpi"><div class="lbl">Holdout · 7 GT</div><div class="val">61,62</div></div></div>
       <ul>
-        <li><strong>Hạn chế 1:</strong> Lớp <code>Motorcycle</code> (<code>9,52</code>) vẫn khó khi hàng chục xe máy đỗ san sát hoặc bị che khuất một phần sau ô tô.</li>
-        <li><strong>Hạn chế 2:</strong> <code>val140</code> thiếu GT lớp <code>Other vehicle</code> nên phải đánh giá chéo trên holdout riêng (6 ảnh / 7 GT).</li>
-        <li><strong>Hướng phát triển:</strong> Bổ sung thêm video dashcam Việt Nam giờ cao điểm và mở rộng active learning cho <code>Motorcycle</code> &amp; <code>Traffic light</code>.</li>
+        <li>Bản chọn: <code>team21-mask-roi</code>; mask AP@[.50:.95] replay từ submission ZIP trên CPU.</li>
+        <li>ZIP 9.674.663 byte, chỉ chứa <code>model.onnx</code> FP32; SHA-256 bắt đầu bằng <code>2717f063</code>.</li>
+        <li>Điểm public/private chưa được ghi trong repo; không thay bằng điểm replay nội bộ.</li>
       </ul>
+      <div class="holdout-box" style="margin-top:12px;">Giới hạn: Motorcycle đạt 9,68 AP; val140 không có GT Other vehicle. Holdout lớp này chỉ có 7 GT trên 6 ảnh.</div>
     </div>
-    <div class="card">
-      <h3>Gói Bàn Giao Tái Lập 100%</h3>
+    <div class="card"><h3>Hồ sơ để tái lập và kiểm tra</h3>
       <ul>
-        <li><strong>Repository sạch:</strong> <code>github.com/tiennguyeniotd22-ops/allnaction-traffic-seg</code></li>
-        <li><strong>Notebook tái lập:</strong> <code>notebooks/train_round4.ipynb</code> (và <code>archive/</code>).</li>
-        <li><strong>Báo cáo &amp; Log:</strong> <code>DATASET_PROVENANCE_REPORT.md</code>, <code>EXPERIMENTS.md</code>, <code>run_report.json</code>, <code>replay.json</code>.</li>
-        <li><strong>Gói nộp hợp lệ:</strong> <code>submission.zip</code> chứa duy nhất <code>model.onnx</code> FP32 (`&lt; 42 MB`), đã qua kiểm tra parity PyTorch–ONNX.</li>
+        <li><code>experiments/TEAM21_KET_QUA.md</code>: bảng kết quả, AP theo lớp và lineage.</li>
+        <li><code>experiments/overnight/verified-scores.json</code>: metric, hash ZIP và parity ONNX.</li>
+        <li><code>experiments/overnight/team21-cpu-replays.json</code>: kết quả replay từ ZIP.</li>
+        <li><code>DATASET_PROVENANCE_REPORT.md</code>: nguồn, giấy phép và manifest dữ liệu.</li>
       </ul>
-      <p style="margin-top: 14px; color: var(--green); font-weight: 700;">Cảm ơn Ban Tổ Chức &amp; Hội Đồng Giám Khảo!</p>
+      <p style="margin-top:16px;color:var(--green);font-weight:700;">Dữ liệu có nguồn gốc rõ ràng, split cố định, kết quả có thể kiểm chứng.</p>
     </div>
   </div>
   <div class="footer"><span>AllnAction RoboTaxi Data-Centric Competition · Đội 21</span><span>Slide 10/10</span></div>

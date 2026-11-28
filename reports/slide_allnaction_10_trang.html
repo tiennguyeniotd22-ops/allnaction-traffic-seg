@@ -239,29 +239,30 @@
 
 <!-- SLIDE 4 -->
 <section class="slide">
-  <div class="header"><h2>3. Dữ Liệu Qua Các Vòng &amp; Chia Tập Đánh Giá</h2><span class="tag">Slide 04</span></div>
+  <div class="header"><h2>3. Thống Kê Các Version &amp; Nhóm Dữ Liệu Bổ Sung</h2><span class="tag">Slide 04</span></div>
   <div class="card" style="flex:1;">
-    <h3>Train, validation và kết quả của các mốc chính</h3>
+    <h3>Tiến Trình Dữ Liệu Qua Từng Phiên Bản (Bổ Sung Đúng Nhóm Thiếu / Yếu)</h3>
     <table class="table-compact">
-      <thead><tr><th>Mốc</th><th>Dữ liệu train / cách chọn</th><th>Tập đánh giá</th><th class="num">Mask mAP</th></tr></thead>
+      <thead><tr><th>Version</th><th>Thành Phần Data Train</th><th>Nhóm Dữ Liệu Được Bổ Sung / Sửa</th><th>Val</th><th class="num">Mask mAP</th></tr></thead>
       <tbody>
-        <tr><td><strong>v1 baseline</strong></td><td>400 ảnh: 320 COCO + 80 ảnh tổng hợp đêm/mưa</td><td>80 ảnh COCO</td><td class="num">21,92</td></tr>
-        <tr><td><strong>Round 3 → Round 4</strong></td><td>640 ảnh từ BDD, Việt Nam, COCO và ảnh tổng hợp</td><td>Val140 khóa cứng</td><td class="num">21,35 → 22,01</td></tr>
-        <tr><td><strong>team21-qc20 · pilot</strong></td><td>Nhãn CVAT đã QC; nhánh kiểm tra bổ sung 31 ảnh COCO</td><td>Cùng val140</td><td class="num">24,13</td></tr>
-        <tr style="background:rgba(52,211,153,.10);"><td><strong>team21-mask-roi</strong></td><td>Lineage 9 checkpoint từ mean-paste-bn; ROI mask fit chỉ dùng nhãn train</td><td><strong>Cùng val140</strong></td><td class="num"><strong style="color:var(--green);">27,54</strong></td></tr>
+        <tr><td><strong>v1 baseline</strong></td><td>400 ảnh (320 COCO + 80 synth)</td><td>Tạo nền 8 lớp cơ bản + cảnh đêm/mưa tổng hợp</td><td>80 COCO</td><td class="num">21,92</td></tr>
+        <tr><td><strong>Round 3 → 4</strong></td><td>640 ảnh (BDD + VN Sign + COCO)</td><td>Bổ sung <strong>cảnh ngày/đêm/mưa (BDD)</strong> &amp; <strong>biển báo VN (Sign)</strong></td><td>Val140</td><td class="num">21,35 → 22,01</td></tr>
+        <tr><td><strong>team21-qc20</strong></td><td>1.156 ảnh (CVAT QC + COCO)</td><td>Sửa <strong>xe 2 bánh, xe tải, đèn</strong> + thêm <strong>31 ảnh COCO</strong> kiểm trùng</td><td>Val140</td><td class="num">24,13</td></tr>
+        <tr><td><strong>mean-wide-bn</strong></td><td>1.411–1.442 ảnh</td><td>Bổ sung <strong>212 crop Mapillary Vistas</strong>, <strong>43 BDD</strong> &amp; <strong>24 tệp VN</strong></td><td>Val140</td><td class="num">25,64</td></tr>
+        <tr><td><strong>mean-paste-bn</strong></td><td>Mở rộng + Copy-Paste</td><td>Nhân bản <strong>nhóm lớp hiếm &amp; Other vehicle</strong> (holdout 60,71)</td><td>Val140</td><td class="num">25,80</td></tr>
+        <tr style="background:rgba(52,211,153,.10);"><td><strong>team21-mask-roi</strong></td><td>Lineage từ mean-paste-bn</td><td><strong>BN refresh 168 ảnh (3 nguồn)</strong> + tinh chỉnh <strong>ROI mask</strong></td><td><strong>Val140</strong></td><td class="num"><strong style="color:var(--green);">27,54</strong></td></tr>
       </tbody>
     </table>
-    <div class="split-wrap">
+    <div class="split-wrap" style="margin-top:10px;">
       <div>
-        <div class="mini-title">Val140 · 1.588 GT hợp lệ · thành phần không đổi giữa các lượt</div>
+        <div class="mini-title">Val140 · 1.588 GT hợp lệ · khóa cố định SHA-256 giữa mọi version</div>
         <div class="split-track" role="img" aria-label="Val140: BDD 45 ảnh, Việt Nam 15 ảnh, Drive 80 ảnh"><span style="width:32.14%;background:#38bdf8;" title="BDD100K: 45 ảnh"></span><span style="width:10.72%;background:#a78bfa;" title="Việt Nam: 15 ảnh"></span><span style="width:57.14%;background:#34d399;" title="Drive: 80 ảnh"></span></div>
         <div class="split-legend"><span class="split-key"><b style="color:#38bdf8;">BDD100K</b> · 45 ảnh</span><span class="split-key"><b style="color:#a78bfa;">Việt Nam</b> · 15 ảnh</span><span class="split-key"><b style="color:#34d399;">Drive</b> · 80 ảnh</span></div>
       </div>
-      <div class="holdout-box"><strong>Holdout riêng</strong><br/>Other vehicle · 6 ảnh / 7 GT<br/>mAP 61,62 · không tính trong val140</div>
+      <div class="holdout-box"><strong>Holdout riêng Lớp 3 (Other vehicle)</strong><br/>6 ảnh / 7 GT · mAP <strong>61,62</strong> (tách khỏi val140)</div>
     </div>
-    <p class="source-note">Bản chọn kế thừa mean-paste-bn, BN refresh trên 168 ảnh train từ 3 nguồn, sau đó tinh chỉnh ROI mask. Validation được khóa theo ảnh và SHA-256; các nhánh dữ liệu được liệt kê trong DATASET_PROVENANCE_REPORT.md.</p>
   </div>
-  <div class="footer"><span>Nguồn: experiments/TEAM21_KET_QUA.md · verified-scores.json</span><span>Slide 4/10</span></div>
+  <div class="footer"><span>Nguồn: experiments/TEAM21_KET_QUA.md · DATASET_PROVENANCE_REPORT.md</span><span>Slide 4/10</span></div>
 </section>
 
 <!-- SLIDE 5 -->
@@ -383,30 +384,28 @@
 
 <!-- SLIDE 9 -->
 <section class="slide">
-  <div class="header"><h2>8. Giải Pháp Đã Áp Dụng &amp; Hướng Tiếp Theo</h2><span class="tag">Slide 09</span></div>
-  <div class="solution-grid">
-    <div class="card"><h3>1. Làm sạch dữ liệu có kiểm soát</h3><ul>
-      <li>QC cảnh ưu tiên và sửa nhãn train; tách instance xe hai bánh và người dắt xe đúng taxonomy.</li>
-      <li>Sửa polygon lỗi hình học; lọc mask quá nhỏ theo ngưỡng pipeline.</li>
-      <li>Giữ nguyên val140 và holdout riêng; so sánh ZIP có cùng split, seed và quy trình replay.</li>
-    </ul></div>
-    <div class="card"><h3>2. Mở rộng nguồn train có provenance</h3><ul>
-      <li>Lineage thực nghiệm có COCO đã duyệt, Mapillary Vistas, BDD/VN và bản copy-paste tạo từ ảnh train.</li>
-      <li>Manifest lưu nguồn, giấy phép, lựa chọn ảnh và SHA-256 để truy lại từng mẫu.</li>
-      <li>Dữ liệu review thêm cho nhánh xe hai bánh được theo dõi riêng, không gộp nhầm vào điểm bản chọn.</li>
-    </ul></div>
-    <div class="card"><h3>3. Tinh chỉnh trên train, giữ val độc lập</h3>
-      <div class="pipeline" aria-label="Mean-paste BN đến mask ROI"><div class="pipeline-step"><strong>Mean-paste-BN</strong>checkpoint nguồn</div><div class="pipeline-step"><strong>168 ảnh train</strong>BN refresh · 3 nguồn</div><div class="pipeline-step"><strong>Mask-ROI</strong>27,54 mAP</div></div>
-      <p style="margin-top:12px;">ROI mask fit tăng <strong>1,74 điểm</strong> so với mean-paste-bn; bootstrap 95%: <strong>[1,31; 2,20]</strong>.</p>
-      <p class="source-note">Fit dùng nhãn train; val140 không tham gia hiệu chỉnh.</p>
-    </div>
-    <div class="card"><h3>4. Chọn giải pháp theo bằng chứng</h3>
-      <p>Nhánh wheel-contours đạt 27,11, thấp hơn mask-roi 0,43 điểm. Giữ mask-roi làm bản tốt nhất đã replay.</p>
-      <p style="margin-top:10px;"><strong>Bước tiếp:</strong> thu thập cảnh xe máy bị che khuất, xe sát nhau và Cyclist; QC polygon theo instance.</p>
-      <p class="source-note">Chỉ thay bản chọn khi cùng val140 cải thiện và holdout không suy giảm.</p>
+  <div class="header"><h2>8. Quy Trình Làm Việc Giữa Các Version &amp; Giải Pháp Áp Dụng</h2><span class="tag">Slide 09</span></div>
+  <div class="card" style="padding:12px 16px;margin-bottom:12px;">
+    <h3 style="margin-bottom:4px;">Vòng Lặp Cải Tiến Giữa Các Version (Data-Centric Loop)</h3>
+    <div class="pipeline" style="margin-top:6px;">
+      <div class="pipeline-step"><strong>1. Khóa Val140</strong>Giữ nguyên SHA-256 140 ảnh để so sánh công bằng</div>
+      <div class="pipeline-step"><strong>2. Chẩn Đoán Lỗi</strong>Đo AP từng lớp, IoU 0.50 vs 0.75 &amp; ma trận nhầm</div>
+      <div class="pipeline-step"><strong>3. Bổ Sung Đúng Nhóm</strong>QC nhãn sai, thêm Mapillary/VN/Copy-Paste lớp yếu</div>
+      <div class="pipeline-step"><strong>4. Train &amp; Kiểm Lệch</strong>Train trên tập mới, kiểm tra độ phủ &amp; chống leak</div>
+      <div class="pipeline-step"><strong>5. CPU Replay &amp; Chốt</strong>Chấm ONNX ZIP, giữ bản tăng có bootstrap &gt; 0</div>
     </div>
   </div>
-  <div class="footer"><span>Nguồn dữ liệu và quyết định QC: DATASET_PROVENANCE_REPORT.md</span><span>Slide 9/10</span></div>
+  <div class="solution-grid">
+    <div class="card"><h3>1. Làm sạch &amp; bổ sung đúng nhóm dữ liệu</h3><ul>
+      <li>QC nhãn 2 bánh, xe tải, đèn; bổ sung <strong>Mapillary Vistas</strong> &amp; <strong>Copy-Paste</strong> cho nhóm lớp yếu.</li>
+      <li>Sửa polygon tự cắt; lọc mask &lt; 64 px² theo ngưỡng bộ chấm.</li>
+    </ul></div>
+    <div class="card"><h3>2. Tinh chỉnh có kiểm soát &amp; giữ val độc lập</h3><ul>
+      <li>Kế thừa <code>mean-paste-bn</code> → BN refresh 168 ảnh train → <strong>Mask-ROI (27,54)</strong> (+1,74; bootstrap <code>[1,31; 2,20]</code>).</li>
+      <li>Loại <code>wheel-contours</code> (27,11) do thấp hơn 0,43 điểm; chỉ giữ bản thắng trên cùng <code>val140</code>.</li>
+    </ul></div>
+  </div>
+  <div class="footer"><span>Quy trình lặp lại giữa các version đảm bảo không tụt điểm thầm lặng</span><span>Slide 9/10</span></div>
 </section>
 
 <!-- SLIDE 10 -->

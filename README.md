@@ -11,6 +11,7 @@
 | :--- | :--- |
 | [`notebooks/train_round4.ipynb`](notebooks/train_round4.ipynb) | **Notebook huấn luyện & xuất ONNX mới nhất (v4)** |
 | [`notebooks/prelabel/`](notebooks/prelabel/) | Notebook auto-prelabel bằng **SAM 3** và **YOLO-World + SAM 2.1 (không cần token)** |
+| [`notebooks/archive/`](notebooks/archive/) | Lưu trữ các bản cũ (`train_and_export_v2.ipynb`, `train_round3.ipynb`) để đối chiếu tái lập |
 | [`configs/traffic_11_classes.yaml`](configs/traffic_11_classes.yaml) | Định nghĩa chuẩn 11 lớp giao thông (`0..10`) |
 | [`DATASET_PROVENANCE_REPORT.md`](DATASET_PROVENANCE_REPORT.md) | Khai báo nguồn dữ liệu công khai, giấy phép & ánh xạ 11 lớp |
 | [`EXPERIMENTS.md`](EXPERIMENTS.md) | Nhật ký điểm số và đối chiếu các vòng chạy |

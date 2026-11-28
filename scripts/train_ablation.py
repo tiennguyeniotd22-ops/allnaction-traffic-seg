@@ -17,6 +17,9 @@ CHANGES = {
     "mask-ratio-4": {"mask_ratio": (2, 4)},
     "lower-lr": {"lr0": (0.002, 0.0007)},
     "o2m-constant": {"lr0": (0.002, 0.0007)},
+    "warm-polish": {"lr0": (0.002, 0.0002), "warmup_bias_lr": (0.1, 0.0002),
+                    "warmup_epochs": (3.0, 1.0), "mosaic": (1.0, 0.0), "copy_paste": (0.35, 0.0),
+                    "scale": (0.5, 0.25)},
     "head-transfer": {"lr0": (0.002, 0.0007)},
     "sgd": {"optimizer": ("AdamW", "SGD")},
     "linear-lr": {"cos_lr": (True, False)},
@@ -86,8 +89,9 @@ def repeat_rare(data_yaml, seed, run):
 
 
 def configure_train_args(train_args, experiment, run):
+    from ultralytics.cfg import DEFAULT_CFG_DICT
     for name, (old, new) in CHANGES[experiment].items():
-        if train_args[name] != old:
+        if train_args.get(name, DEFAULT_CFG_DICT.get(name)) != old:
             raise ValueError(f"{name} differs from reference {old!r}")
         train_args[name] = new
     if experiment == "repeat-rare":

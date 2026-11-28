@@ -98,6 +98,23 @@ def main():
               f"là [{fmt(ci[0])}, {fmt(ci[1])}] điểm (300 lần lấy mẫu). "
               "Nhiều bản được so trên cùng validation. Khoảng này chưa điều chỉnh theo số lần chọn mô hình.",
               "", "| Lớp | GT hợp lệ | AP pilot | AP bản chọn |", "|---|---:|---:|---:|"]
+    prior_name = "team21-mean-sgd-bn"
+    for name in runs:
+        paired = a.root / name / "vs-incumbent.json"
+        if not paired.is_file():
+            continue
+        direct = read(paired)
+        prior = runs[prior_name][0]
+        assert direct["scores"]["round3"] == prior["scores"]
+        assert direct["scores"]["pilot"] == runs[name][0]["scores"]
+        assert direct["zip_sha256"] == evidence[name]["zip_sha256"] and direct["validation_sha_verified"] == 140
+        low, high = direct["paired_scene_bootstrap_95_points"]
+        diff = 100*(scores[name]-scores[prior_name])
+        evidence[name]["paired_vs_prior_leader"] = dict(reference=prior_name, reference_zip_sha256=prior["zip_sha256"],
+            difference_points=diff, interval_95_points=[low, high], replicates=direct["bootstrap_replicates"])
+        if name == best:
+            lines[-3:-3] = ["", f"So trực tiếp với ZIP đầu vòng `{prior_name}` ({fmt(100*scores[prior_name])}), "
+                             f"chênh lệch là {fmt(diff)} điểm. Khoảng bootstrap 95% [{fmt(low)}, {fmt(high)}]."]
     for name in report["classes"]:
         count = overall["n_gt_per_class"][name]
         old = fmt(100*reference["all140"]["per_class_ap"][name]) if count else "Thiếu GT"

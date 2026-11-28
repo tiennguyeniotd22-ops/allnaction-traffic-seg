@@ -168,6 +168,13 @@ def main():
     ]
     if snap:
         lines.insert(lines.index("## Tái lập") + 2, f"Checkpoint được chọn ở cuối epoch {snap}.\n")
+    if warm := resource.get("warm_start"):
+        source_run = warm["run"]
+        assert digest(root / source_run / "best.pt") == warm["weights_sha256"] == resource["initial_weights_sha256"]
+        start_line = next(i for i, s in enumerate(lines) if s.startswith('.venv/bin/python "$SCRIPTS/run_notebook_pilot.py"'))
+        lines[start_line] += f" --warm-start overnight/{source_run}"
+        lines.insert(lines.index("## Tái lập") + 2,
+                     f"Fine-tune từ checkpoint đã kiểm của `{source_run}`, SHA-256 `{warm['weights_sha256']}`.\n")
     if decision.get("mean_sources"):
         sources = decision["mean_sources"]
         start = lines.index("## Tái lập") + 2

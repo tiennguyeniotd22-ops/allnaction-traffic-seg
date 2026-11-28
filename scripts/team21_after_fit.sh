@@ -10,14 +10,18 @@ reference=$5
 recipe=$6
 revision=$7
 code=${8:-overnight/team21-code}
-while ! grep -q PILOT_COMPLETE "overnight/$previous.log"; do
+while ! grep -qs PILOT_COMPLETE "overnight/$previous.log"; do
     tmux has-session -t "=$session" || { echo "Previous fit exited before export"; exit 1; }
     sleep 5
 done
 test ! -e "overnight/$run"
+options=()
+epochs=${TEAM21_EPOCHS:-20}
+if [[ -n ${TEAM21_WARM_START:-} ]]; then options+=(--warm-start "overnight/$TEAM21_WARM_START"); fi
+if [[ -n ${TEAM21_SNAPSHOT:-} ]]; then options+=(--snapshot-every "$TEAM21_SNAPSHOT"); fi
 .venv/bin/python -u "$code/run_notebook_pilot.py" --dataset "overnight/$version/dataset.zip" \
     --run "overnight/$run" --revision "$revision" --notebook train_team21.ipynb \
-    --epochs 20 --patience 20 --experiment "$recipe" > "overnight/$run.log" 2>&1
+    --epochs "$epochs" --patience "$epochs" --experiment "$recipe" "${options[@]}" > "overnight/$run.log" 2>&1
 export CUDA_VISIBLE_DEVICES="" OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1
 # Wait for the reference comparison if scoring runs concurrently with the next fit.
 while [[ ! -s "overnight/scores/$reference/comparison.json" ]]; do

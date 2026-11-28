@@ -92,6 +92,13 @@ def main():
             report = read(folder / "run_report.json")
             assert report["train"]["train_args"]["seed"] == report["team_id"] == report["seed"] == team
         allowed.add("seed")
+    warm = args.experiment == "warm-polish" and args.reference_experiment != "warm-polish"
+    if warm:
+        trial_resource = read(args.pilot / "resources.json")
+        parent_pt = Path(configs[1]["model"])
+        assert parent_pt.is_file() and sha(parent_pt.read_bytes()) == trial_resource["initial_weights_sha256"] == trial_resource["warm_start"]["weights_sha256"]
+        assert read(parent_pt.parents[3] / "run_report.json")["submission"]["zip_sha256"] == trial_resource["warm_start"]["source_zip_sha256"]
+        allowed.add("model")
     training_changes = {k: v for k, v in differences.items() if k not in allowed}
     first, second = CHANGES[args.reference_experiment], CHANGES[args.experiment]
     expected = {}
@@ -106,7 +113,7 @@ def main():
     if args.experiment != "control" or args.reference_experiment != "control":
         control, trial = (read(p / "resources.json") for p in (args.baseline, args.pilot))
         assert control.get("experiment", "control") == args.reference_experiment and trial["experiment"] == args.experiment
-        for k in ("dataset_sha256", "initial_weights_sha256", "notebook_sha256"):
+        for k in (("dataset_sha256", "notebook_sha256") if warm else ("dataset_sha256", "initial_weights_sha256", "notebook_sha256")):
             assert control[k] == trial[k]
         if args.experiment == "repeat-rare":
             sampling = read(args.pilot / "sampling.json")

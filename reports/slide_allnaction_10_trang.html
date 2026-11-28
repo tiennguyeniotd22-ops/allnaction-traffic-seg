@@ -173,17 +173,28 @@
 
 <!-- SLIDE 2 -->
 <section class="slide">
-  <div class="header"><h2>1. Bài Toán & Đặc Thù Giao Thông Việt Nam</h2><span class="tag">Slide 02</span></div>
+  <div class="header"><h2>1. Bài Toán &amp; Đặc Thù Giao Thông Việt Nam</h2><span class="tag">Slide 02</span></div>
   <div class="grid-2">
-    <div class="card">
-      <h3>Thách Thức Thực Tế Trên Đường Phố Việt Nam</h3>
-      <ul>
-        <li><strong>Dòng xe máy ken đặc:</strong> Xe máy len lỏi sát hông ô tô, dễ bị gộp nhầm hoặc che khuất.</li>
-        <li><strong>Phương tiện đặc thù:</strong> Xích lô, xe ba gác máy, xe lam, rơ-moóc, người chở hàng cồng kềnh.</li>
-        <li><strong>Phân biệt người – xe:</strong> Tách rạch ròi xe đỗ/người dắt (<code>Motorcycle</code>/<code>Bicycle</code>) vs người đang ngồi lái (<code>Motorcyclist</code>/<code>Cyclist</code>).</li>
-        <li><strong>Tín hiệu nhỏ & điều kiện khắc nghiệt:</strong> Biển báo, hộp đèn giao thông nhỏ/xa, nắng gắt ngược sáng, mưa và đêm tối.</li>
-        <li><strong>Ràng buộc Data-Centric:</strong> Khóa cứng <code>yolo26n-seg</code> (`2,7M` params, `640×640`), chỉ cải thiện <strong>dữ liệu & quy trình gán nhãn</strong>.</li>
-      </ul>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="grid-2" style="gap:12px;flex:1;">
+        <div class="card" style="border-left:4px solid var(--red);">
+          <h3 style="color:var(--red);">1. Xe Máy Ken Đặc</h3>
+          <p style="font-size:14px;">Dòng xe máy len lỏi sát hông ô tô, che khuất một phần, dễ dính chung 1 mask.</p>
+        </div>
+        <div class="card" style="border-left:4px solid var(--amber);">
+          <h3 style="color:var(--amber);">2. Xe Đặc Thù VN</h3>
+          <p style="font-size:14px;">Xích lô, xe ba gác, rơ-moóc, người chở hàng cồng kềnh thiếu trong data nước ngoài.</p>
+        </div>
+        <div class="card" style="border-left:4px solid var(--purple);">
+          <h3 style="color:var(--purple);">3. Tách Người – Xe</h3>
+          <p style="font-size:14px;">Ngồi lái = <strong>1 mask</strong> (<code>Motorcyclist</code>/<code>Cyclist</code>). Đang đỗ / dắt bộ = tách riêng.</p>
+        </div>
+        <div class="card" style="border-left:4px solid var(--accent);">
+          <h3>4. Tín Hiệu &amp; Thời Tiết</h3>
+          <p style="font-size:14px;">Biển báo, hộp đèn nhỏ ở xa, nắng gắt ngược sáng, mưa và đêm tối.</p>
+        </div>
+      </div>
+      <div class="holdout-box" style="font-size:14px;"><strong>Luật Data-Centric:</strong> Khóa cứng <code>yolo26n-seg</code> (<code>640×640</code>, ONNX FP32) — chỉ cải thiện <strong>dữ liệu &amp; nhãn</strong>.</div>
     </div>
     <div class="card">
       <h3>Quy Ước Cố Định 11 Lớp Instance Segmentation</h3>
@@ -198,42 +209,51 @@
         <div class="class-pill"><strong>7 · Cyclist:</strong> 1 mask phủ xe đạp + người</div>
         <div class="class-pill"><strong>8 · Pedestrian:</strong> Người đi bộ / dắt xe</div>
         <div class="class-pill"><strong>9 · Sign:</strong> Mặt biển báo (bỏ cột)</div>
-        <div class="class-pill" style="grid-column: span 2;"><strong>10 · Traffic light:</strong> Cả hộp đèn tín hiệu (bỏ cột & tay đỡ)</div>
+        <div class="class-pill" style="grid-column: span 2;"><strong>10 · Traffic light:</strong> Cả hộp đèn tín hiệu (bỏ cột &amp; tay đỡ)</div>
       </div>
     </div>
   </div>
-  <div class="footer"><span>Bài toán & Quy ước 11 lớp BTC</span><span>Slide 2/10</span></div>
+  <div class="footer"><span>Bài toán &amp; Quy ước 11 lớp BTC</span><span>Slide 2/10</span></div>
 </section>
 
 <!-- SLIDE 3 -->
 <section class="slide">
-  <div class="header"><h2>2. Mô Hình Cố Định & Mốc Baseline v1</h2><span class="tag">Slide 03</span></div>
-  <div class="grid-2">
-    <div class="card">
-      <h3>Thông Số Mô Hình Nộp Bài (<code>yolo26n-seg</code>)</h3>
-      <table>
-        <tr><th>Thuộc Tính</th><th>Giá Trị Thực Tế</th></tr>
-        <tr><td>Kiến trúc</td><td><code>YOLO26n-seg</code> (Ultralytics 8.4.214)</td></tr>
-        <tr><td>Độ phức tạp</td><td>137 layers · 2.706.213 params · 9,2 GFLOPs</td></tr>
-        <tr><td>Input / Output</td><td><code>[1, 3, 640, 640]</code> → Mask <code>[1, 32, 160, 160]</code></td></tr>
-        <tr><td>Định dạng xuất</td><td>ONNX FP32, opset 17, 10,6 MB (ZIP 9,2 MB &lt; 42 MB)</td></tr>
-        <tr><td>Tốc độ suy luận CPU</td><td>p50 = 246 ms/ảnh (model) + 146 ms (decode)</td></tr>
-      </table>
-      <p class="muted" style="margin-top: 10px;">Kiểm tra parity PyTorch–ONNX và định dạng 1 file <code>model.onnx</code> ở gốc ZIP.</p>
-    </div>
-    <div class="card">
-      <h3>Kết Quả Baseline v1 (480 ảnh COCO + Aug Đêm/Mưa)</h3>
-      <div class="grid-3" style="margin-bottom: 12px;">
-        <div class="kpi"><div class="lbl">Mask mAP@[.5:.95]</div><div class="val" style="font-size:26px;">21,92</div></div>
-        <div class="kpi"><div class="lbl">AP50</div><div class="val" style="font-size:26px; color:var(--accent);">40,68</div></div>
-        <div class="kpi"><div class="lbl">AP75</div><div class="val" style="font-size:26px; color:var(--amber);">20,87</div></div>
+  <div class="header"><h2>2. Mô Hình Cố Định &amp; Chẩn Đoán Baseline v1</h2><span class="tag">Slide 03</span></div>
+  <div style="display:flex;flex-direction:column;justify-content:space-between;flex:1;gap:14px;">
+    <div class="card" style="padding:14px 18px;">
+      <h3 style="margin-bottom:6px;">Kiến Trúc &amp; Pipeline Nộp Bài Cố Định</h3>
+      <div class="pipeline" style="margin-top:4px;gap:4px;">
+        <div class="pipeline-step"><strong>Input 640×640</strong>Ảnh RGB chuẩn hóa <code>[1, 3, 640, 640]</code></div>
+        <div class="flow-arrow">➔</div>
+        <div class="pipeline-step"><strong>YOLO26n-seg</strong>137 layers · 2,7M params · 9,2 GFLOPs</div>
+        <div class="flow-arrow">➔</div>
+        <div class="pipeline-step"><strong>Export ONNX</strong>FP32 · opset 17 · 10,6 MB (ZIP 9,2 MB)</div>
+        <div class="flow-arrow" style="color:var(--green);">➔</div>
+        <div class="pipeline-step" style="border-color:var(--green);"><strong>CPU Grader</strong>246 ms/ảnh · Mask <code>[1, 32, 160, 160]</code></div>
       </div>
-      <ul>
-        <li><strong>Lỗ hổng 1 — Thiếu lớp 3:</strong> <code>Other vehicle = 0</code> mẫu (mất 1/11 điểm trên test thật).</li>
-        <li><strong>Lỗ hổng 2 — Nhiễu nhãn 2 bánh:</strong> <code>Motorcycle = 3,5</code> điểm (`0,035`) do rule gộp COCO thô.</li>
-        <li><strong>Lỗ hổng 3 — Lỗi hình học:</strong> 5 đa giác tự cắt nhau và 156 nhãn &lt; 64 px².</li>
-        <li><strong>Lỗ hổng 4 — Lệch domain:</strong> Tập val80 từ COCO chưa phản ánh đường phố Việt Nam.</li>
-      </ul>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Điểm Baseline v1 (480 ảnh COCO + Synth)</h3>
+        <div class="kpi-row"><div class="kpi"><div class="lbl">Mask mAP</div><div class="val">21,92</div></div><div class="kpi"><div class="lbl">AP50</div><div class="val" style="color:var(--accent);">40,68</div></div><div class="kpi"><div class="lbl">AP75</div><div class="val" style="color:var(--amber);">20,87</div></div></div>
+        <div class="chart-rows" style="margin-top:14px;">
+          <div class="chart-row"><span class="chart-label">Bus (mạnh nhất)</span><div class="bar-track"><div class="bar best" style="width:93.8%;"></div></div><span class="chart-value">46,9</span></div>
+          <div class="chart-row"><span class="chart-label">Car</span><div class="bar-track"><div class="bar" style="width:60.6%;"></div></div><span class="chart-value">30,3</span></div>
+          <div class="chart-row"><span class="chart-label">Sign (29 mẫu)</span><div class="bar-track"><div class="bar followup" style="width:32.0%;"></div></div><span class="chart-value">16,0</span></div>
+          <div class="chart-row"><span class="chart-label">Bicycle</span><div class="bar-track"><div class="bar followup" style="width:25.8%;"></div></div><span class="chart-value">12,9</span></div>
+          <div class="chart-row"><span class="chart-label">Motorcycle</span><div class="bar-track"><div class="bar" style="width:7.0%;background:var(--red);"></div></div><span class="chart-value" style="color:var(--red);">3,5</span></div>
+          <div class="chart-row"><span class="chart-label">Other vehicle</span><div class="bar-track"><div class="bar" style="width:0%;"></div></div><span class="chart-value" style="color:var(--red);">0,0</span></div>
+        </div>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
+        <h3>4 Điểm Nghẽn Cần Xử Lý Ngay Sau v1</h3>
+        <div class="grid-2" style="gap:10px;flex:1;">
+          <div class="class-pill" style="border-color:var(--red);"><strong style="color:var(--red);">Thiếu lớp 3 (0 mẫu)</strong><br/>Mất trắng 1/11 tổng điểm khi chấm test thật.</div>
+          <div class="class-pill" style="border-color:var(--red);"><strong style="color:var(--red);">Motorcycle tụt (3,5)</strong><br/>Rule gộp COCO thô gây nhầm xe trống vs có người.</div>
+          <div class="class-pill" style="border-color:var(--amber);"><strong style="color:var(--amber);">Lỗi hình học nhãn</strong><br/>5 đa giác tự cắt nhau &amp; 156 nhãn &lt; 64 px².</div>
+          <div class="class-pill" style="border-color:var(--amber);"><strong style="color:var(--amber);">Lệch domain VN</strong><br/>80 ảnh val COCO chưa phản ánh đường phố Việt Nam.</div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="footer"><span>Báo cáo Baseline v1 · Tag v1-baseline-21.92</span><span>Slide 3/10</span></div>
@@ -341,17 +361,33 @@
 <section class="slide">
   <div class="header"><h2>5. Kiểm Soát Dữ Liệu, Split Validation &amp; Tái Lập</h2><span class="tag">Slide 06</span></div>
   <div class="grid-2">
-    <div class="card"><h3>Repo lưu bằng chứng và mã tái lập</h3><ul>
-      <li><code>configs/traffic_11_classes.yaml</code>: thứ tự ID cố định cho 11 lớp.</li>
-      <li><code>notebooks/train_and_export.ipynb</code>: pipeline train và xuất ONNX.</li>
-      <li><code>scripts/</code>: kiểm tra nhãn, tạo split, chấm lại ZIP và tổng hợp báo cáo.</li>
-      <li><code>experiments/overnight/</code>: manifest, CPU replay, SHA-256 và metric theo lượt.</li>
-      <li><code>.gitignore</code> loại ảnh gốc, dataset ZIP và weights khỏi Git; repo giữ code, manifest và số liệu cần kiểm chứng.</li>
-    </ul>
-    <div class="pipeline" aria-label="Luồng tái lập"><div class="pipeline-step"><strong>Manifest</strong>ảnh, nhãn, nguồn</div><div class="pipeline-step"><strong>Train-only</strong>QC và fit</div><div class="pipeline-step"><strong>Replay</strong>đọc ZIP trên CPU</div></div></div>
-    <div class="card"><h3>Validation khóa cứng để so sánh công bằng</h3>
-      <div class="kpi-row"><div class="kpi"><div class="lbl">Ảnh val</div><div class="val">140</div></div><div class="kpi"><div class="lbl">GT hợp lệ</div><div class="val">1.588</div></div><div class="kpi"><div class="lbl">GT lớp 3 trong val</div><div class="val">0</div></div></div>
-      <ul><li>45 BDD100K + 15 ảnh Việt Nam + 80 ảnh Drive.</li><li>Đối chiếu SHA-256 ảnh và nhãn để giữ nguyên val qua các lượt chạy.</li><li>Other vehicle chấm riêng: 6 ảnh, 7 GT; kết quả không gộp vào val140.</li><li>Điểm public/private của cuộc thi là chỉ số riêng, không suy ra từ replay nội bộ.</li></ul>
+    <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
+      <div>
+        <h3>Kiến Trúc Repo Tái Lập (<code>allnaction-traffic-seg</code>)</h3>
+        <div class="grid-2" style="gap:8px;margin-top:8px;">
+          <div class="class-pill"><strong>configs/</strong><br/><code>traffic_11_classes.yaml</code> khóa ID 0..10</div>
+          <div class="class-pill"><strong>notebooks/</strong><br/><code>train_round4.ipynb</code> + <code>prelabel/</code> + <code>archive/</code></div>
+          <div class="class-pill"><strong>scripts/</strong><br/>Validate, sửa đa giác, Copy-Paste, Replay</div>
+          <div class="class-pill"><strong>reports/ &amp; docs/</strong><br/>Manifest, SHA-256, QC &amp; quy trình 5 người</div>
+        </div>
+      </div>
+      <div class="pipeline" aria-label="Luồng tái lập" style="gap:4px;">
+        <div class="pipeline-step"><strong>1. Manifest</strong>SHA-256 ảnh &amp; nguồn</div>
+        <div class="flow-arrow">➔</div>
+        <div class="pipeline-step"><strong>2. Train-only</strong>QC &amp; fit không leak</div>
+        <div class="flow-arrow" style="color:var(--green);">➔</div>
+        <div class="pipeline-step" style="border-color:var(--green);"><strong>3. CPU Replay</strong>Chấm từ ONNX ZIP</div>
+      </div>
+    </div>
+    <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
+      <div>
+        <h3>Validation Khóa Cứng Để So Sánh Công Bằng</h3>
+        <div class="kpi-row"><div class="kpi"><div class="lbl">Ảnh Val</div><div class="val">140</div></div><div class="kpi"><div class="lbl">GT Hợp Lệ</div><div class="val">1.588</div></div><div class="kpi"><div class="lbl">Holdout Lớp 3</div><div class="val" style="color:var(--amber);">6 ảnh</div></div></div>
+        <div class="mini-title" style="margin-top:10px;">Tỷ trọng 3 nguồn trong Val140 (không đổi giữa mọi lượt)</div>
+        <div class="split-track"><span style="width:32.14%;background:#38bdf8;"></span><span style="width:10.72%;background:#a78bfa;"></span><span style="width:57.14%;background:#34d399;"></span></div>
+        <div class="split-legend"><span class="split-key"><b style="color:#38bdf8;">BDD100K</b> 45 (32%)</span><span class="split-key"><b style="color:#a78bfa;">Việt Nam</b> 15 (11%)</span><span class="split-key"><b style="color:#34d399;">Drive</b> 80 (57%)</span></div>
+      </div>
+      <div class="holdout-box"><strong>Chống rò rỉ (Zero Leakage):</strong> Chia split theo cảnh/video; đối chiếu SHA-256 trước mọi lượt train.</div>
     </div>
   </div>
   <div class="footer"><span>Manifest và metric lưu cùng mốc thực nghiệm</span><span>Slide 6/10</span></div>
@@ -478,23 +514,28 @@
     <div class="grid-2">
       <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
         <div>
-          <h3>Các Lớp Bứt Phá &amp; Giới Hạn Cần Khắc Phục</h3>
-          <ul>
-            <li><strong>Bứt phá mạnh (AP@50):</strong> <code>Cyclist</code> (7,55 → <strong>45,76</strong>), <code>Traffic light</code> (25,34 → <strong>44,94</strong>), <code>Bus</code> (1,52 → <strong>37,74</strong>), <code>Motorcyclist</code> (12,46 → <strong>40,42</strong>), <code>Motorcycle</code> (0,94 → <strong>15,94</strong>).</li>
-          </ul>
+          <h3>Biểu Đồ Bứt Phá AP@50 Trên Hệ Thống BTC</h3>
+          <div class="chart-rows" style="margin-top:8px;">
+            <div class="chart-row"><span class="chart-label">Cyclist (Priv)</span><div class="gain-track"><div class="gain-bar" style="width:91.5%;"></div></div><span class="chart-value">45,76</span></div>
+            <div class="chart-row"><span class="chart-label">Traffic light (Priv)</span><div class="gain-track"><div class="gain-bar" style="width:89.9%;"></div></div><span class="chart-value">44,94</span></div>
+            <div class="chart-row"><span class="chart-label">Motorcyclist (Pub)</span><div class="gain-track"><div class="gain-bar" style="width:80.8%;"></div></div><span class="chart-value">40,42</span></div>
+            <div class="chart-row"><span class="chart-label">Bus (Pub: 1,5→37,7)</span><div class="gain-track"><div class="gain-bar" style="width:75.5%;"></div></div><span class="chart-value">37,74</span></div>
+            <div class="chart-row"><span class="chart-label">Motorcycle (Pub)</span><div class="gain-track"><div class="gain-bar" style="width:42.9%;"></div></div><span class="chart-value">21,43</span></div>
+          </div>
         </div>
-        <div class="holdout-box"><strong>Giới hạn &amp; hướng mở rộng:</strong> <code>Other vehicle</code> trên test BTC mới đạt 0,23 (Private) do thiếu ảnh ba gác/xích lô thật trong tập train đã chốt; cần gộp thêm gói Poribohon-BD (58 cảnh) &amp; Wikimedia VN đã prelabel.</div>
+        <div class="holdout-box" style="margin-top:10px;"><strong>Giới hạn:</strong> <code>Other vehicle</code> trên test BTC mới đạt 0,23 (Private) → cần gộp thêm gói Poribohon-BD (58 cảnh) &amp; Wikimedia VN đã prelabel.</div>
       </div>
       <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
         <div>
           <h3>Gói Bàn Giao Tái Lập 100%</h3>
-          <ul>
-            <li><strong>Bài nộp chuẩn:</strong> <code>submission.zip</code> (<code>model.onnx</code> FP32, 640, opset 17).</li>
-            <li><strong>Báo cáo nguồn &amp; điểm:</strong> <code>DATASET_PROVENANCE_REPORT.md</code> · <code>reports/TEAM21_KET_QUA.md</code>.</li>
-            <li><strong>Bằng chứng kiểm chứng:</strong> <code>experiments/overnight/verified-scores.json</code> (SHA-256 &amp; parity PyTorch–ONNX).</li>
-          </ul>
+          <div class="grid-2" style="gap:8px;margin-top:8px;">
+            <div class="class-pill"><strong>submission.zip</strong><br/><code>model.onnx</code> FP32 · 640 · opset 17</div>
+            <div class="class-pill"><strong>DATASET_PROVENANCE</strong><br/>Nguồn, giấy phép &amp; ánh xạ 11 lớp</div>
+            <div class="class-pill"><strong>TEAM21_KET_QUA.md</strong><br/>Bảng 27 vòng &amp; AP từng lớp</div>
+            <div class="class-pill"><strong>verified-scores.json</strong><br/>SHA-256 &amp; parity PyTorch–ONNX</div>
+          </div>
         </div>
-        <p style="color:var(--green);font-weight:700;font-size:17px;">Cảm ơn Ban Tổ Chức &amp; Hội Đồng Giám Khảo!</p>
+        <p style="color:var(--green);font-weight:700;font-size:17px;margin-top:10px;">Cảm ơn Ban Tổ Chức &amp; Hội Đồng Giám Khảo!</p>
       </div>
     </div>
   </div>

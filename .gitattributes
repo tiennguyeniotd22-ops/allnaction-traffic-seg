@@ -1,1 +1,3 @@
 labeling_guideline.md -text
+notebooks/archive/train_and_export_v2.ipynb -text
+reports/replay/team21-mask-roi/validation-manifest.json text eol=lf

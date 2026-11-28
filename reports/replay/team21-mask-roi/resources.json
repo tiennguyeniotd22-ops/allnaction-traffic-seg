@@ -1,0 +1,14 @@
+{
+ "revision": "c80203c7b395dc7695b1fd94742e667c8562094e",
+ "experiment": "lower-lr",
+ "team_id": 21,
+ "dataset_sha256": "33362fd1aee1760da38f0f67e41a97c61dcc6aed6c10561bfbf9ef058755c2ef",
+ "initial_weights_sha256": "361fbfabab285c3237700b6bb91d7ecfa602cd945fffda8dbe1242829b71e73f",
+ "notebook_sha256": "9cf720e6cad44b8dec33e9a6fafc8425ce74e61d1fb37da65584b2ac9d4a73c5",
+ "gpu": "NVIDIA L4",
+ "fit_and_native_val_seconds": 699.0014973700017,
+ "peak_allocated_mib": 4722.60302734375,
+ "peak_reserved_mib": 8468.0,
+ "reuses_fit_from": "/home/pc/baseline-cvat300/overnight/team21-mean-paste-bn",
+ "additional_fit_seconds": 0
+}

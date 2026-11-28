@@ -112,4 +112,4 @@ gcloud compute scp "cvat-ai-label-server:/home/pc/baseline-cvat300/overnight/tea
 
 Tệp nộp có 9,674,663 byte, chỉ chứa `model.onnx`. SHA-256 là `2717f063091799facee8526bab18e4fc686424109d37d1b778588e4c42b3070e`.
 
-[Kết quả chấm lại từ ZIP trên CPU](overnight/team21-cpu-replays.json) · [Bảng điểm và đối chiếu PyTorch–ONNX](overnight/verified-scores.json) · [Nguồn dữ liệu và quyền sử dụng](../DATASET_PROVENANCE_REPORT.md) · [Notebook](../notebooks/train_and_export.ipynb)
+[Hồ sơ chạy lại và SHA dữ liệu](replay/team21-mask-roi/REPLAY.md) · [run_report.json](replay/team21-mask-roi/run_report.json) · [ZIP ONNX điểm cao nhất](../artifacts/team21-mask-roi/submission.zip) · [Nguồn dữ liệu và quyền sử dụng](../DATASET_PROVENANCE_REPORT.md) · [Notebook đã dùng](../notebooks/archive/train_and_export_v2.ipynb)

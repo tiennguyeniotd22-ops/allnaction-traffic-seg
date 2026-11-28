@@ -308,7 +308,7 @@
       <div class="holdout-box"><strong>Holdout riêng Lớp 3 (Other vehicle)</strong><br/>6 ảnh / 7 GT · mAP <strong>61,62</strong> (tách khỏi val140)</div>
     </div>
   </div>
-  <div class="footer"><span>Nguồn: experiments/TEAM21_KET_QUA.md · DATASET_PROVENANCE_REPORT.md</span><span>Slide 4/11</span></div>
+  <div class="footer"><span>Nguồn: reports/TEAM21_KET_QUA.md · DATASET_PROVENANCE_REPORT.md</span><span>Slide 4/11</span></div>
 </section>
 
 <!-- SLIDE 5 -->
@@ -318,14 +318,15 @@
     <div class="card" style="padding:16px 20px;">
       <h3 style="margin-bottom:6px;">Luồng Tạo &amp; Duyệt Nhãn 4 Bước (Từ Nhãn Nháp Đến Dữ Liệu Sạch)</h3>
       <div class="pipeline" style="margin-top:8px;gap:4px;">
-        <div class="pipeline-step"><strong>1. Gợi Ý Đầu Vào</strong>Box BDD100K, YOLOv7 hoặc Text Prompt (SAM 3)</div>
+        <div class="pipeline-step"><strong>1. Thu thập &amp; gợi ý</strong>300 ảnh CVAT: BDD100K 225 + VN Sign v5 75</div>
         <div class="flow-arrow">➔</div>
         <div class="pipeline-step"><strong>2. Sinh Mask Bằng SAM</strong>SAM ViT-H (L4) / SAM 2.1 tạo 4.281 polygon nháp</div>
         <div class="flow-arrow">➔</div>
         <div class="pipeline-step"><strong>3. Sửa Trên CVAT</strong>5 thành viên × 60 ảnh (ngày/đêm/mưa/VN)</div>
         <div class="flow-arrow" style="color:var(--green);">➔</div>
-        <div class="pipeline-step" style="border-color:var(--green);"><strong>4. Duyệt Chéo &amp; Xuất</strong>Soi issue các ca khó → xuất YOLO-Seg 11 lớp</div>
+        <div class="pipeline-step" style="border-color:var(--green);"><strong>4. Duyệt Chéo &amp; Xuất</strong>Người thứ hai soi issue + mẫu ngẫu nhiên → YOLO-Seg 11 lớp</div>
       </div>
+      <p class="footnote" style="margin:8px 0 0;"><strong>Nguồn công khai trong lineage bản chọn:</strong> BDD100K · COCO 2017 · Vietnam Traffic Sign Detection v5 · Mapillary Vistas v2. License, số ảnh theo phiên bản và ánh xạ 11 lớp: <code>DATASET_PROVENANCE_REPORT.md</code>.</p>
     </div>
     <div class="grid-3" style="flex:1;">
       <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
@@ -367,8 +368,8 @@
         <div class="grid-2" style="gap:8px;margin-top:8px;">
           <div class="class-pill"><strong>configs/</strong><br/><code>traffic_11_classes.yaml</code> khóa ID 0..10</div>
           <div class="class-pill"><strong>notebooks/</strong><br/><code>train_round4.ipynb</code> + <code>prelabel/</code> + <code>archive/</code></div>
-          <div class="class-pill"><strong>scripts/</strong><br/>Validate, sửa đa giác, Copy-Paste, Replay</div>
-          <div class="class-pill"><strong>reports/ &amp; docs/</strong><br/>Manifest, SHA-256, QC &amp; quy trình 5 người</div>
+          <div class="class-pill"><strong>scripts/ + artifacts/</strong><br/>CPU replay từ ZIP ONNX tốt nhất · SHA <code>2717f063…</code></div>
+          <div class="class-pill"><strong>reports/replay/</strong><br/><code>run_report.json</code>, val manifest, SHA 8 bộ train (2,57 GiB lưu ngoài Git)</div>
         </div>
       </div>
       <div class="pipeline" aria-label="Luồng tái lập" style="gap:4px;">
@@ -390,7 +391,7 @@
       <div class="holdout-box"><strong>Chống rò rỉ (Zero Leakage):</strong> Chia split theo cảnh/video; đối chiếu SHA-256 trước mọi lượt train.</div>
     </div>
   </div>
-  <div class="footer"><span>Manifest và metric lưu cùng mốc thực nghiệm</span><span>Slide 6/11</span></div>
+  <div class="footer"><span>reports/replay/team21-mask-roi/REPLAY.md · DATASET_PROVENANCE_REPORT.md</span><span>Slide 6/11</span></div>
 </section>
 
 <!-- SLIDE 7 -->
@@ -426,7 +427,7 @@
       <p style="margin-top:14px;"><strong>Ưu tiên vòng sau:</strong> Motorcycle còn 9,68 AP; Cyclist 16,58 AP. Bổ sung cảnh che khuất và xe hai bánh sát nhau, rồi đánh giá lại trên cùng val140.</p>
     </div>
   </div>
-  <div class="footer"><span>Nguồn: experiments/TEAM21_KET_QUA.md · class AP replay</span><span>Slide 7/11</span></div>
+  <div class="footer"><span>Nguồn: reports/TEAM21_KET_QUA.md · class AP replay</span><span>Slide 7/11</span></div>
 </section>
 
 <!-- SLIDE 8 -->

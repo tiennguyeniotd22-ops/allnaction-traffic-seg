@@ -2,6 +2,19 @@
 
 > **Quy định cuộc thi:** Ghi trung thực toàn bộ nguồn dữ liệu đã dùng (Tên, Đường dẫn, Giấy phép, Số ảnh thực dùng và Cách ánh xạ về 11 lớp `0..10`), tách bạch phần **đã đưa vào huấn luyện** và phần **đã chuẩn bị ngoài lề**.
 
+## Nguồn công khai trong lineage của mô hình điểm cao nhất
+
+`team21-mask-roi` đạt 27,54 mask mAP trên val140. Mô hình kế thừa ensemble 9 checkpoint từ 8 gói dữ liệu train (gói `e3-triage-v1` được dùng cho hai checkpoint). Danh sách checkpoint và SHA dữ liệu từng gói nằm trong [bảng kết quả](reports/TEAM21_KET_QUA.md) và [chỉ mục chạy lại](reports/replay/team21-mask-roi/REPLAY.md).
+
+| Bộ dữ liệu công khai | Có trong lineage qua | Số lượng đã ghi nhận trong các phiên bản liên quan | Giấy phép / ánh xạ |
+|---|---|---|---|
+| BDD100K | `e3-triage-v1`, `e3-vnrepair-v1`, `team21-wideqc-v1` | 225 ảnh CVAT ban đầu; 43 crop semantic trong một bản mở rộng | Điều khoản Berkeley; ánh xạ từ nhãn giao thông sang 11 lớp ở manifest từng phiên bản. |
+| Vietnam Traffic Sign Detection v5 | `e3-triage-v1` | 75 ảnh CVAT ban đầu | Trang bản xuất ghi Public Domain; biển ánh xạ sang `Sign (9)`, các lớp khác theo manifest. |
+| COCO 2017 | `e3-triage-v1`, `team21-road-v1`, `team21-vistas-extra-v1` và ảnh cha của dữ liệu ghép | 31 ảnh rà toàn khung trong `team21-road-v1`; 69 crop trong `team21-vistas-extra-v1`; các phần COCO kế thừa được ghi theo manifest | Annotation CC BY 4.0; giấy phép ảnh Flickr được lưu theo từng ảnh. Gộp người đang ngồi với xe thành `Motorcyclist (5)`/`Cyclist (7)`; người dắt xe tách riêng. |
+| Mapillary Vistas v2 | `e3-vnrepair-v1`, `team21-vistas-extra-v1`, `team21-paste-v1` | 212 crop trong bản Vistas trước; 182 cảnh bổ sung trong `team21-vistas-extra-v1`; ảnh nền của bản ghép giữ nguồn cha | CC BY-NC-SA 4.0; mask panoptic được ánh xạ theo tên lớp, sau đó kiểm polygon và quan hệ người–xe. |
+
+Các số lượng trên mô tả từng phiên bản cụ thể, có phần kế thừa và chồng lặp nên không cộng thành tổng ảnh duy nhất. Manifest theo ảnh lưu nguồn, giấy phép, lớp đích và checksum; xem bảng phiên bản bên dưới cùng các file `*-manifest.json`. Các bộ đã khảo sát nhưng không có trong lineage này không được liệt kê là nguồn của mô hình điểm cao nhất.
+
 ---
 
 ## 1. Dữ Liệu ĐÃ THỰC SỰ DÙNG Trong Các Bản Huấn Luyện (Đã Xác Minh SHA-256)

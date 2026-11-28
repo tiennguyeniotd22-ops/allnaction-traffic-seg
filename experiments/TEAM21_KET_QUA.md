@@ -1,13 +1,17 @@
 # Kết quả đội 21 trên 140 ảnh validation
 
-**Bản có mask mAP cao nhất là `team21-mean-bn`, đạt 25,15/100.** So với pilot, chênh 1,02 điểm. Mỗi dòng dưới đây đã chấm lại từ ZIP trên CPU. Điểm public và private do hệ thống cuộc thi xác định.
+**Bản có mask mAP cao nhất là `team21-mean-sgd-bn`, đạt 25,51/100.** So với pilot, chênh 1,39 điểm. Mỗi dòng dưới đây đã chấm lại từ ZIP trên CPU. Điểm public và private do hệ thống cuộc thi xác định.
 
 | Bản | Mask mAP | AP50 | AP75 | Việt Nam · 15 | Mapillary · 46 | Other vehicle · holdout |
 |---|---:|---:|---:|---:|---:|---:|
+| `team21-mean-sgd-bn` | 25,51 | 43,84 | 26,10 | 18,96 | 24,94 | 62,74 |
 | `team21-mean-bn` | 25,15 | 43,71 | 25,47 | 18,65 | 24,42 | 51,74 |
+| `team21-mean-sgd` | 25,15 | 43,42 | 25,83 | 18,70 | 24,75 | 60,76 |
 | `team21-mean-four` | 24,93 | 43,35 | 25,37 | 17,85 | 24,38 | 51,29 |
 | `team21-mean-road` | 24,67 | 42,42 | 24,74 | 17,90 | 24,53 | 58,73 |
+| `last-team21-sgd20` | 24,22 | 40,97 | 25,06 | 17,70 | 24,47 | 43,48 |
 | `team21-mean-a` | 24,18 | 41,76 | 24,15 | 18,70 | 24,65 | 54,76 |
+| `team21-sgd20` | 24,14 | 40,97 | 24,49 | 17,49 | 24,56 | 43,76 |
 | `team21-qc20` | 24,13 | 41,55 | 24,49 | 19,09 | 23,59 | 50,98 |
 | `team21-head20` | 23,88 | 40,78 | 24,44 | 17,73 | 24,55 | 55,89 |
 | `team21-btc20` | 23,62 | 40,33 | 22,91 | 16,56 | 24,06 | 61,11 |
@@ -18,21 +22,21 @@
 
 `team21-road20` so với `team21-btc20` chênh -0,18 điểm. Khoảng bootstrap ghép cặp 95% từ -1,16 đến 0,75. Cấu hình train, trọng số khởi tạo và notebook trùng nhau.
 
-Khoảng bootstrap 95% theo nhóm cảnh của bản được chọn so với `team21-qc20` là [0,07, 2,07] điểm (300 lần lấy mẫu). Nhiều bản được so trên cùng validation. Khoảng này chưa điều chỉnh theo số lần chọn mô hình.
+Khoảng bootstrap 95% theo nhóm cảnh của bản được chọn so với `team21-qc20` là [0,54, 2,55] điểm (300 lần lấy mẫu). Nhiều bản được so trên cùng validation. Khoảng này chưa điều chỉnh theo số lần chọn mô hình.
 
 | Lớp | GT hợp lệ | AP pilot | AP bản chọn |
 |---|---:|---:|---:|
-| Car | 546 | 40,27 | 41,98 |
-| Bus | 35 | 39,52 | 41,67 |
-| Truck | 82 | 19,91 | 23,32 |
+| Car | 546 | 40,27 | 42,06 |
+| Bus | 35 | 39,52 | 42,58 |
+| Truck | 82 | 19,91 | 23,42 |
 | Other vehicle | 0 | Thiếu GT | Thiếu GT |
-| Motorcycle | 54 | 7,45 | 9,28 |
-| Motorcyclist | 70 | 35,07 | 33,88 |
-| Bicycle | 44 | 13,45 | 15,46 |
-| Cyclist | 33 | 15,66 | 13,23 |
-| Pedestrian | 418 | 27,10 | 28,43 |
-| Sign | 152 | 27,26 | 27,35 |
-| Traffic light | 154 | 15,58 | 16,89 |
+| Motorcycle | 54 | 7,45 | 9,70 |
+| Motorcyclist | 70 | 35,07 | 34,10 |
+| Bicycle | 44 | 13,45 | 14,69 |
+| Cyclist | 33 | 15,66 | 14,24 |
+| Pedestrian | 418 | 27,10 | 29,20 |
+| Sign | 152 | 27,26 | 27,80 |
+| Traffic light | 154 | 15,58 | 17,36 |
 
 ## Dữ liệu và trọng số
 
@@ -46,6 +50,7 @@ Bộ val gồm 45 ảnh BDD, 15 ảnh Việt Nam và 80 ảnh Drive. Holdout ri�
 | team21-btc20 | team21-btc-v1 | 20 | lower-lr |
 | team21-road20 | team21-road-v1 | 20 | lower-lr |
 | team21-full | team21-signfaces-v1 | 55 | lower-lr |
+| team21-sgd20 | e3-triage-v1 | 20 | sgd |
 
 Kiểm SHA ảnh trên từng bộ dữ liệu đầu vào của bản chọn xác nhận đủ 780 ảnh gốc vòng 4. Toàn bộ 640 ảnh train vẫn ở train và 140 ảnh val vẫn ở val.
 
@@ -54,13 +59,13 @@ Bản chọn có hiệu chỉnh BatchNorm từ 168 ảnh train thuộc ba nguồ
 Trên máy đã có quyền đọc thư mục dự án trên VM, lấy ZIP bằng Google Cloud CLI. Thực hiện lệnh dữ liệu cho từng phiên bản cần chạy notebook.
 
 ```powershell
-gcloud compute scp "cvat-ai-label-server:/home/pc/baseline-cvat300/overnight/team21-mean-bn/submission/submission.zip" . --project=plantcare-ai-510902 --zone=us-central1-a
+gcloud compute scp "cvat-ai-label-server:/home/pc/baseline-cvat300/overnight/team21-mean-sgd-bn/submission/submission.zip" . --project=plantcare-ai-510902 --zone=us-central1-a
 gcloud compute scp "cvat-ai-label-server:/home/pc/baseline-cvat300/overnight/e3-triage-v1/dataset.zip" "./e3-triage-v1.zip" --project=plantcare-ai-510902 --zone=us-central1-a
 gcloud compute scp "cvat-ai-label-server:/home/pc/baseline-cvat300/overnight/team21-btc-v1/dataset.zip" "./team21-btc-v1.zip" --project=plantcare-ai-510902 --zone=us-central1-a
 gcloud compute scp "cvat-ai-label-server:/home/pc/baseline-cvat300/overnight/team21-road-v1/dataset.zip" "./team21-road-v1.zip" --project=plantcare-ai-510902 --zone=us-central1-a
 gcloud compute scp "cvat-ai-label-server:/home/pc/baseline-cvat300/overnight/team21-signfaces-v1/dataset.zip" "./team21-signfaces-v1.zip" --project=plantcare-ai-510902 --zone=us-central1-a
 ```
 
-Tệp nộp có 9,661,534 byte, chỉ chứa `model.onnx`. SHA-256 là `1e9bce2852eec67a977bf0215979a3094ccb9a3e94c7c1f154188f2a0f29f4e3`.
+Tệp nộp có 9,674,561 byte, chỉ chứa `model.onnx`. SHA-256 là `bbfd87b97d822dca4407517226428f93f96b6cef41aa52e1535e9ddc936b344d`.
 
 [Kết quả chấm lại từ ZIP trên CPU](overnight/team21-cpu-replays.json) · [Bảng điểm và đối chiếu PyTorch–ONNX](overnight/verified-scores.json) · [Nguồn dữ liệu và quyền sử dụng](../DATASET_PROVENANCE_REPORT.md) · [Notebook](../notebooks/train_and_export.ipynb)

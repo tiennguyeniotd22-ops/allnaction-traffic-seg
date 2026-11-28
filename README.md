@@ -1,26 +1,27 @@
 # AllnAction RoboTaxi Data-Centric Hackathon (11 Traffic Classes)
 
-Đội 21 dùng bảng nghiệm thu để chọn ZIP, xem AP từng lớp và lấy đúng bộ dữ liệu chạy notebook từ VM. [Kết quả đã chấm lại trên CPU và hướng dẫn lấy dữ liệu](https://github.com/tiennguyeniotd22-ops/allnaction-traffic-seg/blob/exp/overnight-qc/experiments/TEAM21_KET_QUA.md)
-
-- **Mô hình cố định:** `yolo26n-seg` (`ultralytics==8.4.214`, `imgsz=640`, xuất `ONNX` opset 17)
+- **Mô hình cố định:** `yolo26n-seg` (`ultralytics==8.4.214`, `imgsz=640`, xuất `ONNX` opset 17, FP32)
 - **Thước đo:** `100 × Mask mAP@[.5:.95]`
-- **Chiến lược:** Khai thác Open Prelabel (`IDD`/`BDD100K`/`Roboflow`) → Teacher `yolo26x-seg.pt` Pseudo-Label ảnh Dashcam VN → Sửa nhanh trên CVAT → Fine-tune & Data-Centric Loop.
 
-## Cấu Trúc Repo
+---
 
-Quy ước gán nhãn của giải nằm trong bản gốc do ban tổ chức cung cấp. Nhóm dùng checklist QC để duyệt polygon trên CVAT và kiểm lại mask sau khi xuất YOLO-seg. [Guideline chính thức](labeling_guideline.md) · [Checklist QC](HUONG_DAN_QC.md) · [Đề xuất tăng điểm mask](DE_XUAT_TANG_DIEM_MASK.md)
+## Cấu Trúc Repository
 
-- `ALLNACTION_1DAY_HACKATHON_PLAYBOOK.md`: Kế hoạch 1 ngày & phân công 5 thành viên song song.
-- `DATASET_PROVENANCE_REPORT.md`: Bảng khai báo nguồn dữ liệu công khai, giấy phép & ánh xạ 11 lớp.
-- `configs/traffic_11_classes.yaml`: Định nghĩa chuẩn 11 lớp (`0..10`).
-- `scripts/prelabel_yolo_seg.py`: Auto-prelabel chuẩn YOLO Segmentation 1.0 + tự gộp `Motorcyclist` / `Cyclist`.
-- `scripts/validate_and_augment.py`: Kiểm tra lỗi polygon, mask `< 64px` & sinh ảnh cảnh khó (đêm/mưa).
-- `notebooks/train_and_export.ipynb`: Notebook huấn luyện, xuất ONNX và tự chấm thử của cuộc thi.
+| Thư Mục / File | Nội Dung |
+| :--- | :--- |
+| [`notebooks/train_round4.ipynb`](notebooks/train_round4.ipynb) | **Notebook huấn luyện & xuất ONNX mới nhất (v4)** |
+| [`notebooks/prelabel/`](notebooks/prelabel/) | Notebook auto-prelabel bằng **SAM 3** và **YOLO-World + SAM 2.1 (không cần token)** |
+| [`configs/traffic_11_classes.yaml`](configs/traffic_11_classes.yaml) | Định nghĩa chuẩn 11 lớp giao thông (`0..10`) |
+| [`DATASET_PROVENANCE_REPORT.md`](DATASET_PROVENANCE_REPORT.md) | Khai báo nguồn dữ liệu công khai, giấy phép & ánh xạ 11 lớp |
+| [`EXPERIMENTS.md`](EXPERIMENTS.md) | Nhật ký điểm số và đối chiếu các vòng chạy |
+| [`docs/`](docs/) | Quy trình đội, hướng dẫn review CVAT (`HUONG_DAN_QC.md`) & guideline BTC |
+| [`reports/`](reports/) | Báo cáo baseline v1, phân tích lỗi & đề xuất tăng điểm (`team21-qc20`) |
+| [`scripts/`](scripts/) | Bộ script chuẩn bị dữ liệu, tải ảnh VN, copy-paste lớp hiếm & kiểm tra nhãn |
 
-## Chạy Nhanh Trên Colab / Server GPU
-```bash
-pip install -r requirements.txt
-python scripts/prelabel_yolo_seg.py --images raw_images/ --out dataset_traffic_11 --model yolo26x-seg.pt
-python scripts/validate_and_augment.py --data dataset_traffic_11 --augment-hard 0.30
-```
-Mở `notebooks/train_and_export.ipynb`, điền đúng `TEAM_ID` và `DATASET_PATH`, rồi chạy từ Bước 0 đến Bước 6.
+---
+
+## Chạy Nhanh Trên Colab
+- **Huấn luyện & xuất `submission.zip` (Bản 4 mới nhất):**
+  `https://colab.research.google.com/github/tiennguyeniotd22-ops/allnaction-traffic-seg/blob/main/notebooks/train_round4.ipynb`
+- **Prelabel ảnh mới bằng SAM 3 / SAM 2.1:**
+  Mở `notebooks/prelabel/sam3_prelabel_11_classes.ipynb` hoặc `notebooks/prelabel/sam2_yoloworld_prelabel_notoken.ipynb`.

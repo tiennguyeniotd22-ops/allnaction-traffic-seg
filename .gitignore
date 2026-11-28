@@ -1,5 +1,6 @@
 # Data & Artifacts (không đẩy lên Git)
-dataset_traffic_11/
+dataset_*/
+raw_*/
 data/
 prelabeled_data/
 raw_images/
@@ -21,11 +22,10 @@ _selfcheck/
 *.bmp
 *.webp
 
-# Python / Jupyter
+# OS & Python / Jupyter
+desktop.ini
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
 .venv/
 .DS_Store
-
-raw_cache/

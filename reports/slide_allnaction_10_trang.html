@@ -207,25 +207,43 @@
 
 <!-- SLIDE 4 -->
 <section class="slide">
-  <div class="header"><h2>3. Chiến Lược Thu Thập &amp; Khai Báo Nguồn Dữ Liệu (Trung Thực 100%)</h2><span class="tag">Slide 04</span></div>
+  <div class="header"><h2>3. Dữ Liệu Dùng Để Train Qua Từng Lần (Xác Minh SHA-256)</h2><span class="tag">Slide 04</span></div>
   <div class="card" style="flex: 1;">
-    <h3>A. Dữ Liệu ĐÃ ĐƯA VÀO HUẤN LUYỆN (Đã Xác Minh SHA-256)</h3>
+    <h3>Thành Phần Dữ Liệu Train &amp; Val Cho Từng Phiên Bản</h3>
     <table style="font-size: 13px;">
       <thead>
-        <tr><th>Nguồn Dữ Liệu</th><th>Giấy Phép</th><th>Số Ảnh Thực Dùng</th><th>Cách Xử Lý &amp; Vai Trò</th></tr>
+        <tr><th>Lần Chạy</th><th>Tập Train (Số Ảnh &amp; Nguồn Chi Tiết)</th><th>Tập Val</th><th>Điểm mAP</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>BDD100K</strong> (Berkeley)</td><td>BSD 3-Clause</td><td><code>180 / 45</code> (225)</td><td>Chia đều ngày/đêm/mưa (<code>60/15</code>); box gốc → SAM → sửa CVAT.</td></tr>
-        <tr><td><strong>VN Traffic Sign v5</strong> (Roboflow)</td><td>Public Domain</td><td><code>60 / 15</code> (75)</td><td>YOLOv7 + box biển → SAM → sửa CVAT cho lớp <code>9: Sign</code> &amp; xe VN.</td></tr>
-        <tr><td><strong>COCO val2017 + Synth Đêm/Mưa</strong></td><td>CC BY 4.0 (Ann.)</td><td><code>320 / 80</code> + <code>80 / 0</code></td><td>37 đêm + 43 mưa tổng hợp; ghép thành bộ <strong>780 ảnh (640/140)</strong> Round 3 &amp; 4.</td></tr>
-        <tr><td><strong>Mapillary Vistas + Crop mở rộng</strong></td><td>CC BY-NC-SA 4.0</td><td><code>212</code> Mapillary + <code>43</code> BDD + <code>31</code> COCO</td><td>Bổ sung trong <code>exp/overnight-qc</code> (<code>1.411–1.442</code> ảnh), đẩy <code>val140</code> lên <strong>25,64</strong>.</td></tr>
+        <tr>
+          <td><strong>Lần 1 (`v1`)</strong></td>
+          <td><strong>400 ảnh:</strong> <code>320</code> COCO val2017 + <code>80</code> ảnh synth đêm/mưa.</td>
+          <td><code>80</code> COCO</td>
+          <td class="num"><strong>21,92</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Lần 3 &amp; Lần 4</strong><br><span class="muted">(`team780`)</span></td>
+          <td><strong>640 ảnh:</strong> <code>180</code> BDD100K (60 ngày/60 đêm/60 mưa) + <code>60</code> VN Traffic Sign v5 + <code>320</code> COCO val2017 + <code>80</code> synth (37 đêm, 43 mưa).</td>
+          <td><strong>140 khóa</strong><br><span class="muted">(45 BDD, 15 VN, 80 COCO)</span></td>
+          <td class="num">21,35 → <strong>22,01</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Pilot QC</strong><br><span class="muted">(`team21-qc20`)</span></td>
+          <td><strong>1.156 ảnh:</strong> Bộ nền CVAT đã rà sửa 50 cảnh ưu tiên + <code>31</code> ảnh COCO kiểm trùng.</td>
+          <td><strong>140 khóa</strong></td>
+          <td class="num"><strong>24,13</strong></td>
+        </tr>
+        <tr style="background: rgba(52, 211, 153, 0.10);">
+          <td><strong>Bản Chọn Cuối</strong><br><span class="muted">(`mean-wide-bn`)</span></td>
+          <td><strong>1.411–1.442 ảnh:</strong> Đủ <code>640</code> train gốc + <code>31</code> COCO + <code>212</code> crop Mapillary Vistas + <code>43</code> crop BDD100K + <code>24</code> tệp VN &amp; <code>48</code> tệp QC.</td>
+          <td><strong>140 khóa</strong><br><span class="muted">(+6 ảnh holdout lớp 3)</span></td>
+          <td class="num"><strong style="color:var(--green);">25,64</strong></td>
+        </tr>
       </tbody>
     </table>
-    <h3 style="margin-top: 12px; color: var(--amber);">B. Dữ Liệu Đã Prelabel Sẵn Cho Vòng Sau (<code>0</code> Ảnh Trong Bản Nộp Hiện Tại)</h3>
-    <p style="font-size: 14px;">• <strong>Poribohon-BD</strong> (<code>CC BY 4.0</code>): <code>58</code> cảnh ba gác/CNG (174 mask SAM) · <strong>COCO train2017</strong>: <code>480</code> ảnh lớp hiếm · <strong>Wikimedia VN</strong>: <code>50</code> Other vehicle + <code>24</code> đèn VN + <code>4</code> synth.</p>
-    <p class="muted" style="margin-top: 6px;">Khai báo chi tiết SHA-256, URL và ánh xạ 11 lớp lưu tại <code>DATASET_PROVENANCE_REPORT.md</code>.</p>
+    <p style="margin-top: 12px; font-size: 13.5px;"><strong>Nguồn chuẩn bị thêm cho vòng kế tiếp (0 ảnh trong bản nộp):</strong> Poribohon-BD (<code>58</code> cảnh), COCO train2017 (<code>480</code> ảnh lớp hiếm), Wikimedia VN (<code>74+4</code> ảnh). Giấy phép &amp; URL ghi đủ trong <code>DATASET_PROVENANCE_REPORT.md</code>.</p>
   </div>
-  <div class="footer"><span>Tách bạch rõ dữ liệu đã train vs dữ liệu staged</span><span>Slide 4/10</span></div>
+  <div class="footer"><span>Mỗi lần chạy đều đối chiếu SHA-256 ảnh train &amp; val</span><span>Slide 4/10</span></div>
 </section>
 
 <!-- SLIDE 5 -->
